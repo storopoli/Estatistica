@@ -1,0 +1,34 @@
+---
+title: "Estatística com R"
+description: |
+  Companion para a disciplina de Estatística para alunos de Mestrado e Doutorado da UNINOVE
+author:
+  - name: Jose Storopoli
+    url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+
+# Learn more about publishing to GitHub Pages at:
+# https://rstudio.github.io/distill/publish_website.html#github-pages
+
+```
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
+
+# Temp
+
+```{r}
+xaringanExtra::embed_xaringan(
+  url = "https://build-your-own-universe.netlify.app",
+  ratio = "16:9"
+)
+```
+

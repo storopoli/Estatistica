@@ -1,0 +1,50 @@
+---
+title: "Estatística"
+subtitle: "O que é que eu estou fazendo aqui?"  
+author: 
+  - "Jose Storopoli"
+  - "Leonardo Vils"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+# UNINOVE Colors
+style_mono_accent(
+  base_color = "#29427A",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+# xaringanExtra tile view press key "O"
+xaringanExtra::use_tile_view()
+
+xaringanExtra::use_logo(
+  image_url = "https://raw.githubusercontent.com/storopoli/UNINOVE-xaringan-theme/master/resources/uninove.png",
+  link_url = "https://www.uninove.br",
+  width = "110px",
+  height = "55px")
+
+xaringanExtra::use_fit_screen()
+
+# xaringanExtra webcam press key "W"
+xaringanExtra::use_webcam()
+```
+---
+
+---
