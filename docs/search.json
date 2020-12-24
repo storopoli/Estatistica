@@ -16,7 +16,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:21-03:00"
+      "last_modified": "2020-12-24T06:36:21-03:00"
     },
     {
       "path": "2-Teste_t.html",
@@ -34,7 +34,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:21-03:00"
+      "last_modified": "2020-12-24T06:36:21-03:00"
     },
     {
       "path": "3-ANOVA.html",
@@ -52,7 +52,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:22-03:00"
+      "last_modified": "2020-12-24T06:36:22-03:00"
     },
     {
       "path": "4-Correlacoes.html",
@@ -70,7 +70,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:22-03:00"
+      "last_modified": "2020-12-24T06:36:22-03:00"
     },
     {
       "path": "5-Regressao_Linear.html",
@@ -88,7 +88,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:23-03:00"
+      "last_modified": "2020-12-24T06:36:23-03:00"
     },
     {
       "path": "6-Regressao_Logistica.html",
@@ -106,7 +106,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:23-03:00"
+      "last_modified": "2020-12-24T06:36:23-03:00"
     },
     {
       "path": "aux-Dados_Faltantes.html",
@@ -124,7 +124,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:24-03:00"
+      "last_modified": "2020-12-24T06:36:23-03:00"
     },
     {
       "path": "aux-Tabelas_para_Publicacao.html",
@@ -142,7 +142,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:24-03:00"
+      "last_modified": "2020-12-24T06:36:24-03:00"
     },
     {
       "path": "aux-Tabelas.html",
@@ -160,7 +160,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:25-03:00"
+      "last_modified": "2020-12-24T06:36:24-03:00"
     },
     {
       "path": "aux-Tamanho_Amostra.html",
@@ -178,12 +178,12 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
-      "last_modified": "2020-12-24T06:33:25-03:00"
+      "last_modified": "2020-12-24T06:36:25-03:00"
     },
     {
       "path": "index.html",
       "title": "Estatística com R",
-      "description": "Companion para a disciplina de Estatística para alunos de Mestrado e Doutorado da UNINOVE\n",
+      "description": "Tutoriais de R para a disciplina de Estatística para alunos de Mestrado e Doutorado da UNINOVE\n",
       "author": [
         {
           "name": "Jose Storopoli",
@@ -195,13 +195,13 @@
         }
       ],
       "contents": "\n\nContents\nAulas\nConteúdos Principais\nConteúdos Auxiliares\n\nO que esta disciplina não é\nRStudio na Núvem Gratuito\nProfessores\nComo usar esse conteúdo?\nSlides de Apresentação da Disciplina\n\n\nAulas\nConteúdos Principais\n\nPara quem gosta de nomenclaturas chiques: Conteúdos curriculares obrigatórios na formação do futuro pesquisador. Aqui estão coisas importantes que você usará nas suas pesquisas.\nComandos Básicos de R\nTeste de Hipóteses e Teste \\(t\\)\nAnálise de Variância (ANOVA)\nCorrelações\nRegressão Linear\nRegressão Logística\nConteúdos Auxiliares\n\nMais nomenclaturas chiques: Conteúdos extracurriculares facultativos na formação do futuro pesquisador. Aqui estão coisas não-essenciais mas que farão sua vida de pesquisador muito mais fácil.\nDados Faltantes\nTamanho de Amostra e Tamanho de Efeito\nComo ler Tabelas Em Estudos Científicos\nTabelas para Publicação\nO que esta disciplina não é\nNão será coberto conteúdos sobre leitura, manipulação e exportação de dados com R. Para isso recomendo fortemente o livro R para Data Science que pode ser encontrado gratuitamente aqui e possui uma versão impressa em português1.\n\n\n\nFigure 1: R for Data Science\n\n\n\nRStudio na Núvem Gratuito\nClique no ícone abaixo para abrir uma sessão do RStudio no Projeto Binder.\n\nProfessores\nProf. Dr. José Eduardo Storopoli - Currículo Lattes - ORCID - josees@uni9.pro.br\nProf. Dr. Leonardo Vils - Currículo Lattes](http://lattes.cnpq.br/3969955798466284 ) - ORCID - leonardo.vils@uni9.pro.br\nComo usar esse conteúdo?\nEste conteúdo possui licença livre para uso. Caso queira utilizar o conteúdo para um curso ou estudos, por favor colabore nesse repositório quaisquer aprimorações que foram realizadas.\nPara configurar um ambiente local:\nClone o repositório do GitHub: git clone https://github.com/storopoli/Estatistica.git\nAcesse o diretório: cd Estatistica\nInstale os pacotes necessários: Rscript install.R\nSlides de Apresentação da Disciplina2\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nNão temos nada a ver com a Amazon. Caso queira comprar em qualquer outra loja fique à vontade, ou algum sebo… Jeff Bezos nem sabe que nós existimos…↩︎\nGeralmente nossos Slides são extremamente enxutos e o real conteúdo fica na nossa fala e na interatividade da apresentação. Provavelmente você não entenderá nada desses slides, mas a sua experiência conosco apresentando-os deverá ser excepcional.\n\n↩︎\n",
-      "last_modified": "2020-12-24T06:33:26-03:00"
+      "last_modified": "2020-12-24T06:36:25-03:00"
     },
     {
       "path": "README.html",
       "author": [],
       "contents": "\n\nContents\nEstatística com R\n\nEstatística com R\n\n\n",
-      "last_modified": "2020-12-24T06:33:26-03:00"
+      "last_modified": "2020-12-24T06:36:25-03:00"
     }
   ],
   "collections": []
