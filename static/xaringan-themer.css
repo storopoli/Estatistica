@@ -252,3 +252,23 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   background-color: var(--black);
 }
 
+
+
+/* Extra CSS */
+.tiny {
+  font-size: 40%;
+}
+.small {
+  font-size: 70%;
+}
+.large {
+  font-size: 130%;
+}
+.xlarge {
+  font-size: 200%;
+}
+.full-width {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+}

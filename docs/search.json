@@ -1,0 +1,45 @@
+{
+  "articles": [
+    {
+      "path": "1-TEMP.html",
+      "title": "Untitled",
+      "description": "A new article created using the Distill format.\n",
+      "author": [
+        {
+          "name": "Nora Jones",
+          "url": "https://example.com/norajones"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\n\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\n\n\n\n",
+      "last_modified": "2020-12-24T05:27:49-03:00"
+    },
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "author": [],
+      "contents": "\n\n\n\n\n",
+      "last_modified": "2020-12-24T05:27:49-03:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Estatística com R",
+      "description": "Companion para a disciplina de Estatística para alunos de Mestrado e Doutorado da UNINOVE\n",
+      "author": [
+        {
+          "name": "Jose Storopoli",
+          "url": "https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"
+        }
+      ],
+      "contents": "\n\nContents\nTemp\n\n\nTemp\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\n\n\n\n",
+      "last_modified": "2020-12-24T05:27:49-03:00"
+    },
+    {
+      "path": "README.html",
+      "author": [],
+      "contents": "\n\nContents\nEstatística com R\n\nEstatística com R\n\n\n",
+      "last_modified": "2020-12-24T05:27:50-03:00"
+    }
+  ],
+  "collections": []
+}
