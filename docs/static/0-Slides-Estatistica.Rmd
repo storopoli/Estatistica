@@ -71,6 +71,7 @@ xaringanExtra::use_logo(
 
 xaringanExtra::use_fit_screen()
 #xaringanExtra::use_animate_css()
+xaringanExtra::use_tachyons()
 
 # xaringanExtra webcam press key "W"
 xaringanExtra::use_webcam()
@@ -333,18 +334,13 @@ class: xlarge
 ---
 # Linguagem é importante
 
-.pull-left[
+$$Y = \beta_0 + \beta_1 X_1 + \dots + \beta_n X_n + \epsilon $$
 
-$\begin{aligned} Y = &\beta_0 + \beta_1 X_1 + \dots \\ &\dots + \beta_n X_n + \epsilon \end{aligned}$
+onde $\mathbf{E}(\epsilon | X) = 0$ e $\mathbf{V}(\epsilon | X) = \sigma^2$
 
-
-onde $\mathbf{E}(\epsilon | X) = 0$
-
-e $\mathbf{V}(\epsilon | X) = \sigma^2$
-]
 --
-.pull-right[
-Regressão Linear é uma técnica para estimar **coeficientes de associação** $\beta$ entre um conjunto de **variáveis independentes** $X$ e uma **variável dependente** $Y$ e os **erro** $\epsilon$ do modelo pressupõem-se que possui **média** $\mu$ 0 e **desvio padrão** qualquer $\sigma^2$
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+Regressão Linear é uma técnica para estimar coeficientes de associação $\beta$ entre um conjunto de variáveis independentes $X$ e uma variável dependente $Y$ e os erro $\epsilon$ do modelo pressupõem-se que possui média $\mu$ 0 e desvio padrão qualquer $\sigma^2$
 ]
 
 ---
