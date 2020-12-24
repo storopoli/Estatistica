@@ -6,13 +6,17 @@
     <meta name="author" content="Jose Storopoli" />
     <meta name="author" content="Leonardo Vils" />
     <meta name="author" content="" />
-    <meta name="date" content="2020-12-23" />
+    <meta name="date" content="2020-12-24" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
     <script src="libs/xaringanExtra_fit-screen/fit-screen.js"></script>
     <script src="libs/xaringanExtra-webcam/webcam.js"></script>
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -24,7 +28,7 @@ class: center, middle, inverse, title-slide
 ### Jose Storopoli
 ### Leonardo Vils
 ### <img src="images/hex_UNINOVE.png" width="124" />
-### 2020-12-23
+### 2020-12-24
 
 ---
 
@@ -90,16 +94,15 @@ top:1em;right:1em;
 .footnote[Djulbegovic, B., &amp; Guyatt, G. H. (2017). Progress in evidence-based medicine: a quarter century on. The Lancet, 390(10092), 415-423.]
 
 ---
-
 # Calma! Somos profissionais...
 
 --
 .pull-left[
-* Tentativas de Homicídio: 0
+* Tentativas de **Homicídio**: 0
 
-*  Atentados à Imagem e Honra: 0
+* Atentados à **Imagem** e **Honra**: 0
 
-* Mandatos de Segurança: 0
+* **Mandatos de Segurança**: 0
 ]
 --
 .pull-right[
@@ -107,29 +110,46 @@ top:1em;right:1em;
 ]
 
 ---
-class: xlarge
+class: Large
 
 # Princípios
 
 --
 
-* "Dúvidas Idiotas"
+* **"Dúvidas Idiotas"**
   * A única dúvida idiota é aquela que não é perguntada...
 --
 
-* Acesso ao conteúdo e instrutor
+* **Acesso ao conteúdo e instrutor**
   * E-mails, WhatsApp e Conteúdo Aberto
 --
 
-* *Peer Instruction*
+* **_Peer Instruction_**
   * Seminários dos Alunos
 --
 
-* *Opensource*
+* **_Opensource_**
   * &lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160-64c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-80 128c-40.2 0-78 17.7-103.8 48.6-8.5 10.2-7.1 25.3 3.1 33.8 10.2 8.4 25.3 7.1 33.8-3.1 16.6-19.9 41-31.4 66.9-31.4s50.3 11.4 66.9 31.4c8.1 9.7 23.1 11.9 33.8 3.1 10.2-8.5 11.5-23.6 3.1-33.8C326 321.7 288.2 304 248 304z"&gt;&lt;/path&gt;&lt;/svg&gt; SPSS, Stata ou Excel
   * &lt;svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1-10.2 8.5-11.5 23.6-3.1 33.8 30 36 74.1 56.6 120.9 56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8-10.1-8.4-25.3-7.1-33.8 3.1z"&gt;&lt;/path&gt;&lt;/svg&gt; JASP, Jamovi, R
 
 ---
+# O que é estatística?
+
+.pull-left[
+## Descritiva
+<div id="htmlwidget-2aa73a1d8f88383faecc" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2aa73a1d8f88383faecc">{"x":{"diagram":"\n digraph estatistica_descritiva {\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = LR]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Dados\nObservados\"]\n  node [shape = box,\n        fontname = Helvetica]\n  B [label = \"Média\"]; C [label = \"Mediana\"]; D [label = \"Moda\"]; E [label = \"Desvio\nPadrão\"]\n  A -> {B C D E} [dir = forward,\n                    tailport = \"e\",\n                    headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+.pull-right[
+## Inferencial
+<div id="htmlwidget-b65ad16e2b74c8fce2ec" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b65ad16e2b74c8fce2ec">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+]
+
+
+---
+class: top
 # Machine Learning vs Estatística
 
 
@@ -149,20 +169,105 @@ class: xlarge
 ---
 # Distribuições Normais e não-Normais
 
+.pull-left[
+&lt;img src="0-Slides-Estatistica_files/figure-html/dist-normal-1.png" width="504" /&gt;
+]
+
+.pull-right[
+&lt;img src="0-Slides-Estatistica_files/figure-html/dist-not-normal-1.png" width="504" /&gt;
+]
+
 ---
+class: middle
 # Medidas de Centralidade
-- Média
-- Mediana
-- Moda
+
+.pull-left[
+### Média
+### Mediana
+### Moda
+]
+
+.pull-right[
+&lt;img src="images/media_mediana_moda.png" width="75%" /&gt;
+]
 
 ---
 # Medidas de Dispersão
-- Desvio padrao
-- Quantis
+
+## Desvio Padrão
+.pull-left[
+É importante porque, **em uma distribuição normal**, os intervalos contém um percentual da população
+
+* `\(\mu \pm 1 \times \sigma \approx 68\%\)`
+* `\(\mu \pm 2 \times \sigma \approx 95\%\)`
+* `\(\mu \pm 3 \times \sigma \approx 99.7\%\)`
+]
+
+.pull-right[
+&lt;img src="images/desvio_padrao.png" width="100%" /&gt;
+]
 
 ---
+class: xlarge
 # Como fazer um seminário?
 
+--
+1. O que é o método/técnica?
+
+--
+
+2. Quando usar? O que está sendo "testado"?
+
+--
+
+3. Como interpretar os resultados?
+
+--
+
+4. Quais os pressupostos do método/técnica?
+
+---
+# Linguagem é importante
+
+.pull-left[
+
+`\(\begin{aligned} Y = &amp;\beta_0 + \beta_1 X_1 + \dots \\ &amp;\dots + \beta_n X_n + \epsilon \end{aligned}\)`
+
+
+onde `\(\mathbf{E}(\epsilon | X) = 0\)`
+
+e `\(\mathbf{V}(\epsilon | X) = \sigma^2\)`
+]
+--
+.pull-right[
+Regressão Linear é uma técnica para estimar **coeficientes de associação** `\(\beta\)` entre um conjunto de **variáveis independentes** `\(X\)` e uma **variável dependente** `\(Y\)` e os **erro** `\(\epsilon\)` do modelo pressupõem-se que possui **média** `\(\mu\)` 0 e **desvio padrão** qualquer `\(\sigma^2\)`
+]
+
+---
+### O que são modelos e por quê precisamos deles?
+
+<div id="htmlwidget-39c8fdafc427db3dd185" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-39c8fdafc427db3dd185">{"x":{"diagram":"\n digraph model {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Densidade\nDemográfica\"]\n  AB[label = \"\", fixedsize = \"false\", width=0, height=0, shape=none]\n  B [label = \"Trânsito\n(km)\"]\n  C [label = \"mm de\nChuva\"]\n  A -> AB [arrowhead = None, label = \"+\"]\n  AB -> B \n  C -> AB [xlabel = \"  +\"]\n {rank=same; A; AB; B}\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+.footnote[**Uma boa referência**: Smaldino, P. E. (2017). Models Are Stupid, and We Need More of Them. In Computational Social Psychology (Issue March, pp. 311–331). Routledge. https://doi.org/10.4324/9781315173726-14]
+
+---
+# Vamos formar os grupos?
+
+.pull-left[
+![](images/trab-grupo.gif)&lt;!-- --&gt;
+]
+
+.pull-right[
+Acesse [http://bit.ly/s2estatistica](http://bit.ly/s2estatistica)
+
+* Email
+* Nome
+* RA
+* Linha de Pesquisa
+]
+
+.footnote[Se você cair em um grupo que não goste, culpe o script R e a seed do gerador de números aleatórios. Coisas ruins acontecem, você pode escolher se isso vai ser uma oportunidade de crescimento ou não...]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
