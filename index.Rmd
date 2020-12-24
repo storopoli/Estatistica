@@ -7,6 +7,10 @@ author:
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
+  - name: Leonardo Vils
+    url: https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
 site: distill::distill_website
 ---
 
@@ -23,12 +27,71 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-# Temp
+
+# Aulas
+
+## Conteúdos Principais
+
+<aside>
+Para quem gosta de nomenclaturas chiques: **Conteúdos curriculares obrigatórios na formação do futuro pesquisador**. Aqui estão coisas importantes que você usará nas suas pesquisas.
+</aside>
+
+1. [Comandos Básicos de R](1-Comandos_Basicos.html)
+2. [Teste de Hipóteses e Teste $t$](2-Teste_t.html)
+3. [Análise de Variância (ANOVA)](3-ANOVA.html)
+4. [Correlações](4-Correlacoes.html)
+5. [Regressão Linear](5-Regressao_Linear.html)
+6. [Regressão Logística](6-Regressao_Logistica.html)
+
+## Conteúdos Auxiliares
+
+<aside>
+Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na formação do futuro pesquisador**. Aqui estão coisas não-essenciais mas que farão sua vida de pesquisador muito mais fácil.
+</aside>
+
+* [Dados Faltantes](aux-Dados_Faltantes.html)
+* [Tamanho de Amostra e Tamanho de Efeito](aux-Tamanho_Amostra.html)
+* [Como ler Tabelas Em Estudos Científicos](aux-Tabelas.html)
+* [Tabelas para Publicação](aux-Tabelas_para_Publicacao.html)
+
+# O que esta disciplina **não** é
+
+Não será coberto conteúdos sobre leitura, manipulação e exportação de dados com R. Para isso recomendo fortemente o livro **R para Data Science** que pode ser encontrado gratuitamente [aqui](https://r4ds.had.co.nz) e possui uma [versão impressa em português](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243)[^1].
+
+
+```{r data-science-book, echo=FALSE, fig.retina=4, fig.align='center', fig.cap='R for Data Science'}
+knitr::include_graphics("images/R_for_data_science.jpg", dpi = 300)
+```
+
+# **RStudio** na Núvem Gratuito
+
+Clique no ícone abaixo para abrir uma sessão do RStudio no Projeto Binder.
+
+[![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/storopoli/Estatistica/master?urlpath=rstudio)
+
+# Professores
+
+* [Prof. Dr. José Eduardo Storopoli](https://storopoli.github.io) - [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - [josees@uni9.pro.br](mailto:josees@uni9.pro.br)
+* Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
+
+# Como usar esse conteúdo?
+
+Este conteúdo possui *licença livre para uso*. Caso queira utilizar o conteúdo para um curso ou estudos, por favor colabore nesse repositório quaisquer aprimorações que foram realizadas.
+
+Para configurar um ambiente local:
+
+1. Clone o repositório do GitHub: `git clone https://github.com/storopoli/Estatistica.git`
+2. Acesse o diretório: `cd Estatistica`
+3. Instale os pacotes necessários: `Rscript install.R`
+
+# [Slides de Apresentação da Disciplina](static/0-Slides-Estatistica.html)[^2]
 
 ```{r}
 xaringanExtra::embed_xaringan(
-  url = "https://build-your-own-universe.netlify.app",
+  url = "static/0-Slides-Estatistica.html",
   ratio = "16:9"
 )
 ```
 
+[^1]: Não temos nada a ver com a Amazon. Caso queira comprar em qualquer outra loja fique à vontade, ou algum sebo... Jeff Bezos nem sabe que nós existimos...
+[^2]: Geralmente nossos Slides são extremamente enxutos e o real conteúdo fica na nossa fala e na interatividade da apresentação. Provavelmente você não entenderá nada desses slides, mas a sua experiência conosco apresentando-os deverá ser excepcional.

@@ -33,9 +33,6 @@ Clique aqui: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org
 4. Correlações
 5. Regressão Linear
 6. Regressão Logística
-7. Regressão de Poisson Bayesiana
-8. Regressão Robusta Bayesiana
-9. Modelos Multiníveis
 
 ### Conteúdos Auxiliares
 

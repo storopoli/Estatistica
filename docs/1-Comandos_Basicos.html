@@ -94,7 +94,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2020-12-24"/>
   <meta property="article:created" itemprop="dateCreated" content="2020-12-24"/>
-  <meta name="article:author" content="Nora Jones"/>
+  <meta name="article:author" content="Jose Storopoli"/>
+  <meta name="article:author" content="Leonardo Vils"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Estatística com R: Untitled"/>
@@ -112,7 +113,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2020-12-24"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]}]}]},{"type":"character","attributes":{},"value":["2020-12-24"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2312,7 +2313,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2020-12-24T00:00:00.000+00:00","citationText":"Jones, 2020"}
+{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":""},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":""}],"publishedDate":"2020-12-24T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2332,6 +2333,11 @@ Tutoriais
 </button>
 <div class="nav-dropdown-content">
 <a href="1-Comandos_Basicos.html">1. Comandos Básicos</a>
+<a href="2-Teste_t.html">2. Teste t</a>
+<a href="3-ANOVA.html">3. ANOVA</a>
+<a href="4-Correlacoes.html">4. Correlações</a>
+<a href="5-Regressao_Linear.html">5. Regressão Linear</a>
+<a href="6-Regressao_Logistica.html">6. Regressão Logística</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2342,7 +2348,8 @@ Conteúdos Auxiliares
 </button>
 <div class="nav-dropdown-content">
 <a href="aux-Dados_Faltantes.html">Dados Faltantes</a>
-<a href="aux-Regressao_Coeficientes.html">Coeficientes de uma Regressão</a>
+<a href="aux-Tamanho_Amostra.html">Tamanho de Amostra e Tamanho de Efeito</a>
+<a href="aux-Tabelas.html">Como ler Tabelas Em Estudos Científicos</a>
 <a href="aux-Tabelas_para_Publicacao.html">Tabelas para Publicação</a>
 </div>
 </div>
@@ -2375,7 +2382,9 @@ Conteúdos Auxiliares
 </div>
 
 <div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
+  Jose Storopoli <a href="https://scholar.google.com/citations?user=xGU7H1QAAAAJ&amp;hl=en" class="uri">https://scholar.google.com/citations?user=xGU7H1QAAAAJ&amp;hl=en</a> (UNINOVE)<a href="https://www.uninove.br" class="uri">https://www.uninove.br</a>
+  
+,   Leonardo Vils <a href="https://scholar.google.com/citations?user=VO07L9EAAAAJ&amp;hl=en" class="uri">https://scholar.google.com/citations?user=VO07L9EAAAAJ&amp;hl=en</a> (UNINOVE)<a href="https://www.uninove.br" class="uri">https://www.uninove.br</a>
   
 <br/>2020-12-24
 </div>
