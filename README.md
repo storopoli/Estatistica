@@ -7,7 +7,7 @@ Disciplina do Mestrado e Doutorado da **UNINOVE**. O conteúdo todo consegue ser
 ## Professor
 
 * [Prof. Dr. José Eduardo Storopoli](https://storopoli.github.io) - [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - [josees@uni9.pro.br](mailto:josees@uni9.pro.br)
-* Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
+* [Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
 
 ## Como usar esse conteúdo?
 

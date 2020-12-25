@@ -7,10 +7,12 @@ author:
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0002-0559-5176
   - name: Leonardo Vils
     url: https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0003-3059-1967
 site: distill::distill_website
 date: "`r Sys.Date()`"
 citation_url: https://storopoli.github.io/Estatistica
@@ -30,13 +32,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-# Por que R?
+## Por que R?
 
 R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](0-Por_que_R.html) ou clicando no banner superior em "Por que R?".
 
-# Aulas
+## Aulas
 
-## Conteúdos Principais
+### Conteúdos Principais
 
 <aside>
 Para quem gosta de nomenclaturas chiques: **Conteúdos curriculares obrigatórios na formação do futuro pesquisador**. Aqui estão coisas importantes que você usará nas suas pesquisas.
@@ -49,7 +51,7 @@ Para quem gosta de nomenclaturas chiques: **Conteúdos curriculares obrigatório
 5. [Regressão Linear](5-Regressao_Linear.html)
 6. [Regressão Logística](6-Regressao_Logistica.html)
 
-## Conteúdos Auxiliares
+### Conteúdos Auxiliares
 
 <aside>
 Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na formação do futuro pesquisador**. Aqui estão coisas não-essenciais mas que farão sua vida de pesquisador muito mais fácil.
@@ -60,7 +62,7 @@ Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na forma
 * [Como ler Tabelas Em Estudos Científicos](aux-Tabelas.html)
 * [Tabelas para Publicação](aux-Tabelas_para_Publicacao.html)
 
-# O que esta disciplina **não** é
+## O que esta disciplina **não** é
 
 Não será coberto conteúdos sobre leitura, manipulação e exportação de dados com R. Para isso recomendo fortemente o livro **R para Data Science** que pode ser encontrado gratuitamente [aqui](https://r4ds.had.co.nz) e possui uma [versão impressa em português](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243)[^1].
 
@@ -69,18 +71,18 @@ Não será coberto conteúdos sobre leitura, manipulação e exportação de dad
 knitr::include_graphics("images/R_for_data_science.jpg", dpi = 300)
 ```
 
-# **RStudio** na Núvem Gratuito
+## **RStudio** na Núvem Gratuito
 
 Clique no ícone abaixo para abrir uma sessão do RStudio no Projeto Binder.
 
 [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/storopoli/Estatistica/master?urlpath=rstudio)
 
-# Professores
+## Professores
 
 * [Prof. Dr. José Eduardo Storopoli](https://storopoli.github.io) - [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - [josees@uni9.pro.br](mailto:josees@uni9.pro.br)
-* Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
+* [Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
 
-# Como usar esse conteúdo?
+## Como usar esse conteúdo?
 
 Este conteúdo possui *licença livre para uso*. Caso queira utilizar o conteúdo para um curso ou estudos, por favor colabore nesse repositório quaisquer aprimorações que foram realizadas.
 
@@ -90,7 +92,7 @@ Para configurar um ambiente local:
 2. Acesse o diretório: `cd Estatistica`
 3. Instale os pacotes necessários: `Rscript install.R`
 
-# [Slides de Apresentação da Disciplina](static/0-Slides-Estatistica.html)[^2]
+## [Slides de Apresentação da Disciplina](static/0-Slides-Estatistica.html)[^2]
 
 ```{r}
 xaringanExtra::embed_xaringan(

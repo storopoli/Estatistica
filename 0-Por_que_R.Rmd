@@ -16,6 +16,8 @@ author:
 date: "`r Sys.Date()`"
 citation_url: https://storopoli.github.io/Estatistica/0-Por_que_R.html
 slug: storopoli2020porqueR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -24,13 +26,10 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.asp = 0.618,
                       out.width = "70%",
                       fig.align = "center",
-                      fig.path = "images/",
                       fig.retina = 3)
 ```
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
-
-# Por que R?
 
 Há tantas linguagens de programação por aí: "Por que devo escolher R?", "E Python?" "Ouvi falar que Python é melhor que R". "Julia é melhor que Python e R",... Estas são as diversas perguntas e dúvidas que nos são endereçadas quando começamos a abordar R com alunos e pesquisadores. Se você quer a resposta curta (TL;DR[^1] como é chamado ultimamente) é esta:
 
@@ -103,11 +102,11 @@ Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será 
 
 [^17]: Para o leitor isso não pode fazer diferença. Mas quando você, por exemplo, quer pegar um algoritmo descrito matematicamente em um artigo e implementá-lo diretamente em código, esses caracteres matemáticos são muito bem-vindos. Palavras de quem já escreveu um algoritmo de Amostragem Monte Carlo usando correntes Markov na mão (não por falta de opção, mas por busca de sinestesia para melhor aprendizagem).
 
-# Vantagens de R
+## Vantagens de R
 
 Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas nossas 5 características que mostramos.
 
-## Produtivo (Análises/hora)
+### Produtivo (Análises/hora)
 
 Com R, conseguimos nos aproveitar do paradigma de programação funcional e sermos mais produtivos (além que o código fica muito mais inteligível). Veja um exemplo abaixo com R e Python. Estamos pegando um *dataset* chamado `mtcars` que possui informações sobre alguns carros. Aqui serão feitas algumas operações sequenciais:
 
@@ -158,7 +157,7 @@ Todas esses bibliotecas rodam em C/C++ e por isso são bem rápidos e eficientes
 
 [^8]: Aqui você já viu alguns em ação: `mutate()`, `filter()` e `summarise()`
 
-## Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
+### Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
 
 Atualmente o CRAN[^9] possui um total de `r format(nrow(available.packages()), big.mark = ",", small.mark=".")` bibliotecas[^10]. Todas *opensource* e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o `data.frame`. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.
 
@@ -174,12 +173,12 @@ Além de bibliotecas para análises de dados e Rstatística de maneira geral. Te
 * Genoma e Genética
 * Construção e Validação de Escalas
 
-[^9]: CRAN -- Comprehensive R Archive Network, repositório global de bibliotecas de R
-[^10]: Dados de `r format(Sys.time(), '%d/%m/%y')`
-[^11]: Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em [CRAN Task Views](https://cran.r-project.org/web/views/)
+[^9]: CRAN -- Comprehensive R Archive Network, repositório global de bibliotecas de R.
+[^10]: Dados de `r format(Sys.time(), '%d/%m/%y')`.
+[^11]: Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em [CRAN Task Views](https://cran.r-project.org/web/views/).
 
 
-## Comunicativo (Maioria das ciências aplicadas usam R)
+### Comunicativo (Maioria das ciências aplicadas usam R)
 
 Durante o processo de avaliação-por-pares que as publicações científicas passam para serem publicadas, muitos editores e revisores pedem aos autores que submetam ou mostrem o código usado para analisar os dados. Isto é feito para averiguar se a análise foi feita de maneira correta. E a maioria dessas análises no mundo das ciências aplicadas, em especial a área de ciências sociais aplicadas[^12], usam o R.
 
@@ -207,10 +206,10 @@ Além disso, com a biblioteca `{rmarkdown}` e seus diversos *templates*, é poss
 
 [^13]: Este documento é um exemplo. Usamos a biblioteca `{distill}` que é focada para escrita científica e técnica.
 
-## Replicável e Transparente[^14]
+### Replicável e Transparente[^14]
 
-A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Um livro muito que recomendamos para entender esta crise da ciência é o "Science Fictions: How Fraud, Bias, Negligence, and Hype Undermine the Search for Truth" de Stuart Ritchie publicado em 2020[^16]. Uma das vantagens do R é que com o mesmo código e o mesmo conjunto de dados, dois usuários conseguem chegar na mesma análise e resultados. Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante...
+A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Um livro muito que recomendamos para entender esta crise da ciência é o "Science Fictions: How Fraud, Bias, Negligence, and Hype Undermine the Search for Truth" de Stuart Ritchie [@ritchie2020science][^16]. Uma das vantagens do R é que com o mesmo código e o mesmo conjunto de dados, dois usuários conseguem chegar na mesma análise e resultados. Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante...
 
 
 [^14]: Não é uma característica única do R, mas de qualquer linguagem que possua suporte básico a análise e manipulação de dados.
-[^16]: Há um metacientista (cientista que estuda a ciência) chamado John Ioannidis que possui diversas publicações interessantes sobre a crise atual da ciência. Em especial, há um artigo de 2005 intitulado "Why Most Published Research Findings Are False" publicado na *PLOS Medicine* que merece atenção do leitor.
+[^16]: Há um metacientista (cientista que estuda a ciência) chamado John Ioannidis que possui diversas publicações interessantes sobre a crise atual da ciência. Em especial, há um artigo de 2005 intitulado "Why Most Published Research Findings Are False" publicado na *PLOS Medicine* [@ioannidis2005most] que merece atenção do leitor.
