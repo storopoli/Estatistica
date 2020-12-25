@@ -1,0 +1,207 @@
+---
+title: "Por que R?"
+description: |
+  Vantagens e Desvantagens de R e porque usá-lo.
+author:
+  - name: Jose Storopoli
+    url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0002-0559-5176
+  - name: Leonardo Vils
+    url: https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0003-3059-1967
+date: "`r Sys.Date()`"
+citation_url: https://storopoli.github.io/Estatistica/0-Por_que_R.html
+slug: storopoli2020porqueR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width = 6,
+                      fig.asp = 0.618,
+                      out.width = "70%",
+                      fig.align = "center",
+                      fig.path = "images/",
+                      fig.retina = 3)
+```
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
+
+# Por que R?
+
+Há tantas linguagens de programação por aí: "Por que devo escolher R?", "E Python?" "Ouvi falar que Python é melhor que R". "Julia é melhor que Python e R",... Estas são as diversas perguntas e dúvidas que nos são endereçadas quando começamos a abordar R com alunos e pesquisadores. Se você quer a resposta curta (TL;DR[^1] como é chamado ultimamente) é esta:
+
+[^1]: *Too Long, Didn't Read*, traduzindo Muito Grande, Não Li
+
+> Você consegue praticar Estatística com qualquer linguagem obscura que dê um suporte mínimo a operações matriciais.
+
+<aside>
+Aqui usamos Estatística quando nos referimos a disciplina e estatística quando nos referimos a uma métrica dos dados
+</aside>
+
+Então, se você quiser "fazer Estatística" com COBOL, LISP ou qualquer outra coisa fique a vontade... Não vamos te impedir. Agora se você quer "fazer Estatística" sendo:
+
+* Produtivo (Análises/hora)
+* Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
+* Comunicativo (Maioria das ciências aplicadas usam R)
+* Replicável (Com as configurações corretas, sua análise sempre será a mesma)
+* Transparente (Não tem como se esconder atrás de *opensource*)
+
+Então, acreditamos que o R é a escolha certa
+
+Primeiramente, abordaremos o R versus outras duas linguagens muito usadas para dados: Python e Julia. E na sequência, explanaremos essas 5 características de R.
+
+## R vs Python
+
+Essa é uma briga boa. Acreditamos que não há um vencedor. Ambas são muito boas para certos fins. Primeiramente as **semelhanças**:
+
+* Ambas são linguagens lentas e tudo que é rapido é rodado em C/C++ ou Fortran[^2] com *wrappers* convenientes.
+* Ambas são amplamente usadas para análise de dados e possuem bibliotecas especializadas para certas operações.
+* Ambas possuem uma comunidade ativa de usuários e contribuidores.
+* Ambas são *opensource* e gratuitas[^3].
+
+[^2]: `SciPy` roda em C/C++ e Fortran, `NumPy` em C/C++, todo o `tidyverse` roda em C++, etc
+[^3]: Óbvio, mas é bom enfatizar.
+
+Agora as **diferenças**. Essa é a parte mais interessante e sem dúvida desencadeia muito *hate mail*[^4]:
+
+[^4]: Notem que estas são nossas opiniões. E como não casamos com opiniões, casamos com fatos (afinal somos estatísticos): uma vez que os fatos mudam, nossas opiniões mudarão de acordo.
+
+* R é mais voltada para o paradigma de programação funcional, enquanto Python é mais voltado para o paradigma de programação orientada a objetos
+* R é feito por estatísticos para estatísticos. Dados tabulares e funções estatísticas são "cidadãos de primeira-classe". Python teve que sofrer (e ainda sofre) muita ~~gambiarra~~ customizações para conseguirem trabalhar com dados tabulares e funções estatísticas.
+* R é mais interoperacional que Python. Com o R conseguimos exportar a aproveitar resultados de uma biblioteca em outra por meio de objetos `data.frame`. Com o Python, isto é mais complicado e interoperabilidade envolve ~~martelar~~ transformar objetos oriundos de uma biblioteca em classes comuns de Python ou em tipos de arquivos comuns (JSON, CSV etc.)
+* R é mais usado pelos cientistas e estatísticos[^5].
+* R possui mais bibliotecas e maneiras de se analisar estatisticamente dados que Python. Maioria das novas inovações em métodos estatísticos oriundos de teses e artigos são também escritos em bibliotecas de R e publicados.
+* R não é muito bom para *Deep Learning* (Aprendizagem Profunda). A maioria dessas bibliotecas são focadas em Python. Mas quando falamos de *Machine Learning*, tanto R quando Python possuem o mesmo potencial.
+* R não tem *list comprehension* (compreensão de listas), enquanto Python tem.
+
+<aside>
+Quando falamos *Deep Learning* estamos no referindo à Redes Neurais com diversas camadas. E *Machine Learning* à modelos estatísticos que o intuito é poder preditivo.
+</aside>
+
+[^5]: Claro que em alguns campos (ex: ciências da computação), Python é muito mais utilizado.
+
+## R vs Julia
+
+Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Julia. Julia é uma linguagem nova oriunda do MIT que está sendo muito usada para computação científica. O quê muda com Julia?
+
+* Julia é rápida. E quando eu digo rápida, eu quero dizer bem rápida. Julia trabalha em cima do LLVM(**L**ow **L**evel **V**irtual **M**achine) que é um compilador universal e usa uma abordagem JIT (Just-in-Time) de compilação de código que faz com que seja às vezes 100x mais rápida que R ou Python para algumas operações[^7].
+* Julia permite usarmos caracteres unicode como variáveis no código. Isso quer dizer que eu consigo escrever em Julia algo como `µ = 0` e em Python/R seria escrito `mu = 0`. Para matemáticos e cientistas isso permite com o que o código fique mais inteligível.
+* Julia ainda é muito nova e não há bibliotecas para todas as coisas que conseguimos fazer com Python e R.
+* Julia, assim como Python, possui *list comprehension* (compreensão de listas).
+
+[^7]: Quando Python e R usam C/C++ ou Fortran essa vantagem cai bastante ou é inexistente.
+
+# Vantagens de R
+
+Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas nossas 5 características que mostramos.
+
+## Produtivo (Análises/hora)
+
+Com R, conseguimos nos aproveitar do paradigma de programação funcional e sermos mais produtivos (além que o código fica muito mais inteligível). Veja um exemplo abaixo com R e Python. Estamos pegando um *dataset* chamado `mtcars` que possui informações sobre alguns carros. Aqui serão feitas algumas operações sequenciais:
+
+1. Transformar variáveis que contém texto em  variáveis categóricas
+2. Filtrar somente as observações que tenham `hp` maior que 100
+3. Calcular a média somente para as variáveis númericas
+
+Primeiro o R, veja como o código é muito mais sucinto e simples de ler. O pipe `%>%` significa "pegue o resultado dessa operação e jogue como input da próxima". Aqui estamos usando o pacote `{dplyr}` do `{tidyverse}`.
+
+```{r mtcars_r, eval=FALSE}
+mtcars %>% 
+  mutate_if(is.character, as.factor) %>% 
+  filter(hp > 100) %>% 
+  summarise_if(is.numeric, mean)
+```
+
+Agora com Python usando a biblioteca `{pandas}`. Como a lógica de Python é orientada a objetos eu tenho que acessar as funções e atributos de um objeto usando um ponto `.` após o objeto. Exemplos: `objeto.atributo` ou `objeto.funcao()`. Aqui estou fazendo diversas operações em um objeto chamado `mtcars` que é o nosso *dataset*. Quase todas operações do `{pandas}` em um *dataset* resultam em um novo *dataset* transformado. Aqui é muito mais complicado pq eu preciso encadear diversas operações usando funções de um objeto. Sem o paradigma funcional (e em especial o pipe `%>%`) o código fica muito mais verboso e não tão inteligível.
+
+```{python mtcars_py, eval=FALSE}
+mtcars.select_dtypes(
+  ['object']).apply(
+    lambda x: x.astype('category')).query(
+      'hp > 100').select_dtypes(
+        ['number']).mean()
+```
+
+Nós preferimos usar o R para manipular e transformar dados, não só porque a síntaxe é melhor, mas também porque há muito mais funções e operações criadas para diversos tipos de manipulações. No universo das bibliotecas do `{tidyverse}` temos os chamados *core packages*:
+
+* `{readr}` -- Leitura de dados de diversos tipos de arquivos
+* `{tidyr}` -- Coerção de dados em formatos diversos para um formato tabular
+* `{dplyr}` -- Manipulação e transformação de dados tabulares
+* `{ggplot2}` -- Gráficos
+* `{stringr}` -- Manipulação de dados textuais
+* `{forcats}` -- Manipulação de dados qualitativos
+* `{purrr}` -- Programação funcional
+
+Além disso, há as bibliotecas auxiliares
+
+* `{readxl}` -- Leitura de dados de tabelas Excel
+* `{haven}` -- Leitura de dados de tabelas SPSS e Stata
+* `{DBI}` e `{dbplyr}` -- Leitura de dados de Banco de Dados e tradução de operações usando linguagem R e verbos do `{tidyverse}`[^8] em operações usando linguagem SQL
+* `{rvest}` e `{httr}` -- Raspagem de dados da Web
+
+Todas esses bibliotecas rodam em C/C++ e por isso são bem rápidos e eficientes. Além disso, vale a pena mecionar todo o universo `{tidymodels}` que é um ecossistema para modelagem e *machine learning* com R.
+
+
+[^8]: Aqui você já viu alguns em ação: `mutate()`, `filter()` e `summarise()`
+
+## Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
+
+Atualmente o CRAN[^9] possui um total de `r format(nrow(available.packages()), big.mark = ",", small.mark=".")` bibliotecas[^10]. Todas *opensource* e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o `data.frame`. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.
+
+Além de bibliotecas para análises de dados e Rstatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo[^11]:
+
+* Estatística Bayesiana
+* Ensaios Clínicos
+* Finanças
+* Economia
+* Dados Geospaciais
+* Análise de Sobreviência
+* Séries Temporais
+* Genoma e Genética
+* Construção e Validação de Escalas
+
+[^9]: CRAN -- Comprehensive R Archive Network, repositório global de bibliotecas de R
+[^10]: Dados de `r format(Sys.time(), '%d/%m/%y')`
+[^11]: Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em [CRAN Task Views](https://cran.r-project.org/web/views/)
+
+
+## Comunicativo (Maioria das ciências aplicadas usam R)
+
+Durante o processo de avaliação-por-pares que as publicações científicas passam para serem publicadas, muitos editores e revisores pedem aos autores que submetam ou mostrem o código usado para analisar os dados. Isto é feito para averiguar se a análise foi feita de maneira correta. E a maioria dessas análises no mundo das ciências aplicadas, em especial a área de ciências sociais aplicadas[^12], usam o R.
+
+[^12]: Da qual, nós somos oriundos.
+
+Além disso, com a biblioteca `{rmarkdown}` e seus diversos *templates*, é possível autorar diversos tipos de documentos[^13]:
+
+* Documentos:
+  * HTML com CSS usando Bootstrap
+  * PDF
+  * Word
+  * RTF
+  * ODT
+* Apresentações (*slides*):
+  * ioslides
+  * Beamer
+  * Slidy
+  * PowerPoint
+* Artigos formatados para certos periódicos usando os templates da biblioteca `{rticles}`
+* Dashboards
+* Livros
+* Websites
+* Blogs
+* Curriculum Vitae
+
+[^13]: Este documento é um exemplo. Usamos a biblioteca `{distill}` que é focada para escrita científica e técnica.
+
+## Replicável e Transparente[^14]
+
+A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Dê o seu código em R e os seus dados para qualquer um e a análise e estatísticas serão as mesmas.
+
+Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante...
+
+
+[^14]: Não é uma característica única do R, mas de qualquer linguagem que possua suporte básico a análise e manipulação de dados.

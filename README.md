@@ -23,6 +23,10 @@ Este conteúdo possui *licença livre para uso*. Caso queira utilizar o conteúd
 
 Clique aqui: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org/v2/gh/storopoli/Estatistica/master?urlpath=rstudio)
 
+## Por que R?
+
+R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](https://storopoli.github.io/Estatistica/0-Por_que_R.html)
+
 ## Aulas
 
 ### Conteúdos Principais

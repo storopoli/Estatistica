@@ -12,6 +12,9 @@ author:
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
 site: distill::distill_website
+date: "`r Sys.Date()`"
+citation_url: https://storopoli.github.io/Estatistica
+slug: storopoli2020estatisticaR
 ---
 
 ```{r setup, include=FALSE}
@@ -27,6 +30,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
+# Por que R?
+
+R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](0-Por_que_R.html) ou clicando no banner superior em "Por que R?".
 
 # Aulas
 
