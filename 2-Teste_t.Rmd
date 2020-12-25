@@ -26,7 +26,6 @@ knitr::opts_chunk$set(echo = TRUE,
                       fig.asp = 0.618,
                       out.width = "70%",
                       fig.align = "center",
-                      fig.path = "images/",
                       fig.retina = 3)
 ```
 
@@ -103,7 +102,7 @@ Ambos os testes aceitam como input uma variável e dão como output um $p$-valor
 
 [^5]: Poder estatístico é,  para uma certa probabilidade de erro tipo I ($\alpha$), 1 menos a probabilidade de erro tipo II ($1 - \beta$). Veja mais no [conteúdo auxiliar de Tamanho da Amostra](aux-Tamanho_Amostra.html).
 
-Abaixo, no R, vamos simular 100 observações de uma variável distribuída conforme uma distribuição normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura \@ref(fig:dists-norm-lnorm), a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.
+Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura \@ref(fig:dists-norm-lnorm), a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.
 
 ```{r dists-norm-lnorm, fig.cap='Distribuição Normal vs Distribuição Log-Normal'}
 tibble(x = c(-8, 8)) %>% 
@@ -116,21 +115,45 @@ ggplot(aes(x)) +
   )
 ```
 
-Agora com as simulações! Na figura \@ref(fig:simulacoes), é possível ver o histograma das distribuições simuladas. No lado esquerdo
+Agora com as simulações! Na figura \@ref(fig:simulacoes), é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.
 
 ```{r simulacoes, fig.cap='Histograma das Simulações'}
-library(patchwork)
-n_sim <- 100
+set.seed(123)
+n_sim <- 1000
 sims <- tibble(
   normal = rnorm(n_sim),
   log_normal = rlnorm(n_sim)
 )
+
+ggplot(sims) +
+  geom_density(aes(normal, fill = "Normal"), alpha = 0.5) +
+  geom_density(aes(log_normal, fill = "Log-Normal"), alpha = 0.5) +
+  labs(y = NULL, x = NULL) +
+  scale_fill_manual(name = "Distribuição", values = c("Normal" = "red", "Log-Normal" = "blue")) +
+  theme(legend.position = "bottom")
 ```
 
+Agora como fazer um teste de Shapiro-Wilk (`shapiro.test`) com R. Sobre o $p$-valor que aparece como resultado do teste, será abordado na próxima sessão. Mas, para agora basta saber que $p < 0.05$ ($p$ menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.
+
+```{r shapiro-wilk}
+shapiro.test(sims$normal)
+shapiro.test(sims$log_normal)
+```
+
+Vamos também aproveitar e mostrar como fazer um teste Komolgorov-Smirnof (`ks.test`). Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal `"pnorm"` e usamos os valores de média `mean()` e desvio padrão `sd()` da distribuição que estamos testando. Lembrando que a definição do $p$-valor para este teste é a mesma do Shapiro-Wilk.
+
+```{r komolgorov-smirnov}
+ks.test(sims$normal, "pnorm", mean(sims$normal), sd(sims$normal))
+ks.test(sims$log_normal,  "pnorm", mean(sims$log_normal), sd(sims$log_normal))
+```
 
 #### Homogeneidade das Variâncias
 
 Teste de Levene
+
+library(car)
+# Levene's test with one independent variable
+leveneTest(weight ~ group, data = PlantGrowth)
 
 ## $p$-valor e $H_0$
 

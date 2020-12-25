@@ -2458,7 +2458,7 @@ Variável dependente é aquela que estamos interessados na nossa análise. É a 
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:dist-normal"></span>
-<img src="images/dist-normal-1.png" alt="Distribuição Normal" width="70%" />
+<img src="2-Teste_t_files/figure-html5/dist-normal-1.png" alt="Distribuição Normal" width="70%" />
 <p class="caption">
 Figure 1: Distribuição Normal
 </p>
@@ -2469,7 +2469,7 @@ Figure 1: Distribuição Normal
 <p>Há dois testes estatísticos para saber se uma variável é distribuída conforme uma distribuição Normal: Komolgorov-Smirnov e Shapiro-Wilk.</p>
 <h6 id="komolgorov-smirnov-vs-shapiro-wilk">Komolgorov-Smirnov vs Shapiro-Wilk</h6>
 <p>Ambos os testes aceitam como input uma variável e dão como output um <span class="math inline">\(p\)</span>-valor. Mas qual usar? Estudos comparativos <span class="citation" data-cites="saculinggan2013empirical">(<a href="#ref-saculinggan2013empirical" role="doc-biblioref">Saculinggan &amp; Balase, 2013</a>)</span> de diferentes testes de normalidade demonstram que Shapiro-Wilk é o teste com maior poder estatístico<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
-<p>Abaixo, no R, vamos simular 100 observações de uma variável distribuída conforme uma distribuição normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura <a href="#fig:dists-norm-lnorm">2</a>, a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.</p>
+<p>Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura <a href="#fig:dists-norm-lnorm">2</a>, a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>8</span>, <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -2483,26 +2483,84 @@ Figure 1: Distribuição Normal
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:dists-norm-lnorm"></span>
-<img src="images/dists-norm-lnorm-1.png" alt="Distribuição Normal vs Distribuição Log-Normal" width="70%" />
+<img src="2-Teste_t_files/figure-html5/dists-norm-lnorm-1.png" alt="Distribuição Normal vs Distribuição Log-Normal" width="70%" />
 <p class="caption">
 Figure 2: Distribuição Normal vs Distribuição Log-Normal
 </p>
 </div>
 </div>
-<p>Agora com as simulações! Na figura <a href="#fig:simulacoes"><strong>??</strong></a>, é possível ver o histograma das distribuições simuladas. No lado esquerdo</p>
+<p>Agora com as simulações! Na figura <a href="#fig:simulacoes">3</a>, é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span>
-<span class='va'>n_sim</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='va'>n_sim</span> <span class='op'>&lt;-</span> <span class='fl'>1000</span>
 <span class='va'>sims</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   normal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>)</span>,
   log_normal <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>)</span>
 <span class='op'>)</span>
+
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>normal</span>, fill <span class='op'>=</span> <span class='st'>"Normal"</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>log_normal</span>, fill <span class='op'>=</span> <span class='st'>"Log-Normal"</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='cn'>NULL</span>, x <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Distribuição"</span>, values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Normal"</span> <span class='op'>=</span> <span class='st'>"red"</span>, <span class='st'>"Log-Normal"</span> <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span>
 </code></pre>
 </div>
+<div class="figure" style="text-align: center"><span id="fig:simulacoes"></span>
+<img src="2-Teste_t_files/figure-html5/simulacoes-1.png" alt="Histograma das Simulações" width="70%" />
+<p class="caption">
+Figure 3: Histograma das Simulações
+</p>
+</div>
+</div>
+<p>Agora como fazer um teste de Shapiro-Wilk (<code>shapiro.test</code>) com R. Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, será abordado na próxima sessão. Mas, para agora basta saber que <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  sims$normal
+W = 1, p-value = 0.5</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  sims$log_normal
+W = 0.6, p-value &lt;0.0000000000000002</code></pre>
+</div>
+<p>Vamos também aproveitar e mostrar como fazer um teste Komolgorov-Smirnof (<code>ks.test</code>). Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal <code>"pnorm"</code> e usamos os valores de média <code>mean()</code> e desvio padrão <code>sd()</code> da distribuição que estamos testando. Lembrando que a definição do <span class="math inline">\(p\)</span>-valor para este teste é a mesma do Shapiro-Wilk.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span>, <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  sims$normal
+D = 0.01, p-value = 1
+alternative hypothesis: two-sided</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span>,  <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    One-sample Kolmogorov-Smirnov test
+
+data:  sims$log_normal
+D = 0.2, p-value &lt;0.0000000000000002
+alternative hypothesis: two-sided</code></pre>
 </div>
 <h4 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h4>
 <p>Teste de Levene</p>
+<p>library(car) # Levene’s test with one independent variable leveneTest(weight ~ group, data = PlantGrowth)</p>
 <h2 id="p-valor-e-h_0"><span class="math inline">\(p\)</span>-valor e <span class="math inline">\(H_0\)</span></h2>
 <h2 id="teste-t-para-uma-amostra">Teste <span class="math inline">\(t\)</span> para uma Amostra</h2>
 <h3 id="student-vs-welch">Student vs Welch</h3>
@@ -2510,7 +2568,7 @@ Figure 2: Distribuição Normal vs Distribuição Log-Normal
 <h2 id="teste-t-para-duas-amostras-pareadas">Teste <span class="math inline">\(t\)</span> para duas Amostras Pareadas</h2>
 <h2 id="teste-t-para-duas-amostras-independentes">Teste <span class="math inline">\(t\)</span> para duas Amostras Independentes</h2>
 <h2 id="reportando-o-resultado-com-papaja">Reportando o resultado com <code>{papaja}</code></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-saculinggan2013empirical" class="csl-entry" role="doc-biblioentry">
 <p>Saculinggan, M., &amp; Balase, E. A. (2013). Empirical power comparison of goodness of fit tests for normality in the presence of outliers. <em>Journal of physics: Conference series</em>, <em>435</em>, 012041. IOP Publishing.</p>
