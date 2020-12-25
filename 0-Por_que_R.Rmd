@@ -95,6 +95,14 @@ Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Ju
 
 [^7]: Quando Python e R usam C/C++ ou Fortran essa vantagem cai bastante ou é inexistente.
 
+Julia é uma linguagem que estamos olhando de maneira promissora. Ela é rápida, já é adotada pela comunidade científica, possui um paradigma funcional e permite uma melhor inteligibilidade do código ao permitir o uso de caracteres unicode e símbolos matemáticos[^17].
+
+A principal lacuna que a linguagem Julia tenta solucionar é o paradigma das duas linguagens. Esse paradigma é como os desenvolvedores de algoritmos e softwares de análise desenvolvem suas funcionalidades. Primeiro o código é escrito em uma linguagem de fácil entendeimento e rápida prototipagem como R ou Python. Então, o código do protótipo é testado com um problema pequeno ou com uma fração dos dados que serão utilizados pela solução final. Somente após averiguar que o protótipo funciona da maneira correta, é que os desenvolvedores partem para uma linguagem mais robusta e rápida, mas de implementação demorada como C++ ou Fortran. Julia serve para eliminar esse paradigma e ser a linguagem usada tanto para prototipagem quando para implementação.
+
+Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será o real potencial da linguagem Julia. O nosso conselho é usar R para suas análises estatísticas e considerar Julia se precisar de algo mais incomum que necessite de computação intensa que não tenha ainda uma implementação rápida em R ou Python (usando C/C++ ou Fortran).
+
+[^17]: Para o leitor isso não pode fazer diferença. Mas quando você, por exemplo, quer pegar um algoritmo descrito matematicamente em um artigo e implementá-lo diretamente em código, esses caracteres matemáticos são muito bem-vindos. Palavras de quem já escreveu um algoritmo de Amostragem Monte Carlo usando correntes Markov na mão (não por falta de opção, mas por busca de sinestesia para melhor aprendizagem).
+
 # Vantagens de R
 
 Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas nossas 5 características que mostramos.
@@ -103,9 +111,11 @@ Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos 
 
 Com R, conseguimos nos aproveitar do paradigma de programação funcional e sermos mais produtivos (além que o código fica muito mais inteligível). Veja um exemplo abaixo com R e Python. Estamos pegando um *dataset* chamado `mtcars` que possui informações sobre alguns carros. Aqui serão feitas algumas operações sequenciais:
 
-1. Transformar variáveis que contém texto em  variáveis categóricas
+1. Transformar variáveis que contém texto em  variáveis categóricas[^15]
 2. Filtrar somente as observações que tenham `hp` maior que 100
 3. Calcular a média somente para as variáveis númericas
+
+[^15]: Variáveis categóricas são conhecidas como *factors* no R e são maneiras eficientes de manipular e armazenar dados não-numéricos. Geralmente dados não-numéricos são dados textuais ou alguma chave de identificação unica (tipo um *id*).
 
 Primeiro o R, veja como o código é muito mais sucinto e simples de ler. O pipe `%>%` significa "pegue o resultado dessa operação e jogue como input da próxima". Aqui estamos usando o pacote `{dplyr}` do `{tidyverse}`.
 
@@ -116,7 +126,7 @@ mtcars %>%
   summarise_if(is.numeric, mean)
 ```
 
-Agora com Python usando a biblioteca `{pandas}`. Como a lógica de Python é orientada a objetos eu tenho que acessar as funções e atributos de um objeto usando um ponto `.` após o objeto. Exemplos: `objeto.atributo` ou `objeto.funcao()`. Aqui estou fazendo diversas operações em um objeto chamado `mtcars` que é o nosso *dataset*. Quase todas operações do `{pandas}` em um *dataset* resultam em um novo *dataset* transformado. Aqui é muito mais complicado pq eu preciso encadear diversas operações usando funções de um objeto. Sem o paradigma funcional (e em especial o pipe `%>%`) o código fica muito mais verboso e não tão inteligível.
+Agora com Python usando a biblioteca `{pandas}`. Como a lógica de Python é orientada a objetos eu tenho que acessar as funções e atributos de um objeto usando um ponto `.` após o objeto. Exemplos: `objeto.atributo` ou `objeto.funcao()`. Aqui estou fazendo diversas operações em um objeto chamado `mtcars` que é o nosso *dataset*. Quase todas operações do `{pandas}` em um *dataset* resultam em um novo *dataset* transformado. Aqui é muito mais complicado porque eu preciso encadear diversas operações usando funções de um objeto. Sem o paradigma funcional (e em especial o pipe `%>%`) o código fica muito mais verboso e não tão inteligível.
 
 ```{python mtcars_py, eval=FALSE}
 mtcars.select_dtypes(
@@ -175,7 +185,7 @@ Durante o processo de avaliação-por-pares que as publicações científicas pa
 
 [^12]: Da qual, nós somos oriundos.
 
-Além disso, com a biblioteca `{rmarkdown}` e seus diversos *templates*, é possível autorar diversos tipos de documentos[^13]:
+Além disso, com a biblioteca `{rmarkdown}` e seus diversos *templates*, é possível criar diversos tipos de documentos[^13]:
 
 * Documentos:
   * HTML com CSS usando Bootstrap
@@ -199,9 +209,8 @@ Além disso, com a biblioteca `{rmarkdown}` e seus diversos *templates*, é poss
 
 ## Replicável e Transparente[^14]
 
-A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Dê o seu código em R e os seus dados para qualquer um e a análise e estatísticas serão as mesmas.
-
-Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante...
+A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Um livro muito que recomendamos para entender esta crise da ciência é o "Science Fictions: How Fraud, Bias, Negligence, and Hype Undermine the Search for Truth" de Stuart Ritchie publicado em 2020[^16]. Uma das vantagens do R é que com o mesmo código e o mesmo conjunto de dados, dois usuários conseguem chegar na mesma análise e resultados. Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante...
 
 
 [^14]: Não é uma característica única do R, mas de qualquer linguagem que possua suporte básico a análise e manipulação de dados.
+[^16]: Há um metacientista (cientista que estuda a ciência) chamado John Ioannidis que possui diversas publicações interessantes sobre a crise atual da ciência. Em especial, há um artigo de 2005 intitulado "Why Most Published Research Findings Are False" publicado na *PLOS Medicine* que merece atenção do leitor.

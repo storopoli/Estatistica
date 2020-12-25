@@ -2461,12 +2461,15 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 <li>Julia ainda é muito nova e não há bibliotecas para todas as coisas que conseguimos fazer com Python e R.</li>
 <li>Julia, assim como Python, possui <em>list comprehension</em> (compreensão de listas).</li>
 </ul>
+<p>Julia é uma linguagem que estamos olhando de maneira promissora. Ela é rápida, já é adotada pela comunidade científica, possui um paradigma funcional e permite uma melhor inteligibilidade do código ao permitir o uso de caracteres unicode e símbolos matemáticos<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
+<p>A principal lacuna que a linguagem Julia tenta solucionar é o paradigma das duas linguagens. Esse paradigma é como os desenvolvedores de algoritmos e softwares de análise desenvolvem suas funcionalidades. Primeiro o código é escrito em uma linguagem de fácil entendeimento e rápida prototipagem como R ou Python. Então, o código do protótipo é testado com um problema pequeno ou com uma fração dos dados que serão utilizados pela solução final. Somente após averiguar que o protótipo funciona da maneira correta, é que os desenvolvedores partem para uma linguagem mais robusta e rápida, mas de implementação demorada como C++ ou Fortran. Julia serve para eliminar esse paradigma e ser a linguagem usada tanto para prototipagem quando para implementação.</p>
+<p>Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será o real potencial da linguagem Julia. O nosso conselho é usar R para suas análises estatísticas e considerar Julia se precisar de algo mais incomum que necessite de computação intensa que não tenha ainda uma implementação rápida em R ou Python (usando C/C++ ou Fortran).</p>
 <h1 id="vantagens-de-r">Vantagens de R</h1>
 <p>Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas nossas 5 características que mostramos.</p>
 <h2 id="produtivo-análiseshora">Produtivo (Análises/hora)</h2>
 <p>Com R, conseguimos nos aproveitar do paradigma de programação funcional e sermos mais produtivos (além que o código fica muito mais inteligível). Veja um exemplo abaixo com R e Python. Estamos pegando um <em>dataset</em> chamado <code>mtcars</code> que possui informações sobre alguns carros. Aqui serão feitas algumas operações sequenciais:</p>
 <ol type="1">
-<li>Transformar variáveis que contém texto em variáveis categóricas</li>
+<li>Transformar variáveis que contém texto em variáveis categóricas<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
 <li>Filtrar somente as observações que tenham <code>hp</code> maior que 100</li>
 <li>Calcular a média somente para as variáveis númericas</li>
 </ol>
@@ -2480,7 +2483,7 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 </code></pre>
 </div>
 </div>
-<p>Agora com Python usando a biblioteca <code>{pandas}</code>. Como a lógica de Python é orientada a objetos eu tenho que acessar as funções e atributos de um objeto usando um ponto <code>.</code> após o objeto. Exemplos: <code>objeto.atributo</code> ou <code>objeto.funcao()</code>. Aqui estou fazendo diversas operações em um objeto chamado <code>mtcars</code> que é o nosso <em>dataset</em>. Quase todas operações do <code>{pandas}</code> em um <em>dataset</em> resultam em um novo <em>dataset</em> transformado. Aqui é muito mais complicado pq eu preciso encadear diversas operações usando funções de um objeto. Sem o paradigma funcional (e em especial o pipe <code>%&gt;%</code>) o código fica muito mais verboso e não tão inteligível.</p>
+<p>Agora com Python usando a biblioteca <code>{pandas}</code>. Como a lógica de Python é orientada a objetos eu tenho que acessar as funções e atributos de um objeto usando um ponto <code>.</code> após o objeto. Exemplos: <code>objeto.atributo</code> ou <code>objeto.funcao()</code>. Aqui estou fazendo diversas operações em um objeto chamado <code>mtcars</code> que é o nosso <em>dataset</em>. Quase todas operações do <code>{pandas}</code> em um <em>dataset</em> resultam em um novo <em>dataset</em> transformado. Aqui é muito mais complicado porque eu preciso encadear diversas operações usando funções de um objeto. Sem o paradigma funcional (e em especial o pipe <code>%&gt;%</code>) o código fica muito mais verboso e não tão inteligível.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mtcars.select_dtypes(</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  [<span class="st">&#39;object&#39;</span>]).<span class="bu">apply</span>(</span>
@@ -2502,13 +2505,13 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 <ul>
 <li><code>{readxl}</code> – Leitura de dados de tabelas Excel</li>
 <li><code>{haven}</code> – Leitura de dados de tabelas SPSS e Stata</li>
-<li><code>{DBI}</code> e <code>{dbplyr}</code> – Leitura de dados de Banco de Dados e tradução de operações usando linguagem R e verbos do <code>{tidyverse}</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> em operações usando linguagem SQL</li>
+<li><code>{DBI}</code> e <code>{dbplyr}</code> – Leitura de dados de Banco de Dados e tradução de operações usando linguagem R e verbos do <code>{tidyverse}</code><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> em operações usando linguagem SQL</li>
 <li><code>{rvest}</code> e <code>{httr}</code> – Raspagem de dados da Web</li>
 </ul>
 <p>Todas esses bibliotecas rodam em C/C++ e por isso são bem rápidos e eficientes. Além disso, vale a pena mecionar todo o universo <code>{tidymodels}</code> que é um ecossistema para modelagem e <em>machine learning</em> com R.</p>
 <h2 id="eficaz-conseguir-usar-a-ferramenta-correta-dentre-um-rol-de-inúmeras">Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)</h2>
-<p>Atualmente o CRAN<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> possui um total de 16,837 bibliotecas<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. Todas <em>opensource</em> e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o <code>data.frame</code>. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.</p>
-<p>Além de bibliotecas para análises de dados e Rstatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>:</p>
+<p>Atualmente o CRAN<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> possui um total de 16,837 bibliotecas<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Todas <em>opensource</em> e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o <code>data.frame</code>. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.</p>
+<p>Além de bibliotecas para análises de dados e Rstatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>:</p>
 <ul>
 <li>Estatística Bayesiana</li>
 <li>Ensaios Clínicos</li>
@@ -2521,8 +2524,8 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 <li>Construção e Validação de Escalas</li>
 </ul>
 <h2 id="comunicativo-maioria-das-ciências-aplicadas-usam-r">Comunicativo (Maioria das ciências aplicadas usam R)</h2>
-<p>Durante o processo de avaliação-por-pares que as publicações científicas passam para serem publicadas, muitos editores e revisores pedem aos autores que submetam ou mostrem o código usado para analisar os dados. Isto é feito para averiguar se a análise foi feita de maneira correta. E a maioria dessas análises no mundo das ciências aplicadas, em especial a área de ciências sociais aplicadas<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>, usam o R.</p>
-<p>Além disso, com a biblioteca <code>{rmarkdown}</code> e seus diversos <em>templates</em>, é possível autorar diversos tipos de documentos<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>:</p>
+<p>Durante o processo de avaliação-por-pares que as publicações científicas passam para serem publicadas, muitos editores e revisores pedem aos autores que submetam ou mostrem o código usado para analisar os dados. Isto é feito para averiguar se a análise foi feita de maneira correta. E a maioria dessas análises no mundo das ciências aplicadas, em especial a área de ciências sociais aplicadas<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, usam o R.</p>
+<p>Além disso, com a biblioteca <code>{rmarkdown}</code> e seus diversos <em>templates</em>, é possível criar diversos tipos de documentos<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>:</p>
 <ul>
 <li>Documentos:
 <ul>
@@ -2546,9 +2549,8 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 <li>Blogs</li>
 <li>Curriculum Vitae</li>
 </ul>
-<h2 id="replicável-e-transparente14">Replicável e Transparente<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></h2>
-<p>A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Dê o seu código em R e os seus dados para qualquer um e a análise e estatísticas serão as mesmas.</p>
-<p>Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante…</p>
+<h2 id="replicável-e-transparente14">Replicável e Transparente<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></h2>
+<p>A ciência está passando por uma crise de credibilidade que no fundo é também uma crise de replicabilidade. Um livro muito que recomendamos para entender esta crise da ciência é o “Science Fictions: How Fraud, Bias, Negligence, and Hype Undermine the Search for Truth” de Stuart Ritchie publicado em 2020<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>. Uma das vantagens do R é que com o mesmo código e o mesmo conjunto de dados, dois usuários conseguem chegar na mesma análise e resultados. Claro que R não soluciona todo o problema de replicabilidade da ciência. Mas, código aberto, e se possível, dados abertos, já ajudam bastante…</p>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
@@ -2558,15 +2560,18 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 <li id="fn4" role="doc-endnote"><p>Notem que estas são nossas opiniões. E como não casamos com opiniões, casamos com fatos (afinal somos estatísticos): uma vez que os fatos mudam, nossas opiniões mudarão de acordo.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>Claro que em alguns campos (ex: ciências da computação), Python é muito mais utilizado.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>Quando Python e R usam C/C++ ou Fortran essa vantagem cai bastante ou é inexistente.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>Aqui você já viu alguns em ação: <code>mutate()</code>, <code>filter()</code> e <code>summarise()</code><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>CRAN – Comprehensive R Archive Network, repositório global de bibliotecas de R<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>Dados de 25/12/20<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em <a href="https://cran.r-project.org/web/views/">CRAN Task Views</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>Da qual, nós somos oriundos.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p>Este documento é um exemplo. Usamos a biblioteca <code>{distill}</code> que é focada para escrita científica e técnica.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13" role="doc-endnote"><p>Não é uma característica única do R, mas de qualquer linguagem que possua suporte básico a análise e manipulação de dados.</p>
+<li id="fn7" role="doc-endnote"><p>Para o leitor isso não pode fazer diferença. Mas quando você, por exemplo, quer pegar um algoritmo descrito matematicamente em um artigo e implementá-lo diretamente em código, esses caracteres matemáticos são muito bem-vindos. Palavras de quem já escreveu um algoritmo de Amostragem Monte Carlo usando correntes Markov na mão (não por falta de opção, mas por busca de sinestesia para melhor aprendizagem).<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>Variáveis categóricas são conhecidas como <em>factors</em> no R e são maneiras eficientes de manipular e armazenar dados não-numéricos. Geralmente dados não-numéricos são dados textuais ou alguma chave de identificação unica (tipo um <em>id</em>).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>Aqui você já viu alguns em ação: <code>mutate()</code>, <code>filter()</code> e <code>summarise()</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>CRAN – Comprehensive R Archive Network, repositório global de bibliotecas de R<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Dados de 25/12/20<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em <a href="https://cran.r-project.org/web/views/">CRAN Task Views</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>Da qual, nós somos oriundos.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>Este documento é um exemplo. Usamos a biblioteca <code>{distill}</code> que é focada para escrita científica e técnica.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>Não é uma característica única do R, mas de qualquer linguagem que possua suporte básico a análise e manipulação de dados.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p>Há um metacientista (cientista que estuda a ciência) chamado John Ioannidis que possui diversas publicações interessantes sobre a crise atual da ciência. Em especial, há um artigo de 2005 intitulado “Why Most Published Research Findings Are False” publicado na <em>PLOS Medicine</em> que merece atenção do leitor.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
