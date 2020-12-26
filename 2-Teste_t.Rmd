@@ -334,6 +334,10 @@ Para encerrar esse tour de $p$-valores e intervalos de confiança, temos que nos
 
 Por isso que defendemos que nunca se interprete análises estatísticas somente com $p$-valores, mas sempre em conjunto com os intervalos de confiança que quantificam o tamanho do efeito. **Nunca gere argumentos sobre evidências somente a partir de significância estatística, sempre inclua tamanho do efeito**.
 
+<aside>
+Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e $p$-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma [disciplina *opensource* de Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/).
+</aside>
+
 ## Teste $t$ de Student
 
 Agora estamos prontos para apresentar o teste $t$ de Student.
