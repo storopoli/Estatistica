@@ -1,7 +1,7 @@
 ---
-title: "Teste de Médias - Teste $t$ de Student"
+title: "Teste de Médias - Teste t de Student e Testes não-Paramétricos"
 description: |
-  Como comparar a diferença de uma mensuração entre dois grupos.
+  Como comparar a diferença de uma variável entre dois grupos.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Pressupostos
 
-Antes de avançarmos, é necessário clarificar algo que muitos pesquisadores e cientistas não se atentam e acaba invalidando diversas análises[^1]
+Antes de avançarmos, é necessário clarificar algo que muitos pesquisadores e cientistas não se atentam e acaba invalidando diversas análises[^1]: pressupostos das técnicas estatísticas clássicas.
 
 ### Independência dos Dados
 
@@ -58,24 +58,24 @@ Se esse pressuposto for violado, as técnicas clássicas de Estatística inferen
 knitr::include_graphics("images/assumptions.jpeg")
 ```
 
-Aqui estão sempre as 3 pedras no sapato das técnicas clássicas de Estatística inferencial. E antes de apresentar elas, vale a pena um pequeno histórico dessas técnicas. Antes do advento de computadores, todos esses cálculos estatísticos e matemáticos eram feitos **na mão**. Então, como uma maneira de facilitar o cálculo, foram feitas diversas ~~gambiarras~~ derivações matemáticas usando a teoria da probabilidade para computar facilmente um teste estatístico e gerar algo que vocês já devem ter ouvido falar: $p$-valor. Mais sobre $p$-valor adiante...
+Aqui estão sempre as três pedras no sapato das técnicas clássicas de Estatística inferencial. E antes de apresentar elas, vale a pena um pequeno histórico dessas técnicas. Antes do advento de computadores, todos esses cálculos estatísticos e matemáticos eram feitos **na mão**. Então, como uma maneira de facilitar o cálculo, foram feitas diversas ~~truques~~ derivações matemáticas usando a teoria da probabilidade para computar facilmente um teste estatístico e gerar algo que vocês já devem ter ouvido falar: $p$-valor. Mais sobre $p$-valor adiante...
 
 <aside>
-Quem ficou curioso com a história da Estatística. Recomendo um livro de Stephen Stigler intitulado [Statistics on the Table: The History of Statistical Concepts and Methods](https://www.hup.harvard.edu/catalog.php?isbn=9780674009790). Eu comprei o meu em um sebo online.
+Quem ficou curioso com a história da Estatística. Recomendo um livro de Stephen Stigler intitulado [Statistics on the Table: The History of Statistical Concepts and Methods](https://www.hup.harvard.edu/catalog.php?isbn=9780674009790). O primeiro autor comprou uma cópia em um sebo online.
 </aside>
 
-Como decorrência dessas facilidades, os testes estatísticos possuem fortes pressupostos sobre os dados. E, se esses pressupostos forem violados, a análise pode ser invalidada.
+Como decorrência dessas facilidades, os testes estatísticos possuem fortes pressupostos sobre os dados. E, se esses pressupostos forem violados, os resultados todos análise podem ser invalidados.
 
-Voltando às 3 pedras no sapato. Duas delas são realmente pressupostos: normalidade e homogeneidade de variâncias. A restante, tamanho amostral, abordamos em um [conteúdo auxiliar](aux-Tamanho_Amostra.html).
+Voltando às três pedras no sapato. Duas delas são realmente pressupostos: **normalidade** e **homogeneidade** de variâncias. A restante, **tamanho amostral**, abordamos em um [conteúdo auxiliar](aux-Tamanho_Amostra.html).
 
 #### Normalidade
 
-Dados normais são dados que seguem uma distribuição Normal, também conhecida por distribuição Gaussiana[^4]. Uma variável distribuída como uma distribuição Normal segue aquela forma clássica de sino. Mais especificamente, esse pressuposto de normalidade se aplica somente à variável dependente. Abaixo um exemplo de variável normal.
+Dados normais são dados que seguem uma distribuição Normal, também conhecida por distribuição Gaussiana[^4]. Uma variável distribuída como uma distribuição Normal segue aquela forma clássica de sino. Mais especificamente, esse pressuposto de normalidade geralmante se aplica somente à variável dependente. Abaixo um exemplo de variável Normal.
 
 [^4]: Homenagem a [Carl Friedrich Gauss](https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss), matemático Alemão que viveu entre 1777 e 1855.
 
 <aside>
-Variável dependente é aquela que estamos interessados na nossa análise. É a variável que se altera conforme outras variáveis (chamadas de independentes).
+Variável dependente é aquela que estamos interessados na nossa análise. É a variável que se altera conforme outras variáveis (chamadas de independentes) se alteram.
 </aside>
 
 ```{r dist-normal, message=FALSE, fig.cap='Distribuição Normal'}
@@ -102,7 +102,7 @@ Ambos os testes aceitam como input uma variável e dão como output um $p$-valor
 
 [^5]: Poder estatístico é,  para uma certa probabilidade de erro tipo I ($\alpha$), 1 menos a probabilidade de erro tipo II ($1 - \beta$). Veja mais no [conteúdo auxiliar de Tamanho da Amostra](aux-Tamanho_Amostra.html).
 
-Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura \@ref(fig:dists-norm-lnorm), a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.
+Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição Normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição Normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura \@ref(fig:dists-norm-lnorm), a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.
 
 ```{r dists-norm-lnorm, fig.cap='Distribuição Normal vs Distribuição Log-Normal'}
 tibble(x = c(-8, 8)) %>% 
@@ -115,9 +115,9 @@ ggplot(aes(x)) +
   )
 ```
 
-Agora com as simulações! Na figura \@ref(fig:simulacoes), é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.
+Agora com as simulações! Na figura \@ref(fig:simulacoes-normalidade), é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.
 
-```{r simulacoes, fig.cap='Histograma das Simulações'}
+```{r simulacoes-normalidade, fig.cap='Histograma das Simulações de Normalidade'}
 set.seed(123)
 n_sim <- 1000
 sims <- tibble(
@@ -133,7 +133,7 @@ ggplot(sims) +
   theme(legend.position = "bottom")
 ```
 
-Agora como fazer um teste de Shapiro-Wilk (`shapiro.test`) com R. Sobre o $p$-valor que aparece como resultado do teste, será abordado na próxima sessão. Mas, para agora basta saber que $p < 0.05$ ($p$ menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.
+Agora como fazer um teste de Shapiro-Wilk (`shapiro.test`) com R. Sobre o $p$-valor que aparece como resultado do teste, veja adiante. Para agora basta saber que $p < 0.05$ ($p$ menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.
 
 ```{r shapiro-wilk}
 shapiro.test(sims$normal)
@@ -149,22 +149,306 @@ ks.test(sims$log_normal,  "pnorm", mean(sims$log_normal), sd(sims$log_normal))
 
 #### Homogeneidade das Variâncias
 
-Teste de Levene
+Também chamado de homocedasticidade, homogeneidade das variâncias, é um pressuposto que, para uma dada mensuração, a variação dessa mensuração dentro de estratos/grupos da sua amostra é similar. Em outras palavras, se você possui três grupos de indivíduos e está mensurando a altura, a variação da altura dentre os três grupos não pode ser muito diferentes entre os três grupos.
 
+Uma boa maneira de visualizar isso é usarmos distribuições Normais com diferentes médias e desvio padrões. No caso de homogeneidade das variâncias, conseguimos visualizá-la com três distribuições Normais, sendo que todas possuem o mesmo desvio padrão, mas diferentes médias. Esse seria o gráfico da esquerda na figura \@ref(fig:dists-norm-homogeneidade). Já no caso de heterogeneidade, conseguimos demonstrar usando as mesmas três distribuições Normais mas agora introduzindo diferentes desvios padrões. Esta situação é o gráfico da direita na figura \@ref(fig:dists-norm-homogeneidade)
+
+```{r dists-norm-homogeneidade, fig.cap='Homogeneidade e Heterogeneidade das Variâncias', layout='l-page'}
+library(patchwork)
+p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+  mapply(function(mean, sd, col) {
+    stat_function(fun = dnorm, args = list(mean = mean, sd = sd), size = 3, col = col)
+  }, 
+  # enter means, standard deviations and colors here
+  mean = c(0, 1, -1), 
+  sd = c(1, 1, 1), 
+  col = c('red', 'blue', 'green')
+)
+
+p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+  mapply(function(mean, sd, col) {
+    stat_function(fun = dnorm, args = list(mean = mean, sd = sd), size = 3, col = col)
+  }, 
+  # enter means, standard deviations and colors here
+  mean = c(0, 1, .5), 
+  sd = c(1, .5, 2),  
+  col = c('red', 'blue', 'green')
+)
+
+p1 | p2
+```
+
+##### Teste de Levene
+
+Vamos mais uma vez usar simulações. Aqui vamos gerar um *dataset* de `r n_sim/2` observações em dois grupos: `A` com `r n_sim/4` e `B` com `r n_sim/4` observações. E vamos considerar dois cenários: o primeiro onde temos médias diferentes entre os grupos mas homogeneidade de variâncias (possuem o mesmo desvio padrão) e o segundo onde temos médias diferentes entre os grupos e com heterogeneidade de variâncias (possuem desvio padrões diferentes). Ambos cenários podem ser visualizados na figura \@ref(fig:simulacoes-homogeneidade).
+
+```{r simulacoes-homogeneidade, fig.cap='Histograma das Simulações de Homogeneidade das Variâncias', layout='l-page', message=FALSE, warning=FALSE}
+sims2 <- tibble(
+  group = c(rep("A", n_sim/4), rep("B", n_sim/4)),
+  homog = c(rnorm(n_sim/4, 0, 1), rnorm(n_sim/4, 1, 1)),
+  heterog = c(rnorm(n_sim/4, 0, 0.1), rnorm(n_sim/4, 1, 2))
+)
+
+p3 <- ggplot(sims2, aes(homog, fill = group)) + 
+  geom_density(alpha = 0.5, show.legend = F)
+
+p4 <- ggplot(sims2, aes(heterog, fill = group)) + 
+  geom_density(alpha = 0.5, show.legend = F)
+
+p3 | p4
+```
+Um teste muito utilizado para testar a igualdade de variâncias é o teste de Levene. O teste de Levene está disponível na biblioteca `{car}` [@car] na função `leveneTest()` e você tem que passar dois argumentos:
+
+1. Formula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos. A formula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
+
+<aside>
+`{car}` não tem nada a ver com carros. Ele é um acrônimo para "Companion to Applied Regression" e é uma biblioteca com funções para acompanhar um livro intitulado "An R Companion to Applied Regression" de Fox & Weisberg. Ele tem diversas funções interessantes e testes estatísticos que não estão disponíveis como padrão no R.
+</aside>
+
+```{r levene, warning=FALSE}
 library(car)
-# Levene's test with one independent variable
-leveneTest(weight ~ group, data = PlantGrowth)
+leveneTest(homog ~ group, data = sims2)
+leveneTest(heterog ~ group, data = sims2)
+```
 
-## $p$-valor e $H_0$
+Sobre o $p$-valor que aparece como resultado do teste, veja adiante. Para agora basta saber que $p < 0.05$ ($p$ menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.
 
-## Teste $t$ para uma Amostra
+## $p$-valor e Hipótese Nula $H_0$
+
+> $p$-valores são de difícil entendimento, $p < 0.05$.
+
+```{r meme-pvalue, echo=FALSE, out.height='75%'}
+knitr::include_graphics("images/meme-pvalue2.jpg")
+```
+
+
+Esta parte da Estatística inferencial é a mais complicada e menos intuitiva. Parafraseando Andrew Gelman, estatístico da Columbia University, "Para definir $p$-valores, escolha uma das duas características: intuitiva ou precisa. Ou sua definição é intuitiva mas imprecisa, ou sua definição é precisa mas não intuitiva". A grande maioria dos pesquisadores[^6] possui uma definição incorreta do que é um $p$-valor [@cumming2009inference]. E quando vemos evidências do campo da medicina, que talvez seja o campo com maior quantidade de recursos disponíveis para pesquisa e avanço do conhecimento, também encontramos muitos problemas no uso dos $p$-valores [@Ioannidis2019]. Antes de entrarmos nas definições de $p$-valores, vale a pena tranquilizá-los: $p$-valores são uma coisa complicada e se você não entender na primeira vez que ler as definições abaixo, não se preocupe, você não estará em má companhia; respire fundo e tente novamente.
+
+<aside>
+Nem nós ficamos 100% confiantes quando falamos de $p$-valores...
+</aside>
+
+[^6]: Inclusive muitos renomados e citados em abundância em suas áreas.
+
+**Primeiramente a definição estatística**:
+
+> $p$-valor é a probabilidade de obter resultados no mínimo tão extremos quanto os que foram observados, dado que a hipótese nula é verdadeira.
+
+Se você escrever essa definição em qualquer prova, livro ou artigo científico, você estará 100% preciso e correto na definição do que é um $p$-valor. Agora, a compreensão dessa definição é algo complicado. Para isso, vamos quebrar essa definição em algumas partes para melhor compreensão:
+
+* **"probabilidade de obter resultados..."**: vejam que $p$-valores são uma característica dos seus dados e não da sua teoria ou hipótese.
+* **"...no mínimo tão extremos quanto os que foram observados..."**: "no minimo tão" implica em definir um limiar para a caracterização de algum achado relevante, que é comumente chamado de alpha, representado pela letra grega $\alpha$. Geralmente estipulamos alpha em 5% ($\alpha = 0.05$) e qualquer coisa mais extrema que alpha (ou seja menor que 5%) caracterizamos como **significante**[^7].
+* **"..dado que a hipótese nula é verdadeira..."**: lembra daquela história de "...derivações matemáticas usando a teoria da probabilidade para computar facilmente um teste estatístico..." que falamos acima? Todo teste estatístico que possui um $p$-valor possui uma Hipótese Nula (geralmente escrita como $H_0$). Hipótese nula, sempre tem a ver com algum *efeito nulo*. Por exemplo, a hipótese nula do teste Shapiro-Wilk e Komolgorov-Smirnov é "os dados são distribuídos conforme uma distribuição Normal" e a do teste de Levene é "as variâncias dos dados são iguais". Sempre que ver um $p$-valor, se pergunte: "Qual a hipótese nula que este teste presupõe correta?[^8]".
+
+[^7]: Cuidado com essa palavra. Ela é precisa e somente deve ser usada em contextos estatísticos. Significância estatística quer dizer que os dados observados são mais extremos que um alpha prédefinido de que a hipótese nula é verdadeira.
+[^8]: Esse conselho é extremamente útil. Por diversas vezes temos alunos que nos procuram com uma pergunta mais ou menos assim: "Professor, o que é o teste de *Sobrenome que nunca ouvi falar na minha vida hífen outro sobrenome ainda mais estranho*?". Graças a Wikipedia e Google, nós simplesmente vamos atrás da $H_0$ desse teste (busca Google: "sobrenome1-sobrenome2 null hypothesis") e com isso conseguimos responder ao aluno.
+
+```{r meme-nullhyp, echo=FALSE}
+knitr::include_graphics("images/meme-nullhyp.jpg")
+```
+
+$p$-valor é a probabilidade dos dados que você obteve dado que a hipótese nula é verdadeira. Para os que gostam do formalismo matemático: $p = P(D|H_0)$. Em português, essa expressão significa "a probabilidade de $D$ condicionado à $H_0$". Antes de avançarmos para alguns exemplos e tentativas de formalizar uma intuição sobre os $p$-valores, é importante ressaltar que $p$-valores dizem algo à respeito dos **dados** e não de **hipóteses**. Para o $p$-valor, **a hipótese nula é verdadeira, e estamos apenas avaliando se os dados se conformam à essa hipótese nula ou não**. Se vocês saírem desse tutorial munidos com essa intuição, o mundo será agraciado com pesquisadores mais preparados para qualificar e interpretar evidências ($p < 0.05$).
+
+**Exemplo intuitivo**:
+
+> Imagine que você tem uma moeda que suspeita ser enviesada para uma probabilidade maior de dar cara. (Sua hipótese nula é então que a moeda é justa.) Você joga a moeda 100 vezes e obtém mais cara do que coroa. O $p$-valor  não dirá se a moeda é justa, mas dirá a probabilidade de você obter pelo menos tantas caras quanto se a moeda fosse justa. É isso - nada mais[^9].
+
+<aside>
+Apesar de termos falado anterior que definições intuitivas não são precisas, elas sem dúvida facilitam o entendimento do $p$-valor.
+</aside>
+
+[^9]: Provavelmente receberemos muito *hate mail* por conta dessa simplificação e falta de formalismo, por favor, caso consigam aprimorar o conteúdo, criem um nova *issue* no repositório GitHub do conteúdo. 
+
+### Algumas questões históricas
+
+Não tem como entendermos $p$-valores se não compreendermos as suas origens e trajetória histórica. A primeira menção do termo foi feita pelo estatístico Ronald Fisher[^10] em 1925 [@fisher1925statistical] que define o $p$-valor como um "índice que mede a força da evidência contra a hipótese nula". Para quantificar a força da evidência contra a hipótese nula, Fisher defendeu "$p<0.05$ (5% de significância) como um nível padrão para concluir que há evidência contra a hipótese testada, embora não como uma regra absoluta". Fisher não parou por aí mas classificou a força da evidência contra a hipótese nula. Ele propôs "se $p$ está entre 0.1 e 0.9, certamente não há razão para suspeitar da hipótese testada. Se estiver abaixo de 0.02, é fortemente indicado que a hipótese falha em explicar o conjunto dos fatos. Não seremos frequentemente perdidos se traçarmos uma linha convencional de 0.05" Desde que Fisher fez esta declaração há quase 100 anos, o limiar de 0.05 foi usado por pesquisadores e cientistas em todo o mundo e tornou-se ritualístico usar 0.05 como limiar como se outros limiares não pudessem ser usados.
+
+[^10]: A controvérsia da personalidade e vida de Ronald Fisher merece uma nota de rodapé. Suas contribuições, sem dúvida, foram cruciais para o avanço da ciência e da estatística. Seu intelecto era brilhante e seu talento já floresceu jovem: antes de completar 33 anos de idade ele tinha proposto o método de estimação por máxima verossimilhança (*maximum likelihood estimation*) [@stigler2007epic] e também criou o conceito de graus de liberdade (*degrees of freedom*) ao propor uma correção no teste de chi-quadrado de Pearson [@Baird1983]. Também inventou a Análise de Variância (ANOVA) e foi o primeiro a propor randomização como uma maneira de realizar experimentos, sendo considerado o "pai" dos ensaios clínicos randomizados. Nem tudo é florido na vida de Fisher, ele foi um eugenista e possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias. Além disso, era extremamente invariante, perseguindo, prejudicando e debochando qualquer crítico à suas teorias e publicações. O que vemos hoje no monopólio do paradigma Neyman-Pearson com $p$-valores e hipóteses nulas é resultado desse esforço Fisheriano em calar os críticos e deixar apenas sua voz ecoar.
+
+```{r stats-pvalue-meme, echo=FALSE}
+knitr::include_graphics("images/stats-pvalue-meme.png")
+```
+
+Após isso, o limiar de 0.05 agora instaurado como inquestionável influenciou fortemente a estatística e a ciência. Mas não há nenhuma razão contra a adoção de outros limiares ($\alpha$) como 0.1 ou 0.01. Se bem argumentados, a escolha de limiares diferentes de 0.05 pode ser bem-vista por editores, revisores e orientadores.
+
+<aside>
+Apesar que, pela nossa experiência, isto geralmente não é verdade.
+</aside>
+
+
+### O que o $p$-valor não é
+
+Com a definição e intuição do que é um $p$-valor bem ancoradas, podemos avançar para o que o $p$-valor **não é**!
+
+```{r meme-pvalue2, echo=FALSE}
+knitr::include_graphics("images/meme-pvalue.jpg")
+```
+
+
+1. **$p$-valor não é a probabilidade da Hipótese nula** - Famosa confusão entre $P(D|H_0)$ e $P(H_0|D)$. $p$-valor não é a probabilidade da hipótese nula, mas sim a probabilidade dos dados que você obteve. Por exemplo: a probabilidade de você tossir dado que você está com COVID é diferente da probabilidade de você estar com COVID dado que você tossiu: $P(\text{tosse} | \text{COVID}) \neq P(\text{COVID} | \text{tosse})$. Acredito que a primeira, $P(\text{tosse} | \text{COVID})$ é bem alta, enquanto a segunda, $P(\text{COVID} | \text{tosse})$ deve ser bem baixa (afinal tossimos a todo momento).
+
+<aside>
+O primeiro autor tentou explicar essa diferença para uma senhora que o viu tossir na fila do mercado, mas os seus esforços foram em vão...
+</aside>
+
+2. **$p$-valor não é a probabilidade dos dados serem produzidos pelo acaso** - Não! Ninguém falou nada de acaso. Mais uma vez: $p$-valor é probabilidade de obter resultados no mínimo tão extremos quanto os que foram observados, dado que a hipótese nula é verdadeira.
+
+3. **$p$-valor mensura o tamanho do efeito de um teste estatístico** - Também não... $p$-valor não diz nada sobre o tamanho do efeito. Apenas sobre se o quanto os dados observados divergem do esperado sob a hipótese nula. É claro que efeitos grandes são mais prováveis de serem estatisticamente significantes que efeitos pequenos. Mas isto não é via de regra e nunca julguem um achado pelo seu $p$-valor, mas sim pelo seu tamanho de efeito. Além disso, $p$-valores podem ser hackeados `r icon::fontawesome("user-secret")` de diversas maneiras [@head2015extent] e muitas vezes seu valor é uma consequência direta do tamanho da amostra. Mais sobre isso no [conteúdo auxiliar sobre tamanho de amostra](aux-Tamanho_Amostra.html).
+
+### Intervalos de Confiança
+
+Intervalos de confiança foram criados como uma solução para os problemas de má-interpretação dos $p$-valores e sua aplicação se destina ao **tamanho do efeito**. Se você achou $p$-valor confuso, se prepare! Intervalos de confiança são ainda mais confusos...Vamos para a definição estatística:
+
+> Intervalo de confiança é o intervalo de valores que incluem um valor de uma população com um certo nível de confiança.
+
+Mais uma vez vamos quebrar essa definição em em algumas partes para melhor compreensão:
+
+* "... intervalo de valores ...": intervalo de confiança sempre serão **expressados como um intervalo** $a$ - $b$, onde $a$ é menor que $b$ ($a < b$).
+* "... incluem um valor de uma população...": aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população[^11]. Então, **intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população**.
+* ".. com um certo nível de confiança": sempre os intervalos de confiança serão expressados **acompanhados de uma probabilidade** (algo entre 0.001% e 99.999%) que quantifica a certeza de encontrar o intervalo em uma replicações do teste estatístico para diversas amostras da MESMA população.
+
+[^11]: Boa parte dos teoremas matemáticos por trás da Estatística inferencial se baseiam em "convergências em distribuição" que é uma maneira de expressarmos que a media que o tamanho da população tende ao infinito, $n \to \infty$, certas variáveis aleatórias convergem para uma certa distribuição. Um belo exemplo é o teorema do limite central. Um bom trabalho que crítica o alicerce da Estatística inferencial ser baseado em convergências quando a população tende ao infinito e propõem adotar alicerces baseados em desigualdades probabilísticas é @taleb2020statistical.
+
+Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do $p$-valor). Você então escreve no seu artigo que a "diferença entre grupos observada é de 10.5 - 23.5 (95% IC)". Isso quer dizer que **95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5**. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam espectativa de vida.
+
+Intervalos de confiança estão profundamente relacionados com $p$-valores. Primeiro, para que uma estimativa tenha um $p$-valor menor que 0.05, seu intervalo de confiança 95% não pode capturar o zero. Ou seja, o intervalo não pode compreender o efeito nulo (Hipótese Nula - $H_0$). Isso segue para outros valores de $p$ correspondentes com outros níveis de confiança dos intervalos. Por exemplo, para uma estimativa com $p$-valor menor que 0.01, seu intervalo de confiança 99% não pode capturar o 0. Além disso, intervalos de confiança (assim como $p$-valores) estão intrinsicamente conectados com o tamanho da amostra. Quanto maior o tamanho de amostra, mais estreito será o intervalo de confiança. A intuição por trás disso é que conforme a sua amostra aumenta, também aumentarão a sua confiança e precisão em inferências sobre a população-alvo. Por fim, intervalos de confiança (assim como $p$-valores) não falam nada sobre a sua teoria ou hipótese, mas sobre a relação dos seus dados (amostra) com a população-alvo. Eles **não são a probabilidade do parâmetro estimado ($P(\text{parâmetro} | D)$, no nosso exemplo diferença entre médias de grupos), mas sim a probabilidade de amostras com o mesmo parâmetro estimado ($P(D | \text{parâmetro})$)**.
+
+Uma boa maneira de resumir $p$-valores e intervalos de confiança é a seguinte:
+
+> Considere $p$-valores algo que mensura a possibilidade de existir um efeito ou não e intervalos de confiança quantificam o tamanho desse efeito.
+
+<aside>
+Mas sempre se atente nas definições. Lembre-se que se tentarmos ser intuitivos com $p$-valores e intervalos de confiança não seremos precisos nas definições.
+</aside>
+
+### Significância Estatística vs Significância Prática
+
+<aside>
+Considere isso uma introdução rápida à $p$-hacking.
+</aside>
+
+Para encerrar esse tour de $p$-valores e intervalos de confiança, temos que nos atentar que **significância estatística não é a mesma coisa que significância prática**. Significância estatística é se algum achado de um teste/modelo estatístico diverge o suficiente da hipótese nula e, sendo que hipótese nula sempre são sobre efeitos ou diferenças nulas, podemos afirmar que significância estatística quer dizer um achado é diferente de um efeito nulo. **Diversos testes da Estatística inferencial clássica quando submetidos à amostras grandes[^12] vão detectar uma diferença significante, mesmo que praticamente insignificante**. Com uma amostra suficientemente grande nós conseguimos gerar $p$-valores significantes para diferenças minúsculas, como por exemplo uma diferença de 0.01cm altura entre dois grupos de uma amostra.
+
+[^12]: O que é muito comum em 2020s com o advento de Big Data e facilidade de obtenção de dados.
+
+Por isso que defendemos que nunca se interprete análises estatísticas somente com $p$-valores, mas sempre em conjunto com os intervalos de confiança que quantificam o tamanho do efeito. **Nunca gere argumentos sobre evidências somente a partir de significância estatística, sempre inclua tamanho do efeito**.
+
+## Teste $t$ de Student
+
+Agora estamos prontos para apresentar o teste $t$ de Student.
+
+William Sealy Gosset (químico, 1876-1937) publicou o teste $t$ sob o pseudônimo de "Student", razão pela qual o teste às vezes é chamado de "teste $t$ de Student" [@studentProbableErrorMean1908]. Há controvérsia sobre a origem e o significado de $t$. Uma hipótese é que $s$ era comumente usado na época para se referir a estatísticas de amostra, então Gosset escolheu $t$ como a próxima letra, talvez indicando um “avanço” no pensamento sobre estatísticas de amostra? Gosset publicou sob um pseudônimo porque ele era um funcionário da Cervejaria Guinness na época, e ele foi contratado para examinar questões ao fazer inferências sobre pequenas amostras na fabricação de cerveja. O teste que ele desenvolveu poderia ser propriedade intelectual do Guinness, mas Gosset achou que o teste poderia ser amplamente usado, então ele o publicou sob um pseudônimo para proteger seu trabalho.
+
+O teste $t$ de Student detecta a diferença entre médias de alguma mensuração de dois grupos. Sua **hipótese nula é de que a diferença entre os grupos é zero**, então $p$-valores oriundos do teste $t$ de Student quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. O teste $t$ de Student **assume os seguintes pressupostos com relação aos dados**:
+
+1. **A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.**
+2. **A variável dependente possui homogeneidade de variância dentre os grupos**[^13].
+
+<aside>
+Lembre-se que uma vez violados esses pressupostos, os resultados do teste $t$ são inválidos.
+</aside>
+
+[^13]: Uma versão do teste $t$ de Welch é robusta a heterogeneidade de variâncias e permite com que esse pressuposto seja violado.
 
 ### Student vs Welch
 
-http://daniellakens.blogspot.com/2015/01/always-use-welchs-t-test-instead-of.html
+Em 1947, Bernard Lewis Welch, estatístico britânico adaptou o teste $t$ de Student para ser robusto perante heterogeneidade das variâncias [@welch1947generalization]. O teste $t$ de Welch é muita vezes confudido e reportado erroneamente como teste $t$ de Student, uma vez que pela sua robustez é o teste $t$ padrão de diversos softwares estatísticos [@delacre2017psychologists]. No R a função `t.test()` possui como padrão o teste $t$ de Welch e caso você queira explicitamente usar o teste $t$ de Student você deve incluir o argumento `var.equal = TRUE` na função.
 
-## Teste $t$ para duas Amostras Pareadas
+### Teste $t$ para Amostras Independentes
 
-## Teste $t$ para duas Amostras Independentes
+Quando temos dois grupos na mesma amostra, usamos o teste $t$ para amostras independentes. A função `t.test()` é incluída como padrão no R. Aqui vamos simular dois grupos `A` e `B` cada um com 20 observações e vamos amostrar de uma distribuição Normal para cada um dos grupos com médias diferentes.
 
-## Reportando o resultado com `{papaja}`
+A formula que deve ser passada na função `t.test()` é similar com a formula do `car::leveneTest()`, sendo que é necessário tem que passar dois argumentos:
+
+1. Formula designando qual variável deve ser analisada a diferença de média em quais grupos. A formula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
+
+O resultado para a simulação é um $p$-valor menor que 0.05, ou seja um resultado significante apontando que podemos rejeitar a hipótese nula (fortes evidências contrárias que as médias dos grupos são iguais).
+
+```{r teste-t}
+n_sim_t <- 20
+sim3 <- tibble(
+  group = c(rep("A", n_sim_t), rep("B", n_sim_t)),
+  measure = c(rnorm(n_sim_t, mean = 0), rnorm(n_sim_t, mean = 5))
+)
+
+t.test(measure ~ group, data = sim3)
+```
+
+### Teste $t$ para duas Amostras Pareadas
+
+Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função `t.test()` tem o argumento `paired` que quando definido como `TRUE` faz com que o teste $t$ seja pareado.
+
+A mesma simulação do teste $t$ para amostras pareadas, mas agora não usamos a formula e passamos como argumento as mensurações das duas amostras pareadas:
+
+```{r teste-t-pareado}
+amostra_1 <- tibble(measure = rnorm(n_sim_t, mean = 0))
+amostra_2 <- tibble(measure = rnorm(n_sim_t, mean = 5))
+
+t.test(amostra_1$measure, amostra_2$measure, paired = TRUE)
+```
+
+## Testes $t$ Não-Paramétricos
+
+O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem **não-paramétrica**. O teste $t$ de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.
+
+**Atenção**: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é falsa (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado [@zimmerman1998nonparametric]. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.
+
+### Teste de Mann–Whitney
+
+O teste de Mann-Whitney foi desenvolvido em 1947 para ser uma alternativa não-paramétrica ao teste $t$ para amostras independentes [@mann1947]. Para aplicar o teste Mann-Whitney use a função `wilcox.test()`[^14] é incluída como padrão no R. Aqui vamos simular novemente dois grupos `A` e `B` cada um com 20 observações e vamos amostrar de uma distribuição Log-Normal para cada um dos grupos com médias diferentes. A síntaxe é a mesma que a função `t.test()`.
+
+[^14]: O teste Mann-Whitney também e chamado de teste de Mann–Whitney–Wilcoxon (MWW), teste da soma dos postos de Wilcoxon e teste de Wilcoxon–Mann–Whitney. Por isso o nome da função R para teste de Mann-Whitney é `wilcox.test()`.
+
+```{r wilcox}
+sim4 <- tibble(
+  group = c(rep("A", n_sim_t), rep("B", n_sim_t)),
+  measure = c(rlnorm(n_sim_t, mean = 0), rlnorm(n_sim_t, mean = 5))
+)
+
+wilcox.test(measure ~ group, data = sim4)
+```
+
+
+### Teste de Wilcoxon
+
+O teste de Wilcoxon foi desenvolvido em 1945 para ser uma alternativa não-paramétrica ao teste $t$ para amostras pareadas [@wilcoxon1945]. A função `wilcox.test()`[^15] tem o argumento `paired` que quando definido como `TRUE` faz com que o teste não-paramétrico seja pareado (muito similar a função `t.test()` para amostras pareadas).
+
+[^15]: Teste de Wilcoxon também e conhecido como testes dos postos sinalizados de Wilcoxon.
+
+A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora não usamos a formula e passamos como argumento as mensurações das duas amostras pareadas:
+
+```{r wilcox-pareado}
+amostra_3 <- tibble(measure = rlnorm(n_sim_t, mean = 0))
+amostra_4 <- tibble(measure = rlnorm(n_sim_t, mean = 5))
+
+wilcox.test(amostra_3$measure, amostra_4$measure, paired = TRUE)
+```
+
+## Como visualizar testes de média entre grupos com R
+
+Uma das bibliotecas que usamos bastante para visualização de testes estatísticos é a `{ggpubr}` [@ggpubr]. Veja um exemplo abaixo com um dos *datasets* que simulamos nesse tutorial.
+
+Primeiramente criamos um diagrama de caixa (*boxplot*) com a função `ggboxplot()` na qual especificamos o eixo X, eixo Y, cor, paleta de cores etc. Na sequencia adicionamos a camada das estatísticas de comparação dos grupos com o `stat_compare_means()` especificando que tipo de método será utilizado na análise:
+
+* `"wilcox.test"` -- Teste não-paramétrico de Wilcoxon (padrão da função).
+* `"t.test"` -- Teste $t$ paramétrico de Welch.
+
+```{r ggpubr, fig.cap='Diagrama de Caixa usando o {ggpubr} -- Amostras Independentes', message=FALSE, warning=FALSE}
+library(ggpubr)
+ggboxplot(sim3, x = "group", y = "measure", color = "group", palette = "lancet", add = "jitter") +
+  stat_compare_means(method = "t.test")
+```
+Para testes usando amostras pareadas é necessário usar a função `ggpaired()` e adicionar o argumento `paired = TRUE` dentro da função `stat_compare_means()`
+
+```{r ggpubr-paired, fig.cap='Diagrama de Caixa usando o {ggpubr} -- Amostras Pareadas', message=FALSE, warning=FALSE}
+ggpaired(sim3, x = "group", y = "measure", color = "group", palette = "lancet", line.color = "gray", line.size = 0.4) +
+  stat_compare_means(method = "t.test", paired = TRUE)
+```
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```

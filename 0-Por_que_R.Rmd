@@ -70,7 +70,7 @@ Agora as **diferenças**. Essa é a parte mais interessante e sem dúvida desenc
 [^4]: Notem que estas são nossas opiniões. E como não casamos com opiniões, casamos com fatos (afinal somos estatísticos): uma vez que os fatos mudam, nossas opiniões mudarão de acordo.
 
 * R é mais voltada para o paradigma de programação funcional, enquanto Python é mais voltado para o paradigma de programação orientada a objetos
-* R é feito por estatísticos para estatísticos. Dados tabulares e funções estatísticas são "cidadãos de primeira-classe". Python teve que sofrer (e ainda sofre) muita ~~gambiarra~~ customizações para conseguirem trabalhar com dados tabulares e funções estatísticas.
+* R é feito por estatísticos para estatísticos (ou para quem queira primeiramente fazer análises estatísticas). Dados tabulares e funções estatísticas são "cidadãos de primeira-classe". Python teve que sofrer (e ainda sofre) muitas ~~gambiarras~~ customizações para conseguirem trabalhar com dados tabulares e funções estatísticas.
 * R é mais interoperacional que Python. Com o R conseguimos exportar a aproveitar resultados de uma biblioteca em outra por meio de objetos `data.frame`. Com o Python, isto é mais complicado e interoperabilidade envolve ~~martelar~~ transformar objetos oriundos de uma biblioteca em classes comuns de Python ou em tipos de arquivos comuns (JSON, CSV etc.)
 * R é mais usado pelos cientistas e estatísticos[^5].
 * R possui mais bibliotecas e maneiras de se analisar estatisticamente dados que Python. Maioria das novas inovações em métodos estatísticos oriundos de teses e artigos são também escritos em bibliotecas de R e publicados.

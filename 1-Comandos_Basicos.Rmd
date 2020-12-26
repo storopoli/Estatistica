@@ -43,9 +43,9 @@ Quando você salva esse notebook, um arquivo HTML contendo o código e os result
 
 Essa visualização mostra uma copia renderizada em HTML do editor do R. Ao contrário do botão *Knit*, *Preview* não executra nenhum código de R. Ele apenas exibe o output do código quando foi executado a última vez. Além disso, o botão *Knit* permite com que você renderize o documento como HTML, PDF ou Word.
 
-# Lendo Arquivos
+## Lendo Arquivos
 
-## CSV
+### CSV
 
 Para ler um arquivo CSV (`.csv`) no R execute a função `read.csv()` para arquivos CSV formato americano (vírgula como separador e decimais como ponto) ou a função `read.csv2()` para arquivos CSV formato europeu/brasileiro (ponto-e-vírgula como separador e decimais como vírgula). Não esqueça de designar a leitura para uma variável com o designador `<-`.
 
@@ -54,7 +54,7 @@ df <- read.csv2("datasets/mtcars.csv", row.names = 1)
 head(df)
 ```
 
-## Excel
+### Excel
 
 Para ler um arquivo Excel (`.xls` ou `.xlsx`) no R é necessário importar um pacote chamado `readxl` que contem a função `read_excel`. Para importar um pacote no R executamos o comando `library()` com um argumento único sendo o nome do pacote. Caso não tenha o pacote instalado, deve instalar ele com o comando `install.packages()`. Não esqueça de colocar o nome do pacote entre aspas `"nome_do_pacote"` dentro do parênteses da função.
 
@@ -65,7 +65,7 @@ df <- read_excel("datasets/mtcars.xlsx")
 head(df)
 ```
 
-# Gráficos
+## Gráficos
 
 Geralmente no R você pode *plotar* diversos objetos (variáveis do ambiente) com o comando `plot()`. Quando você *plota* um dataset (conjunto de dados lido de um aquivo), o R retorna um gráfico chamado *Pair Plot*:
 
@@ -78,7 +78,7 @@ Exemplo: Veja a relação entre `disp` (cilindrada) e `hp` (cavalos de potência
 plot(mtcars)
 ```
 
-# Ambiente
+## Ambiente
 
 ```{r SessionInfo}
 sessionInfo()
