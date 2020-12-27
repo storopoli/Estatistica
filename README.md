@@ -32,11 +32,12 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 ### Conteúdos Principais
 
 1. Comandos Básicos de R
-2. Teste de Hipóteses e Teste $t$
-3. Análise de Variância (ANOVA)
-4. Correlações
-5. Regressão Linear
-6. Regressão Logística
+2. $p$-Valores, Hipóteses Nula e Pressupostos
+3. Teste de Hipóteses e Teste $t$
+4. Análise de Variância (ANOVA)
+5. Correlações
+6. Regressão Linear
+7. Regressão Logística
 
 ### Conteúdos Auxiliares
 

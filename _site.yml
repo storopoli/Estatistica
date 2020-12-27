@@ -16,16 +16,18 @@ navbar:
       menu:
         - text: "1. Comandos Básicos"
           href: 1-Comandos_Basicos.html
-        - text: "2. Teste t"
-          href: 2-Teste_t.html
-        - text: "3. ANOVA"
-          href: 3-ANOVA.html
-        - text: "4. Correlações"
-          href: 4-Correlacoes.html
-        - text: "5. Regressão Linear"
-          href: 5-Regressao_Linear.html
-        - text: "6. Regressão Logística"
-          href: 6-Regressao_Logistica.html
+        - text: "2. $p$-valores, $H_0$ e Pressupostos"
+          href: 2-p-valores.html
+        - text: "3. Teste t"
+          href: 3-Teste_t.html
+        - text: "4. ANOVA"
+          href: 4-ANOVA.html
+        - text: "5. Correlações"
+          href: 5-Correlacoes.html
+        - text: "6. Regressão Linear"
+          href: 6-Regressao_Linear.html
+        - text: "7. Regressão Logística"
+          href: 7-Regressao_Logistica.html
     - text: "Conteúdos Auxiliares"
       menu:
         - text: "Dados Faltantes"

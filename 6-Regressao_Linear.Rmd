@@ -14,8 +14,10 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: "`r Sys.Date()`"
-citation_url: https://storopoli.github.io/Estatistica/4-Correlacoes.html
-slug: storopoli2020correlacoesR
+citation_url: https://storopoli.github.io/Estatistica/6-Regressao_Linear.html
+slug: storopoli2020regressaolinearR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}

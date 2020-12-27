@@ -45,11 +45,12 @@ Para quem gosta de nomenclaturas chiques: **Conteúdos curriculares obrigatório
 </aside>
 
 1. [Comandos Básicos de R](1-Comandos_Basicos.html)
-2. [Teste de Hipóteses e Teste $t$](2-Teste_t.html)
-3. [Análise de Variância (ANOVA)](3-ANOVA.html)
-4. [Correlações](4-Correlacoes.html)
-5. [Regressão Linear](5-Regressao_Linear.html)
-6. [Regressão Logística](6-Regressao_Logistica.html)
+2. [$p$-Valores, Hipóteses Nula e Pressupostos](2-p-valores.html)
+3. [Teste de Hipóteses e Teste $t$](3-Teste_t.html)
+4. [Análise de Variância (ANOVA)](4-ANOVA.html)
+5. [Correlações](5-Correlacoes.html)
+6. [Regressão Linear](6-Regressao_Linear.html)
+7. [Regressão Logística](7-Regressao_Logistica.html)
 
 ### Conteúdos Auxiliares
 

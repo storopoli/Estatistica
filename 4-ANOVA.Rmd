@@ -1,0 +1,166 @@
+---
+title: "Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"
+description: |
+  Como comparar as diferenças de uma variável para mais de dois grupos.
+author:
+  - name: Jose Storopoli
+    url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0002-0559-5176
+  - name: Leonardo Vils
+    url: https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en
+    affiliation: UNINOVE
+    affiliation_url: https://www.uninove.br
+    orcid_id: 0000-0003-3059-1967
+date: "`r Sys.Date()`"
+citation_url: https://storopoli.github.io/Estatistica/4-ANOVA.html
+slug: storopoli2020anovaR
+bibliography: bibliografia.bib
+csl: apa.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      fig.width = 6,
+                      fig.asp = 0.618,
+                      out.width = "70%",
+                      fig.align = "center",
+                      fig.retina = 3)
+```
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
+
+Teste t para diferença de média de dois grupos. E se eu tenho mais de dois grupos?
+
+A fórmula para determinar a nova taxa de erro para múltiplos testes t não é tão simples quanto multiplicar 5% pelo número de testes. No entanto, se você estiver fazendo apenas algumas comparações múltiplas, os resultados serão muito semelhantes se você fizer isso. Como tal, três testes t seriam 15% (na verdade, 14,3%) e assim por diante. Estes são erros inaceitáveis. Um ANOVA controla esses erros para que o erro Tipo I permaneça em 5% e você pode ter mais confiança de que qualquer resultado estatisticamente significativo encontrado não está apenas executando muitos testes. Consulte o nosso guia de testes de hipóteses para obter mais informações sobre erros do tipo I. [^1]
+
+[^1]: Erro tipo I
+
+## Pressupostos da ANOVA
+
+* **Independência das observações**:
+* **Normalidade**: variável dependente distribuída conforme uma distribuição Normal
+* **Homogeneidade das Variâncias**:
+
+https://www.datanovia.com/en/lessons/anova-in-r/
+
+## *Dataset* `PlantGrowth`
+
+Dessa vez não vamos simular dados, mas
+
+```{r}
+data("PlantGrowth")
+```
+
+
+## ANOVA Unidirecional[^2]
+
+https://personality-project.org/r/r.guide/r.anova.html
+
+[^2]: One Way ANOVA
+
+```{r}
+# One Way Anova (Completely Randomized Design)
+aov(weight ~ group, data = PlantGrowth)
+```
+
+
+## ANOVA Bidirecional[^3]
+
+https://personality-project.org/r/r.guide/r.anova.html
+
+[^3]: Two Way Factorial Design ANOVA
+
+```{r}
+# Two Way Factorial Design 
+fit <- aov(y ~ A*B, data=mydataframe)
+```
+
+## ANOVA não paramétrica -- Teste Kruskal-Wallis[^4]
+
+[^4]: Kruskal–Wallis test by ranks, Kruskal–Wallis H test. O teste de Kruskal-Wallis por postos, teste H de Kruskal-Wallis (que recebe este nome em homenagem a William Kruskal e W. Allen Wallis) ou análise de variância de um fator em postos
+
+```{r}
+kruskal.test(weight ~ group, data = PlantGrowth)
+```
+
+
+## ANOVA de Medidas Repetidas [^5]
+
+Don’t do it
+
+Ha! Got ya! Trying to run some old school ANOVAs hum? I’ll show you even better!
+
+There is now a tremendous amount of data showing the inadequacy of ANOVAs as a statistical procedure (Camilli, 1987; Levy, 1978; Vasey, 1987; Chang, 2009). Instead, many papers suggest moving toward the mixed-modelling framework (Kristensen, 2004; Jaeger, 2008), which was shown to be more flexible, accurate, powerful and suited for psychological data.
+
+https://journals.sagepub.com/doi/abs/10.3102/10769986012001087
+https://www.tandfonline.com/doi/abs/10.1080/00949657808810247
+https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-8986.1987.tb00324.x
+https://link.springer.com/article/10.1007/s00180-009-0162-z
+
+https://journals.physiology.org/doi/full/10.1152/advan.00042.2003
+https://www.sciencedirect.com/science/article/pii/S0749596X07001337
+
+[^5]: Repeated Measures ANOVA
+
+## Comparações Múltiplas entre Grupos
+
+Although ANOVA is a powerful and useful parametric approach to analyzing approximately normally distributed data with more than two groups (referred to as ‘treatments’), it does not provide any deeper insights into patterns or comparisons between specific groups.
+
+After a multivariate test, it is often desired to know more about the specific groups to find out if they are significantly different or similar. This step after analysis is referred to as ‘post-hoc analysis’ and is a major step in hypothesis testing.
+
+### Teste de Tukey [^6]
+
+https://rpubs.com/aaronsc32/post-hoc-analysis-tukey
+
+
+One common and popular method of post-hoc analysis is Tukey’s Test. The test is known by several different names. Tukey’s test compares the means of all treatments to the mean of every other treatment and is considered the best available method in cases when confidence intervals are desired or if sample sizes are unequal (Wikipedia).
+
+The test statistic used in Tukey’s test is denoted q
+ and is essentially a modified t-statistic that corrects for multiple comparisons. q
+ can be found similarly to the t-statistic:
+
+[^6]: Tukey's HSD (honestly significant difference) test
+
+```{r}
+TukeyHSD(aov.model)
+```
+
+### Teste de Dunn [^7]
+
+The Tukey's HSD makes the assumption that your dependent variable is normally distributed and so is not appropriate as a post-hoc test following a non-parametric omnibus test like Kruskal-Wallis.  The only real non-parametric post-hoc test for unpaired data is the Dunn's test which is basically equivalent.
+
+Dunn, O.J. (1961) Multiple comparisons among means. JASA, 56: 54-64.
+Dunn, O. J. (1964) Multiple comparisons using rank sums Technometrics, 6(3):241-252
+
+```{r}
+library(DescTools)
+DunnTest(weight ~ group, data = PlantGrowth, conf.int = TRUE)
+```
+
+
+[^7]: Dunn's Test
+
+## Como visualizar ANOVAs com R
+
+Mais uma vez vamos recorrer a biblioteca `{ggpubr}` [@ggpubr] para visualização de testes estatísticos. Veja um exemplo abaixo com um dos *datasets* que simulamos nesse tutorial.
+
+adicionamos a camada das estatísticas de comparação dos grupos com o `stat_compare_means()` especificando que tipo de método será utilizado na análise:
+
+* `"anova"` -- ANOVA.
+* `"kruskal.test"` -- ANOVA não paramétrica.
+
+```{r XXX, message=FALSE, warning=FALSE, fig.cap='XXX'}
+library(ggpubr)
+ggboxplot(PlantGrowth, x = "group", y = "weight",
+                color = "group", palette = "lancet",
+                add = "jitter", shape = "group") +
+  stat_compare_means(method = "anova")
+```
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```

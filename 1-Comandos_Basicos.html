@@ -85,9 +85,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos</title>
+  <title>Estatística com R: Comandos Básicos de R</title>
 
-  <meta property="description" itemprop="description" content="Como comparar a diferença de uma variável entre dois grupos."/>
+  <meta property="description" itemprop="description" content="Introdução ao R e aos comandos básicos do R."/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
@@ -98,20 +98,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="article:author" content="Leonardo Vils"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos"/>
+  <meta property="og:title" content="Estatística com R: Comandos Básicos de R"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Como comparar a diferença de uma variável entre dois grupos."/>
+  <meta property="og:description" content="Introdução ao R e aos comandos básicos do R."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Estatística com R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos"/>
-  <meta property="twitter:description" content="Como comparar a diferença de uma variável entre dois grupos."/>
+  <meta property="twitter:title" content="Estatística com R: Comandos Básicos de R"/>
+  <meta property="twitter:description" content="Introdução ao R e aos comandos básicos do R."/>
 
   <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-  <meta name="citation_title" content="Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos"/>
-  <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/2-Teste_t.html"/>
+  <meta name="citation_title" content="Estatística com R: Comandos Básicos de R"/>
+  <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/1-Comandos_Basicos.html"/>
   <meta name="citation_fulltext_world_readable" content=""/>
   <meta name="citation_online_date" content="2020/12/27"/>
   <meta name="citation_publication_date" content="2020/12/27"/>
@@ -120,17 +120,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_author" content="Leonardo Vils"/>
   <meta name="citation_author_institution" content="UNINOVE"/>
   <!--/radix_placeholder_meta_tags-->
-  
-  <meta name="citation_reference" content="citation_title=The probable error of a mean;citation_publication_date=1908;citation_publisher=JSTOR;citation_author= Student"/>
-  <meta name="citation_reference" content="citation_title=The generalization of student’s’ problem when several different population variances are involved;citation_publication_date=1947;citation_publisher=JSTOR;citation_volume=34;citation_author=Bernard L Welch"/>
-  <meta name="citation_reference" content="citation_title=Why psychologists should by default use welch’s t-test instead of student’s t-test;citation_publication_date=2017;citation_publisher=Ubiquity Press;citation_volume=30;citation_author=Marie Delacre;citation_author=Daniel Lakens;citation_author=Christophe Leys"/>
-  <meta name="citation_reference" content="citation_title=Invalidation of parametric and nonparametric statistical tests by concurrent violation of two assumptions;citation_publication_date=1998;citation_publisher=Routledge;citation_volume=67;citation_doi=10.1080/00220979809598344;citation_author=Donald W. Zimmerman"/>
-  <meta name="citation_reference" content="citation_title=On a test of whether one of two random variables is stochastically larger than the other;citation_publication_date=1947;citation_publisher=The Institute of Mathematical Statistics;citation_volume=18;citation_doi=10.1214/aoms/1177730491;citation_author=H. B. Mann;citation_author=D. R. Whitney"/>
-  <meta name="citation_reference" content="citation_title=Ggpubr: ’ggplot2’ based publication ready plots;citation_publication_date=2020;citation_author=Alboukadel Kassambara"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Teste de Médias - Teste t de Student e Testes não-Paramétricos"]},{"type":"character","attributes":{},"value":["Como comparar a diferença de uma variável entre dois grupos.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["2020-12-27"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/2-Teste_t.html"]},{"type":"character","attributes":{},"value":["storopoli2020testetR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug"]}},"value":[{"type":"character","attributes":{},"value":["Comandos Básicos de R"]},{"type":"character","attributes":{},"value":["Introdução ao R e aos comandos básicos do R.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["2020-12-27"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/1-Comandos_Basicos.html"]},{"type":"character","attributes":{},"value":["storopoli2020comandosbasicosR"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2330,7 +2323,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Teste de Médias - Teste t de Student e Testes não-Paramétricos","description":"Como comparar a diferença de uma variável entre dois grupos.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2020-12-27T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2020"}
+{"title":"Comandos Básicos de R","description":"Introdução ao R e aos comandos básicos do R.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2020-12-27T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2351,11 +2344,12 @@ Tutoriais
 </button>
 <div class="nav-dropdown-content">
 <a href="1-Comandos_Basicos.html">1. Comandos Básicos</a>
-<a href="2-Teste_t.html">2. Teste t</a>
-<a href="3-ANOVA.html">3. ANOVA</a>
-<a href="4-Correlacoes.html">4. Correlações</a>
-<a href="5-Regressao_Linear.html">5. Regressão Linear</a>
-<a href="6-Regressao_Logistica.html">6. Regressão Logística</a>
+<a href="2-p-valores.html">2. $p$-valores, $H_0$ e Pressupostos</a>
+<a href="3-Teste_t.html">3. Teste t</a>
+<a href="4-ANOVA.html">4. ANOVA</a>
+<a href="5-Correlacoes.html">5. Correlações</a>
+<a href="6-Regressao_Linear.html">6. Regressão Linear</a>
+<a href="7-Regressao_Logistica.html">7. Regressão Logística</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2386,10 +2380,10 @@ Conteúdos Auxiliares
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Teste de Médias - Teste t de Student e Testes não-Paramétricos</h1>
+<h1>Comandos Básicos de R</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Como comparar a diferença de uma variável entre dois grupos.</p></p>
+<p><p>Introdução ao R e aos comandos básicos do R.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2405,187 +2399,80 @@ Conteúdos Auxiliares
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#teste-t-de-student">Teste <span class="math inline">\(t\)</span> de Student</a>
+<li><a href="#lendo-arquivos">Lendo Arquivos</a>
 <ul>
-<li><a href="#student-vs-welch">Student vs Welch</a></li>
-<li><a href="#teste-t-para-amostras-independentes">Teste <span class="math inline">\(t\)</span> para Amostras Independentes</a></li>
-<li><a href="#teste-t-para-duas-amostras-pareadas">Teste <span class="math inline">\(t\)</span> para duas Amostras Pareadas</a></li>
+<li><a href="#csv">CSV</a></li>
+<li><a href="#excel">Excel</a></li>
 </ul></li>
-<li><a href="#testes-t-não-paramétricos">Testes <span class="math inline">\(t\)</span> Não-Paramétricos</a>
-<ul>
-<li><a href="#teste-de-mannwhitney">Teste de Mann–Whitney</a></li>
-<li><a href="#teste-de-wilcoxon">Teste de Wilcoxon</a></li>
-</ul></li>
-<li><a href="#como-visualizar-testes-de-média-entre-grupos-com-r">Como visualizar testes de média entre grupos com R</a></li>
+<li><a href="#gráficos">Gráficos</a></li>
 <li><a href="#ambiente">Ambiente</a></li>
 </ul>
 </nav>
 </div>
 <p><link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/></p>
-<h2 id="teste-t-de-student">Teste <span class="math inline">\(t\)</span> de Student</h2>
-<p>William Sealy Gosset (químico, 1876-1937) publicou o teste <span class="math inline">\(t\)</span> sob o pseudônimo de “Student,” razão pela qual o teste às vezes é chamado de “teste <span class="math inline">\(t\)</span> de Student” <span class="citation" data-cites="studentProbableErrorMean1908">(<a href="#ref-studentProbableErrorMean1908" role="doc-biblioref">Student, 1908</a>)</span>. Há controvérsia sobre a origem e o significado de <span class="math inline">\(t\)</span>. Uma hipótese é que <span class="math inline">\(s\)</span> era comumente usado na época para se referir a estatísticas de amostra, então Gosset escolheu <span class="math inline">\(t\)</span> como a próxima letra, talvez indicando um “avanço” no pensamento sobre estatísticas de amostra? Gosset publicou sob um pseudônimo porque ele era um funcionário da Cervejaria Guinness na época, e ele foi contratado para examinar questões ao fazer inferências sobre pequenas amostras na fabricação de cerveja. O teste que ele desenvolveu poderia ser propriedade intelectual do Guinness, mas Gosset achou que o teste poderia ser amplamente usado, então ele o publicou sob um pseudônimo para proteger seu trabalho.</p>
-<p>O teste <span class="math inline">\(t\)</span> de Student detecta a diferença entre médias de alguma mensuração de dois grupos. Sua <strong>hipótese nula é de que a diferença entre os grupos é zero</strong>, então <span class="math inline">\(p\)</span>-valores oriundos do teste <span class="math inline">\(t\)</span> de Student quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. O teste <span class="math inline">\(t\)</span> de Student <strong>assume os seguintes pressupostos com relação aos dados</strong>:</p>
-<ol type="1">
-<li><strong>A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.</strong></li>
-<li><strong>A variável dependente possui homogeneidade de variância dentre os grupos</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
-</ol>
-<aside>
-Lembre-se que uma vez violados esses pressupostos, os resultados do teste <span class="math inline">\(t\)</span> são inválidos.
-</aside>
-<h3 id="student-vs-welch">Student vs Welch</h3>
-<p>Em 1947, Bernard Lewis Welch, estatístico britânico adaptou o teste <span class="math inline">\(t\)</span> de Student para ser robusto perante heterogeneidade das variâncias <span class="citation" data-cites="welch1947generalization">(<a href="#ref-welch1947generalization" role="doc-biblioref">Welch, 1947</a>)</span>. O teste <span class="math inline">\(t\)</span> de Welch é muita vezes confudido e reportado erroneamente como teste <span class="math inline">\(t\)</span> de Student, uma vez que pela sua robustez é o teste <span class="math inline">\(t\)</span> padrão de diversos softwares estatísticos <span class="citation" data-cites="delacre2017psychologists">(<a href="#ref-delacre2017psychologists" role="doc-biblioref">Delacre, Lakens, &amp; Leys, 2017</a>)</span>. No R a função <code>t.test()</code> possui como padrão o teste <span class="math inline">\(t\)</span> de Welch e caso você queira explicitamente usar o teste <span class="math inline">\(t\)</span> de Student você deve incluir o argumento <code>var.equal = TRUE</code> na função.</p>
-<h3 id="teste-t-para-amostras-independentes">Teste <span class="math inline">\(t\)</span> para Amostras Independentes</h3>
-<p>Quando temos dois grupos na mesma amostra, usamos o teste <span class="math inline">\(t\)</span> para amostras independentes. A função <code>t.test()</code> é incluída como padrão no R. Aqui vamos simular dois grupos <code>A</code> e <code>B</code> cada um com 20 observações e vamos amostrar de uma distribuição Normal para cada um dos grupos com médias diferentes.</p>
-<p>A fórmula que deve ser passada na função <code>t.test()</code> é similar com a fórmula do <code>car::leveneTest()</code>, sendo que é necessário tem que passar dois argumentos:</p>
-<ol type="1">
-<li>Fórmula designando qual variável deve ser analisada a diferença de média em quais grupos. A fórmula é designada pela seguinte síntaxe: <code>variavel ~ grupo</code>.</li>
-<li>O <em>dataset</em> no qual deverá ser encontrados tanto a varíavel quanto os grupos.</li>
-</ol>
-<p>O resultado para a simulação é um <span class="math inline">\(p\)</span>-valor menor que 0.05, ou seja um resultado significante apontando que podemos rejeitar a hipótese nula (fortes evidências contrárias que as médias dos grupos são iguais).</p>
+<p>Este arquivo é um documento <a href="http://rmarkdown.rstudio.com">R Markdown</a> Quando você executa um código nesse documento os resultados aparecem abaixo do código.</p>
+<p>Para executar um código clique no botão <em>Run</em> (<em>play</em> em cor verde) ou coloque o seu cursos dentro do código e aperte <em>Ctrl+Shift+Enter</em>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='va'>n_sim_t</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
-<span class='va'>sim3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='va'>n_sim_t</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"B"</span>, <span class='va'>n_sim_t</span><span class='op'>)</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>measure</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sim3</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Você executou um código"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>
-    Welch Two Sample t-test
-
-data:  measure by group
-t = -14, df = 38, p-value &lt;0.0000000000000002
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -5.4 -4.1
-sample estimates:
-mean in group A mean in group B 
-           0.21            4.96 </code></pre>
+<pre><code>[1] &quot;Você executou um código&quot;</code></pre>
 </div>
-<aside>
-Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
-</aside>
-<h3 id="teste-t-para-duas-amostras-pareadas">Teste <span class="math inline">\(t\)</span> para duas Amostras Pareadas</h3>
-<p>Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função <code>t.test()</code> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste <span class="math inline">\(t\)</span> seja pareado.</p>
-<p>A mesma simulação do teste <span class="math inline">\(t\)</span> para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:</p>
+<p>Você pode adicionar um novo código clicando no botão <em>Insert Chunk</em> na <em>toolbar</em> ou apertando <em>Crtl+Alt+I</em>.</p>
+<p>Quando você salva esse notebook, um arquivo HTML contendo o código e os resultados será salvo junto com ele (clique no botão <em>Preview</em> ou aperte <em>Crtl+Shift+K</em> para visualizar o arquivo HTML).</p>
+<p>Essa visualização mostra uma copia renderizada em HTML do editor do R. Ao contrário do botão <em>Knit</em>, <em>Preview</em> não executra nenhum código de R. Ele apenas exibe o output do código quando foi executado a última vez. Além disso, o botão <em>Knit</em> permite com que você renderize o documento como HTML, PDF ou Word.</p>
+<h2 id="lendo-arquivos">Lendo Arquivos</h2>
+<h3 id="csv">CSV</h3>
+<p>Para ler um arquivo CSV (<code>.csv</code>) no R execute a função <code>read.csv()</code> para arquivos CSV formato americano (vírgula como separador e decimais como ponto) ou a função <code>read.csv2()</code> para arquivos CSV formato europeu/brasileiro (ponto-e-vírgula como separador e decimais como vírgula). Não esqueça de designar a leitura para uma variável com o designador <code>&lt;-</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>amostra_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>amostra_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/stats/t.test.html'>t.test</a></span><span class='op'>(</span><span class='va'>amostra_1</span><span class='op'>$</span><span class='va'>measure</span>, <span class='va'>amostra_2</span><span class='op'>$</span><span class='va'>measure</span>, paired <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv2</a></span><span class='op'>(</span><span class='st'>"datasets/mtcars.csv"</span>, row.names <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>
-    Paired t-test
-
-data:  amostra_1$measure and amostra_2$measure
-t = -14, df = 19, p-value = 0.00000000002
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -5.6 -4.2
-sample estimates:
-mean of the differences 
-                   -4.9 </code></pre>
+<pre><code>                  mpg cyl disp  hp drat  wt qsec vs am gear carb
+Mazda RX4          21   6  160 110  3.9 2.6   16  0  1    4    4
+Mazda RX4 Wag      21   6  160 110  3.9 2.9   17  0  1    4    4
+Datsun 710         23   4  108  93  3.9 2.3   19  1  1    4    1
+Hornet 4 Drive     21   6  258 110  3.1 3.2   19  1  0    3    1
+Hornet Sportabout  19   8  360 175  3.1 3.4   17  0  0    3    2
+Valiant            18   6  225 105  2.8 3.5   20  1  0    3    1</code></pre>
 </div>
-<aside>
-Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
-</aside>
-<h2 id="testes-t-não-paramétricos">Testes <span class="math inline">\(t\)</span> Não-Paramétricos</h2>
-<p>O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem <strong>não-paramétrica</strong>. O teste <span class="math inline">\(t\)</span> de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.</p>
-<p><strong>Atenção</strong>: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é falsa (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado <span class="citation" data-cites="zimmerman1998nonparametric">(<a href="#ref-zimmerman1998nonparametric" role="doc-biblioref">Zimmerman, 1998</a>)</span>. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.</p>
-<h3 id="teste-de-mannwhitney">Teste de Mann–Whitney</h3>
-<p>O teste de Mann-Whitney foi desenvolvido em 1947 para ser uma alternativa não-paramétrica ao teste <span class="math inline">\(t\)</span> para amostras independentes <span class="citation" data-cites="mann1947">(<a href="#ref-mann1947" role="doc-biblioref">Mann &amp; Whitney, 1947</a>)</span>. Para aplicar o teste Mann-Whitney use a função <code>wilcox.test()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> é incluída como padrão no R. Aqui vamos simular novemente dois grupos <code>A</code> e <code>B</code> cada um com 20 observações e vamos amostrar de uma distribuição Log-Normal para cada um dos grupos com médias diferentes. A síntaxe é a mesma que a função <code>t.test()</code>.</p>
+<h3 id="excel">Excel</h3>
+<p>Para ler um arquivo Excel (<code>.xls</code> ou <code>.xlsx</code>) no R é necessário importar um pacote chamado <code>readxl</code> que contem a função <code>read_excel</code>. Para importar um pacote no R executamos o comando <code>library()</code> com um argumento único sendo o nome do pacote. Caso não tenha o pacote instalado, deve instalar ele com o comando <code>install.packages()</code>. Não esqueça de colocar o nome do pacote entre aspas <code>"nome_do_pacote"</code> dentro do parênteses da função.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>sim4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='va'>n_sim_t</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"B"</span>, <span class='va'>n_sim_t</span><span class='op'>)</span><span class='op'>)</span>,
-  measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>measure</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sim4</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre><code><span class='co'># install.packages("readxl")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='st'>"datasets/mtcars.xlsx"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>
-    Wilcoxon rank sum exact test
-
-data:  measure by group
-W = 0, p-value = 0.00000000001
-alternative hypothesis: true location shift is not equal to 0
-95 percent confidence interval:
- -141 -112
-sample estimates:
-difference in location 
-                  -118 </code></pre>
+<pre><code># A tibble: 6 x 12
+  ...1       mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
+  &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Mazda R…  21       6   160   110  3.9   2.62  16.5     0     1     4
+2 Mazda R…  21       6   160   110  3.9   2.88  17.0     0     1     4
+3 Datsun …  22.8     4   108    93  3.85  2.32  18.6     1     1     4
+4 Hornet …  21.4     6   258   110  3.08  3.22  19.4     1     0     3
+5 Hornet …  18.7     8   360   175  3.15  3.44  17.0     0     0     3
+6 Valiant   18.1     6   225   105  2.76  3.46  20.2     1     0     3
+# … with 1 more variable: carb &lt;dbl&gt;</code></pre>
 </div>
-<aside>
-Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
-</aside>
-<h3 id="teste-de-wilcoxon">Teste de Wilcoxon</h3>
-<p>O teste de Wilcoxon foi desenvolvido em 1945 para ser uma alternativa não-paramétrica ao teste <span class="math inline">\(t\)</span> para amostras pareadas <span class="citation" data-cites="wilcoxon1945">(<a href="#ref-wilcoxon1945" role="doc-biblioref">Wilcoxon, 1945</a>)</span>. A função <code>wilcox.test()</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste não-paramétrico seja pareado (muito similar a função <code>t.test()</code> para amostras pareadas).</p>
-<p>A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre><code><span class='va'>amostra_3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>amostra_4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>amostra_3</span><span class='op'>$</span><span class='va'>measure</span>, <span class='va'>amostra_4</span><span class='op'>$</span><span class='va'>measure</span>, paired <span class='op'>=</span> <span class='cn'>TRUE</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>
-    Wilcoxon signed rank exact test
-
-data:  amostra_3$measure and amostra_4$measure
-V = 0, p-value = 0.000002
-alternative hypothesis: true location shift is not equal to 0
-95 percent confidence interval:
- -204  -74
-sample estimates:
-(pseudo)median 
-          -123 </code></pre>
-</div>
-<aside>
-Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
-</aside>
-<h2 id="como-visualizar-testes-de-média-entre-grupos-com-r">Como visualizar testes de média entre grupos com R</h2>
-<p>Uma das bibliotecas que usamos bastante para visualização de testes estatísticos é a <code>{ggpubr}</code> <span class="citation" data-cites="ggpubr">(<a href="#ref-ggpubr" role="doc-biblioref">Kassambara, 2020</a>)</span>. Veja um exemplo abaixo com um dos <em>datasets</em> que simulamos nesse tutorial.</p>
-<p>Primeiramente criamos um diagrama de caixa (<em>boxplot</em>) com a função <code>ggboxplot()</code> na qual especificamos o eixo X, eixo Y, cor, paleta de cores etc. Na sequencia adicionamos a camada das estatísticas de comparação dos grupos com o <code>stat_compare_means()</code> especificando que tipo de método será utilizado na análise:</p>
+<h2 id="gráficos">Gráficos</h2>
+<p>Geralmente no R você pode <em>plotar</em> diversos objetos (variáveis do ambiente) com o comando <code>plot()</code>. Quando você <em>plota</em> um dataset (conjunto de dados lido de um aquivo), o R retorna um gráfico chamado <em>Pair Plot</em>:</p>
 <ul>
-<li><code>"wilcox.test"</code> – Teste não-paramétrico de Wilcoxon (padrão da função).</li>
-<li><code>"t.test"</code> – Teste <span class="math inline">\(t\)</span> paramétrico de Welch.</li>
+<li>Na diagonal: nome da variável (coluna do dataset)</li>
+<li>Fora da diagonal: um gráfico de dispersão entre a variável no eixo horizontal e a variável no eixo vertical</li>
 </ul>
+<p>Exemplo: Veja a relação entre <code>disp</code> (cilindrada) e <code>hp</code> (cavalos de potência). Ela é uma relação positiva. Quanto maior <code>disp</code> maior <code>hp</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html'>ggboxplot</a></span><span class='op'>(</span><span class='va'>sim3</span>, x <span class='op'>=</span> <span class='st'>"group"</span>, y <span class='op'>=</span> <span class='st'>"measure"</span>, color <span class='op'>=</span> <span class='st'>"group"</span>, palette <span class='op'>=</span> <span class='st'>"lancet"</span>, add <span class='op'>=</span> <span class='st'>"jitter"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/stat_compare_means.html'>stat_compare_means</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"t.test"</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 </code></pre>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:ggpubr"></span>
-<img src="2-Teste_t_files/figure-html5/ggpubr-1.png" alt="Diagrama de Caixa usando o {ggpubr} -- Amostras Independentes" width="70%" />
-<p class="caption">
-Figure 1: Diagrama de Caixa usando o {ggpubr} – Amostras Independentes
-</p>
-</div>
-</div>
-<p>Para testes usando amostras pareadas é necessário usar a função <code>ggpaired()</code> e adicionar o argumento <code>paired = TRUE</code> dentro da função <code>stat_compare_means()</code></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggpaired.html'>ggpaired</a></span><span class='op'>(</span><span class='va'>sim3</span>, x <span class='op'>=</span> <span class='st'>"group"</span>, y <span class='op'>=</span> <span class='st'>"measure"</span>, color <span class='op'>=</span> <span class='st'>"group"</span>, palette <span class='op'>=</span> <span class='st'>"lancet"</span>, line.color <span class='op'>=</span> <span class='st'>"gray"</span>, line.size <span class='op'>=</span> <span class='fl'>0.4</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/stat_compare_means.html'>stat_compare_means</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"t.test"</span>, paired <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:ggpubr-paired"></span>
-<img src="2-Teste_t_files/figure-html5/ggpubr-paired-1.png" alt="Diagrama de Caixa usando o {ggpubr} -- Amostras Pareadas" width="70%" />
-<p class="caption">
-Figure 2: Diagrama de Caixa usando o {ggpubr} – Amostras Pareadas
-</p>
-</div>
+<p><img src="1-Comandos_Basicos_files/figure-html5/plot-1.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2609,62 +2496,25 @@ attached base packages:
 [7] base     
 
 other attached packages:
-[1] ggpubr_0.4.0  dplyr_1.0.2   ggplot2_3.3.2
+[1] readxl_1.3.1
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0  xfun_0.19         purrr_0.3.4      
- [4] haven_2.3.1       carData_3.0-4     colorspace_2.0-0 
- [7] vctrs_0.3.6       generics_0.1.0    htmltools_0.5.0  
-[10] yaml_2.2.1        rlang_0.4.9       pillar_1.4.7     
-[13] foreign_0.8-81    glue_1.4.2        withr_2.3.0      
-[16] readxl_1.3.1      lifecycle_0.2.0   stringr_1.4.0    
-[19] munsell_0.5.0     ggsignif_0.6.0    gtable_0.3.0     
-[22] cellranger_1.1.0  ggsci_2.9         zip_2.1.1        
-[25] evaluate_0.14     labeling_0.4.2    knitr_1.30       
-[28] rio_0.5.16        forcats_0.5.0     parallel_4.0.3   
-[31] curl_4.3          fansi_0.4.1       highr_0.8        
-[34] broom_0.7.3       Rcpp_1.0.5        scales_1.1.1     
-[37] backports_1.2.1   abind_1.4-5       farver_2.0.3     
-[40] distill_1.1       hms_0.5.3         digest_0.6.27    
-[43] stringi_1.5.3     openxlsx_4.2.3    rstatix_0.6.0    
-[46] grid_4.0.3        tools_4.0.3       magrittr_2.0.1   
-[49] tibble_3.0.4      crayon_1.3.4      tidyr_1.1.2      
-[52] car_3.0-10        pkgconfig_2.0.3   downlit_0.2.1    
-[55] ellipsis_0.3.1    data.table_1.13.4 rmarkdown_2.6    
-[58] R6_2.5.0          compiler_4.0.3   </code></pre>
+ [1] Rcpp_1.0.5        compiler_4.0.3    cellranger_1.1.0 
+ [4] pillar_1.4.7      tools_4.0.3       digest_0.6.27    
+ [7] downlit_0.2.1     lubridate_1.7.9.2 jsonlite_1.7.2   
+[10] evaluate_0.14     tibble_3.0.4      lifecycle_0.2.0  
+[13] lattice_0.20-41   pkgconfig_2.0.3   rlang_0.4.9      
+[16] Matrix_1.3-0      cli_2.2.0         rstudioapi_0.13  
+[19] distill_1.1       yaml_2.2.1        parallel_4.0.3   
+[22] xfun_0.19         stringr_1.4.0     xml2_1.3.2       
+[25] knitr_1.30        generics_0.1.0    vctrs_0.3.6      
+[28] rprojroot_2.0.2   grid_4.0.3        reticulate_1.18  
+[31] glue_1.4.2        fansi_0.4.1       rmarkdown_2.6    
+[34] bookdown_0.21     magrittr_2.0.1    htmltools_0.5.0  
+[37] ellipsis_0.3.1    assertthat_0.2.1  utf8_1.1.4       
+[40] stringi_1.5.3     crayon_1.3.4     </code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-delacre2017psychologists" class="csl-entry" role="doc-biblioentry">
-<p>Delacre, M., Lakens, D., &amp; Leys, C. (2017). Why psychologists should by default use welch’s t-test instead of student’s t-test. <em>International Review of Social Psychology</em>, <em>30</em>(1).</p>
-</div>
-<div id="ref-ggpubr" class="csl-entry" role="doc-biblioentry">
-<p>Kassambara, A. (2020). <em>Ggpubr: ’ggplot2’ based publication ready plots</em>. Retrieved from <a href="https://CRAN.R-project.org/package=ggpubr">https://CRAN.R-project.org/package=ggpubr</a></p>
-</div>
-<div id="ref-mann1947" class="csl-entry" role="doc-biblioentry">
-<p>Mann, H. B., &amp; Whitney, D. R. (1947). On a test of whether one of two random variables is stochastically larger than the other. <em>Ann. Math. Statist.</em>, <em>18</em>(1), 50–60. <a href="https://doi.org/10.1214/aoms/1177730491">https://doi.org/10.1214/aoms/1177730491</a></p>
-</div>
-<div id="ref-studentProbableErrorMean1908" class="csl-entry" role="doc-biblioentry">
-<p>Student. (1908). The probable error of a mean. <em>Biometrika</em>, 1–25.</p>
-</div>
-<div id="ref-welch1947generalization" class="csl-entry" role="doc-biblioentry">
-<p>Welch, B. L. (1947). The generalization of student’s’ problem when several different population variances are involved. <em>Biometrika</em>, <em>34</em>(1/2), 28–35.</p>
-</div>
-<div id="ref-wilcoxon1945" class="csl-entry" role="doc-biblioentry">
-<p>Wilcoxon, F. (1945). Individual comparisons by ranking methods. <em>Biometrics Bulletin</em>, <em>1</em>(6), 80–83. Retrieved from <a href="http://www.jstor.org/stable/3001968">http://www.jstor.org/stable/3001968</a></p>
-</div>
-<div id="ref-zimmerman1998nonparametric" class="csl-entry" role="doc-biblioentry">
-<p>Zimmerman, D. W. (1998). Invalidation of parametric and nonparametric statistical tests by concurrent violation of two assumptions. <em>The Journal of Experimental Education</em>, <em>67</em>(1), 55–68. <a href="https://doi.org/10.1080/00220979809598344">https://doi.org/10.1080/00220979809598344</a></p>
-</div>
-</div>
-<section class="footnotes" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>Uma versão do teste <span class="math inline">\(t\)</span> de Welch é robusta a heterogeneidade de variâncias e permite com que esse pressuposto seja violado.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>O teste Mann-Whitney também e chamado de teste de Mann–Whitney–Wilcoxon (MWW), teste da soma dos postos de Wilcoxon e teste de Wilcoxon–Mann–Whitney. Por isso o nome da função R para teste de Mann-Whitney é <code>wilcox.test()</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Teste de Wilcoxon também e conhecido como testes dos postos sinalizados de Wilcoxon.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2672,34 +2522,23 @@ loaded via a namespace (and not attached):
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
 <div class="appendix-bottom">
-<h3 id="references">References</h3>
-<div id="references-listing"></div>
 <h3 id="updates-and-corrections">Corrections</h3>
 <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/storopoli/Estatistica/issues/new">create an issue</a> on the source repository.</p>
 <h3 id="reuse">Reuse</h3>
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source code is available at <a href="https://github.com/storopoli/Estatistica">https://github.com/storopoli/Estatistica</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 <h3 id="citation">Citation</h3>
 <p>For attribution, please cite this work as</p>
-<pre class="citation-appendix short">Storopoli &amp; Vils (2020, Dec. 27). Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos. Retrieved from https://storopoli.github.io/Estatistica/2-Teste_t.html</pre>
+<pre class="citation-appendix short">Storopoli &amp; Vils (2020, Dec. 27). Estatística com R: Comandos Básicos de R. Retrieved from https://storopoli.github.io/Estatistica/1-Comandos_Basicos.html</pre>
 <p>BibTeX citation</p>
-<pre class="citation-appendix long">@misc{storopoli2020testetR,
+<pre class="citation-appendix long">@misc{storopoli2020comandosbasicosR,
   author = {Storopoli, Jose and Vils, Leonardo},
-  title = {Estatística com R: Teste de Médias - Teste t de Student e Testes não-Paramétricos},
-  url = {https://storopoli.github.io/Estatistica/2-Teste_t.html},
+  title = {Estatística com R: Comandos Básicos de R},
+  url = {https://storopoli.github.io/Estatistica/1-Comandos_Basicos.html},
   year = {2020}
 }</pre>
 </div>
