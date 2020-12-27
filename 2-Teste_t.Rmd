@@ -115,7 +115,7 @@ ggplot(aes(x)) +
   )
 ```
 
-Agora com as simulações! Na figura \@ref(fig:simulacoes-normalidade), é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.
+Agora com as simulações! Na figura \@ref(fig:simulacoes-normalidade) é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.
 
 ```{r simulacoes-normalidade, fig.cap='Histograma das Simulações de Normalidade'}
 set.seed(123)
@@ -199,7 +199,7 @@ p3 | p4
 ```
 Um teste muito utilizado para testar a igualdade de variâncias é o teste de Levene. O teste de Levene está disponível na biblioteca `{car}` [@car] na função `leveneTest()` e você tem que passar dois argumentos:
 
-1. Formula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos. A formula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+1. Fórmula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
 2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
 
 <aside>
@@ -363,9 +363,9 @@ Em 1947, Bernard Lewis Welch, estatístico britânico adaptou o teste $t$ de Stu
 
 Quando temos dois grupos na mesma amostra, usamos o teste $t$ para amostras independentes. A função `t.test()` é incluída como padrão no R. Aqui vamos simular dois grupos `A` e `B` cada um com 20 observações e vamos amostrar de uma distribuição Normal para cada um dos grupos com médias diferentes.
 
-A formula que deve ser passada na função `t.test()` é similar com a formula do `car::leveneTest()`, sendo que é necessário tem que passar dois argumentos:
+A fórmula que deve ser passada na função `t.test()` é similar com a fórmula do `car::leveneTest()`, sendo que é necessário tem que passar dois argumentos:
 
-1. Formula designando qual variável deve ser analisada a diferença de média em quais grupos. A formula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+1. Fórmula designando qual variável deve ser analisada a diferença de média em quais grupos. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
 2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
 
 O resultado para a simulação é um $p$-valor menor que 0.05, ou seja um resultado significante apontando que podemos rejeitar a hipótese nula (fortes evidências contrárias que as médias dos grupos são iguais).
@@ -384,7 +384,7 @@ t.test(measure ~ group, data = sim3)
 
 Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função `t.test()` tem o argumento `paired` que quando definido como `TRUE` faz com que o teste $t$ seja pareado.
 
-A mesma simulação do teste $t$ para amostras pareadas, mas agora não usamos a formula e passamos como argumento as mensurações das duas amostras pareadas:
+A mesma simulação do teste $t$ para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:
 
 ```{r teste-t-pareado}
 amostra_1 <- tibble(measure = rnorm(n_sim_t, mean = 0))
@@ -421,7 +421,7 @@ O teste de Wilcoxon foi desenvolvido em 1945 para ser uma alternativa não-param
 
 [^15]: Teste de Wilcoxon também e conhecido como testes dos postos sinalizados de Wilcoxon.
 
-A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora não usamos a formula e passamos como argumento as mensurações das duas amostras pareadas:
+A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:
 
 ```{r wilcox-pareado}
 amostra_3 <- tibble(measure = rlnorm(n_sim_t, mean = 0))

@@ -43,15 +43,15 @@ Aqui usamos Estatística quando nos referimos a disciplina e estatística quando
 
 Então, se você quiser "fazer Estatística" com COBOL, LISP ou qualquer outra coisa fique a vontade... Não vamos te impedir. Agora se você quer "fazer Estatística" sendo:
 
-* Produtivo (Análises/hora)
-* Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
-* Comunicativo (Maioria das ciências aplicadas usam R)
-* Replicável (Com as configurações corretas, sua análise sempre será a mesma)
-* Transparente (Não tem como se esconder atrás de *opensource*)
+1. Produtivo (Análises/hora)
+2. Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)
+3. Comunicativo (Maioria das ciências aplicadas usam R)
+4. Replicável (Com as configurações corretas, sua análise sempre será a mesma)
+5. Transparente (Não tem como se esconder atrás de *opensource*)
 
 Então, acreditamos que o R é a escolha certa
 
-Primeiramente, abordaremos o R versus outras duas linguagens muito usadas para dados: Python e Julia. E na sequência, explanaremos essas 5 características de R.
+Primeiramente, abordaremos o R versus outras duas linguagens muito usadas para dados: Python e Julia. E na sequência, explanaremos essas cinco características de R.
 
 ## R vs Python
 
@@ -104,7 +104,7 @@ Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será 
 
 ## Vantagens de R
 
-Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas nossas 5 características que mostramos.
+Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas cinco características que mostramos.
 
 ### Produtivo (Análises/hora)
 
