@@ -72,7 +72,7 @@ https://personality-project.org/r/r.guide/r.anova.html
 
 [^3]: Two Way Factorial Design ANOVA
 
-```{r}
+```{r, eval=FALSE}
 # Two Way Factorial Design 
 fit <- aov(y ~ A*B, data=mydataframe)
 ```
@@ -123,7 +123,7 @@ The test statistic used in Tukey’s test is denoted q
 
 [^6]: Tukey's HSD (honestly significant difference) test
 
-```{r}
+```{r, eval=FALSE}
 TukeyHSD(aov.model)
 ```
 

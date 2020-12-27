@@ -85,9 +85,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Estatística com R: Untitled</title>
+  <title>Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format."/>
+  <meta property="description" itemprop="description" content="Como comparar as diferenças de uma variável para mais de dois grupos."/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
@@ -98,20 +98,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="article:author" content="Leonardo Vils"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Estatística com R: Untitled"/>
+  <meta property="og:title" content="Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A new article created using the Distill format."/>
+  <meta property="og:description" content="Como comparar as diferenças de uma variável para mais de dois grupos."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Estatística com R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Estatística com R: Untitled"/>
-  <meta property="twitter:description" content="A new article created using the Distill format."/>
+  <meta property="twitter:title" content="Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"/>
+  <meta property="twitter:description" content="Como comparar as diferenças de uma variável para mais de dois grupos."/>
 
   <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-  <meta name="citation_title" content="Estatística com R: Untitled"/>
-  <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/aux-Tabelas.html"/>
+  <meta name="citation_title" content="Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"/>
+  <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/4-ANOVA.html"/>
   <meta name="citation_fulltext_world_readable" content=""/>
   <meta name="citation_online_date" content="2020/12/27"/>
   <meta name="citation_publication_date" content="2020/12/27"/>
@@ -120,10 +120,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_author" content="Leonardo Vils"/>
   <meta name="citation_author_institution" content="UNINOVE"/>
   <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Ggpubr: ’ggplot2’ based publication ready plots;citation_publication_date=2020;citation_author=Alboukadel Kassambara"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["2020-12-27"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/aux-Tabelas.html"]},{"type":"character","attributes":{},"value":["storopoli2020tabelasR"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"]},{"type":"character","attributes":{},"value":["Como comparar as diferenças de uma variável para mais de dois grupos.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["2020-12-27"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/4-ANOVA.html"]},{"type":"character","attributes":{},"value":["storopoli2020anovaR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2323,7 +2325,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2020-12-27T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2020"}
+{"title":"Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica","description":"Como comparar as diferenças de uma variável para mais de dois grupos.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2020-12-27T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2380,10 +2382,10 @@ Conteúdos Auxiliares
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Untitled</h1>
+<h1>Teste de Médias – ANOVA Paramétrica e Não-Paramétrica</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>Como comparar as diferenças de uma variável para mais de dois grupos.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2395,10 +2397,219 @@ Conteúdos Auxiliares
 </div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#pressupostos-da-anova">Pressupostos da ANOVA</a></li>
+<li><a href="#dataset-plantgrowth"><em>Dataset</em> <code>PlantGrowth</code></a></li>
+<li><a href="#anova-unidirecional2">ANOVA Unidirecional</a></li>
+<li><a href="#anova-bidirecional3">ANOVA Bidirecional</a></li>
+<li><a href="#anova-não-paramétrica-teste-kruskal-wallis4">ANOVA não paramétrica – Teste Kruskal-Wallis</a></li>
+<li><a href="#anova-de-medidas-repetidas-5">ANOVA de Medidas Repetidas</a></li>
+<li><a href="#comparações-múltiplas-entre-grupos">Comparações Múltiplas entre Grupos</a>
+<ul>
+<li><a href="#teste-de-tukey-6">Teste de Tukey</a></li>
+<li><a href="#teste-de-dunn-7">Teste de Dunn</a></li>
+</ul></li>
+<li><a href="#como-visualizar-anovas-com-r">Como visualizar ANOVAs com R</a></li>
+<li><a href="#ambiente">Ambiente</a></li>
+</ul>
+</nav>
+</div>
 <p><link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/></p>
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill for R Markdown at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Teste t para diferença de média de dois grupos. E se eu tenho mais de dois grupos?</p>
+<p>A fórmula para determinar a nova taxa de erro para múltiplos testes t não é tão simples quanto multiplicar 5% pelo número de testes. No entanto, se você estiver fazendo apenas algumas comparações múltiplas, os resultados serão muito semelhantes se você fizer isso. Como tal, três testes t seriam 15% (na verdade, 14,3%) e assim por diante. Estes são erros inaceitáveis. Um ANOVA controla esses erros para que o erro Tipo I permaneça em 5% e você pode ter mais confiança de que qualquer resultado estatisticamente significativo encontrado não está apenas executando muitos testes. Consulte o nosso guia de testes de hipóteses para obter mais informações sobre erros do tipo I.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<h2 id="pressupostos-da-anova">Pressupostos da ANOVA</h2>
+<ul>
+<li><strong>Independência das observações</strong>:</li>
+<li><strong>Normalidade</strong>: variável dependente distribuída conforme uma distribuição Normal</li>
+<li><strong>Homogeneidade das Variâncias</strong>:</li>
+</ul>
+<p><a href="https://www.datanovia.com/en/lessons/anova-in-r/" class="uri">https://www.datanovia.com/en/lessons/anova-in-r/</a></p>
+<h2 id="dataset-plantgrowth"><em>Dataset</em> <code>PlantGrowth</code></h2>
+<p>Dessa vez não vamos simular dados, mas</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"PlantGrowth"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="anova-unidirecional2">ANOVA Unidirecional<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
+<p><a href="https://personality-project.org/r/r.guide/r.anova.html" class="uri">https://personality-project.org/r/r.guide/r.anova.html</a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='co'># One Way Anova (Completely Randomized Design)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>PlantGrowth</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Call:
+   aov(formula = weight ~ group, data = PlantGrowth)
+
+Terms:
+                group Residuals
+Sum of Squares    3.8      10.5
+Deg. of Freedom     2        27
+
+Residual standard error: 0.62
+Estimated effects may be unbalanced</code></pre>
+</div>
+<h2 id="anova-bidirecional3">ANOVA Bidirecional<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></h2>
+<p><a href="https://personality-project.org/r/r.guide/r.anova.html" class="uri">https://personality-project.org/r/r.guide/r.anova.html</a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='co'># Two Way Factorial Design </span>
+<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>A</span><span class='op'>*</span><span class='va'>B</span>, data<span class='op'>=</span><span class='va'>mydataframe</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="anova-não-paramétrica-teste-kruskal-wallis4">ANOVA não paramétrica – Teste Kruskal-Wallis<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/kruskal.test.html'>kruskal.test</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>PlantGrowth</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Kruskal-Wallis rank sum test
+
+data:  weight by group
+Kruskal-Wallis chi-squared = 8, df = 2, p-value = 0.02</code></pre>
+</div>
+<h2 id="anova-de-medidas-repetidas-5">ANOVA de Medidas Repetidas<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></h2>
+<p>Don’t do it</p>
+<p>Ha! Got ya! Trying to run some old school ANOVAs hum? I’ll show you even better!</p>
+<p>There is now a tremendous amount of data showing the inadequacy of ANOVAs as a statistical procedure (Camilli, 1987; Levy, 1978; Vasey, 1987; Chang, 2009). Instead, many papers suggest moving toward the mixed-modelling framework (Kristensen, 2004; Jaeger, 2008), which was shown to be more flexible, accurate, powerful and suited for psychological data.</p>
+<p><a href="https://journals.sagepub.com/doi/abs/10.3102/10769986012001087" class="uri">https://journals.sagepub.com/doi/abs/10.3102/10769986012001087</a> <a href="https://www.tandfonline.com/doi/abs/10.1080/00949657808810247" class="uri">https://www.tandfonline.com/doi/abs/10.1080/00949657808810247</a> <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-8986.1987.tb00324.x" class="uri">https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-8986.1987.tb00324.x</a> <a href="https://link.springer.com/article/10.1007/s00180-009-0162-z" class="uri">https://link.springer.com/article/10.1007/s00180-009-0162-z</a></p>
+<p><a href="https://journals.physiology.org/doi/full/10.1152/advan.00042.2003" class="uri">https://journals.physiology.org/doi/full/10.1152/advan.00042.2003</a> <a href="https://www.sciencedirect.com/science/article/pii/S0749596X07001337" class="uri">https://www.sciencedirect.com/science/article/pii/S0749596X07001337</a></p>
+<h2 id="comparações-múltiplas-entre-grupos">Comparações Múltiplas entre Grupos</h2>
+<p>Although ANOVA is a powerful and useful parametric approach to analyzing approximately normally distributed data with more than two groups (referred to as ‘treatments’), it does not provide any deeper insights into patterns or comparisons between specific groups.</p>
+<p>After a multivariate test, it is often desired to know more about the specific groups to find out if they are significantly different or similar. This step after analysis is referred to as ‘post-hoc analysis’ and is a major step in hypothesis testing.</p>
+<h3 id="teste-de-tukey-6">Teste de Tukey<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></h3>
+<p><a href="https://rpubs.com/aaronsc32/post-hoc-analysis-tukey" class="uri">https://rpubs.com/aaronsc32/post-hoc-analysis-tukey</a></p>
+<p>One common and popular method of post-hoc analysis is Tukey’s Test. The test is known by several different names. Tukey’s test compares the means of all treatments to the mean of every other treatment and is considered the best available method in cases when confidence intervals are desired or if sample sizes are unequal (Wikipedia).</p>
+<p>The test statistic used in Tukey’s test is denoted q and is essentially a modified t-statistic that corrects for multiple comparisons. q can be found similarly to the t-statistic:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/TukeyHSD.html'>TukeyHSD</a></span><span class='op'>(</span><span class='va'>aov.model</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="teste-de-dunn-7">Teste de Dunn<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></h3>
+<p>The Tukey’s HSD makes the assumption that your dependent variable is normally distributed and so is not appropriate as a post-hoc test following a non-parametric omnibus test like Kruskal-Wallis. The only real non-parametric post-hoc test for unpaired data is the Dunn’s test which is basically equivalent.</p>
+<p>Dunn, O.J. (1961) Multiple comparisons among means. JASA, 56: 54-64. Dunn, O. J. (1964) Multiple comparisons using rank sums Technometrics, 6(3):241-252</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://andrisignorell.github.io/DescTools/reference/DunnTest.html'>DunnTest</a></span><span class='op'>(</span><span class='va'>weight</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>PlantGrowth</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+ Dunn&#39;s test of multiple comparisons using rank sums : holm  
+
+          mean.rank.diff   pval    
+trt1-ctrl           -4.4 0.2637    
+trt2-ctrl            6.6 0.1823    
+trt2-trt1           11.0 0.0150 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<h2 id="como-visualizar-anovas-com-r">Como visualizar ANOVAs com R</h2>
+<p>Mais uma vez vamos recorrer a biblioteca <code>{ggpubr}</code> <span class="citation" data-cites="ggpubr">(<a href="#ref-ggpubr" role="doc-biblioref">Kassambara, 2020</a>)</span> para visualização de testes estatísticos. Veja um exemplo abaixo com um dos <em>datasets</em> que simulamos nesse tutorial.</p>
+<p>adicionamos a camada das estatísticas de comparação dos grupos com o <code>stat_compare_means()</code> especificando que tipo de método será utilizado na análise:</p>
+<ul>
+<li><code>"anova"</code> – ANOVA.</li>
+<li><code>"kruskal.test"</code> – ANOVA não paramétrica.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html'>ggboxplot</a></span><span class='op'>(</span><span class='va'>PlantGrowth</span>, x <span class='op'>=</span> <span class='st'>"group"</span>, y <span class='op'>=</span> <span class='st'>"weight"</span>,
+                color <span class='op'>=</span> <span class='st'>"group"</span>, palette <span class='op'>=</span> <span class='st'>"lancet"</span>,
+                add <span class='op'>=</span> <span class='st'>"jitter"</span>, shape <span class='op'>=</span> <span class='st'>"group"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/stat_compare_means.html'>stat_compare_means</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"anova"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:XXX"></span>
+<img src="4-ANOVA_files/figure-html5/XXX-1.png" alt="XXX" width="70%" />
+<p class="caption">
+Figure 1: XXX
+</p>
+</div>
+</div>
+<h2 id="ambiente">Ambiente</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>R version 4.0.3 (2020-10-10)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods  
+[7] base     
+
+other attached packages:
+[1] DescTools_0.99.39  ggpubr_0.4.0       car_3.0-10        
+[4] carData_3.0-4      patchwork_1.1.1    dplyr_1.0.2       
+[7] ggplot2_3.3.2      DiagrammeR_1.0.6.1 readxl_1.3.1      
+
+loaded via a namespace (and not attached):
+ [1] lubridate_1.7.9.2  RColorBrewer_1.1-2 rprojroot_2.0.2   
+ [4] ggsci_2.9          tools_4.0.3        backports_1.2.1   
+ [7] utf8_1.1.4         R6_2.5.0           colorspace_2.0-0  
+[10] withr_2.3.0        tidyselect_1.1.0   Exact_2.1         
+[13] downlit_0.2.1      curl_4.3           compiler_4.0.3    
+[16] cli_2.2.0          expm_0.999-5       xml2_1.3.2        
+[19] labeling_0.4.2     bookdown_0.21      scales_1.1.1      
+[22] mvtnorm_1.1-1      rappdirs_0.3.1     stringr_1.4.0     
+[25] digest_0.6.27      foreign_0.8-81     rmarkdown_2.6     
+[28] rio_0.5.16         pkgconfig_2.0.3    htmltools_0.5.0   
+[31] highr_0.8          htmlwidgets_1.5.3  rlang_0.4.9       
+[34] rstudioapi_0.13    visNetwork_2.0.9   farver_2.0.3      
+[37] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
+[40] distill_1.1        magrittr_2.0.1     Matrix_1.3-0      
+[43] Rcpp_1.0.5         munsell_0.5.0      fansi_0.4.1       
+[46] abind_1.4-5        reticulate_1.18    lifecycle_0.2.0   
+[49] stringi_1.5.3      icon_0.1.0.9000    yaml_2.2.1        
+[52] MASS_7.3-53        rootSolve_1.8.2.1  grid_4.0.3        
+[55] parallel_4.0.3     forcats_0.5.0      crayon_1.3.4      
+[58] lmom_2.8           lattice_0.20-41    haven_2.3.1       
+[61] hms_0.5.3          knitr_1.30         pillar_1.4.7      
+[64] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
+[67] glue_1.4.2         evaluate_0.14      data.table_1.13.4 
+[70] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
+[73] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
+[76] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
+[79] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
+[82] tibble_3.0.4       ellipsis_0.3.1    </code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-ggpubr" class="csl-entry" role="doc-biblioentry">
+<p>Kassambara, A. (2020). <em>Ggpubr: ’ggplot2’ based publication ready plots</em>. Retrieved from <a href="https://CRAN.R-project.org/package=ggpubr">https://CRAN.R-project.org/package=ggpubr</a></p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Erro tipo I<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>One Way ANOVA<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Two Way Factorial Design ANOVA<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Kruskal–Wallis test by ranks, Kruskal–Wallis H test. O teste de Kruskal-Wallis por postos, teste H de Kruskal-Wallis (que recebe este nome em homenagem a William Kruskal e W. Allen Wallis) ou análise de variância de um fator em postos<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Repeated Measures ANOVA<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Tukey’s HSD (honestly significant difference) test<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>Dunn’s Test<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2411,18 +2622,20 @@ Conteúdos Auxiliares
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
 <div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
 <h3 id="updates-and-corrections">Corrections</h3>
 <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/storopoli/Estatistica/issues/new">create an issue</a> on the source repository.</p>
 <h3 id="reuse">Reuse</h3>
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source code is available at <a href="https://github.com/storopoli/Estatistica">https://github.com/storopoli/Estatistica</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 <h3 id="citation">Citation</h3>
 <p>For attribution, please cite this work as</p>
-<pre class="citation-appendix short">Storopoli &amp; Vils (2020, Dec. 27). Estatística com R: Untitled. Retrieved from https://storopoli.github.io/Estatistica/aux-Tabelas.html</pre>
+<pre class="citation-appendix short">Storopoli &amp; Vils (2020, Dec. 27). Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica. Retrieved from https://storopoli.github.io/Estatistica/4-ANOVA.html</pre>
 <p>BibTeX citation</p>
-<pre class="citation-appendix long">@misc{storopoli2020tabelasR,
+<pre class="citation-appendix long">@misc{storopoli2020anovaR,
   author = {Storopoli, Jose and Vils, Leonardo},
-  title = {Estatística com R: Untitled},
-  url = {https://storopoli.github.io/Estatistica/aux-Tabelas.html},
+  title = {Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica},
+  url = {https://storopoli.github.io/Estatistica/4-ANOVA.html},
   year = {2020}
 }</pre>
 </div>

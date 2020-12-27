@@ -16,7 +16,7 @@ navbar:
       menu:
         - text: "1. Comandos Básicos"
           href: 1-Comandos_Basicos.html
-        - text: "2. $p$-valores, $H_0$ e Pressupostos"
+        - text: "2. p-valores, Ho e Pressupostos"
           href: 2-p-valores.html
         - text: "3. Teste t"
           href: 3-Teste_t.html

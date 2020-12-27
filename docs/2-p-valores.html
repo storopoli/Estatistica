@@ -2358,7 +2358,7 @@ Tutoriais
 </button>
 <div class="nav-dropdown-content">
 <a href="1-Comandos_Basicos.html">1. Comandos Básicos</a>
-<a href="2-p-valores.html">2. $p$-valores, $H_0$ e Pressupostos</a>
+<a href="2-p-valores.html">2. p-valores, Ho e Pressupostos</a>
 <a href="3-Teste_t.html">3. Teste t</a>
 <a href="4-ANOVA.html">4. ANOVA</a>
 <a href="5-Correlacoes.html">5. Correlações</a>
@@ -2438,8 +2438,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-2f826d05ad3d4f482a38" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2f826d05ad3d4f482a38">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b933509fc777e75ac261" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b933509fc777e75ac261">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2762,7 +2762,7 @@ group   1     346 &lt;0.0000000000000002 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.
+<p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
 <aside>
 Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\)</span>.
 </aside>
@@ -2795,28 +2795,32 @@ attached base packages:
 other attached packages:
 [1] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
 [4] dplyr_1.0.2        ggplot2_3.3.2      DiagrammeR_1.0.6.1
+[7] readxl_1.3.1      
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0   xfun_0.19          purrr_0.3.4       
- [4] haven_2.3.1        colorspace_2.0-0   vctrs_0.3.6       
- [7] generics_0.1.0     htmltools_0.5.0    yaml_2.2.1        
-[10] rlang_0.4.9        pillar_1.4.7       foreign_0.8-81    
-[13] glue_1.4.2         withr_2.3.0        rappdirs_0.3.1    
-[16] RColorBrewer_1.1-2 readxl_1.3.1       lifecycle_0.2.0   
-[19] stringr_1.4.0      cellranger_1.1.0   munsell_0.5.0     
-[22] gtable_0.3.0       zip_2.1.1          visNetwork_2.0.9  
-[25] htmlwidgets_1.5.3  evaluate_0.14      labeling_0.4.2    
-[28] knitr_1.30         rio_0.5.16         forcats_0.5.0     
-[31] parallel_4.0.3     curl_4.3           fansi_0.4.1       
-[34] highr_0.8          Rcpp_1.0.5         scales_1.1.1      
-[37] jsonlite_1.7.2     abind_1.4-5        farver_2.0.3      
-[40] distill_1.1        hms_0.5.3          digest_0.6.27     
-[43] stringi_1.5.3      openxlsx_4.2.3     grid_4.0.3        
-[46] tools_4.0.3        magrittr_2.0.1     tibble_3.0.4      
-[49] crayon_1.3.4       pkgconfig_2.0.3    downlit_0.2.1     
-[52] ellipsis_0.3.1     data.table_1.13.4  xml2_1.3.2        
-[55] rmarkdown_2.6      rstudioapi_0.13    R6_2.5.0          
-[58] icon_0.1.0.9000    compiler_4.0.3    </code></pre>
+ [1] Rcpp_1.0.5         lubridate_1.7.9.2  lattice_0.20-41   
+ [4] visNetwork_2.0.9   assertthat_0.2.1   rprojroot_2.0.2   
+ [7] digest_0.6.27      utf8_1.1.4         R6_2.5.0          
+[10] cellranger_1.1.0   evaluate_0.14      icon_0.1.0.9000   
+[13] highr_0.8          pillar_1.4.7       rlang_0.4.9       
+[16] curl_4.3           rstudioapi_0.13    data.table_1.13.4 
+[19] Matrix_1.3-0       reticulate_1.18    rmarkdown_2.6     
+[22] labeling_0.4.2     stringr_1.4.0      foreign_0.8-81    
+[25] htmlwidgets_1.5.3  munsell_0.5.0      compiler_4.0.3    
+[28] xfun_0.19          pkgconfig_2.0.3    htmltools_0.5.0   
+[31] downlit_0.2.1      tidyselect_1.1.0   tibble_3.0.4      
+[34] bookdown_0.21      rio_0.5.16         fansi_0.4.1       
+[37] crayon_1.3.4       withr_2.3.0        rappdirs_0.3.1    
+[40] grid_4.0.3         jsonlite_1.7.2     gtable_0.3.0      
+[43] lifecycle_0.2.0    magrittr_2.0.1     scales_1.1.1      
+[46] zip_2.1.1          cli_2.2.0          stringi_1.5.3     
+[49] farver_2.0.3       xml2_1.3.2         ellipsis_0.3.1    
+[52] generics_0.1.0     vctrs_0.3.6        openxlsx_4.2.3    
+[55] distill_1.1        RColorBrewer_1.1-2 forcats_0.5.0     
+[58] tools_4.0.3        glue_1.4.2         purrr_0.3.4       
+[61] hms_0.5.3          abind_1.4-5        parallel_4.0.3    
+[64] yaml_2.2.1         colorspace_2.0-0   knitr_1.30        
+[67] haven_2.3.1       </code></pre>
 </div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

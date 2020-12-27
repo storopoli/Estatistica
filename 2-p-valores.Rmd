@@ -366,6 +366,7 @@ leveneTest(heterog ~ group, data = sims2)
 ```
 
 Sobre o $p$-valor que aparece como resultado do teste, $p < 0.05$ ($p$ menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.
+
 <aside>
 Em outras palavras, rejeita-se a hipótese nula $H_0$.
 </aside>
