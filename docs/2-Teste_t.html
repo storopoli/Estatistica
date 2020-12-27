@@ -2805,6 +2805,9 @@ sample estimates:
 mean in group A mean in group B 
             0.2             4.6 </code></pre>
 </div>
+<aside>
+Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 <h3 id="teste-t-para-duas-amostras-pareadas">Teste <span class="math inline">\(t\)</span> para duas Amostras Pareadas</h3>
 <p>Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função <code>t.test()</code> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste <span class="math inline">\(t\)</span> seja pareado.</p>
 <p>A mesma simulação do teste <span class="math inline">\(t\)</span> para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:</p>
@@ -2828,6 +2831,9 @@ sample estimates:
 mean of the differences 
                    -5.1 </code></pre>
 </div>
+<aside>
+Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 <h2 id="testes-t-não-paramétricos">Testes <span class="math inline">\(t\)</span> Não-Paramétricos</h2>
 <p>O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem <strong>não-paramétrica</strong>. O teste <span class="math inline">\(t\)</span> de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.</p>
 <p><strong>Atenção</strong>: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é falsa (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado <span class="citation" data-cites="zimmerman1998nonparametric">(<a href="#ref-zimmerman1998nonparametric" role="doc-biblioref">Zimmerman, 1998</a>)</span>. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.</p>
@@ -2840,7 +2846,7 @@ mean of the differences
   measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>measure</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sim4</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>measure</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sim4</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2848,8 +2854,16 @@ mean of the differences
 
 data:  measure by group
 W = 0, p-value = 0.00000000001
-alternative hypothesis: true location shift is not equal to 0</code></pre>
+alternative hypothesis: true location shift is not equal to 0
+95 percent confidence interval:
+ -197 -107
+sample estimates:
+difference in location 
+                  -127 </code></pre>
 </div>
+<aside>
+Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 <h3 id="teste-de-wilcoxon">Teste de Wilcoxon</h3>
 <p>O teste de Wilcoxon foi desenvolvido em 1945 para ser uma alternativa não-paramétrica ao teste <span class="math inline">\(t\)</span> para amostras pareadas <span class="citation" data-cites="wilcoxon1945">(<a href="#ref-wilcoxon1945" role="doc-biblioref">Wilcoxon, 1945</a>)</span>. A função <code>wilcox.test()</code><a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste não-paramétrico seja pareado (muito similar a função <code>t.test()</code> para amostras pareadas).</p>
 <p>A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:</p>
@@ -2858,7 +2872,7 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 <pre><code><span class='va'>amostra_3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>amostra_4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>measure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='va'>n_sim_t</span>, mean <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>amostra_3</span><span class='op'>$</span><span class='va'>measure</span>, <span class='va'>amostra_4</span><span class='op'>$</span><span class='va'>measure</span>, paired <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/wilcox.test.html'>wilcox.test</a></span><span class='op'>(</span><span class='va'>amostra_3</span><span class='op'>$</span><span class='va'>measure</span>, <span class='va'>amostra_4</span><span class='op'>$</span><span class='va'>measure</span>, paired <span class='op'>=</span> <span class='cn'>TRUE</span>, conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2866,8 +2880,16 @@ alternative hypothesis: true location shift is not equal to 0</code></pre>
 
 data:  amostra_3$measure and amostra_4$measure
 V = 0, p-value = 0.000002
-alternative hypothesis: true location shift is not equal to 0</code></pre>
+alternative hypothesis: true location shift is not equal to 0
+95 percent confidence interval:
+ -215  -98
+sample estimates:
+(pseudo)median 
+          -144 </code></pre>
 </div>
+<aside>
+Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 <h2 id="como-visualizar-testes-de-média-entre-grupos-com-r">Como visualizar testes de média entre grupos com R</h2>
 <p>Uma das bibliotecas que usamos bastante para visualização de testes estatísticos é a <code>{ggpubr}</code> <span class="citation" data-cites="ggpubr">(<a href="#ref-ggpubr" role="doc-biblioref">Kassambara, 2020</a>)</span>. Veja um exemplo abaixo com um dos <em>datasets</em> que simulamos nesse tutorial.</p>
 <p>Primeiramente criamos um diagrama de caixa (<em>boxplot</em>) com a função <code>ggboxplot()</code> na qual especificamos o eixo X, eixo Y, cor, paleta de cores etc. Na sequencia adicionamos a camada das estatísticas de comparação dos grupos com o <code>stat_compare_means()</code> especificando que tipo de método será utilizado na análise:</p>
@@ -2926,33 +2948,29 @@ attached base packages:
 
 other attached packages:
 [1] ggpubr_0.4.0    car_3.0-10      carData_3.0-4   patchwork_1.1.1
-[5] dplyr_1.0.2     ggplot2_3.3.2   readxl_1.3.1   
+[5] dplyr_1.0.2     ggplot2_3.3.2  
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5        lubridate_1.7.9.2 lattice_0.20-41  
- [4] tidyr_1.1.2       assertthat_0.2.1  rprojroot_2.0.2  
- [7] digest_0.6.27     utf8_1.1.4        R6_2.5.0         
-[10] cellranger_1.1.0  backports_1.2.1   evaluate_0.14    
-[13] icon_0.1.0.9000   highr_0.8         pillar_1.4.7     
-[16] rlang_0.4.9       curl_4.3          rstudioapi_0.13  
-[19] data.table_1.13.4 Matrix_1.3-0      reticulate_1.18  
-[22] rmarkdown_2.6     labeling_0.4.2    stringr_1.4.0    
-[25] foreign_0.8-81    munsell_0.5.0     broom_0.7.3      
-[28] compiler_4.0.3    xfun_0.19         pkgconfig_2.0.3  
-[31] htmltools_0.5.0   downlit_0.2.1     tidyselect_1.1.0 
-[34] tibble_3.0.4      bookdown_0.21     rio_0.5.16       
-[37] fansi_0.4.1       crayon_1.3.4      withr_2.3.0      
-[40] rappdirs_0.3.1    grid_4.0.3        jsonlite_1.7.2   
-[43] gtable_0.3.0      lifecycle_0.2.0   magrittr_2.0.1   
-[46] scales_1.1.1      zip_2.1.1         cli_2.2.0        
-[49] stringi_1.5.3     ggsignif_0.6.0    farver_2.0.3     
-[52] xml2_1.3.2        ellipsis_0.3.1    generics_0.1.0   
-[55] vctrs_0.3.6       openxlsx_4.2.3    distill_1.1      
-[58] ggsci_2.9         tools_4.0.3       forcats_0.5.0    
-[61] glue_1.4.2        purrr_0.3.4       hms_0.5.3        
-[64] abind_1.4-5       parallel_4.0.3    yaml_2.2.1       
-[67] colorspace_2.0-0  rstatix_0.6.0     knitr_1.30       
-[70] haven_2.3.1      </code></pre>
+ [1] tidyselect_1.1.0  xfun_0.19         purrr_0.3.4      
+ [4] haven_2.3.1       colorspace_2.0-0  vctrs_0.3.6      
+ [7] generics_0.1.0    htmltools_0.5.0   yaml_2.2.1       
+[10] rlang_0.4.9       pillar_1.4.7      foreign_0.8-81   
+[13] glue_1.4.2        withr_2.3.0       rappdirs_0.3.1   
+[16] readxl_1.3.1      lifecycle_0.2.0   stringr_1.4.0    
+[19] ggsignif_0.6.0    munsell_0.5.0     gtable_0.3.0     
+[22] cellranger_1.1.0  ggsci_2.9         zip_2.1.1        
+[25] evaluate_0.14     labeling_0.4.2    knitr_1.30       
+[28] rio_0.5.16        forcats_0.5.0     parallel_4.0.3   
+[31] curl_4.3          fansi_0.4.1       highr_0.8        
+[34] broom_0.7.3       Rcpp_1.0.5        backports_1.2.1  
+[37] scales_1.1.1      abind_1.4-5       farver_2.0.3     
+[40] distill_1.1       hms_0.5.3         digest_0.6.27    
+[43] stringi_1.5.3     openxlsx_4.2.3    rstatix_0.6.0    
+[46] grid_4.0.3        tools_4.0.3       magrittr_2.0.1   
+[49] tibble_3.0.4      tidyr_1.1.2       crayon_1.3.4     
+[52] pkgconfig_2.0.3   downlit_0.2.1     ellipsis_0.3.1   
+[55] data.table_1.13.4 xml2_1.3.2        rmarkdown_2.6    
+[58] R6_2.5.0          icon_0.1.0.9000   compiler_4.0.3   </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

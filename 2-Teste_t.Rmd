@@ -379,6 +379,9 @@ sim3 <- tibble(
 
 t.test(measure ~ group, data = sim3)
 ```
+<aside>
+Notem que a saída da função `t.test()` possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 
 ### Teste $t$ para duas Amostras Pareadas
 
@@ -392,6 +395,9 @@ amostra_2 <- tibble(measure = rnorm(n_sim_t, mean = 5))
 
 t.test(amostra_1$measure, amostra_2$measure, paired = TRUE)
 ```
+<aside>
+Notem que a saída da função `t.test()` possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 
 ## Testes $t$ Não-Paramétricos
 
@@ -411,9 +417,11 @@ sim4 <- tibble(
   measure = c(rlnorm(n_sim_t, mean = 0), rlnorm(n_sim_t, mean = 5))
 )
 
-wilcox.test(measure ~ group, data = sim4)
+wilcox.test(measure ~ group, data = sim4, conf.int = TRUE)
 ```
-
+<aside>
+Notem que a função `wilcox.test()` não calcula intervalos de confiança. Para isso é necessário adicionar o argumento `conf.int = TRUE` que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 
 ### Teste de Wilcoxon
 
@@ -427,8 +435,11 @@ A mesma simulação do teste de Mann-Whitney para amostras pareadas, mas agora n
 amostra_3 <- tibble(measure = rlnorm(n_sim_t, mean = 0))
 amostra_4 <- tibble(measure = rlnorm(n_sim_t, mean = 5))
 
-wilcox.test(amostra_3$measure, amostra_4$measure, paired = TRUE)
+wilcox.test(amostra_3$measure, amostra_4$measure, paired = TRUE, conf.int = TRUE)
 ```
+<aside>
+Notem que a função `wilcox.test()` não calcula intervalos de confiança. Para isso é necessário adicionar o argumento `conf.int = TRUE` que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
+</aside>
 
 ## Como visualizar testes de média entre grupos com R
 
