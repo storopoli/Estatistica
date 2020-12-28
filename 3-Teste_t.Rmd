@@ -35,6 +35,11 @@ knitr::opts_chunk$set(echo = TRUE,
 
 William Sealy Gosset (químico, 1876-1937) publicou o teste $t$ sob o pseudônimo de "Student", razão pela qual o teste às vezes é chamado de "teste $t$ de Student" [@studentProbableErrorMean1908]. Há controvérsia sobre a origem e o significado de $t$. Uma hipótese é que $s$ era comumente usado na época para se referir a estatísticas de amostra, então Gosset escolheu $t$ como a próxima letra, talvez indicando um “avanço” no pensamento sobre estatísticas de amostra? Gosset publicou sob um pseudônimo porque ele era um funcionário da Cervejaria Guinness na época, e ele foi contratado para examinar questões ao fazer inferências sobre pequenas amostras na fabricação de cerveja. O teste que ele desenvolveu poderia ser propriedade intelectual do Guinness, mas Gosset achou que o teste poderia ser amplamente usado, então ele o publicou sob um pseudônimo para proteger seu trabalho.
 
+```{r fig-gosset, echo=FALSE, fig.cap='William Sealy Gosset. Figura de https://www.wikipedia.org', out.extra='class=external'}
+knitr::include_graphics("images/gosset.jpg")
+```
+
+
 O teste $t$ de Student detecta a diferença entre médias de alguma mensuração de dois grupos. Sua **hipótese nula é de que a diferença entre os grupos é zero**, então $p$-valores oriundos do teste $t$ de Student quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. O teste $t$ de Student **assume os seguintes pressupostos com relação aos dados**:
 
 1. **A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.**
@@ -143,14 +148,15 @@ Primeiramente criamos um diagrama de caixa (*boxplot*) com a função `ggboxplot
 * `"wilcox.test"` -- Teste não-paramétrico de Wilcoxon (padrão da função).
 * `"t.test"` -- Teste $t$ paramétrico de Welch.
 
-```{r ggpubr, fig.cap='Diagrama de Caixa usando o {ggpubr} -- Amostras Independentes', message=FALSE, warning=FALSE}
+```{r ggpubr, fig.cap='Diagrama de Caixa usando o `{ggpubr}` -- Amostras Independentes', message=FALSE, warning=FALSE}
 library(ggpubr)
 ggboxplot(sim3, x = "group", y = "measure", color = "group", palette = "lancet", add = "jitter") +
   stat_compare_means(method = "t.test")
 ```
+
 Para testes usando amostras pareadas é necessário usar a função `ggpaired()` e adicionar o argumento `paired = TRUE` dentro da função `stat_compare_means()`
 
-```{r ggpubr-paired, fig.cap='Diagrama de Caixa usando o {ggpubr} -- Amostras Pareadas', message=FALSE, warning=FALSE}
+```{r ggpubr-paired, fig.cap='Diagrama de Caixa usando o `{ggpubr}` -- Amostras Pareadas', message=FALSE, warning=FALSE}
 ggpaired(sim3, x = "group", y = "measure", color = "group", palette = "lancet", line.color = "gray", line.size = 0.4) +
   stat_compare_means(method = "t.test", paired = TRUE)
 ```
