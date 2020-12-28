@@ -313,23 +313,31 @@ knitr::include_graphics("images/desvio_padrao.png", dpi = 300)
 ]
 
 ---
-class: xlarge
+class: Large
 # Como fazer um seminário?
 
 --
-1. O que é o método/técnica?
+
+1. O que é o **método/técnica**?
 
 --
 
-2. Quando usar? O que está sendo "testado"?
+2. **Quando** usar? O que está sendo **"testado"**?
+  * Hipótese nula $H_0$?
 
 --
 
-3. Como interpretar os resultados?
+3. Como **interpretar os resultados**?
 
 --
 
-4. Quais os pressupostos do método/técnica?
+4. Quais os **pressupostos** do método/técnica?
+
+--
+
+5. **Parte Prática**
+  * Como aplicar o método no JASP
+  * Dados reais
 
 ---
 # Linguagem é importante
