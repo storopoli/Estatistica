@@ -2508,7 +2508,7 @@ mean of the differences
 Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
 </aside>
 <h2 id="testes-t-não-paramétricos">Testes <span class="math inline">\(t\)</span> Não-Paramétricos</h2>
-<p>O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem <strong>não-paramétrica</strong>. O teste <span class="math inline">\(t\)</span> de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.</p>
+<p>O que fazer se meus dados violam o pressuposto de normalidade? Nesse caso devemos usar uma abordagem <strong>não-paramétrica</strong>. O teste <span class="math inline">\(t\)</span> de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.</p>
 <p><strong>Atenção</strong>: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado <span class="citation" data-cites="zimmerman1998nonparametric">(<a href="#ref-zimmerman1998nonparametric" role="doc-biblioref">Zimmerman, 1998</a>)</span>. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.</p>
 <h3 id="teste-de-mannwhitney">Teste de Mann–Whitney</h3>
 <p>O teste de Mann-Whitney foi desenvolvido em 1947 para ser uma alternativa não-paramétrica ao teste <span class="math inline">\(t\)</span> para amostras independentes <span class="citation" data-cites="mann1947">(<a href="#ref-mann1947" role="doc-biblioref">Mann &amp; Whitney, 1947</a>)</span>. Para aplicar o teste Mann-Whitney use a função <code>wilcox.test()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> é incluída como padrão no R. Aqui vamos simular novemente dois grupos <code>A</code> e <code>B</code> cada um com 20 observações e vamos amostrar de uma distribuição Log-Normal para cada um dos grupos com médias diferentes. A síntaxe é a mesma que a função <code>t.test()</code>.</p>
@@ -2627,31 +2627,30 @@ other attached packages:
 [7] DiagrammeR_1.0.6.1 readxl_1.3.1      
 
 loaded via a namespace (and not attached):
- [1] tidyr_1.1.2        jsonlite_1.7.2     assertthat_0.2.1  
- [4] highr_0.8          cellranger_1.1.0   yaml_2.2.1        
- [7] pillar_1.4.7       backports_1.2.1    lattice_0.20-41   
-[10] glue_1.4.2         reticulate_1.18    digest_0.6.27     
-[13] RColorBrewer_1.1-2 ggsignif_0.6.0     colorspace_2.0-0  
-[16] htmltools_0.5.0    Matrix_1.3-0       pkgconfig_2.0.3   
-[19] broom_0.7.3        haven_2.3.1        bookdown_0.21     
-[22] purrr_0.3.4        scales_1.1.1       openxlsx_4.2.3    
-[25] distill_1.1        rio_0.5.16         downlit_0.2.1     
-[28] tibble_3.0.4       generics_0.1.0     farver_2.0.3      
-[31] ellipsis_0.3.1     withr_2.3.0        cli_2.2.0         
-[34] magrittr_2.0.1     crayon_1.3.4       evaluate_0.14     
-[37] fansi_0.4.1        rstatix_0.6.0      forcats_0.5.0     
-[40] xml2_1.3.2         foreign_0.8-81     tools_4.0.3       
-[43] data.table_1.13.4  hms_0.5.3          lifecycle_0.2.0   
-[46] stringr_1.4.0      munsell_0.5.0      ggsci_2.9         
-[49] zip_2.1.1          compiler_4.0.3     rlang_0.4.9       
-[52] grid_4.0.3         rstudioapi_0.13    rappdirs_0.3.1    
-[55] htmlwidgets_1.5.3  visNetwork_2.0.9   icon_0.1.0.9000   
-[58] labeling_0.4.2     rmarkdown_2.6      gtable_0.3.0      
-[61] abind_1.4-5        curl_4.3           R6_2.5.0          
-[64] lubridate_1.7.9.2  knitr_1.30         utf8_1.1.4        
-[67] rprojroot_2.0.2    stringi_1.5.3      parallel_4.0.3    
-[70] Rcpp_1.0.5         vctrs_0.3.6        tidyselect_1.1.0  
-[73] xfun_0.19         </code></pre>
+ [1] Rcpp_1.0.5         lubridate_1.7.9.2  lattice_0.20-41   
+ [4] tidyr_1.1.2        visNetwork_2.0.9   assertthat_0.2.1  
+ [7] rprojroot_2.0.2    digest_0.6.27      utf8_1.1.4        
+[10] R6_2.5.0           cellranger_1.1.0   backports_1.2.1   
+[13] evaluate_0.14      highr_0.8          pillar_1.4.7      
+[16] rlang_0.4.9        curl_4.3           rstudioapi_0.13   
+[19] data.table_1.13.4  Matrix_1.3-0       reticulate_1.18   
+[22] rmarkdown_2.6      labeling_0.4.2     stringr_1.4.0     
+[25] foreign_0.8-81     htmlwidgets_1.5.3  munsell_0.5.0     
+[28] broom_0.7.3        compiler_4.0.3     xfun_0.19         
+[31] pkgconfig_2.0.3    htmltools_0.5.0    downlit_0.2.1     
+[34] tidyselect_1.1.0   tibble_3.0.4       bookdown_0.21     
+[37] rio_0.5.16         fansi_0.4.1        crayon_1.3.4      
+[40] withr_2.3.0        grid_4.0.3         jsonlite_1.7.2    
+[43] gtable_0.3.0       lifecycle_0.2.0    magrittr_2.0.1    
+[46] scales_1.1.1       zip_2.1.1          cli_2.2.0         
+[49] stringi_1.5.3      ggsignif_0.6.0     farver_2.0.3      
+[52] xml2_1.3.2         ellipsis_0.3.1     generics_0.1.0    
+[55] vctrs_0.3.6        openxlsx_4.2.3     distill_1.1       
+[58] ggsci_2.9          RColorBrewer_1.1-2 tools_4.0.3       
+[61] forcats_0.5.0      glue_1.4.2         purrr_0.3.4       
+[64] hms_0.5.3          abind_1.4-5        parallel_4.0.3    
+[67] yaml_2.2.1         colorspace_2.0-0   rstatix_0.6.0     
+[70] knitr_1.30         haven_2.3.1       </code></pre>
 </div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

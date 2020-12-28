@@ -6,7 +6,7 @@
     <meta name="author" content="Jose Storopoli" />
     <meta name="author" content="Leonardo Vils" />
     <meta name="author" content="" />
-    <meta name="date" content="2020-12-24" />
+    <meta name="date" content="2020-12-28" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
@@ -29,7 +29,7 @@ class: center, middle, inverse, title-slide
 ### Jose Storopoli
 ### Leonardo Vils
 ### <img src="images/hex_UNINOVE.png" width="124" />
-### 2020-12-24
+### 2020-12-28
 
 ---
 
@@ -138,14 +138,14 @@ class: Large
 
 .pull-left[
 ## Descritiva
-<div id="htmlwidget-5c8a44cb4225235d1b36" style="width:100%;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5c8a44cb4225235d1b36">{"x":{"diagram":"\n digraph estatistica_descritiva {\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = LR]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Dados\nObservados\"]\n  node [shape = box,\n        fontname = Helvetica]\n  B [label = \"Média\"]; C [label = \"Mediana\"]; D [label = \"Moda\"]; E [label = \"Desvio\nPadrão\"]\n  A -> {B C D E} [dir = forward,\n                    tailport = \"e\",\n                    headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fbfc52d82635d988c6e1" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fbfc52d82635d988c6e1">{"x":{"diagram":"\n digraph estatistica_descritiva {\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = LR]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Dados\nObservados\"]\n  node [shape = box,\n        fontname = Helvetica]\n  B [label = \"Média\"]; C [label = \"Mediana\"]; D [label = \"Moda\"]; E [label = \"Desvio\nPadrão\"]\n  A -> {B C D E} [dir = forward,\n                    tailport = \"e\",\n                    headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 .pull-right[
 ## Inferencial
-<div id="htmlwidget-bc145f7e8913a82e691d" style="width:100%;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bc145f7e8913a82e691d">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2f4c52b7f36e26c300a7" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2f4c52b7f36e26c300a7">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -209,23 +209,31 @@ class: middle
 ]
 
 ---
-class: xlarge
+class: Large
 # Como fazer um seminário?
 
 --
-1. O que é o método/técnica?
+
+1. O que é o **método/técnica**?
 
 --
 
-2. Quando usar? O que está sendo "testado"?
+2. **Quando** usar? O que está sendo **"testado"**?
+  * Hipótese nula `\(H_0\)`?
 
 --
 
-3. Como interpretar os resultados?
+3. Como **interpretar os resultados**?
 
 --
 
-4. Quais os pressupostos do método/técnica?
+4. Quais os **pressupostos** do método/técnica?
+
+--
+
+5. **Parte Prática**
+  * Como aplicar o método no JASP
+  * Dados reais
 
 ---
 # Linguagem é importante
@@ -242,8 +250,8 @@ Regressão Linear é uma técnica para estimar coeficientes de associação `\(\
 ---
 ### O que são modelos e por quê precisamos deles?
 
-<div id="htmlwidget-b14a1b51fac114e464f3" style="width:100%;height:504px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b14a1b51fac114e464f3">{"x":{"diagram":"\n digraph model {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Densidade\nDemográfica\"]\n  AB[label = \"\", fixedsize = \"false\", width=0, height=0, shape=none]\n  B [label = \"Trânsito\n(km)\"]\n  C [label = \"mm de\nChuva\"]\n  A -> AB [arrowhead = None, label = \"+\"]\n  AB -> B \n  C -> AB [xlabel = \"  +\"]\n {rank=same; A; AB; B}\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1d5df3d80f5735caaf13" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1d5df3d80f5735caaf13">{"x":{"diagram":"\n digraph model {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Densidade\nDemográfica\"]\n  AB[label = \"\", fixedsize = \"false\", width=0, height=0, shape=none]\n  B [label = \"Trânsito\n(km)\"]\n  C [label = \"mm de\nChuva\"]\n  A -> AB [arrowhead = None, label = \"+\"]\n  AB -> B \n  C -> AB [xlabel = \"  +\"]\n {rank=same; A; AB; B}\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 .footnote[**Uma boa referência**: Smaldino, P. E. (2017). Models Are Stupid, and We Need More of Them. In Computational Social Psychology (Issue March, pp. 311–331). Routledge. https://doi.org/10.4324/9781315173726-14]
 

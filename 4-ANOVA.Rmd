@@ -31,132 +31,234 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Teste t para diferença de média de dois grupos. E se eu tenho mais de dois grupos?
+O teste $t$ verifica a diferença de média entre dois grupos. **E se eu tenho mais de dois grupos?** A resposta mais inocente seria realizar múltiplos testes $t$ entre os diversos grupos e comparar o tamanho de efeito e $p$-valor dos testes. Porém essa abordagem possui uma falha: conforme aumenta o número de testes^[O número de testes pode ser calculado pela combinação de $n$ grupos tomados 2 a 2 ${n \choose 2}$, então para 3 grupos temos 3 testes, para 4 grupos 6 testes e assim por diante...] a taxa de falsos positivos (erros tipo I) aumentam quase na mesma proporção.
 
-A fórmula para determinar a nova taxa de erro para múltiplos testes t não é tão simples quanto multiplicar 5% pelo número de testes. No entanto, se você estiver fazendo apenas algumas comparações múltiplas, os resultados serão muito semelhantes se você fizer isso. Como tal, três testes t seriam 15% (na verdade, 14,3%) e assim por diante. Estes são erros inaceitáveis. Um ANOVA controla esses erros para que o erro Tipo I permaneça em 5% e você pode ter mais confiança de que qualquer resultado estatisticamente significativo encontrado não está apenas executando muitos testes. Consulte o nosso guia de testes de hipóteses para obter mais informações sobre erros do tipo I. [^1]
+A fórmula para determinar a nova taxa de erro para múltiplos testes $t$ não é tão simples quanto multiplicar 5% pelo número de testes. No entanto, se você estiver fazendo apenas algumas comparações múltiplas, os resultados serão muito semelhantes se você fizer isso. Como tal, três testes $t$ seriam 15% (na verdade, 14.3%) e assim por diante.
 
-[^1]: Erro tipo I
+A taxa de erro para múltiplos testes de $t$ é chamada de **taxa de erro familiar**^[Termo inglês: _**F**amily-**w**ise **e**rror **r**ate_ -- FWER.] e é definida como:
 
-## Pressupostos da ANOVA
+>a probabilidade máxima de que um procedimento consistindo de mais de uma comparação conclua incorretamente que pelo menos uma das diferenças observadas é significativamente diferente da hipótese nula.
 
-* **Independência das observações**:
-* **Normalidade**: variável dependente distribuída conforme uma distribuição Normal
-* **Homogeneidade das Variâncias**:
+Para controlar a taxa de erro familiar, temos um conjunto de técnicas chamada **análise de variância**, conhecida como _**An**alysis **o**f **Va**riance_ (ANOVA). A ANOVA controla esses erros para que os falsos positivos (erros tipo I) permaneçam em 5% na comparação de média entre dois ou mais grupos. A ANOVA não irá dizer com precisão como que as médias dos grupos diferem, mas o seu resultado indica fortes evidências de que a diferença entre as médias dos grupos difere. **Sua hipótese nula é que não há diferença entre as médias dos grupos**. A ANOVA tradicional é uma **técnica paramétrica** (quando a variável dependente é distribuída conforme uma distribuição Normal), mas há também uma versão **não-paramétrica** (quando não temos pressupostos sobre de que distribuição probabilística a variável dependente é distribúida) chamada **teste de Kruskal-Wallis**.
 
-https://www.datanovia.com/en/lessons/anova-in-r/
+Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparação *post-hoc* usando um conjunto de técnicas comparativas de média entre grupos que controlam a taxa de erro familiar. A principal **técnica paramétrica** é o **teste de Tukey** e a principal técnica **não-paramétrica** é o **teste de Dunn**.
 
-## *Dataset* `PlantGrowth`
+## História da ANOVA
 
-Dessa vez não vamos simular dados, mas
+A ANOVA foi primeira proposta por Ronald Fisher[^1] em 1921 [@fisher1210probable] e foi incluída no seu livro de 1925 que popularizou as técnicas de Estatística inferencial [@fisher1925statistical]. A estatística que a ANOVA calcula para testar sua hipótese nula é chamada de **Estatística F**, em homenagem à Fisher. Em 1919 Fisher foi trabalhar em um instituto de pesquisa agrícola chamado *Rothamsted Experimental Station* na Inglaterra, onde ficou até 1933. Foi nesse instituto que Fisher, ao ter acesso a uma vasta quantidade de dados sobre dados de safra agrícola acumulados desde 1842, desenvolveu e fez as primeiras aplicações de ANOVA.
 
-```{r}
-data("PlantGrowth")
+[^1]: Sim, o mesmo Fisher da [aula de $p$-valores](2-p-valores.html). Mais uma contribuição crucial para a ciência e Estatística. Lembrando que Fisher possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias.
+
+```{r fig-fisher, echo=FALSE, fig.cap='Ronald Fisher. Figura de https://www.wikipedia.org', out.extra='class=external'}
+knitr::include_graphics("images/fisher.jpg")
 ```
 
+## *Dataset* `ToothGrowth`
 
-## ANOVA Unidirecional[^2]
+Dessa vez não vamos simular dados, mas vamos usar um *dataset* que vem padrão com o R chamado `ToothGrowth` [@crampton1947], que examina os efeitos da vitamina C no crescimento dos dentes em porquinhos da índia. Cada animal foi atribuído a um de seis grupos de 10 sujeitos cada ($n = 10$) para um total de 60 cobaias ao todo ($N = 60$). As duas variáveis que foram manipuladas neste estudo foram o nível de dosagem de vitamina C `dose` (0.5, 1.0 ou 2.0 mg / dia) e o método de entrega da dosagem `supp` (suco de laranja `OJ` ou ácido absorvico `VC`). A variável dependente é o comprimento dos dentes`len` dos porquinhos da índia.
 
-https://personality-project.org/r/r.guide/r.anova.html
+Nós sempre que carregamos um *dataset* no R, temos o costume de usar a biblioteca `{skimr}` [@skimr] para produzir um sumário dos dados.
 
-[^2]: One Way ANOVA
-
-```{r}
-# One Way Anova (Completely Randomized Design)
-aov(weight ~ group, data = PlantGrowth)
+```{r skimr}
+library(skimr)
+data("ToothGrowth")
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+skim(ToothGrowth)
 ```
 
+Além disso é interessante computar uma tabela de frequência com a função padrão do R `table()` das duas variáveis independentes `supp` e `dose`:
 
-## ANOVA Bidirecional[^3]
-
-https://personality-project.org/r/r.guide/r.anova.html
-
-[^3]: Two Way Factorial Design ANOVA
-
-```{r, eval=FALSE}
-# Two Way Factorial Design 
-fit <- aov(y ~ A*B, data=mydataframe)
+```{r table}
+table(ToothGrowth$supp, ToothGrowth$dose)
 ```
 
-## ANOVA não paramétrica -- Teste Kruskal-Wallis[^4]
+## ANOVA
 
-[^4]: Kruskal–Wallis test by ranks, Kruskal–Wallis H test. O teste de Kruskal-Wallis por postos, teste H de Kruskal-Wallis (que recebe este nome em homenagem a William Kruskal e W. Allen Wallis) ou análise de variância de um fator em postos
+A ANOVA é uma técnica paramétrica e seus pressupostos são similares ao teste $t$ de Student:
 
-```{r}
-kruskal.test(weight ~ group, data = PlantGrowth)
+* **Independência das observações**: o valor de uma observação não influencia ou afeta o valor de outras observações.
+* **Normalidade**: variável dependente distribuída conforme uma distribuição Normal.
+* **Homogeneidade das Variâncias**: variável dependente possui variâncias similares variância os grupos.
+
+Além disso, a ANOVA é utiliza apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).
+
+O pressuposto da normalidade, já coberto na [aula de $p$-valores](2-p-valores.html), pode ser testado com o teste de Shapiro-Wilk usando a função `shapiro.test()`.
+
+```{r shapiro}
+shapiro.test(ToothGrowth$len)
 ```
 
+O $p$-valor do teste é `r shapiro.test(ToothGrowth$len)$p.value` e com isso falhamos em rejeitar a hipótese nula de que `len` é distribuída conforma uma distribuição Normal. Ou seja, **pressuposto de normalidade não violado**.
 
-## ANOVA de Medidas Repetidas [^5]
+Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na [aula de $p$-valores](2-p-valores.html), pode ser testado com o teste de Levene usando a função `leveneTest()` da biblioteca `{car}`.
 
-Don’t do it
+```{r levene, warning=FALSE, message=FALSE}
+library(car)
+leveneTest(len ~ supp, data = ToothGrowth)
+leveneTest(len ~ dose, data = ToothGrowth)
+```
 
-Ha! Got ya! Trying to run some old school ANOVAs hum? I’ll show you even better!
+O $p$-valor de ambos testes para a homogeneidade de variâncias de `len` nos grupos de `supp` e `dose` são respectivamente `0.28` e `0.53`. Com isso falhamos em rejeitar a hipótese nula de que `len` possui variâncias homogêneas nos grupos tanto de `supp` quanto de `dose`. Ou seja, **pressuposto de homogeneidade de variâncias não violado**.
 
-There is now a tremendous amount of data showing the inadequacy of ANOVAs as a statistical procedure (Camilli, 1987; Levy, 1978; Vasey, 1987; Chang, 2009). Instead, many papers suggest moving toward the mixed-modelling framework (Kristensen, 2004; Jaeger, 2008), which was shown to be more flexible, accurate, powerful and suited for psychological data.
+### ANOVA Unidirecional^[Termo inglês: *One-Way ANOVA*.]
+  
+A ANOVA mais simples é chamada de **ANOVA Unidirecional** que examina a **influência de uma variável independente categórica em uma variável contínua dependente**.
 
-https://journals.sagepub.com/doi/abs/10.3102/10769986012001087
-https://www.tandfonline.com/doi/abs/10.1080/00949657808810247
-https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1469-8986.1987.tb00324.x
-https://link.springer.com/article/10.1007/s00180-009-0162-z
+O R possui uma função padrão para calcular ANOVAs `aov()` e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário tem que passar dois argumentos:
 
-https://journals.physiology.org/doi/full/10.1152/advan.00042.2003
-https://www.sciencedirect.com/science/article/pii/S0749596X07001337
+1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
 
-[^5]: Repeated Measures ANOVA
+<aside>
+`aov()` quer dizer **A**nalysis **o**f **V**ariance.
+</aside>
+
+A saída função `aov()` é um objeto `aov` que pode ser passado para uma função `summary()` eu nos trás os resultados da ANOVA.
+
+```{r one-way-anova}
+fit1 <- aov(len ~ supp, data = ToothGrowth)
+summary(fit1)
+```
+
+Podemos ver que o comprimento dos dentes `len` não muda conforme o método de entrega da dosagem `supp` (suco de laranja vs ácido ascórbico).
+
+```{r one-way-anova2}
+fit2 <- aov(len ~ dose, data = ToothGrowth)
+summary(fit2)
+```
+
+Porém, o comprimento dos dentes `len` muda conforme o tamanho da dose `dose` (0.5, 1.0 ou 2.0 mg).
+
+### ANOVA Bidirecional^[Termo inglês: *Two-Way ANOVA*.]
+
+**A ANOVA Bidirecional** é uma extensão da ANOVA Unidirecional que examina a **influência de duas variáveis independentes categóricas em uma variável contínua dependente**. Há duas maneiras de analisarmos essa influência:
+
+* **Efeitos principais**: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de **aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.
+* **Efeitos de interações**: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação **não são aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. **Há uma interação entre as variáveis independentes**.
+
+#### ANOVA Bidirecional com efeitos principais^[Termo inglês: *Main Effects Two-Way ANOVA*.]
+
+Primeiro vamos executar uma ANOVA bidirecional com apenas efeitos principais. Usamos a mesma função `aov()` do R que gerará o mesmo objeto `aov`, porém agora precisamos incluir uma segunda variável independente. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal positivo de adição `+` indicando que as duas variáveis devem ser usadas como efeitos principais na análise:
+
+```{r two-way-anova-main-effects}
+fit3 <- aov(len ~ supp + dose, data = ToothGrowth)
+summary(fit3)
+```
+
+Pelos resultados, podemos ver que **tanto `supp` e `dose` são estatisticamente significantes**. Sendo que `dose` possui o maior tamanho de efeito (`F value`) `124.0` contra `11.4` de `supp`.
+
+#### ANOVA Bidirecional com efeitos de interação^[Termo inglês: *Interaction Effects Two-Way ANOVA*.]
+
+Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função `aov()` do R que gerará o mesmo objeto `aov`, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação[^Matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e de interação na análise:
+
+```{r two-way-anova-interaction-effects}
+fit4 <- aov(len ~ supp * dose, data = ToothGrowth)
+summary(fit4)
+```
+
+Como resultado vemos que os efeitos principais tanto de `supp` e `dose` se mantiveram com $p$-valores e tamanho de efeitos similares. Mas a grande novidade agora é que **a interação `supp:dose` também é estatisticamente significante**. Nesse caso devemos usar a **ANOVA com efeito de interação e não a ANOVA com efeitos principais**. Caso a interação `supp:dose` não fosse estatisticamente significante deveríamos usar a ANOVA com efeitos principais e não a ANOVA com efeito de interação.
+
+## ANOVA Não-Paramétrica -- Teste Kruskal-Wallis^[Termos inglês: *Kruskal–Wallis test by ranks* ou *Kruskal–Wallis H test*.]
+
+O que fazer se minha variável dependente viola os pressupostos de normalidade ou de homogeneidade de variâncias? Nesse caso devemos usar uma abordagem **não-paramétrica**. A ANOVA clássica é uma abordagem paramétrica: depende fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica e que as variâncias entre os grupos é igual. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.
+
+**Atenção**: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado [@zimmerman1998nonparametric]. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.
+
+**A versão não-paramétrica da ANOVA é o teste de Kruskal-Wallis** (também chamado de teste de Kruskal-Wallis por postos ou teste H de Kruskal-Wallis) foi desenvolvido em 1952 por  William Kruskal e W. Allen Wallis [@kruskal1952use]. O teste pode ser encontrada na função padrão que vem com o R `kruskal.test()` e funciona identicamente a `aov()`, com a exceção de que aceita somente *uma* variável independente. `kruskal.test()` aceita dois argumentos:
+
+<aside>
+Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o leitor precise usar uma técnica não-paramétrica para mais de duas variáveis independentes, recomendamos um abordagem que empregue algum modelo linear ([aula 6](6-Regressao_Linear.html)) ou modelo linear generalizado ([aula 7](7-Regressao_Logistica.html)).
+</aside>
+
+1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
+
+Aqui vamos fazer apenas o exemplo com `supp` usando o *dataset* `ToothGrowth`:
+
+```{r kruskal}
+kruskal.test(len ~ supp, data = ToothGrowth)
+```
+
+Como podem ver, o resultado é o mesmo que o da ANOVA paramétrica `aov()`.
+
+## ANOVA de Medidas Repetidas^[Termo inglês: *Repeated Measures ANOVA*]
+
+Caso você esteja procurando por uma extensão natural ao teste $t$ para duas amostras pareadas na ANOVA. Sim, ela existe e se chama ANOVA de Medidas Repetidas, mas nós **recomendamos fortemente que você _não_ use ANOVA de Medidas Repetidas**.
+
+```{r dont-do-it, echo=FALSE}
+knitr::include_graphics("images/dont-do-it.png")
+```
+
+Há bastante evidências que demonstram a inadequação de ANOVAs de medidas repetidas [@camilli1987; @levy1978; @vasey1987; @chang2010comparing]. Diversas referências sugerem trocar a ANOVA de medidas repetidas por um modelo logístico misto [@kristensen2004; @jaeger2008], que se demonstrou mais flexível, acurado e sensível.
+
+<aside>
+Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a função `lme()` da biblioteca `{nlme}`.
+</aside>
 
 ## Comparações Múltiplas entre Grupos
 
-Although ANOVA is a powerful and useful parametric approach to analyzing approximately normally distributed data with more than two groups (referred to as ‘treatments’), it does not provide any deeper insights into patterns or comparisons between specific groups.
+Embora ANOVA seja uma abordagem paramétrica poderosa e útil para analisar dados aproximadamente normalmente distribuídos com mais de dois grupos, ela não fornece nenhuma visão mais profunda dos padrões ou comparações entre grupos específicos.
 
-After a multivariate test, it is often desired to know more about the specific groups to find out if they are significantly different or similar. This step after analysis is referred to as ‘post-hoc analysis’ and is a major step in hypothesis testing.
+Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparação *post-hoc* usando um conjunto de técnicas comparativas de média entre grupos que controlam a taxa de erro familiar. A principal **técnica paramétrica** é o **teste de Tukey** e a principal técnica **não-paramétrica** é o **teste de Dunn**.
 
-### Teste de Tukey [^6]
+### Teste de Tukey^[Termo inglês: *Tukey's HSD (honestly significant difference) test*.]
 
-https://rpubs.com/aaronsc32/post-hoc-analysis-tukey
+Um método comum e popular de análise post-hoc é o Teste de Tukey. O teste é conhecido por vários nomes diferentes: teste de Tukey da diferença honestamente significativa, teste de Tukey da diferença totalmente significativa, entre outros... **O teste de Tukey compara as médias de todos os grupos entre si e é considerado o melhor método disponível nos casos em que os intervalos de confiança são desejados ou se os tamanhos das amostras são desiguais**.
 
+A estatística de teste usada no teste de Tukey é denotada $q$ e é essencialmente uma estatística $t$ modificada que corrige múltiplas comparações.
 
-One common and popular method of post-hoc analysis is Tukey’s Test. The test is known by several different names. Tukey’s test compares the means of all treatments to the mean of every other treatment and is considered the best available method in cases when confidence intervals are desired or if sample sizes are unequal (Wikipedia).
+O teste de Tukey pode ser encontrado na função padrão que vem com o R `tukeyHSD()` e aceita como argumento um objeto `aov` resultante de uma ANOVA:
 
-The test statistic used in Tukey’s test is denoted q
- and is essentially a modified t-statistic that corrects for multiple comparisons. q
- can be found similarly to the t-statistic:
-
-[^6]: Tukey's HSD (honestly significant difference) test
-
-```{r, eval=FALSE}
-TukeyHSD(aov.model)
+```{r tukeyHSD, eval=FALSE}
+TukeyHSD(fit3)
 ```
 
-### Teste de Dunn [^7]
+Como resultado temos uma tabela com todos os grupos das variáveis independentes da ANOVA testados entre si:
 
-The Tukey's HSD makes the assumption that your dependent variable is normally distributed and so is not appropriate as a post-hoc test following a non-parametric omnibus test like Kruskal-Wallis.  The only real non-parametric post-hoc test for unpaired data is the Dunn's test which is basically equivalent.
+* `diff` -- diferença entre os grupos.
+* `lwr` -- intervalo de confiança 95% inferior da diferença.
+* `upr` -- intervalo de confiança 95% superior da diferença.
+* `p adj` -- estatística $q$ do Teste de Tukey, aqui referida como um $p$-valor ajustado.
 
-Dunn, O.J. (1961) Multiple comparisons among means. JASA, 56: 54-64.
-Dunn, O. J. (1964) Multiple comparisons using rank sums Technometrics, 6(3):241-252
+### Teste de Dunn^[Termo inglês: *Dunn's Test*.]
 
-```{r}
+O teste de Tukey assume que a variável dependente é normalmente distribuída e, portanto, não é apropriado como um teste post-hoc após um teste não-paramétrico como Kruskal-Wallis. **O único teste *post-hoc* não paramétrico para esse contexto é o teste de Dunn**[@dunn1964multiple].
+
+Para executar o teste de Dunn é necessário usar a função `DunnTest()` da biblioteca `{DescTools}` [@desctools]. Ela aceita argumentos similares à função `kruskal.test()`:
+
+1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
+
+```{r dunn, warning=FALSE}
 library(DescTools)
-DunnTest(weight ~ group, data = PlantGrowth, conf.int = TRUE)
+DunnTest(len ~ dose, data = ToothGrowth)
 ```
 
-
-[^7]: Dunn's Test
+Uma coisa importante de se notar é que não é possível obter um intervalo de confiança de um teste de Dunn.
 
 ## Como visualizar ANOVAs com R
 
-Mais uma vez vamos recorrer a biblioteca `{ggpubr}` [@ggpubr] para visualização de testes estatísticos. Veja um exemplo abaixo com um dos *datasets* que simulamos nesse tutorial.
+Mais uma vez vamos recorrer a biblioteca `{ggpubr}` [@ggpubr] para visualização de testes estatísticos. Veja um exemplo abaixo com o *dataset* `ToothGrowth`.
 
-adicionamos a camada das estatísticas de comparação dos grupos com o `stat_compare_means()` especificando que tipo de método será utilizado na análise:
+Adicionamos a camada das estatísticas de comparação dos grupos com o `stat_compare_means()` especificando que tipo de método será utilizado na análise:
 
 * `"anova"` -- ANOVA.
 * `"kruskal.test"` -- ANOVA não paramétrica.
 
-```{r XXX, message=FALSE, warning=FALSE, fig.cap='XXX'}
+```{r ggpubr, message=FALSE, warning=FALSE, fig.cap='Diagrama de Caixa usando o `{ggpubr}`  -- ANOVA'}
 library(ggpubr)
-ggboxplot(PlantGrowth, x = "group", y = "weight",
-                color = "group", palette = "lancet",
-                add = "jitter", shape = "group") +
+ggboxplot(ToothGrowth, x = "dose", y = "len",
+                color = "supp", palette = "lancet",
+                add = "jitter", shape = "dose") +
   stat_compare_means(method = "anova")
+```
+
+```{r ggpubr-kruskal, message=FALSE, warning=FALSE, fig.cap='Diagrama de Caixa usando o `{ggpubr}`  -- ANOVA Não-Paramétrica'}
+library(ggpubr)
+ggboxplot(ToothGrowth, x = "dose", y = "len",
+                color = "supp", palette = "lancet",
+                add = "jitter", shape = "dose") +
+  stat_compare_means(method = "kruskal.test")
 ```
 
 ## Ambiente

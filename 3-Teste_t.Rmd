@@ -102,7 +102,7 @@ Notem que a saída da função `t.test()` possui um intervalo de confiança 95% 
 
 ## Testes $t$ Não-Paramétricos
 
-O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem **não-paramétrica**. O teste $t$ de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.
+O que fazer se meus dados violam o pressuposto de normalidade? Nesse caso devemos usar uma abordagem **não-paramétrica**. O teste $t$ de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.
 
 **Atenção**: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado [@zimmerman1998nonparametric]. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.
 
