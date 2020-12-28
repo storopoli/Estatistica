@@ -42,8 +42,9 @@ knitr::include_graphics("images/gosset.jpg")
 
 O teste $t$ de Student detecta a diferença entre médias de alguma mensuração de dois grupos. Sua **hipótese nula é de que a diferença entre os grupos é zero**, então $p$-valores oriundos do teste $t$ de Student quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. O teste $t$ de Student **assume os seguintes pressupostos com relação aos dados**:
 
-1. **A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.**
-2. **A variável dependente possui homogeneidade de variância dentre os grupos**[^13].
+1. **Os dados são independentes**: o valor de uma observação não influencia ou afeta o valor de outras observações.
+2. **A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.**
+3. **A variável dependente possui homogeneidade de variância dentre os grupos**[^13].
 
 <aside>
 Lembre-se que uma vez violados esses pressupostos, os resultados do teste $t$ são inválidos.
@@ -150,14 +151,16 @@ Primeiramente criamos um diagrama de caixa (*boxplot*) com a função `ggboxplot
 
 ```{r ggpubr, fig.cap='Diagrama de Caixa usando o `{ggpubr}` -- Amostras Independentes', message=FALSE, warning=FALSE}
 library(ggpubr)
-ggboxplot(sim3, x = "group", y = "measure", color = "group", palette = "lancet", add = "jitter") +
+ggboxplot(sim3, x = "group", y = "measure", color = "group",
+          palette = "lancet", add = "jitter") +
   stat_compare_means(method = "t.test")
 ```
 
 Para testes usando amostras pareadas é necessário usar a função `ggpaired()` e adicionar o argumento `paired = TRUE` dentro da função `stat_compare_means()`
 
 ```{r ggpubr-paired, fig.cap='Diagrama de Caixa usando o `{ggpubr}` -- Amostras Pareadas', message=FALSE, warning=FALSE}
-ggpaired(sim3, x = "group", y = "measure", color = "group", palette = "lancet", line.color = "gray", line.size = 0.4) +
+ggpaired(sim3, x = "group", y = "measure", color = "group",
+         palette = "lancet", line.color = "gray", line.size = 0.4) +
   stat_compare_means(method = "t.test", paired = TRUE)
 ```
 
