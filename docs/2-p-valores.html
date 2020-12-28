@@ -130,6 +130,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_reference" content="citation_title=The extent and consequences of p-hacking in science;citation_publication_date=2015;citation_publisher=Public Library of Science;citation_volume=13;citation_author=Megan L Head;citation_author=Luke Holman;citation_author=Rob Lanfear;citation_author=Andrew T Kahn;citation_author=Michael D Jennions"/>
   <meta name="citation_reference" content="citation_title=The statistical consequences of fat tails;citation_publication_date=2020;citation_publisher=STEM Academic Press;citation_author=Nassim Nicholas Taleb"/>
   <meta name="citation_reference" content="citation_title=An R companion to applied regression;citation_publication_date=2019;citation_publisher=Sage;citation_author=John Fox;citation_author=Sanford Weisberg"/>
+  <meta name="citation_reference" content="citation_title=Probably overthinking it: There is still only one test;citation_publication_date=2016;citation_author=Allen Downey"/>
+  <meta name="citation_reference" content="citation_title=The introductory statistics course: A ptolemaic curriculum?;citation_publication_date=2007;citation_volume=1;citation_author=George W Cobb"/>
+  <meta name="citation_reference" content="citation_title=Statistical procedures and the justification of knowledge in psychological science;citation_publication_date=1989;citation_publisher=American Psychological Association (PsycARTICLES);citation_volume=44;citation_author=Ralph L Rosnow;citation_author=Robert Rosenthal"/>
+  <meta name="citation_reference" content="citation_title=Causality;citation_publication_date=2009;citation_publisher=Cambridge university press;citation_author=Judea Pearl"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
@@ -2413,6 +2417,7 @@ Conteúdos Auxiliares
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#estatística-inferencial">Estatística Inferencial</a></li>
 <li><a href="#p-valor-e-hipótese-nula-h_0"><span class="math inline">\(p\)</span>-valor e Hipótese Nula <span class="math inline">\(H_0\)</span></a>
 <ul>
 <li><a href="#algumas-questões-históricas">Algumas questões históricas</a></li>
@@ -2420,17 +2425,22 @@ Conteúdos Auxiliares
 <li><a href="#intervalos-de-confiança">Intervalos de Confiança</a></li>
 <li><a href="#significância-estatística-vs-significância-prática">Significância Estatística vs Significância Prática</a></li>
 </ul></li>
+<li><a href="#erro-tipo-i-e-erro-tipo-ii">Erro Tipo I e Erro Tipo II</a></li>
+<li><a href="#tamanho-da-amostra">Tamanho da Amostra</a></li>
 <li><a href="#pressupostos">Pressupostos</a>
 <ul>
 <li><a href="#independência-dos-dados">Independência dos Dados</a></li>
-<li><a href="#normalidade-tamanho-amostral-e-homogeneidade-das-variâncias">Normalidade, Tamanho Amostral e Homogeneidade das Variâncias</a></li>
+<li><a href="#normalidade">Normalidade</a></li>
+<li><a href="#homogeneidade-das-variâncias">Homogeneidade das Variâncias</a></li>
 </ul></li>
+<li><a href="#correlação-versus-causalidade">Correlação versus Causalidade</a></li>
 <li><a href="#comentários-finais">Comentários Finais</a></li>
 <li><a href="#ambiente">Ambiente</a></li>
 </ul>
 </nav>
 </div>
 <p><link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/></p>
+<p>Esse conteúdo foi criado com o intuito de despertar o leitor para a importância da Estatística para a ciência e geração de conhecimento. Nossa ideia é apresentar conceitos da maneira que gostaríamos de ter sido apresentados quando alunos prestes a ser iniciado na ciência. Nossa abordagem é simplificar os conceitos o máximo possível sem perder a sua essência. E, quando necessário, aliando-os com sua trajetória histórica para compreensão do “porque as coisas são como são.” Não estamos atrás de formalismo matemático, mas sim de conseguir desenvolver uma intuição clara do que é cada conceito, quando se deve usá-lo e quais são os principais cuidados que se deve ter.</p>
 <p>A estatística é dividida em duas partes:</p>
 <ol type="1">
 <li><strong>Estatística Descritiva</strong>: Sumariza e quantifica as características de uma amostra de dados observados. Métricas comuns são: média, mediana, moda, desvio padrão, variância, correlação, percentis.</li>
@@ -2438,13 +2448,36 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-12772b1ed0c7f391fa94" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-12772b1ed0c7f391fa94">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-79f813fd19360f2c53eb" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-79f813fd19360f2c53eb">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
 </div>
 </div>
+<h2 id="estatística-inferencial">Estatística Inferencial</h2>
+<p>O nosso foco nesse conjunto de tutoriais é focar na <strong>Estatística inferencial</strong>, porque, ao contrário da Estatística descritiva, a Estatística inferencial é raramente compreendida ao ponto do usuário e consumidor estarem aptos à realizar e consumir análises, respectivamente.</p>
+<p>A Estatística inferencial têm suas origens no final do século XIX, especialmente no trabalho de Karl Pearson<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> e se baseia em um conjunto de técnicas e procedimentos para testar hipóteses sobre uma amostra generalizando para uma população-alvo.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:fig-pearson"></span>
+<img src="images/pearson.jpg" alt="Karl Pearson. Figura de https://www.wikipedia.org" width="70%" class=external />
+<p class="caption">
+Figure 2: Karl Pearson. Figura de <a href="https://www.wikipedia.org" class="uri">https://www.wikipedia.org</a>
+</p>
+</div>
+</div>
+<p>A chave para compreesão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos teste estatístico<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> segue o mesmo padrão universal <span class="citation" data-cites="downey2016">(<a href="#ref-downey2016" role="doc-biblioref">Downey, 2016</a>)</span>:</p>
+<ol type="1">
+<li><strong>Calculamos uma estatística da amostra</strong>. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de <span class="math inline">\(\delta\)</span> (letra gregra delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras…</li>
+<li><strong>Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo</strong>. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estívessemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, …) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de <strong>Hipótese Nula</strong> e é representada com o seguinte símbolo <span class="math inline">\(H_0\)</span>. A estatística <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span> não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span>. Vamos chamar esse valor de <span class="math inline">\(\delta_0\)</span></li>
+<li><strong>Calculamos a probabidalide de obtermos algo como <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span></strong>: chamamos isso de <span class="math inline">\(p\)</span>-valor. O <span class="math inline">\(p\)</span>-valor é a probabilidade de observarmos um <span class="math inline">\(\delta\)</span> no mínimo tão grande quanto o observado num mundo no qual não há o efeito <span class="math inline">\(\delta\)</span>. Ou seja <span class="math inline">\(\delta = 0\)</span>, e consequentemente <span class="math inline">\(\delta = \delta_0\)</span>. Como sabemos do valor <span class="math inline">\(\delta_0\)</span> de antemão, basta compararmos o nosso <span class="math inline">\(\delta\)</span> com <span class="math inline">\(\delta_0\)</span> para gerar o <span class="math inline">\(p\)</span>-valor. Por isso que muitos livros de Estatística possuem um vasto arsenal de tabelas. O leitor pode facilmente ver o seu <span class="math inline">\(\delta\)</span> e com alguns dados sobre a amostra, em especial o número da amostra, obter o <span class="math inline">\(\delta_0\)</span> e <span class="math inline">\(p\)</span>-valor respectivos.</li>
+<li><strong>Decidimos se <span class="math inline">\(\delta\)</span> possui significância estatística</strong>. Escolhemos um limiar de rejeição da <span class="math inline">\(H_0\)</span>, muitas vezes chamado de <span class="math inline">\(\alpha\)</span> (letra gregra alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da <span class="math inline">\(H_0\)</span>.</li>
+</ol>
+<p>Este paradigma descrito nos quatro passos acima é chamado de <em>Null Hypothesis Significance Testing</em> – NHST (tradução: teste de significância de hipótese nula) e é o que predomina em grande parte da ciência do passado e atual.</p>
+<p>Uma segunda chave para a compreensão da Estatística inferencial possui razões históricas. As técnicas de Estatística inferencial clássicas são em grande parte um mecanismo técnico de aproximações numéricas baseadas na distribuição Normal e suas muitas engrenagens subsidiárias. Essa máquina já foi necessária, porque a alternativa conceitualmente mais simples baseada em permutações estava computacionalmente além de nosso alcance<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Antes dos computadores, os estatísticos não tinham escolha <span class="citation" data-cites="cobb2007introductory">(<a href="#ref-cobb2007introductory" role="doc-biblioref">Cobb, 2007</a>)</span>.</p>
+<aside>
+Quem ficou curioso com a história da Estatística. Recomendo um livro de Stephen Stigler intitulado <a href="https://www.hup.harvard.edu/catalog.php?isbn=9780674009790">Statistics on the Table: The History of Statistical Concepts and Methods</a>. O primeiro autor comprou uma cópia em um sebo online.
+</aside>
 <h2 id="p-valor-e-hipótese-nula-h_0"><span class="math inline">\(p\)</span>-valor e Hipótese Nula <span class="math inline">\(H_0\)</span></h2>
 <blockquote>
 <p><span class="math inline">\(p\)</span>-valores são de difícil entendimento, <span class="math inline">\(p &lt; 0.05\)</span>.</p>
@@ -2452,10 +2485,7 @@ Figure 1: Estatística Inferencial
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/meme-pvalue2.jpg" width="70%" height="75%" style="display: block; margin: auto;" /></p>
 </div>
-<p>Sem dúvida, esta parte da Estatística inferencial é a mais complicada e menos intuitiva. Parafraseando Andrew Gelman, estatístico da Columbia University, “Para definir <span class="math inline">\(p\)</span>-valores, escolha uma das duas características: intuitiva ou precisa. Ou sua definição é intuitiva mas imprecisa, ou sua definição é precisa mas não intuitiva.” A grande maioria dos pesquisadores<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> possui uma definição incorreta do que é um <span class="math inline">\(p\)</span>-valor <span class="citation" data-cites="cumming2009inference">(<a href="#ref-cumming2009inference" role="doc-biblioref">Cumming, 2009</a>)</span>. E quando vemos evidências do campo da medicina, que talvez seja o campo com maior quantidade de recursos disponíveis para pesquisa e avanço do conhecimento, também encontramos muitos problemas no uso dos <span class="math inline">\(p\)</span>-valores <span class="citation" data-cites="Ioannidis2019">(<a href="#ref-Ioannidis2019" role="doc-biblioref">Ioannidis, 2019</a>)</span>. Antes de entrarmos nas definições de <span class="math inline">\(p\)</span>-valores, vale a pena tranquilizá-los: <span class="math inline">\(p\)</span>-valores são uma coisa complicada e se você não entender na primeira vez que ler as definições abaixo, não se preocupe, você não estará em má companhia; respire fundo e tente novamente.</p>
-<aside>
-Nem nós ficamos 100% confiantes quando falamos de <span class="math inline">\(p\)</span>-valores…
-</aside>
+<p>Sem dúvida, esta parte da Estatística inferencial é a mais complicada e menos intuitiva. Parafraseando Andrew Gelman, estatístico da Columbia University, “Para definir <span class="math inline">\(p\)</span>-valores, escolha uma das duas características: intuitiva ou precisa. Ou sua definição é intuitiva mas imprecisa, ou sua definição é precisa mas não intuitiva.” A grande maioria dos pesquisadores<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> possui uma definição incorreta do que é um <span class="math inline">\(p\)</span>-valor <span class="citation" data-cites="cumming2009inference">(<a href="#ref-cumming2009inference" role="doc-biblioref">Cumming, 2009</a>)</span>. E quando vemos evidências do campo da medicina, que talvez seja o campo com maior quantidade de recursos disponíveis para pesquisa e avanço do conhecimento, também encontramos muitos problemas no uso dos <span class="math inline">\(p\)</span>-valores <span class="citation" data-cites="Ioannidis2019">(<a href="#ref-Ioannidis2019" role="doc-biblioref">Ioannidis, 2019</a>)</span>. Antes de entrarmos nas definições de <span class="math inline">\(p\)</span>-valores, vale a pena tranquilizá-los: <span class="math inline">\(p\)</span>-valores são uma coisa complicada e se você não entender na primeira vez que ler as definições abaixo, não se preocupe, você não estará em má companhia; respire fundo e tente novamente.</p>
 <p><strong>Primeiramente a definição estatística</strong>:</p>
 <blockquote>
 <p><span class="math inline">\(p\)</span>-valor é a probabilidade de obter resultados no mínimo tão extremos quanto os que foram observados, dado que a hipótese nula <span class="math inline">\(H_0\)</span> é verdadeira.</p>
@@ -2463,29 +2493,35 @@ Nem nós ficamos 100% confiantes quando falamos de <span class="math inline">\(p
 <p>Se você escrever essa definição em qualquer prova, livro ou artigo científico, você estará 100% preciso e correto na definição do que é um <span class="math inline">\(p\)</span>-valor. Agora, a compreensão dessa definição é algo complicado. Para isso, vamos quebrar essa definição em algumas partes para melhor compreensão:</p>
 <ul>
 <li><strong>“probabilidade de obter resultados…”</strong>: vejam que <span class="math inline">\(p\)</span>-valores são uma característica dos seus dados e não da sua teoria ou hipótese.</li>
-<li><strong>“…no mínimo tão extremos quanto os que foram observados…”</strong>: “no minimo tão” implica em definir um limiar para a caracterização de algum achado relevante, que é comumente chamado de alpha, representado pela letra grega <span class="math inline">\(\alpha\)</span>. Geralmente estipulamos alpha em 5% (<span class="math inline">\(\alpha = 0.05\)</span>) e qualquer coisa mais extrema que alpha (ou seja menor que 5%) caracterizamos como <strong>significante</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
-<li><strong>“..dado que a hipótese nula é verdadeira…”</strong>: Todo teste estatístico que possui um <span class="math inline">\(p\)</span>-valor possui uma Hipótese Nula (geralmente escrita como <span class="math inline">\(H_0\)</span>). Hipótese nula, sempre tem a ver com algum <strong>efeito nulo</strong>. Por exemplo, a hipótese nula do teste Shapiro-Wilk e Komolgorov-Smirnov é “os dados são distribuídos conforme uma distribuição Normal” e a do teste de Levene é “as variâncias dos dados são iguais.” Sempre que ver um <span class="math inline">\(p\)</span>-valor, se pergunte: “Qual a hipótese nula que este teste presupõe correta?<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>”</li>
+<li><strong>“…no mínimo tão extremos quanto os que foram observados…”</strong>: “no minimo tão” implica em definir um limiar para a caracterização de algum achado relevante, que é comumente chamado de <span class="math inline">\(\alpha\)</span>. Geralmente estipulamos alpha em 5% (<span class="math inline">\(\alpha = 0.05\)</span>) e qualquer coisa mais extrema que alpha (ou seja menor que 5%) caracterizamos como <strong>significante</strong><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</li>
+<li><strong>“..dado que a hipótese nula é verdadeira…”</strong>: Todo teste estatístico que possui um <span class="math inline">\(p\)</span>-valor possui uma Hipótese Nula (geralmente escrita como <span class="math inline">\(H_0\)</span>). Hipótese nula, sempre tem a ver com algum <strong>efeito nulo</strong>. Por exemplo, a hipótese nula do teste Shapiro-Wilk e Komolgorov-Smirnov é “os dados são distribuídos conforme uma distribuição Normal” e a do teste de Levene é “as variâncias dos dados são iguais.” Sempre que ver um <span class="math inline">\(p\)</span>-valor, se pergunte: “Qual a hipótese nula que este teste presupõe correta?<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>”</li>
 </ul>
+<p>Para entender o <span class="math inline">\(p\)</span>-valor qualquer teste estatístico primeiro descubra qual é a hipótese nula por trás daquele teste. A definição do <span class="math inline">\(p\)</span>-valor não mudará. Em todo teste ela é sempre a mesma. O que muda com o teste é a hipótese nula. Cada teste possui sua <span class="math inline">\(H_0\)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/meme-nullhyp.jpg" width="70%" style="display: block; margin: auto;" /></p>
 </div>
 <p><span class="math inline">\(p\)</span>-valor é a probabilidade dos dados que você obteve dado que a hipótese nula é verdadeira. Para os que gostam do formalismo matemático: <span class="math inline">\(p = P(D|H_0)\)</span>. Em português, essa expressão significa “a probabilidade de <span class="math inline">\(D\)</span> condicionado à <span class="math inline">\(H_0\)</span>.” Antes de avançarmos para alguns exemplos e tentativas de formalizar uma intuição sobre os <span class="math inline">\(p\)</span>-valores, é importante ressaltar que <span class="math inline">\(p\)</span>-valores dizem algo à respeito dos <strong>dados</strong> e não de <strong>hipóteses</strong>. Para o <span class="math inline">\(p\)</span>-valor, <strong>a hipótese nula é verdadeira, e estamos apenas avaliando se os dados se conformam à essa hipótese nula ou não</strong>. Se vocês saírem desse tutorial munidos com essa intuição, o mundo será agraciado com pesquisadores mais preparados para qualificar e interpretar evidências (<span class="math inline">\(p &lt; 0.05\)</span>).</p>
 <p><strong>Exemplo intuitivo</strong>:</p>
 <blockquote>
-<p>Imagine que você tem uma moeda que suspeita ser enviesada para uma probabilidade maior de dar cara. (Sua hipótese nula é então que a moeda é justa.) Você joga a moeda 100 vezes e obtém mais cara do que coroa. O <span class="math inline">\(p\)</span>-valor não dirá se a moeda é justa, mas dirá a probabilidade de você obter pelo menos tantas caras quanto se a moeda fosse justa. É isso - nada mais<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>Imagine que você tem uma moeda que suspeita ser enviesada para uma probabilidade maior de dar cara. (Sua hipótese nula é então que a moeda é justa.) Você joga a moeda 100 vezes e obtém mais cara do que coroa. O <span class="math inline">\(p\)</span>-valor não dirá se a moeda é justa, mas dirá a probabilidade de você obter pelo menos tantas caras quanto se a moeda fosse justa. É isso - nada mais.</p>
 </blockquote>
 <aside>
 Apesar de termos falado anterior que definições intuitivas não são precisas, elas sem dúvida facilitam o entendimento do <span class="math inline">\(p\)</span>-valor.
 </aside>
 <h3 id="algumas-questões-históricas">Algumas questões históricas</h3>
-<p>Não tem como entendermos <span class="math inline">\(p\)</span>-valores se não compreendermos as suas origens e trajetória histórica. A primeira menção do termo foi feita pelo estatístico Ronald Fisher<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> em 1925 <span class="citation" data-cites="fisher1925statistical">(<a href="#ref-fisher1925statistical" role="doc-biblioref">Fisher, 1925</a>)</span> que define o <span class="math inline">\(p\)</span>-valor como um “índice que mede a força da evidência contra a hipótese nula.” Para quantificar a força da evidência contra a hipótese nula, Fisher defendeu “<span class="math inline">\(p&lt;0.05\)</span> (5% de significância) como um nível padrão para concluir que há evidência contra a hipótese testada, embora não como uma regra absoluta.” Fisher não parou por aí mas classificou a força da evidência contra a hipótese nula. Ele propôs “se <span class="math inline">\(p\)</span> está entre 0.1 e 0.9, certamente não há razão para suspeitar da hipótese testada. Se estiver abaixo de 0.02, é fortemente indicado que a hipótese falha em explicar o conjunto dos fatos. Não seremos frequentemente perdidos se traçarmos uma linha convencional de 0.05” Desde que Fisher fez esta declaração há quase 100 anos, o limiar de 0.05 foi usado por pesquisadores e cientistas em todo o mundo e tornou-se ritualístico usar 0.05 como limiar como se outros limiares não pudessem ser usados.</p>
+<p>Não tem como entendermos <span class="math inline">\(p\)</span>-valores se não compreendermos as suas origens e trajetória histórica. A primeira menção do termo foi feita pelo estatístico Ronald Fisher<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> em 1925 <span class="citation" data-cites="fisher1925statistical">(<a href="#ref-fisher1925statistical" role="doc-biblioref">Fisher, 1925</a>)</span> que define o <span class="math inline">\(p\)</span>-valor como um “índice que mede a força da evidência contra a hipótese nula.” Para quantificar a força da evidência contra a hipótese nula, Fisher defendeu “<span class="math inline">\(p&lt;0.05\)</span> (5% de significância) como um nível padrão para concluir que há evidência contra a hipótese testada, embora não como uma regra absoluta.” Fisher não parou por aí mas classificou a força da evidência contra a hipótese nula. Ele propôs “se <span class="math inline">\(p\)</span> está entre 0.1 e 0.9, certamente não há razão para suspeitar da hipótese testada. Se estiver abaixo de 0.02, é fortemente indicado que a hipótese falha em explicar o conjunto dos fatos. Não seremos frequentemente perdidos se traçarmos uma linha convencional de 0.05” Desde que Fisher fez esta declaração há quase 100 anos, o limiar de 0.05 foi usado por pesquisadores e cientistas em todo o mundo e tornou-se ritualístico usar 0.05 como limiar como se outros limiares não pudessem ser usados.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:fig-fisher"></span>
+<img src="images/fisher.jpg" alt="Ronald Fisher. Figura de https://www.wikipedia.org" width="70%" class=external />
+<p class="caption">
+Figure 3: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="uri">https://www.wikipedia.org</a>
+</p>
+</div>
+</div>
+<p>Após isso, o limiar de 0.05 agora instaurado como inquestionável influenciou fortemente a estatística e a ciência. Mas não há nenhuma razão contra a adoção de outros limiares (<span class="math inline">\(\alpha\)</span>) como 0.1 ou 0.01. Se bem argumentados, a escolha de limiares diferentes de 0.05 pode ser bem-vista por editores, revisores e orientadores. Como o <span class="math inline">\(p\)</span>-valor é uma probabilidade, ele não é um quantidade contínua. Não há razão para diferenciarmos um <span class="math inline">\(p\)</span> de 0.049 contra um <span class="math inline">\(p\)</span> de 0.051. Robert Rosenthal, um psicólogo já dizia “Deus ama <span class="math inline">\(p\)</span> de 0.06 tanto quanto um <span class="math inline">\(p\)</span> de 0.05” <span class="citation" data-cites="rosnow1989statistical">(<a href="#ref-rosnow1989statistical" role="doc-biblioref">Rosnow &amp; Rosenthal, 1989</a>)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/stats-pvalue-meme.png" width="70%" style="display: block; margin: auto;" /></p>
 </div>
-<p>Após isso, o limiar de 0.05 agora instaurado como inquestionável influenciou fortemente a estatística e a ciência. Mas não há nenhuma razão contra a adoção de outros limiares (<span class="math inline">\(\alpha\)</span>) como 0.1 ou 0.01. Se bem argumentados, a escolha de limiares diferentes de 0.05 pode ser bem-vista por editores, revisores e orientadores.</p>
-<aside>
-Apesar que, pela nossa experiência, isto geralmente não é verdade.
-</aside>
 <h3 id="o-que-o-p-valor-não-é">O que o <span class="math inline">\(p\)</span>-valor não é</h3>
 <p>Com a definição e intuição do que é um <span class="math inline">\(p\)</span>-valor bem ancoradas, podemos avançar para o que o <span class="math inline">\(p\)</span>-valor <strong>não é</strong>!</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2509,7 +2545,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 <p>Mais uma vez vamos quebrar essa definição em em algumas partes para melhor compreensão:</p>
 <ul>
 <li>“… intervalo de valores …”: intervalo de confiança sempre serão <strong>expressados como um intervalo</strong> <span class="math inline">\(a\)</span> - <span class="math inline">\(b\)</span>, onde <span class="math inline">\(a\)</span> é menor que <span class="math inline">\(b\)</span> (<span class="math inline">\(a &lt; b\)</span>).</li>
-<li>“… incluem um valor de uma população…”: aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. Então, <strong>intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população</strong>.</li>
+<li>“… incluem um valor de uma população…”: aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Então, <strong>intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população</strong>.</li>
 <li>“.. com um certo nível de confiança”: sempre os intervalos de confiança serão expressados <strong>acompanhados de uma probabilidade</strong> (algo entre 0.001% e 99.999%) que quantifica a certeza de encontrar o intervalo em uma replicações do teste estatístico para diversas amostras da MESMA população.</li>
 </ul>
 <p>Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do <span class="math inline">\(p\)</span>-valor). Você então escreve no seu artigo que a “diferença entre grupos observada é de 10.5 - 23.5 (95% IC).” Isso quer dizer que <strong>95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5</strong>. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam espectativa de vida.</p>
@@ -2525,12 +2561,34 @@ Mas sempre se atente nas definições. Lembre-se que se tentarmos ser intuitivos
 <aside>
 Considere isso uma introdução rápida à <span class="math inline">\(p\)</span>-hacking.
 </aside>
-<p>Para encerrar esse tour de <span class="math inline">\(p\)</span>-valores e intervalos de confiança, temos que nos atentar que <strong>significância estatística não é a mesma coisa que significância prática</strong>. Significância estatística é se algum achado de um teste/modelo estatístico diverge o suficiente da hipótese nula e, sendo que hipótese nula sempre são sobre efeitos ou diferenças nulas, podemos afirmar que significância estatística quer dizer um achado é diferente de um efeito nulo. <strong>Diversos testes da Estatística inferencial clássica quando submetidos à amostras grandes<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> vão detectar uma diferença significante, mesmo que praticamente insignificante</strong>. Com uma amostra suficientemente grande nós conseguimos gerar <span class="math inline">\(p\)</span>-valores significantes para diferenças minúsculas, como por exemplo uma diferença de 0.01cm altura entre dois grupos de uma amostra.</p>
+<p>Para encerrar esse tour de <span class="math inline">\(p\)</span>-valores e intervalos de confiança, temos que nos atentar que <strong>significância estatística não é a mesma coisa que significância prática</strong>. Significância estatística é se algum achado de um teste/modelo estatístico diverge o suficiente da hipótese nula e, sendo que hipótese nula sempre são sobre efeitos ou diferenças nulas, podemos afirmar que significância estatística quer dizer um achado é diferente de um efeito nulo. <strong>Diversos testes da Estatística inferencial clássica quando submetidos à amostras grandes<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> vão detectar uma diferença significante, mesmo que praticamente insignificante</strong>. Com uma amostra suficientemente grande nós conseguimos gerar <span class="math inline">\(p\)</span>-valores significantes para diferenças minúsculas, como por exemplo uma diferença de 0.01cm altura entre dois grupos de uma amostra.</p>
 <p>Por isso que defendemos que nunca se interprete análises estatísticas somente com <span class="math inline">\(p\)</span>-valores, mas sempre em conjunto com os intervalos de confiança que quantificam o tamanho do efeito. <strong>Nunca gere argumentos sobre evidências somente a partir de significância estatística, sempre inclua tamanho do efeito</strong>.</p>
+<h2 id="erro-tipo-i-e-erro-tipo-ii">Erro Tipo I e Erro Tipo II</h2>
+<p>Na Estatística inferencial temos dois erros possíveis quando estamos realizando um teste estatístico contra uma hipótese nula.</p>
+<ul>
+<li><strong>Erro tipo I</strong>, também chamado de <strong>“falso positivo”</strong>, é a chance de rejeitarmos a hipótese nula quando ela é verdadeira. Esse erro é o alpha <span class="math inline">\(\alpha\)</span> que é usado como limiar de significância do <span class="math inline">\(p\)</span>-valor.</li>
+<li><strong>Erro tipo II</strong>, também chamado de <strong>“falso negativo”</strong>, é a chance de não rejeitarmos a hipótese nula quando ela é falsa. Esse erro é identificado como a letra grega beta <span class="math inline">\(\beta\)</span>. Além disso, o <strong>poder</strong> de um teste estatístico é mensurado como <span class="math inline">\(1 - \beta\)</span>. O poder de um teste estatístico aumenta proporcionalmente ao tamanho amostral. Quanto maior a amostra, maior o poder do teste.</li>
+</ul>
+<aside>
+Esses conceitos foram criados por matemáticos, então a nomenclatura erro tipo I e erro tipo II é perfeita matematicamente, pois no contexto de testes estatísticos contra uma hipótese nula só existem dois tipos de erros. Mas para o ensino da Estatística e comunicação de incertezas é péssima. Sempre que possível optamos por usar termos como “falso positivo” e “falso negativo” ao invés de erro tipo I e erro tipo II.
+</aside>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/errors.jpg" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>Por questões históricas, o erro tipo I<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> foi considerado mais importante de ser controlado do que o erro tipo II. Portanto, quase todos os testes de hipótese nula focam no controle dos “falsos positivos” enquanto o controle dos “falsos negativos” são colocados em segundo plano. No mundo ideal, tanto <span class="math inline">\(\alpha\)</span> quando <span class="math inline">\(\beta\)</span> devem ser reduzidos o máximo possível. Isto requer um tamanho amostral frequentemente maior do que os recursos disponíveis para o pesquisador, portanto é comum pesquisadores usarem um <span class="math inline">\(\alpha\)</span> de 5% e um <span class="math inline">\(\beta\)</span> de 20% (poder de 80%).</p>
+<h2 id="tamanho-da-amostra">Tamanho da Amostra</h2>
+<p>A maioria dos testes estatísticos que computam um <span class="math inline">\(p\)</span>-valor são extremamente sensíveis a tamanho da amostra. A hipótese nula sempre representa a ausência de qualquer efeito e <em>nunca</em> a diferença observada na amostra é igual a zero. Sempre há algum digito, menor que seja, que faz com que a diferença seja diferente de zero, ex: 0.00001. Quanto maior o tamanho da amostra maior a probabilidade de obtermos um <span class="math inline">\(p\)</span>-valor significante, pois ele indica que o efeito é diferente de zero, mesmo que essa diferença seja insignificante do ponto de vista prático. Em certos contextos, defendemos que o <span class="math inline">\(p\)</span>-valor é uma aproximação (<em>proxy</em>) de tamanho da amostra.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/pvalues-samplesize-meme.jpg" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 <h2 id="pressupostos">Pressupostos</h2>
-<p>Antes de avançarmos, é necessário clarificar algo que muitos pesquisadores e cientistas não se atentam e acaba invalidando diversas análises<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>: pressupostos das técnicas estatísticas clássicas.</p>
+<p>Antes de avançarmos, é necessário clarificar algo que muitos pesquisadores e cientistas não se atentam e acaba invalidando diversas análises<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>: pressupostos das técnicas estatísticas clássicas. Lembrando que as técnicas estatísticas clássicas são “um mecanismo técnico de aproximações numéricas baseadas na distribuição Normal e suas muitas engrenagens subsidiárias,” e, como consequência, essas aproximações numéricas se baseiam em um forte pressuposto sobre os dados da amostra. Os três principais pressupostos são: independência, normalidade e homogeneidade das variâncias. Se algum desses três pressupostos são violados, é sinal que sua análise requer atenção. Geralmente a escolha de uma técnica que é robusta à certas violações de pressupostos é o caminho ideal a ser trilhado<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p>
+<p>Além disso, tamanho da amostra também é um problema comum em análises estatísticas. Tamanho da amostra não é um pressuposto em si<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, mas pode invalidar muitas análises e é um dos principais critérios de rejeição de artigos.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/assumptions.jpeg" width="75%" style="display: block; margin: auto;" /></p>
+</div>
 <h3 id="independência-dos-dados">Independência dos Dados</h3>
-<p>Primeiramente, para quase toda a estatística inferencial<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, temos o pressuposto de <strong>independência dos dados</strong>. Isso é valido para teste <span class="math inline">\(t\)</span>, ANOVA, regressões, entre outros… O pressuposto de independência dos dados quer dizer que o valor de uma observação não influencia ou afeta o valor de outras observações. Caso você encontre dados que violam esse pressuposto, é necessário incluir na sua análise. Fontes comuns de não-independência são<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>:</p>
+<p>Primeiramente, para quase toda a estatística inferencial, temos o pressuposto de <strong>independência dos dados</strong>. Isso é valido para teste <span class="math inline">\(t\)</span>, ANOVA, regressões, entre outros… O pressuposto de independência dos dados quer dizer que o valor de uma observação não influencia ou afeta o valor de outras observações. Caso você encontre dados que violam esse pressuposto, é necessário de alguma maneira incorporar tal dependência na sua análise<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. Fontes comuns de não-independência são<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>:</p>
 <ul>
 <li><strong>Dependência Temporal</strong>: O valor de uma observação é influenciado pela dimensão temporal. Muito comum em séries temporais, tais como dados financeiros e econômicos. Nesse caso, o ideal é tentar incluir a dimensão temporal na sua análise.</li>
 <li><strong>Dependência Espacial</strong>: O valor de uma observação é influenciado pela dimensão espacial. Muito comum em dados geoespaciais e georeferenciados. Aqui, o ideal é incorporar a dimensão espacial na sua análise.</li>
@@ -2539,18 +2597,8 @@ Considere isso uma introdução rápida à <span class="math inline">\(p\)</span
 Dependência temporal e espacial não são os únicos tipos de dependências que existem nos dados. Se as observações tiverem algum tipo de relação que faz com que uma influencie a outra, considere o pressuposto de independência dos dados violado.
 </aside>
 <p>Se esse pressuposto for violado, as técnicas clássicas de Estatística inferencial não serão válidas na sua análise. Sugerimos que você tente remover a fonte de dependência dos dados, recoletar os dados de maneira que não sejam geradas fontes de dependência, ou empregar técnicas que consigam incorporar a fonte de dependência na análise.</p>
-<h3 id="normalidade-tamanho-amostral-e-homogeneidade-das-variâncias">Normalidade, Tamanho Amostral e Homogeneidade das Variâncias</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="images/assumptions.jpeg" width="75%" style="display: block; margin: auto;" /></p>
-</div>
-<p>Aqui estão sempre as três pedras no sapato das técnicas clássicas de Estatística inferencial. E antes de apresentar elas, vale a pena um pequeno histórico dessas técnicas. Antes do advento de computadores, todos esses cálculos estatísticos e matemáticos eram feitos <strong>na mão</strong>. Então, como uma maneira de facilitar o cálculo, foram feitas diversas <del>truques</del> derivações matemáticas usando a teoria da probabilidade para computar facilmente um teste estatístico e gerar um <span class="math inline">\(p\)</span>-valor.</p>
-<aside>
-Quem ficou curioso com a história da Estatística. Recomendo um livro de Stephen Stigler intitulado <a href="https://www.hup.harvard.edu/catalog.php?isbn=9780674009790">Statistics on the Table: The History of Statistical Concepts and Methods</a>. O primeiro autor comprou uma cópia em um sebo online.
-</aside>
-<p>Como decorrência dessas facilidades, os testes estatísticos possuem fortes pressupostos sobre os dados. E, se esses pressupostos forem violados, os resultados todos análise podem ser invalidados.</p>
-<p>Voltando às três pedras no sapato. Duas delas são realmente pressupostos: <strong>normalidade</strong> e <strong>homogeneidade</strong> de variâncias. A restante, <strong>tamanho amostral</strong>, não é um pressuposto, mas inviabiliza diversas análises e estudos. Tamamho amostral é abordado em um <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar</a>.</p>
-<h4 id="normalidade">Normalidade</h4>
-<p>Dados normais são dados que seguem uma distribuição Normal, também conhecida por distribuição Gaussiana<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Uma variável distribuída como uma distribuição Normal segue aquela forma clássica de sino. Mais especificamente, esse pressuposto de normalidade geralmante se aplica somente à variável dependente. Abaixo um exemplo de variável Normal.</p>
+<h3 id="normalidade">Normalidade</h3>
+<p>Dados normais são dados que seguem uma distribuição Normal, também conhecida por distribuição Gaussiana<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>. Uma variável distribuída como uma distribuição Normal segue aquela forma clássica de sino. Mais especificamente, esse pressuposto de normalidade geralmante se aplica somente à variável dependente. Abaixo um exemplo de variável Normal.</p>
 <aside>
 Variável dependente é aquela que estamos interessados na nossa análise. É a variável que se altera conforme outras variáveis (chamadas de independentes) se alteram.
 </aside>
@@ -2570,16 +2618,16 @@ Variável dependente é aquela que estamos interessados na nossa análise. É a 
 <div class="figure" style="text-align: center"><span id="fig:dist-normal"></span>
 <img src="2-p-valores_files/figure-html5/dist-normal-1.png" alt="Distribuição Normal" width="70%" />
 <p class="caption">
-Figure 2: Distribuição Normal
+Figure 4: Distribuição Normal
 </p>
 </div>
 </div>
-<h5 id="como-eu-sei-que-minha-variável-dependente-é-normal">Como eu sei que minha variável dependente é Normal?</h5>
+<h4 id="como-eu-sei-que-minha-variável-dependente-é-normal">Como eu sei que minha variável dependente é Normal?</h4>
 <p>Muitos gostam de plotar um gráfico para <del>bisolhar</del> estimar se uma varíavel segue uma distribuição Normal ou não. Somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para <strong>provar</strong> algo é necessário um teste estatístico.</p>
 <p>Há dois testes estatísticos para saber se uma variável é distribuída conforme uma distribuição Normal: Komolgorov-Smirnov e Shapiro-Wilk. Ambos possuem como hipótese nula (<span class="math inline">\(H_0\)</span>) que “os dados são distribuídos conforme uma distribuição Normal.”</p>
-<h6 id="komolgorov-smirnov-vs-shapiro-wilk">Komolgorov-Smirnov vs Shapiro-Wilk</h6>
-<p>Ambos os testes aceitam como input uma variável e dão como output um <span class="math inline">\(p\)</span>-valor. Mas qual usar? Estudos comparativos <span class="citation" data-cites="saculinggan2013empirical">(<a href="#ref-saculinggan2013empirical" role="doc-biblioref">Saculinggan &amp; Balase, 2013</a>)</span> de diferentes testes de normalidade demonstram que Shapiro-Wilk é o teste com maior poder estatístico<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p>
-<p>Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição Normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição Normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura <a href="#fig:dists-norm-lnorm">3</a>, a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.</p>
+<h4 id="komolgorov-smirnov-vs-shapiro-wilk">Komolgorov-Smirnov vs Shapiro-Wilk</h4>
+<p>Ambos os testes aceitam como input uma variável e dão como output um <span class="math inline">\(p\)</span>-valor. Mas qual usar? Estudos comparativos <span class="citation" data-cites="saculinggan2013empirical">(<a href="#ref-saculinggan2013empirical" role="doc-biblioref">Saculinggan &amp; Balase, 2013</a>)</span> de diferentes testes de normalidade demonstram que Shapiro-Wilk é o teste com maior poder estatístico<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>.</p>
+<p>Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição Normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição Normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura <a href="#fig:dists-norm-lnorm">5</a>, a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>8</span>, <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -2595,11 +2643,11 @@ Figure 2: Distribuição Normal
 <div class="figure" style="text-align: center"><span id="fig:dists-norm-lnorm"></span>
 <img src="2-p-valores_files/figure-html5/dists-norm-lnorm-1.png" alt="Distribuição Normal vs Distribuição Log-Normal" width="70%" />
 <p class="caption">
-Figure 3: Distribuição Normal vs Distribuição Log-Normal
+Figure 5: Distribuição Normal vs Distribuição Log-Normal
 </p>
 </div>
 </div>
-<p>Agora com as simulações! Na figura <a href="#fig:simulacoes-normalidade">4</a> é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.</p>
+<p>Agora com as simulações! Na figura <a href="#fig:simulacoes-normalidade">6</a> é possível ver o histograma das distribuições simuladas. Em vermelho temos o histograma das 1.000 amostragens de uma distribuição Normal e, em azul da distribuição Log-Normal.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
@@ -2620,14 +2668,12 @@ Figure 3: Distribuição Normal vs Distribuição Log-Normal
 <div class="figure" style="text-align: center"><span id="fig:simulacoes-normalidade"></span>
 <img src="2-p-valores_files/figure-html5/simulacoes-normalidade-1.png" alt="Histograma das Simulações de Normalidade" width="70%" />
 <p class="caption">
-Figure 4: Histograma das Simulações de Normalidade
+Figure 6: Histograma das Simulações de Normalidade
 </p>
 </div>
 </div>
-<p>Agora como fazer um teste de Shapiro-Wilk (<code>shapiro.test</code>) com R. Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
-<aside>
-Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\)</span>.
-</aside>
+<h4 id="teste-de-shapiro-wilk">Teste de Shapiro-Wilk</h4>
+<p>O teste de Shapiro-Wilk está disponível como padrão no R pela função <code>shapiro.test()</code> que aceita uma variável como input.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span>
@@ -2648,7 +2694,12 @@ W = 1, p-value = 0.5</code></pre>
 data:  sims$log_normal
 W = 0.6, p-value &lt;0.0000000000000002</code></pre>
 </div>
-<p>Vamos também aproveitar e mostrar como fazer um teste Komolgorov-Smirnof (<code>ks.test</code>). Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal <code>"pnorm"</code> e usamos os valores de média <code>mean()</code> e desvio padrão <code>sd()</code> da distribuição que estamos testando. Lembrando que a definição do <span class="math inline">\(p\)</span>-valor para este teste é a mesma do Shapiro-Wilk.</p>
+<p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
+<aside>
+Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\)</span>.
+</aside>
+<h4 id="teste-de-komolgorov-smirnov">Teste de Komolgorov-Smirnov</h4>
+<p>Vamos também aproveitar e mostrar como fazer um teste Komolgorov-Smirnof (<code>ks.test()</code>), também disponível como padrão no R. Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que se quer comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal <code>"pnorm"</code> e usamos os valores de média <code>mean()</code> e desvio padrão <code>sd()</code> da variável que estamos testando. Lembrando que a definição do <span class="math inline">\(p\)</span>-valor para este teste é a mesma do Shapiro-Wilk.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span>, <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>normal</span><span class='op'>)</span><span class='op'>)</span>
@@ -2671,9 +2722,9 @@ data:  sims$log_normal
 D = 0.2, p-value &lt;0.0000000000000002
 alternative hypothesis: two-sided</code></pre>
 </div>
-<h4 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h4>
+<h3 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h3>
 <p>Também chamado de homocedasticidade, homogeneidade das variâncias, é um pressuposto que, para uma dada mensuração, a variação dessa mensuração dentro de estratos/grupos da sua amostra é similar. Em outras palavras, se você possui três grupos de indivíduos e está mensurando a altura, a variação da altura dentre os três grupos não pode ser muito diferentes entre os três grupos.</p>
-<p>Uma boa maneira de visualizar isso é usarmos distribuições Normais com diferentes médias e desvio padrões. No caso de homogeneidade das variâncias, conseguimos visualizá-la com três distribuições Normais, sendo que todas possuem o mesmo desvio padrão, mas diferentes médias. Esse seria o gráfico da esquerda na figura <a href="#fig:dists-norm-homogeneidade">5</a>. Já no caso de heterogeneidade, conseguimos demonstrar usando as mesmas três distribuições Normais mas agora introduzindo diferentes desvios padrões. Esta situação é o gráfico da direita na figura <a href="#fig:dists-norm-homogeneidade">5</a></p>
+<p>Uma boa maneira de visualizar isso é usarmos distribuições Normais com diferentes médias e desvio padrões. No caso de homogeneidade das variâncias, conseguimos visualizá-la com três distribuições Normais, sendo que todas possuem o mesmo desvio padrão, mas diferentes médias. Esse seria o gráfico da esquerda na figura <a href="#fig:dists-norm-homogeneidade">7</a>. Já no caso de heterogeneidade, conseguimos demonstrar usando as mesmas três distribuições Normais mas agora introduzindo diferentes desvios padrões. Esta situação é o gráfico da direita na figura <a href="#fig:dists-norm-homogeneidade">7</a></p>
 <div class="layout-chunk" data-layout="l-page">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://patchwork.data-imaginist.com'>patchwork</a></span><span class='op'>)</span>
@@ -2703,12 +2754,12 @@ alternative hypothesis: two-sided</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:dists-norm-homogeneidade"></span>
 <img src="2-p-valores_files/figure-html5/dists-norm-homogeneidade-1.png" alt="Homogeneidade e Heterogeneidade das Variâncias" width="70%" />
 <p class="caption">
-Figure 5: Homogeneidade e Heterogeneidade das Variâncias
+Figure 7: Homogeneidade e Heterogeneidade das Variâncias
 </p>
 </div>
 </div>
-<h5 id="teste-de-levene">Teste de Levene</h5>
-<p>Vamos mais uma vez usar simulações. Aqui vamos gerar um <em>dataset</em> de 500 observações em dois grupos: <code>A</code> com 250 e <code>B</code> com 250 observações. E vamos considerar dois cenários: o primeiro onde temos médias diferentes entre os grupos mas homogeneidade de variâncias (possuem o mesmo desvio padrão) e o segundo onde temos médias diferentes entre os grupos e com heterogeneidade de variâncias (possuem desvio padrões diferentes). Ambos cenários podem ser visualizados na figura <a href="#fig:simulacoes-homogeneidade">6</a>.</p>
+<p>Há dois testes estatísticos para saber se uma variável possui variâncias homogêneas conforme seus diferentes grupos ou estratos: Bartlett e Levene. Ambos possuem como hipótese nula (<span class="math inline">\(H_0\)</span>) que “as variâncias dos grupos/estratos são iguais.” O teste de Bartlett é baseado na média dos grupos, portanto é influenciado por observações extremas (também chamadas de <em>outliers</em>). Já o teste de Levene é baseado na mediana dos grupos, o que faz com que seja robusto à <em>outliers</em>. Nós recomendamos que sempre usem o teste de Levene por conta de ser mais robusto que o teste de Bartlett.</p>
+<p>Para mostrarmos ambos os testes, mais uma vez usararemos simulações. Aqui vamos gerar um <em>dataset</em> de 500 observações em dois grupos: <code>A</code> com 250 e <code>B</code> com 250 observações. E vamos considerar dois cenários: o primeiro onde temos médias diferentes entre os grupos mas homogeneidade de variâncias (possuem o mesmo desvio padrão) e o segundo onde temos médias diferentes entre os grupos e com heterogeneidade de variâncias (possuem desvio padrões diferentes). Ambos cenários podem ser visualizados na figura <a href="#fig:simulacoes-homogeneidade">8</a>.</p>
 <div class="layout-chunk" data-layout="l-page">
 <div class="sourceCode">
 <pre><code><span class='va'>sims2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
@@ -2729,13 +2780,46 @@ Figure 5: Homogeneidade e Heterogeneidade das Variâncias
 <div class="figure" style="text-align: center"><span id="fig:simulacoes-homogeneidade"></span>
 <img src="2-p-valores_files/figure-html5/simulacoes-homogeneidade-1.png" alt="Histograma das Simulações de Homogeneidade das Variâncias" width="70%" />
 <p class="caption">
-Figure 6: Histograma das Simulações de Homogeneidade das Variâncias
+Figure 8: Histograma das Simulações de Homogeneidade das Variâncias
 </p>
 </div>
 </div>
-<p>Um teste muito utilizado para testar a igualdade de variâncias é o teste de Levene. A hipótese nula (<span class="math inline">\(H_0\)</span>) do teste de Levene é que “as variâncias dos dados são iguais.” O teste de Levene está disponível na biblioteca <code>{car}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span> na função <code>leveneTest()</code> e você tem que passar dois argumentos:</p>
+<h4 id="teste-de-bartlett">Teste de Bartlett</h4>
+<p>O teste de Barlett está disponível como padrão no R pela função <code>bartlett.test()</code>. Como estamos trabalhando com um <em>dataset</em> que possui duas variáveis: uma que é a que queremos testar a homogeneidade e outra que representa os grupos ou estratos; geralmente usamos a síntaxe de fórmula no R. A fórmula é designada pela seguinte síntaxe: <code>variavel ~ grupo</code>.</p>
+<p>Você tem que passar dois argumentos para a função <code>bartlett.test()</code>:</p>
 <ol type="1">
-<li>Fórmula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos. A fórmula é designada pela seguinte síntaxe: <code>variavel ~ grupo</code>.</li>
+<li>Fórmula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos.</li>
+<li>O <em>dataset</em> no qual deverá ser encontrados tanto a varíavel quanto os grupos.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/bartlett.test.html'>bartlett.test</a></span><span class='op'>(</span><span class='va'>homog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Bartlett test of homogeneity of variances
+
+data:  homog by group
+Bartlett&#39;s K-squared = 2, df = 1, p-value = 0.2</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/bartlett.test.html'>bartlett.test</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Bartlett test of homogeneity of variances
+
+data:  heterog by group
+Bartlett&#39;s K-squared = 1162, df = 1, p-value
+&lt;0.0000000000000002</code></pre>
+</div>
+<p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste de Bartlett, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
+<aside>
+Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\)</span>.
+</aside>
+<h4 id="teste-de-levene">Teste de Levene</h4>
+<p>O teste de Levene está disponível na biblioteca <code>{car}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span> na função <code>leveneTest()</code> e você tem que passar dois argumentos:</p>
+<ol type="1">
+<li>Fórmula designando qual variável deve ser analisada a homogeneidade das variâncias em quais grupos.</li>
 <li>O <em>dataset</em> no qual deverá ser encontrados tanto a varíavel quanto os grupos.</li>
 </ol>
 <aside>
@@ -2762,15 +2846,27 @@ group   1     346 &lt;0.0000000000000002 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
+<p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste de Levene, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
 <aside>
 Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\)</span>.
 </aside>
+<h2 id="correlação-versus-causalidade">Correlação versus Causalidade</h2>
+<p>Correlação não é causalidade. Talvez você já tenha ouvido falar nessa expressão. Os testes estatísticos não sabem diferenciar de correlação com causalidade, eles apenas testam se o efeito não é nulo. Cabe ao pesquisador inferir se as consequências são causais ou associativas.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/correlation-causation.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>Muitas vezes quando ensinamos Estatística, passamos muito tempo discutindo filosofia da ciência ao invés de Estatística. Coisas como “ausência de evidência não é evidência de ausência” viram focos de longas discussões. Causalidade é um campo da Estatística que está em grande destaque atualmente e acreditamos que irá revolucionar a maneira que enxergamos causalidade num futuro próximo.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> Mas, enquanto esta revolução não chega, adotamos o seguinte posicionamento: causalidade, para nós, implica em controlar totalmente um ambiente por meio de um experimento e introduzir uma intervenção por meio da manipulação de <strong>uma única variável</strong>. Somente assim conseguimos atribuir causalidade ao resultado de um teste estatístico. Caso contrário, estamos ainda sob o domínio da associação.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/stat-phil.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 <h2 id="comentários-finais">Comentários Finais</h2>
-<p>Sim, <span class="math inline">\(p\)</span>-valores, intervalos de confiança, hipóteses nulas são conceitos complexos e muitos pesquisadores e cientistas não possuem uma compreensão mínima destes conceitos para a prática de Estatística inferencial. Acreditamos que a ciência (e a socidade como um todo) se beneficiará de um maior número de cidadãos e pesquisadores que consigam avaliar e quantificar evidência científica. O paradigma da evidência científica atual (e, acreditamos que perdurará assim por bastante tempo) é o <em>Null Hypothesis Significance Testing</em> – NHST (tradução: teste de significância de hipótese nula). Apesar de termos algumas alternativas – como a Estatística Bayesiana – NHST irá predominar em boa parte da ciência pelos próximas décadas. Por isso, caro leitor, saiba que com “grandes poderes, vêm grandes responsabilidades.” Não deixe alguém torturar dados em práticas anti-éticas de <em><span class="math inline">\(p\)</span>-hacking</em> ou se fundamentarem argumentos em compreensões incorretas de <span class="math inline">\(p\)</span>-valor e <span class="math inline">\(H_0\)</span>.</p>
+<p>Sim, <span class="math inline">\(p\)</span>-valores, intervalos de confiança, hipóteses nulas são conceitos complexos e muitos pesquisadores e cientistas não possuem a compreensão mínima necessária para a prática de Estatística inferencial. Acreditamos que a ciência (e a sociedade como um todo) se beneficiará de um maior número de cidadãos e pesquisadores que consigam avaliar, quantificar e qualificar evidências científicas. O paradigma da evidência científica atual (e, acreditamos que perdurará assim por bastante tempo) é o NHST e, apesar de termos algumas alternativas – como a Estatística Bayesiana – NHST irá predominar em boa parte da ciência pelas próximas décadas. Por isso, caro leitor, saiba que com “grandes poderes, vêm grandes responsabilidades.” Não deixe alguém torturar dados em práticas anti-éticas de <em><span class="math inline">\(p\)</span>-hacking</em> ou fundamentarem seus argumentos em compreensões incorretas de <span class="math inline">\(p\)</span>-valor e <span class="math inline">\(H_0\)</span>.</p>
 <aside>
 Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e <span class="math inline">\(p\)</span>-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma <a href="https://storopoli.github.io/Estatistica-Bayesiana/">disciplina <em>opensource</em> de Estatística Bayesiana com R</a>.
 </aside>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="images/great-power.jpg" width="70%" style="display: block; margin: auto;" /></p>
+</div>
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2822,13 +2918,19 @@ loaded via a namespace (and not attached):
 [64] yaml_2.2.1         colorspace_2.0-0   knitr_1.30        
 [67] haven_2.3.1       </code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
 <div id="ref-Baird1983" class="csl-entry" role="doc-biblioentry">
 <p>Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. Retrieved from <a href="http://www.jstor.org/stable/687444">http://www.jstor.org/stable/687444</a></p>
 </div>
+<div id="ref-cobb2007introductory" class="csl-entry" role="doc-biblioentry">
+<p>Cobb, G. W. (2007). The introductory statistics course: A ptolemaic curriculum? <em>Technology Innovations in Statistics Education</em>, <em>1</em>(1).</p>
+</div>
 <div id="ref-cumming2009inference" class="csl-entry" role="doc-biblioentry">
 <p>Cumming, G. (2009). Inference by eye: Reading the overlap of independent confidence intervals. <em>Statistics in Medicine</em>, <em>28</em>(2), 205–220.</p>
+</div>
+<div id="ref-downey2016" class="csl-entry" role="doc-biblioentry">
+<p>Downey, A. (2016). <em>Probably overthinking it: There is still only one test</em>. Retrieved from <a href="http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html">http://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html</a></p>
 </div>
 <div id="ref-fisher1925statistical" class="csl-entry" role="doc-biblioentry">
 <p>Fisher, R. A. (1925). <em>Statistical methods for research workers</em>. Oliver; Boyd.</p>
@@ -2841,6 +2943,12 @@ loaded via a namespace (and not attached):
 </div>
 <div id="ref-Ioannidis2019" class="csl-entry" role="doc-biblioentry">
 <p>Ioannidis, J. P. A. (2019). <span class="nocase">What Have We (Not) Learnt from Millions of Scientific Papers with <span>&lt;</span>i<span>&gt;</span>P<span>&lt;</span>/i<span>&gt;</span> Values?</span> <em>The American Statistician</em>, <em>73</em>(sup1), 20–25. <a href="https://doi.org/10.1080/00031305.2018.1447512">https://doi.org/10.1080/00031305.2018.1447512</a></p>
+</div>
+<div id="ref-pearl2009causality" class="csl-entry" role="doc-biblioentry">
+<p>Pearl, J. (2009). <em>Causality</em>. Cambridge university press.</p>
+</div>
+<div id="ref-rosnow1989statistical" class="csl-entry" role="doc-biblioentry">
+<p>Rosnow, R. L., &amp; Rosenthal, R. (1989). Statistical procedures and the justification of knowledge in psychological science. <em>American Psychologist</em>, <em>44</em>, 1276–1284.</p>
 </div>
 <div id="ref-saculinggan2013empirical" class="csl-entry" role="doc-biblioentry">
 <p>Saculinggan, M., &amp; Balase, E. A. (2013). Empirical power comparison of goodness of fit tests for normality in the presence of outliers. <em>Journal of physics: Conference series</em>, <em>435</em>, 012041. IOP Publishing.</p>
@@ -2855,18 +2963,24 @@ loaded via a namespace (and not attached):
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>Inclusive muitos renomados e citados em abundância em suas áreas.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Cuidado com essa palavra. Ela é precisa e somente deve ser usada em contextos estatísticos. Significância estatística quer dizer que os dados observados são mais extremos que um alpha prédefinido de que a hipótese nula é verdadeira.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Esse conselho é extremamente útil. Por diversas vezes temos alunos que nos procuram com uma pergunta mais ou menos assim: “Professor, o que é o teste de <em>Sobrenome que nunca ouvi falar na minha vida hífen outro sobrenome ainda mais estranho</em>?” Graças a Wikipedia e Google, nós simplesmente vamos atrás da <span class="math inline">\(H_0\)</span> desse teste (busca Google: “sobrenome1-sobrenome2 null hypothesis”) e com isso conseguimos responder ao aluno.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>Provavelmente receberemos muito <em>hate mail</em> por conta dessa simplificação e falta de formalismo, por favor, caso consigam aprimorar o conteúdo, criem um nova <em>issue</em> no repositório GitHub do conteúdo.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>A controvérsia da personalidade e vida de Ronald Fisher merece uma nota de rodapé. Suas contribuições, sem dúvida, foram cruciais para o avanço da ciência e da estatística. Seu intelecto era brilhante e seu talento já floresceu jovem: antes de completar 33 anos de idade ele tinha proposto o método de estimação por máxima verossimilhança (<em>maximum likelihood estimation</em>) <span class="citation" data-cites="stigler2007epic">(<a href="#ref-stigler2007epic" role="doc-biblioref">Stigler &amp; others, 2007</a>)</span> e também criou o conceito de graus de liberdade (<em>degrees of freedom</em>) ao propor uma correção no teste de chi-quadrado de Pearson <span class="citation" data-cites="Baird1983">(<a href="#ref-Baird1983" role="doc-biblioref">Baird, 1983</a>)</span>. Também inventou a Análise de Variância (ANOVA) e foi o primeiro a propor randomização como uma maneira de realizar experimentos, sendo considerado o “pai” dos ensaios clínicos randomizados. Nem tudo é florido na vida de Fisher, ele foi um eugenista e possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias. Além disso, era extremamente invariante, perseguindo, prejudicando e debochando qualquer crítico à suas teorias e publicações. O que vemos hoje no monopólio do paradigma Neyman-Pearson com <span class="math inline">\(p\)</span>-valores e hipóteses nulas é resultado desse esforço Fisheriano em calar os críticos e deixar apenas sua voz ecoar.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>Boa parte dos teoremas matemáticos por trás da Estatística inferencial se baseiam em “convergências em distribuição” que é uma maneira de expressarmos que a media que o tamanho da população tende ao infinito, <span class="math inline">\(n \to \infty\)</span>, certas variáveis aleatórias convergem para uma certa distribuição. Um belo exemplo é o teorema do limite central. Um bom trabalho que crítica o alicerce da Estatística inferencial ser baseado em convergências quando a população tende ao infinito e propõem adotar alicerces baseados em desigualdades probabilísticas é <span class="citation" data-cites="taleb2020statistical"><a href="#ref-taleb2020statistical" role="doc-biblioref">Taleb</a> (<a href="#ref-taleb2020statistical" role="doc-biblioref">2020</a>)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>O que é muito comum em 2020s com o advento de Big Data e facilidade de obtenção de dados.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>A Estatística pode ser dividida em dois ramos: a descritiva e a inferencial. A Estatistica inferencial é aquela que gera infêrencias a partir dos dados observados sobre o real fenômeno do processo de geração de dados. É a Estatística que vai dos dados observados para as associações prováveis por de trás daquelas observações.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>Análises de séries temporais e análises de dados geoespaciais fazem parte de um projeto futuro nosso.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>Homenagem a <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Carl Friedrich Gauss</a>, matemático Alemão que viveu entre 1777 e 1855.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p>Poder estatístico é, para uma certa probabilidade de erro tipo I (<span class="math inline">\(\alpha\)</span>), 1 menos a probabilidade de erro tipo II (<span class="math inline">\(1 - \beta\)</span>). Veja mais no <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar de Tamanho da Amostra</a>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>Matemático inglês que viveu entre 1857-1936. Considerado o fundador do campo da Estatística.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>em especial as técnicas clássicas/frequentistas de Estatística inferencial.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Teoricamente não precisamos da hipótese nula se, no passo 2, simulássemos e permutássemos valores da amostra para calcular um <span class="math inline">\(\delta_0\)</span> (é provado matematicamente que se gerarmos amostras e permutações simuladas o suficiente, conseguiremos ter um <span class="math inline">\(\delta_0\)</span> no mínimo tão verídico que a abordagem clássica) ao invés de nos embasarmos em uma aproximação numérica pré-estabelecida de <span class="math inline">\(\delta_0\)</span>. É claro que todas essas permutações e simulações são computacionalmente intensas.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Inclusive muitos renomados e citados em abundância em suas áreas.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Cuidado com essa palavra. Ela é precisa e somente deve ser usada em contextos estatísticos. Significância estatística quer dizer que os dados observados são mais extremos que um alpha prédefinido de que a hipótese nula é verdadeira.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Esse conselho é extremamente útil. Por diversas vezes temos alunos que nos procuram com uma pergunta mais ou menos assim: “Professor, o que é o teste de <em>Sobrenome que nunca ouvi falar na minha vida hífen outro sobrenome ainda mais estranho</em>?” Graças a Wikipedia e Google, nós simplesmente vamos atrás da <span class="math inline">\(H_0\)</span> desse teste (busca Google: “sobrenome1-sobrenome2 null hypothesis”) e com isso conseguimos responder ao aluno.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>A controvérsia da personalidade e vida de Ronald Fisher merece uma nota de rodapé. Suas contribuições, sem dúvida, foram cruciais para o avanço da ciência e da estatística. Seu intelecto era brilhante e seu talento já floresceu jovem: antes de completar 33 anos de idade ele tinha proposto o método de estimação por máxima verossimilhança (<em>maximum likelihood estimation</em>) <span class="citation" data-cites="stigler2007epic">(<a href="#ref-stigler2007epic" role="doc-biblioref">Stigler &amp; others, 2007</a>)</span> e também criou o conceito de graus de liberdade (<em>degrees of freedom</em>) ao propor uma correção no teste de chi-quadrado de Pearson <span class="citation" data-cites="Baird1983">(<a href="#ref-Baird1983" role="doc-biblioref">Baird, 1983</a>)</span>. Também inventou a Análise de Variância (ANOVA) e foi o primeiro a propor randomização como uma maneira de realizar experimentos, sendo considerado o “pai” dos ensaios clínicos randomizados. Nem tudo é florido na vida de Fisher, ele foi um eugenista e possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias. Além disso, era extremamente invariante, perseguindo, prejudicando e debochando qualquer crítico à suas teorias e publicações. O que vemos hoje no monopólio do paradigma Neyman-Pearson com <span class="math inline">\(p\)</span>-valores e hipóteses nulas é resultado desse esforço Fisheriano em calar os críticos e deixar apenas sua voz ecoar.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>Boa parte dos teoremas matemáticos por trás da Estatística inferencial se baseiam em “convergências em distribuição” que é uma maneira de expressarmos que a media que o tamanho da população tende ao infinito, <span class="math inline">\(n \to \infty\)</span>, certas variáveis aleatórias convergem para uma certa distribuição. Um belo exemplo é o teorema do limite central. Um bom trabalho que crítica o alicerce da Estatística inferencial ser baseado em convergências quando a população tende ao infinito e propõem adotar alicerces baseados em desigualdades probabilísticas é <span class="citation" data-cites="taleb2020statistical"><a href="#ref-taleb2020statistical" role="doc-biblioref">Taleb</a> (<a href="#ref-taleb2020statistical" role="doc-biblioref">2020</a>)</span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>O que é muito comum em 2020s com o advento de Big Data e facilidade de obtenção de dados.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>Jerzy Newman, fundador do paradigma NHST, e criador dos erros tipo I e tipo II defendia a ideia de que é melhor absolver um culpado (erro tipo II) do que culpar um inocente (erro tipo I).<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>Algumas vezes isso não é possível e precisamos recorrer a transformações dos dados, ou até mesmo uma recoleta de dados.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>Alguns testes demandam no mínimo 20 observações para serem válidas. O número 20 possui relação com a derivação da distribuição Normal como uma distribuição binomial na qual o tamanho amostral é maior que 20.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>Isso geralmente requer o uso de técnicas especificamente criadas para dados que natualmente possuem um certo tipo de dependência.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>Análises de séries temporais e análises de dados geoespaciais fazem parte de um projeto futuro nosso.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p>Homenagem a <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Carl Friedrich Gauss</a>, matemático Alemão que viveu entre 1777 e 1855.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p>Poder estatístico é, para uma certa probabilidade de erro tipo I (<span class="math inline">\(\alpha\)</span>), 1 menos a probabilidade de erro tipo II (<span class="math inline">\(1 - \beta\)</span>). Veja mais no <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar de Tamanho da Amostra</a>.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p>Caso o leitor se interesse pelo tema, sugerimos um livro de Judea Pearl ganhador do Prêmio Turing (Nobel da computação): <span class="citation" data-cites="pearl2009causality"><a href="#ref-pearl2009causality" role="doc-biblioref">Pearl</a> (<a href="#ref-pearl2009causality" role="doc-biblioref">2009</a>)</span>.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

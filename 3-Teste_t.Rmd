@@ -31,16 +31,18 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
+Todos os testes aqui descritos possuem uma única finalidade: **identificar se a média de variável entre dois grupos é diferente**. Todos possuem como **hipótese nula a diferença entre os grupos é zero**, então $p$-valores oriundos dos testes quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. Por fim, todos os testes possuem o **pressuposto de independência dos dados**, portanto, caso haja alguma fonte de dependência dos dados os resultados dos testes são inválidos.
+
 ## Teste $t$ de Student
 
-William Sealy Gosset (químico, 1876-1937) publicou o teste $t$ sob o pseudônimo de "Student", razão pela qual o teste às vezes é chamado de "teste $t$ de Student" [@studentProbableErrorMean1908]. Há controvérsia sobre a origem e o significado de $t$. Uma hipótese é que $s$ era comumente usado na época para se referir a estatísticas de amostra, então Gosset escolheu $t$ como a próxima letra, talvez indicando um “avanço” no pensamento sobre estatísticas de amostra? Gosset publicou sob um pseudônimo porque ele era um funcionário da Cervejaria Guinness na época, e ele foi contratado para examinar questões ao fazer inferências sobre pequenas amostras na fabricação de cerveja. O teste que ele desenvolveu poderia ser propriedade intelectual do Guinness, mas Gosset achou que o teste poderia ser amplamente usado, então ele o publicou sob um pseudônimo para proteger seu trabalho.
+William Sealy Gosset (químico, 1876-1937) publicou o teste $t$ sob o pseudônimo de "Student", razão pela qual o teste às vezes é chamado de "teste $t$ de Student" [@studentProbableErrorMean1908]. Há controvérsia sobre a origem e o significado de $t$. Uma hipótese é que $s$ era comumente usado na época para se referir a estatísticas de amostra, então Gosset escolheu $t$ como a próxima letra, talvez indicando um “avanço” no pensamento sobre estatísticas de amostra. Gosset publicou sob um pseudônimo porque ele era um funcionário da Cervejaria Guinness na época, e ele foi contratado para examinar questões ao fazer inferências sobre pequenas amostras na fabricação de cerveja. O teste que ele desenvolveu poderia ser propriedade intelectual do Guinness, mas Gosset achou que o teste poderia ser amplamente usado, então ele o publicou sob um pseudônimo para proteger seu trabalho.
 
 ```{r fig-gosset, echo=FALSE, fig.cap='William Sealy Gosset. Figura de https://www.wikipedia.org', out.extra='class=external'}
 knitr::include_graphics("images/gosset.jpg")
 ```
 
 
-O teste $t$ de Student detecta a diferença entre médias de alguma mensuração de dois grupos. Sua **hipótese nula é de que a diferença entre os grupos é zero**, então $p$-valores oriundos do teste $t$ de Student quantificam a probabilidade de você obter resultados tão extremos caso não haja diferença entre os grupos. O teste $t$ de Student **assume os seguintes pressupostos com relação aos dados**:
+O teste $t$ de Student **assume os seguintes pressupostos com relação aos dados**:
 
 1. **Os dados são independentes**: o valor de uma observação não influencia ou afeta o valor de outras observações.
 2. **A variável dependente (aquela que estamos usando para calcular a média dos grupos) é distribuída conforme uma distribuição Normal.**
@@ -60,9 +62,9 @@ Em 1947, Bernard Lewis Welch, estatístico britânico adaptou o teste $t$ de Stu
 
 Quando temos dois grupos na mesma amostra, usamos o teste $t$ para amostras independentes. A função `t.test()` é incluída como padrão no R. Aqui vamos simular dois grupos `A` e `B` cada um com 20 observações e vamos amostrar de uma distribuição Normal para cada um dos grupos com médias diferentes.
 
-A fórmula que deve ser passada na função `t.test()` é similar com a fórmula do `car::leveneTest()`, sendo que é necessário tem que passar dois argumentos:
+A fórmula que deve ser passada na função `t.test()` segue a mesma lógica das fórmulas do Teste de Bartlett e de Levene, sendo que é necessário tem que passar dois argumentos:
 
-1. Fórmula designando qual variável deve ser analisada a diferença de média em quais grupos. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
+1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
 2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
 
 O resultado para a simulação é um $p$-valor menor que 0.05, ou seja um resultado significante apontando que podemos rejeitar a hipótese nula (fortes evidências contrárias que as médias dos grupos são iguais).
@@ -102,7 +104,7 @@ Notem que a saída da função `t.test()` possui um intervalo de confiança 95% 
 
 O que fazer se meus dados violam o princípio da normalidade? Nesse caso devemos usar uma abordagem **não-paramétrica**. O teste $t$ de Student (e também de Welch) é uma abordagem paramétrica: dependem fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.
 
-**Atenção**: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é falsa (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado [@zimmerman1998nonparametric]. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.
+**Atenção**: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado [@zimmerman1998nonparametric]. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.
 
 ### Teste de Mann–Whitney
 
