@@ -348,7 +348,7 @@ Em outras palavras, rejeita-se a hipótese nula $H_0$.
 
 #### Teste de Komolgorov-Smirnov
 
-Vamos também aproveitar e mostrar como fazer um teste Komolgorov-Smirnof (`ks.test()`), também disponível como padrão no R. Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que se quer comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal `"pnorm"` e usamos os valores de média `mean()` e desvio padrão `sd()` da variável que estamos testando. Lembrando que a definição do $p$-valor para este teste é a mesma do Shapiro-Wilk.
+Adicionalmente mostramos como fazer um teste Komolgorov-Smirnof, também disponível como padrão no R pela função `ks.test()`. Aqui temos que ser um pouco mais específico pois o teste exige a especificação exata do que se quer comparar. No caso, estamos informando que a distribuição a ser testada contra é uma Normal `"pnorm"` e usamos os valores de média `mean()` e desvio padrão `sd()` da variável que estamos testando. Lembrando que a definição do $p$-valor para este teste é a mesma do Shapiro-Wilk.
 
 ```{r komolgorov-smirnov}
 ks.test(sims$normal, "pnorm", mean(sims$normal), sd(sims$normal))
@@ -357,7 +357,7 @@ ks.test(sims$log_normal,  "pnorm", mean(sims$log_normal), sd(sims$log_normal))
 
 ### Homogeneidade das Variâncias
 
-Também chamado de homocedasticidade, homogeneidade das variâncias, é um pressuposto que, para uma dada mensuração, a variação dessa mensuração dentro de estratos/grupos da sua amostra é similar. Em outras palavras, se você possui três grupos de indivíduos e está mensurando a altura, a variação da altura dentre os três grupos não pode ser muito diferentes entre os três grupos.
+Também chamado de homocedasticidade, homogeneidade das variâncias é um pressuposto que, para uma dada mensuração, a variação dessa mensuração dentro de estratos/grupos da sua amostra é similar. Em outras palavras, se você possui três grupos de indivíduos e está mensurando a altura, a variação da altura dentre os três grupos não pode ser muito diferentes entre os três grupos.
 
 Uma boa maneira de visualizar isso é usarmos distribuições Normais com diferentes médias e desvio padrões. No caso de homogeneidade das variâncias, conseguimos visualizá-la com três distribuições Normais, sendo que todas possuem o mesmo desvio padrão, mas diferentes médias. Esse seria o gráfico da esquerda na figura \@ref(fig:dists-norm-homogeneidade). Já no caso de heterogeneidade, conseguimos demonstrar usando as mesmas três distribuições Normais mas agora introduzindo diferentes desvios padrões. Esta situação é o gráfico da direita na figura \@ref(fig:dists-norm-homogeneidade)
 
