@@ -49,9 +49,9 @@ Então, se você quiser "fazer Estatística" com COBOL, LISP ou qualquer outra c
 4. Replicável (Com as configurações corretas, sua análise sempre será a mesma)
 5. Transparente (Não tem como se esconder atrás de *opensource*)
 
-Então, acreditamos que o R é a escolha certa
+Então, acreditamos que o R é a escolha certa.
 
-Primeiramente, abordaremos o R versus outras duas linguagens muito usadas para dados: Python e Julia. E na sequência, explanaremos essas cinco características de R.
+Primeiramente, abordaremos o R versus outras duas linguagens muito usadas para estatística e análise de dados: Python e Julia. E na sequência, explanaremos essas cinco características de R.
 
 ## R vs Python
 
@@ -69,7 +69,7 @@ Agora as **diferenças**. Essa é a parte mais interessante e sem dúvida desenc
 
 [^4]: Notem que estas são nossas opiniões. E como não casamos com opiniões, casamos com fatos (afinal somos estatísticos): uma vez que os fatos mudam, nossas opiniões mudarão de acordo.
 
-* R é mais voltada para o paradigma de programação funcional, enquanto Python é mais voltado para o paradigma de programação orientada a objetos
+* Ambas são linguagens multi-paradigmas entretanto R oferece mais recurso para a programação funcional, enquanto Python oferece mais recurso para programação orientado a objetos.
 * R é feito por estatísticos para estatísticos (ou para quem queira primeiramente fazer análises estatísticas). Dados tabulares e funções estatísticas são "cidadãos de primeira-classe". Python teve que sofrer (e ainda sofre) muitas ~~gambiarras~~ customizações para conseguirem trabalhar com dados tabulares e funções estatísticas.
 * R é mais interoperacional que Python. Com o R conseguimos exportar a aproveitar resultados de uma biblioteca em outra por meio de objetos `data.frame`. Com o Python, isto é mais complicado e interoperabilidade envolve ~~martelar~~ transformar objetos oriundos de uma biblioteca em classes comuns de Python ou em tipos de arquivos comuns (JSON, CSV etc.)
 * R é mais usado pelos cientistas e estatísticos[^5].
