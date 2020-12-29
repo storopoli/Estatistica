@@ -74,7 +74,7 @@ A Estatística inferencial têm suas origens no final do século XIX, especialme
 knitr::include_graphics("images/pearson.jpg")
 ```
 
-A chave para compreesão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos teste estatístico[^14] segue o mesmo padrão universal [@downey2016]:
+A chave para compreesão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos testes estatísticos[^14] segue o mesmo padrão universal [@downey2016]:
 
 [^14]: em especial as técnicas clássicas/frequentistas de Estatística inferencial.
 
