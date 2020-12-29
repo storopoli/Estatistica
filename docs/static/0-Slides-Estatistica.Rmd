@@ -24,6 +24,8 @@ layout: true
 library(ggplot2)
 library(magrittr)
 library(DiagrammeR)
+library(countdown)
+library(audio)
 options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(fig.retina = 4,
                       warning = FALSE,
@@ -393,5 +395,7 @@ Acesse [http://bit.ly/s2estatistica](http://bit.ly/s2estatistica)
 * RA
 * Linha de Pesquisa
 ]
+
+`r countdown(minutes = 3, seconds = 0, warn_when = 10, play_sound = TRUE, bottom = "10%")`
 
 .footnote[Se você cair em um grupo que não goste, culpe o script R e a seed do gerador de números aleatórios. Coisas ruins acontecem, você pode escolher se isso vai ser uma oportunidade de crescimento ou não...]

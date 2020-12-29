@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
+title: "Relação entre Variáveis -- Correlações"
 description: |
-  A new article created using the Distill format.
+  Como que descrevemos a força de associação entre duas variáveis.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -31,11 +31,34 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
+**Correlações nos indicam a magnitude de associação que duas variáveis possuem**. É uma métrica **simétrica**, isto quer dizer que a correlação entre $X$ e $Y$, $\text{corr}(X,Y)$, é a mesma que a correlação entre $Y$ e $X$, $\text{corr}(Y,X)$. Além disso é uma métrica **padronizada entre -1 e +1**:
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+* **-1**: correlação negativa perfeita.
+* **+1**: correlação positiva perfeita.
+
+## Correlações e Desvio Padrão
+
+Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura \@ref(fig:dist-norms), na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes
+
+```{r dist-norms}
+library(ggplot2)
+ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+  mapply(function(mean, sd, col) {
+    stat_function(fun = dnorm, args = list(mean = mean, sd = sd), aes(col = col), size = 3)
+  }, 
+  # enter means, standard deviations and colors here
+  mean = rep(0, 3), 
+  sd = c(1, .5, 2), 
+  col = c('1', '0.5', '2')
+) +
+  scale_colour_brewer("Desvio\nPadrão", palette = "Set1",
+                      guide = guide_legend(ncol = 1,nrow = 3,byrow = TRUE))
+```
 
 
 
+## Ambiente
 
-
+```{r SessionInfo}
+sessionInfo()
+```
