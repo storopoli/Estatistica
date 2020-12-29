@@ -68,9 +68,9 @@ sims %>%
                 args = list(df = 3),
                 aes(color = "Distribuição t\nde Student"), size = 3) +
   scale_fill_brewer("Tipo de Observação", palette = "Set1",
-                    guide = guide_legend(ncol = 1,nrow = 2,byrow = TRUE)) +
+                    guide = guide_legend(ncol = 1, nrow = 2, byrow = TRUE)) +
   scale_colour_brewer("Tipo de Distribuição", palette = "Set3",
-                      guide = guide_legend(ncol = 1,nrow = 2,byrow = TRUE))+
+                      guide = guide_legend(ncol = 1, nrow = 2, byrow = TRUE))+
   theme(legend.position = "bottom") +
   ylim(c(0, 0.4))
 ```

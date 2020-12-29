@@ -2362,6 +2362,7 @@ Conteúdos Auxiliares
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
+<a href="aux-Anscombe.html">Quarteto de Anscombe</a>
 <a href="aux-Dados_Faltantes.html">Dados Faltantes</a>
 <a href="aux-Tamanho_Amostra.html">Tamanho de Amostra e Tamanho de Efeito</a>
 <a href="aux-Tabelas.html">Como ler Tabelas Em Estudos Científicos</a>
@@ -2442,9 +2443,9 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
                 args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>df <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
                 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"Distribuição t\nde Student"</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_fill_brewer</a></span><span class='op'>(</span><span class='st'>"Tipo de Observação"</span>, palette <span class='op'>=</span> <span class='st'>"Set1"</span>,
-                    guide <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>ncol <span class='op'>=</span> <span class='fl'>1</span>,nrow <span class='op'>=</span> <span class='fl'>2</span>,byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+                    guide <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>ncol <span class='op'>=</span> <span class='fl'>1</span>, nrow <span class='op'>=</span> <span class='fl'>2</span>, byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span><span class='st'>"Tipo de Distribuição"</span>, palette <span class='op'>=</span> <span class='st'>"Set3"</span>,
-                      guide <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>ncol <span class='op'>=</span> <span class='fl'>1</span>,nrow <span class='op'>=</span> <span class='fl'>2</span>,byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+                      guide <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>ncol <span class='op'>=</span> <span class='fl'>1</span>, nrow <span class='op'>=</span> <span class='fl'>2</span>, byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.4</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
@@ -2483,10 +2484,11 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] DescTools_0.99.39  skimr_2.1.2        ggpubr_0.4.0      
- [4] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
- [7] dplyr_1.0.2        ggplot2_3.3.2      DiagrammeR_1.0.6.1
-[10] readxl_1.3.1      
+ [1] ggforce_0.3.2        palmerpenguins_0.1.0 magrittr_2.0.1      
+ [4] mnormt_2.0.2         cowplot_1.1.0        DescTools_0.99.39   
+ [7] skimr_2.1.2          ggpubr_0.4.0         car_3.0-10          
+[10] carData_3.0-4        patchwork_1.1.1      dplyr_1.0.2         
+[13] ggplot2_3.3.2        DiagrammeR_1.0.6.1   readxl_1.3.1        
 
 loaded via a namespace (and not attached):
  [1] nlme_3.1-151       lubridate_1.7.9.2  RColorBrewer_1.1-2
@@ -2503,21 +2505,22 @@ loaded via a namespace (and not attached):
 [34] highr_0.8          htmlwidgets_1.5.3  rlang_0.4.9       
 [37] rstudioapi_0.13    visNetwork_2.0.9   farver_2.0.3      
 [40] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
-[43] distill_1.1        magrittr_2.0.1     Matrix_1.3-0      
-[46] Rcpp_1.0.5         munsell_0.5.0      fansi_0.4.1       
-[49] abind_1.4-5        reticulate_1.18    lifecycle_0.2.0   
-[52] stringi_1.5.3      yaml_2.2.1         rootSolve_1.8.2.1 
-[55] MASS_7.3-53        grid_4.0.3         parallel_4.0.3    
-[58] forcats_0.5.0      crayon_1.3.4       lmom_2.8          
-[61] lattice_0.20-41    splines_4.0.3      haven_2.3.1       
-[64] hms_0.5.3          knitr_1.30         pillar_1.4.7      
-[67] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
-[70] glue_1.4.2         evaluate_0.14      data.table_1.13.4 
-[73] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
-[76] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
-[79] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
-[82] e1071_1.7-4        rstatix_0.6.0      viridisLite_0.3.0 
-[85] class_7.3-17       tibble_3.0.4       ellipsis_0.3.1    </code></pre>
+[43] distill_1.1        Matrix_1.3-0       Rcpp_1.0.5        
+[46] munsell_0.5.0      fansi_0.4.1        abind_1.4-5       
+[49] reticulate_1.18    lifecycle_0.2.0    stringi_1.5.3     
+[52] yaml_2.2.1         rootSolve_1.8.2.1  MASS_7.3-53       
+[55] grid_4.0.3         parallel_4.0.3     forcats_0.5.0     
+[58] crayon_1.3.4       lmom_2.8           lattice_0.20-41   
+[61] splines_4.0.3      haven_2.3.1        hms_0.5.3         
+[64] tmvnsim_1.0-2      magick_2.5.2       knitr_1.30        
+[67] pillar_1.4.7       boot_1.3-25        gld_2.6.2         
+[70] ggsignif_0.6.0     glue_1.4.2         evaluate_0.14     
+[73] data.table_1.13.4  tweenr_1.0.1       vctrs_0.3.6       
+[76] cellranger_1.1.0   polyclip_1.10-0    gtable_0.3.0      
+[79] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
+[82] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
+[85] e1071_1.7-4        rstatix_0.6.0      viridisLite_0.3.0 
+[88] class_7.3-17       tibble_3.0.4       ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

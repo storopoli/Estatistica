@@ -41,6 +41,7 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 
 ### Conteúdos Auxiliares
 
+* Quarteto de Anscombe
 * Dados Faltantes
 * Tamanho de Amostra e Tamanho de Efeito
 * Como ler Tabelas Em Estudos Científicos

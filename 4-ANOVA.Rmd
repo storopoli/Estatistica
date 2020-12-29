@@ -57,7 +57,7 @@ knitr::include_graphics("images/fisher.jpg")
 
 Dessa vez não vamos simular dados, mas vamos usar um *dataset* que vem padrão com o R chamado `ToothGrowth` [@crampton1947], que examina os efeitos da vitamina C no crescimento dos dentes em porquinhos da índia. Cada animal foi atribuído a um de seis grupos de 10 sujeitos cada ($n = 10$) para um total de 60 cobaias ao todo ($N = 60$). As duas variáveis que foram manipuladas neste estudo foram o nível de dosagem de vitamina C `dose` (0.5, 1.0 ou 2.0 mg / dia) e o método de entrega da dosagem `supp` (suco de laranja `OJ` ou ácido absorvico `VC`). A variável dependente é o comprimento dos dentes`len` dos porquinhos da índia.
 
-Nós sempre que carregamos um *dataset* no R, temos o costume de usar a biblioteca `{skimr}` [@skimr] para produzir um sumário dos dados.
+Nós, sempre que carregamos um *dataset* no R, temos o costume de usar a biblioteca `{skimr}` [@skimr] para produzir um sumário dos dados.
 
 ```{r skimr}
 library(skimr)

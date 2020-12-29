@@ -58,6 +58,7 @@ Para quem gosta de nomenclaturas chiques: **Conteúdos curriculares obrigatório
 Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na formação do futuro pesquisador**. Aqui estão coisas não-essenciais mas que farão sua vida de pesquisador muito mais fácil.
 </aside>
 
+* [Quarteto de Anscombe](aux-Anscombe.html)
 * [Dados Faltantes](aux-Dados_Faltantes.html)
 * [Tamanho de Amostra e Tamanho de Efeito](aux-Tamanho_Amostra.html)
 * [Como ler Tabelas Em Estudos Científicos](aux-Tabelas.html)

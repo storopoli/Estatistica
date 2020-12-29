@@ -30,6 +30,8 @@ navbar:
           href: 7-Regressao_Logistica.html
     - text: "Conteúdos Auxiliares"
       menu:
+        - text: "Quarteto de Anscombe"
+          href: aux-Anscombe.html
         - text: "Dados Faltantes"
           href: aux-Dados_Faltantes.html
         - text: "Tamanho de Amostra e Tamanho de Efeito"

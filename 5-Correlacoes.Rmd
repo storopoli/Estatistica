@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = "70%",
                       fig.align = "center",
                       fig.retina = 3)
+set.seed(123)
 ```
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
@@ -38,22 +39,27 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Correlações e Desvio Padrão
 
-Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura \@ref(fig:plot-distnorms), na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes. Quanto maior o desvio padrão, maior será a variação de uma variável.
+Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura \@ref(fig:plot-distnorms), na qual temos três distribuições Normais com a mesma média 0, porém com desvio padrões diferentes. Quanto maior o desvio padrão, maior será a variação de uma variável.
 
 ```{r plot-distnorms, fig.cap='Distribuições Normais com diferentes Desvios Padrões'}
 library(ggplot2)
 ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
   mapply(function(mean, sd, col) {
-    stat_function(fun = dnorm, args = list(mean = mean, sd = sd), aes(col = col), size = 3)
+    stat_function(fun = dnorm,
+                  args = list(mean = mean,
+                              sd = sd),
+                  aes(col = col), size = 3)
   }, 
   mean = rep(0, 3), 
   sd = c(1, .5, 2), 
   col = c('1', '0.5', '2')) +
   scale_colour_brewer("Desvio\nPadrão", palette = "Set1",
-                      guide = guide_legend(ncol = 1,nrow = 3,byrow = TRUE))
+                      guide = guide_legend(ncol = 1,
+                                           nrow = 3,
+                                           byrow = TRUE))
 ```
 
-A correlação mensura o quanto de variação em unidades de desvio padrão duas variáveis estão associadas. Por exemplo, uma correlação de +0.8 indica que conforme $X$ varia 1 desvio padrão, observa-se uma variação de 0.8 desvio padrão em $Y$ e vice-versa^[correlação é uma medida simétrica]. Na figura \@ref(fig:plot-corr) é possível visualizar diagramas de dispersão de simulações com 50 observações de diferentes correlações acompanhadas de linhas de tendência em vermelho. No topo de cada diagrama de dispersão é possível ver a mangnitude da correlação utilizada na simulação.
+A correlação mensura o quanto de variação em unidades de desvio padrão duas variáveis estão associadas. Por exemplo, uma correlação de +0.8 indica que conforme $X$ varia 1 desvio padrão, observa-se uma variação de 0.8 desvio padrão em $Y$ e vice-versa^[correlação é uma medida simétrica]. Na figura \@ref(fig:plot-corr) é possível visualizar diagramas de dispersão de simulações com 50 observações de diferentes correlações acompanhadas de linhas de tendência em vermelho. No topo de cada diagrama de dispersão é possível ver a magnitude da correlação utilizada na simulação.
 
 ```{r plot-corr, warning=FALSE, message=FALSE, fig.cap='Diagramas de Dispersão com linhas de tendências para as diversas correlações', out.width='100%', fig.width=10, layout='l-screen'}
 correlação <- seq(-1, 1, 0.2)
@@ -62,38 +68,216 @@ x <- 1:50
 y <- rnorm(50, sd = 10)
 
 complemento <- function(y, correlação, x) {
-  if (missing(x)) x <- rnorm(length(y)) # Optional: supply a default if `x` is not given
   y.perp <- residuals(lm(x ~ y))
   correlação * sd(y.perp) * y + y.perp * sd(y) * sqrt(1 - correlação^2)
 }
 
-X <- data.frame(z = as.vector(sapply(correlação, function(correlação) complemento(y, correlação, x))),
-                correlação = ordered(rep(signif(correlação, 2), each = length(y))),
+X <- data.frame(z = as.vector(sapply(correlação,
+                                     function(correlação) complemento(y, correlação, x))),
+                correlação = ordered(rep(signif(correlação, 2),
+                                         each = length(y))),
                 y = rep(y, length(correlação)))
 ggplot(X, aes(y, z, group = correlação)) +
   geom_rug(sides = "b") +
   geom_point(aes(fill = correlação), alpha = 0.5) +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
-  facet_wrap( ~ correlação, scales = "free", labeller = "label_both",ncol = 4) +
+  facet_wrap( ~ correlação, scales = "free", labeller = "label_both", ncol = 4) +
   theme(legend.position = "none")
 ```
 
 ## Pressupostos da Correlação
 
-Todas correlações devem ser **aplicadas somente em variáveis contínuas, intervalares ou ordinais**. Elas **não podem ser usadas para variáveis nominais** (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam mensuráveis e comparáveis numericamente.
+Todas correlações devem ser **aplicadas somente em variáveis contínuas, intervalares ou ordinais**. Elas **não podem ser usadas para variáveis nominais** (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam "mensuráveis e comparáveis numericamente" entre si.
 
 ## Tipos de correlação
 
 Até agora todas as correlações que mostramos são correlações de Pearson pois é o tipo de correlação padrão do R. Temos três tipos de correlações que são comumente empregadas:
 
-1. **Correlação de Pearson**^[também chamado de $r$ de Pearson] [@pearson1895]: a correlação de Pearson é a correlação mais utilizada em análises estatísticas. Ela é uma técnica paramétrica e possui o **pressuposto de que ambas as variáveis são distribuídas conforme uma distribuição Normal**. Caso tenha dados que violem o pressuposto da normalidade, correlação de Pearson não é o tipo de correlação que você deva usar.
-2. **Correlação de Spearman**^[também chamado de $\rho$ (letra grega rho) de Spearman] [@spearman1904]:
-3. **Correlação de Kendall**^[também chamado de $\tau$ (letra gregra tau) de Kendall] [@kendall1938]:
+1. **Correlação de Pearson**^[também chamado de $r$ de Pearson] [@pearson1895]: a correlação de Pearson é a correlação mais utilizada em análises estatísticas. Ela é uma técnica **paramétrica** e possui o **pressuposto de que ambas as variáveis são distribuídas conforme uma distribuição Normal**. Caso tenha dados que violem o pressuposto da normalidade, correlação de Pearson não é o tipo de correlação que você deva usar.
+2. **Correlação de Spearman**^[também chamado de $\rho$ (letra grega rho) de Spearman] [@spearman1904]: a correlação de Spearman é uma técnica **não-paramétrica**, sendo a **alternativa quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
+3. **Correlação de Kendall**^[também chamado de $\tau$ (letra gregra tau) de Kendall] [@kendall1938]: Assim, como a correlação de Spearman, a correlação de Kendall também é uma técnica **não-paramétrica**. Sendo também uma **alternativa viável quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
 
-```{r fig-pearson-spearman-kendall, echo=FALSE, fig.show='hold',fig.align='center', out.width='33%', fig.cap='Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall'}
-knitr::include_graphics(c("images/fisher.jpg", "images/spearman.jpg", "images/kendall.jpg"))
+```{r fig-pearson-spearman-kendall, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
+library(patchwork)
+library(cowplot)
+
+p1 <- ggdraw() + draw_image("images/pearson.jpg")
+p2 <- ggdraw() + draw_image("images/spearman.jpg")
+p3 <- ggdraw() + draw_image("images/kendall.jpg")
+p1 + p2 + p3 + plot_layout(nrow = 1, widths = 1)
 ```
 
+### Quando usar Kendall ou Spearman?
+
+Ambas devem ser usadas quando o pressuposto de normalidade para ambas ou qualquer uma das variáveis que estão sendo correlacionadas for violado.
+
+**Sugerimos usar a correlação de Kendall**, especialmente quando estamos tratando de amostras pequenas ($n < 100$) [@reynolds1977analysis]. Porém, **há alguns cenários que a correlação de Spearman é melhor indicada**, conforme @khamis2008measures: "Se a variável ordinal, $Y$, tem um grande número de níveis (digamos, cinco ou seis ou mais), então pode-se usar o coeficiente de correlação de classificação de Spearman para medir a força da associação entre $X$ e $Y$"^[original em inglês: *If the ordinal variable, $Y$, has a large number of levels (say, five or six or more), then one may use the Spearman rank correlation coefficient to measure the strength of association between $X$ and $Y$*.].
+
+Além disso, as duas divergem em **custo computacional**. Isto pode ser um critério de decisão caso estejam lidando com um vasto número de observações. O cálculo da correlação de Kendall possui complexidade computacional na ordem de $O(n^2)$, enquanto que o cálculo da correlação de Spearman possui complexidade computacional na ordem de $O(n \log n)$, sendo $n$ o tamanho da amostra.
+
+## Como mensurar correlações no R
+
+No R é possível mensurar correlações de duas maneiras:
+
+1. Calculando a medida de correlação entre duas variáveis.
+2. Realizando um teste estatístico de hipótese nula sobre a correlação de duas variáveis.
+
+Antes de apresentar os dois métodos, vamos simular^[sim, adoramos simulações, como vocês já devem ter percebido.] dois cenários de relações bivariadas. O primeiro cenário contém duas distribuições Normais com médias diferentes porém com uma correlação especificada em 0.6. O segundo cenário contém duas distribuições $t$ de Student^[estamos especificando 1 grau de liberdade] com a mesma correlação especificada em 0.6. Usaremos a biblioteca `{mnormt}` [@mnormt], que é específica para gerar distribuições multivariadas Normais e não-Normais.
+
+```{r sim-mv-dist}
+library(mnormt)
+
+medias <- c(0,10)
+covariancias <- matrix(c(1, 0.6, 0.6, 1), 2, 2)
+                       
+mv_normal <- as.data.frame(rmnorm(50, medias, covariancias))
+mv_student <- as.data.frame(rmt(50, medias, covariancias, df = 1))
+```
+
+Para verificar se os pressupostos não serão violados, usaremos o teste de **Shapiro-Wilk** usando a função `shapiro.test()` em ambos cenários. Lembrando que a $H_0$ do teste de Shapiro-Wilk é de que "os dados são distribuídos conforme uma distribuição Normal".
+
+```{r shapiro-mv_normal}
+shapiro.test(mv_normal$V1)
+shapiro.test(mv_normal$V2)
+```
+
+Como podem ver, ambos os testes para as distribuições multivariadas Normais geram $p$-valores acima de 0.05 o que faz com que falhamos em rejeitar a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal".
+
+```{r shapiro-mv_student}
+shapiro.test(mv_student$V1)
+shapiro.test(mv_student$V2)
+```
+
+Como podem ver, ambos os testes para as distribuições multivariadas $t$ de Student geram $p$-valores abaixo de 0.05 o que faz com que falhamos em rejeitar a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal".
+
+### Calculando a medida de correlação entre duas variáveis
+
+Para calcular a correlação de duas variáveis usamos a função padrão do R `cor()`. Devemos usar como arguento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor()` usará como padrão `method = "pearson"`]:
+
+* `method = "pearson"` -- Correlação de Pearson.
+* `method = "spearman"` -- Correlação de Spearman.
+* `method = "kendall"` -- Correlação de Kendall.
+
+#### Primeiro cenário, distribuições Normais, técnica paramétrica de correlação de Pearson:
+
+```{r cor-pearson}
+cor(mv_normal$V1, mv_normal$V2, method = "pearson")
+```
+
+#### Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Spearman:
+
+```{r cor-spearman}
+cor(mv_student$V1, mv_student$V2, method = "spearman")
+```
+
+#### Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Kendall:
+
+```{r cor-kendall}
+cor(mv_student$V1, mv_student$V2, method = "kendall")
+```
+
+### Realizando um teste estatístico de hipótese nula sobre a correlação de duas variáveis
+
+Além de computarmos o valor da correlação entre duas variáveis, é possível também realizar um teste estatístico de hipótese nula sobre a correlação de duas variáveis. **A hipótese nula $H_0$ nesse caso é de que "as variáveis possuem correlação iguala a zero"**.
+
+Para fazermos um teste de hipótese de correlação usamos a função padrão do R `cor.test()` que funciona similar à `cor()`. Devemos usar como arguento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor.test()` usará como padrão `method = "pearson"`]:
+
+* `method = "pearson"` -- Correlação de Pearson.
+* `method = "spearman"` -- Correlação de Spearman.
+* `method = "kendall"` -- Correlação de Kendall.
+
+O output de `cor.test()` inclui um $p$-valor, mas somente a correlação de Pearson possui um intervalo de confiança padrão 95% (podendo ser alterado para outras porcentagens caso necessário). Notem que a intuição aqui é que o **$p$-valor** é probabilidade de obter resultados no mínimo tão extremos quanto os que foram observados, dado que a hipótese nula é verdadeira ($H_0$: correlação entre as variáveis é zero/nula); e o **intervalo de confiança** expressa a frequência de longo-prazo que você esperaria obter de uma correlação caso replicasse o teste estatístico para diversas amostras da mesma população (nesse caso 95% das amostras de mesmo tamanho que a nossa, $n = 50$, da mesma população-alvo, aplicando o mesmo teste estatístico de correlação, esperaríamos encontrar uma correlação entre os limites inferiores e superiores do intervalo de confiança).
+
+#### Primeiro cenário, distribuições Normais, técnica paramétrica de correlação de Pearson:
+
+```{r cor.test-pearson}
+cor.test(mv_normal$V1, mv_normal$V2, method = "pearson")
+```
+
+Note que aqui temos um $p$-valor significante e um tamanho de efeito entre `r cor.test(mv_normal$V1, mv_normal$V2, method = "pearson")$conf.int[1]` e `r cor.test(mv_normal$V1, mv_normal$V2, method = "pearson")$conf.int[2]`.
+
+#### Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Spearman:
+
+```{r cor.test-spearman}
+cor.test(mv_student$V1, mv_student$V2, method = "spearman")
+```
+
+Aqui também temos um $p$-valor significante.
+
+#### Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Kendall:
+
+```{r cor.test-kendall}
+cor.test(mv_student$V1, mv_student$V2, method = "kendall")
+```
+
+Aqui também temos um $p$-valor significante.
+
+## Paradoxo de Simpson
+
+O paradoxo de Simpson é um fenômeno que surge na análise de dados, que se não for considerado pode levar a conclusões espúrias ou previsões enganosas. A ideia geral do paradoxo é que um conjunto de dados em geral pode parecer uma tendência em uma direção (positiva ou negativa), mas tender na direção oposta quando dividido por subgrupos. Isso é problemático porque olhar para dados agregados pode levar a acreditar que os dados têm uma associação positiva/negativa para todos os grupos, porém ao subdividirmos os dados em subgrupos e analisarmos as associações vemos que a tendência que era positiva/negativa é totalmente revertida.
+
+### Pinguins de Palmer
+
+Para ilustrar o paradoxo de Simpson, vamos usar o *dataset* sobre pinguins que foram encontrados próximos da estação de Palmer na Antártica. O *dataset* pode ser carregado pela biblioteca `{palmerpenguins}` [@palmerpenguins]. Nós, sempre que carregamos um *dataset* no R, temos o costume de usar a biblioteca `{skimr}` [@skimr] para produzir um sumário dos dados.
+
+```{r palmerpenguins}
+library(magrittr)
+library(palmerpenguins)
+library(skimr)
+penguins <- penguins %>% na.omit()
+skim(penguins)
+```
+
+Como vocês podem verificar, temos observações de três espécies de pinguins:
+
+* Adelie -- 146 observações.
+* Chinstrap -- 68 observações.
+* Gentoo -- 119 observações.
+
+Na figura \@ref(fig:fig-palmer-penguins) é possível observar duas ilustrações: à esquerda as três diferentes espécies de pinguins observadas no *dataset* e à direita ilustrando o significado das variáveis comprimento de bico `bill_length_mm` e altura de bico`bill_depth_mm`.
+
+```{r fig-palmer-penguins, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='100%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: as diferentes espécies de pinguins Palmer e  ilustração do bico do pinguim -- Figuras de https://allisonhorst.github.io/palmerpenguins', out.extra='class=external'}
+p4 <- ggdraw() + draw_image("images/penguis-species.png")
+p5 <- ggdraw() + draw_image("images/penguins-bill.png")
+p4 + p5 + plot_layout(nrow = 1, widths = 1)
+```
+
+### Dados agregados
+
+Para iniciar a exemplificação do paradoxo de Simpson, mostraremos os dados agregados da associação entre o comprimento do bico `bill_length_mm` e a altura do bico `bill_depth_mm` dos pinguins, ambos mensurados em milímetros e independente de espécie. Na figura \@ref(fig:fig-agg-penguins) é possível ver um diagrama de dispersão do comprimento e altura dos bicos dos pinguins, independente de espécie, e com uma linha de tendência em azul. A correlação, por esse gráfico de dispersão, mostra uma associação negativa entre comprimento e altura do bico. E, agora, perguntamos: isto faz sentido? Vocês acreditam que essa associação é realmente negativa: quanto maior o comprimento do bico menor a altura do bico?
+
+```{r fig-agg-penguins, warning=FALSE, message=FALSE, fig.cap='Diagrama de dispersão agregado do comprimento e altura dos bicos dos pinguins', out.width='100%'}
+penguins %>% 
+  ggplot(aes(bill_length_mm, bill_depth_mm)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, size = 2)  +
+  labs(x = "comprimento do bico",
+       y = "altura do bico",
+       caption = "dados agregados")
+```
+
+Veja o que acontece quando dividimos os dados por subgrupos (no caso espécies). Na figura \@ref(fig:fig-group-penguins) é possível ver um diagrama de dispersão do comprimento e altura dos bicos dos pinguins, subdividos em espécie por cor, e com uma linha de tendência na cor de cada espécie. A correlação, por esse gráfico de dispersão, mostra uma associação positiva entre comprimento e altura do bico quando consideramos espécie.
+
+```{r fig-group-penguins, warning=FALSE, message=FALSE, fig.cap='Diagrama de dispersão subdividido em espécies do comprimento e altura dos bicos dos pinguins'}
+library(ggforce)
+penguins %>% 
+  ggplot(aes(bill_length_mm, bill_depth_mm, color = species)) +
+  geom_point() +
+  geom_smooth(aes(group = species), method = "lm", se = FALSE, size = 2)  +
+  labs(x = "comprimento do bico",
+       y = "altura do bico",
+       caption = "dados subdividos por espécie") +
+  scale_color_brewer("Espécie", palette = "Set1") +
+  theme(legend.position = "bottom")
+```
+
+## Comentários Finais
+
+A correlação é uma métrica extremamente útil para quantificar a magnitude de associação entre duas variáveis. Porém, são necessários alguns cuidados.
+
+Sobre as técnicas de correlação em si, precisamos estar atentos a quais tipos de dados que temos. Caso as variáveis que desejamos correlacionar possuam uma distribuição similar à distribuição Normal (teste de Shapiro-Wilk com $p$-valor acima de 0.05) podemos usar a correlação de Pearson; caso contrário teremos que usar uma técnica de correlação não-paramétrica e escolher entre correlação de Spearman ou correlação de Kendall.
+
+Sobre a interpretação das correlações e associações, não se esqueça do mantra da [aula 2 sobre $p$-valores](2-p-valores.html): "correlação não é causalidade". Além disso, se atentem ao paradoxo de Simpson, especialmente quando estiverem com dados que podem ser subdividos em grupos.
 
 ## Ambiente
 
