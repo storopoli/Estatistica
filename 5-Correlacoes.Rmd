@@ -38,23 +38,61 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## Correlações e Desvio Padrão
 
-Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura \@ref(fig:dist-norms), na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes
+Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura \@ref(fig:plot-distnorms), na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes. Quanto maior o desvio padrão, maior será a variação de uma variável.
 
-```{r dist-norms}
+```{r plot-distnorms, fig.cap='Distribuições Normais com diferentes Desvios Padrões'}
 library(ggplot2)
 ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
   mapply(function(mean, sd, col) {
     stat_function(fun = dnorm, args = list(mean = mean, sd = sd), aes(col = col), size = 3)
   }, 
-  # enter means, standard deviations and colors here
   mean = rep(0, 3), 
   sd = c(1, .5, 2), 
-  col = c('1', '0.5', '2')
-) +
+  col = c('1', '0.5', '2')) +
   scale_colour_brewer("Desvio\nPadrão", palette = "Set1",
                       guide = guide_legend(ncol = 1,nrow = 3,byrow = TRUE))
 ```
 
+A correlação mensura o quanto de variação em unidades de desvio padrão duas variáveis estão associadas. Por exemplo, uma correlação de +0.8 indica que conforme $X$ varia 1 desvio padrão, observa-se uma variação de 0.8 desvio padrão em $Y$ e vice-versa^[correlação é uma medida simétrica]. Na figura \@ref(fig:plot-corr) é possível visualizar diagramas de dispersão de simulações com 50 observações de diferentes correlações acompanhadas de linhas de tendência em vermelho. No topo de cada diagrama de dispersão é possível ver a mangnitude da correlação utilizada na simulação.
+
+```{r plot-corr, warning=FALSE, message=FALSE, fig.cap='Diagramas de Dispersão com linhas de tendências para as diversas correlações', out.width='100%', fig.width=10, layout='l-screen'}
+correlação <- seq(-1, 1, 0.2)
+
+x <- 1:50
+y <- rnorm(50, sd = 10)
+
+complemento <- function(y, correlação, x) {
+  if (missing(x)) x <- rnorm(length(y)) # Optional: supply a default if `x` is not given
+  y.perp <- residuals(lm(x ~ y))
+  correlação * sd(y.perp) * y + y.perp * sd(y) * sqrt(1 - correlação^2)
+}
+
+X <- data.frame(z = as.vector(sapply(correlação, function(correlação) complemento(y, correlação, x))),
+                correlação = ordered(rep(signif(correlação, 2), each = length(y))),
+                y = rep(y, length(correlação)))
+ggplot(X, aes(y, z, group = correlação)) +
+  geom_rug(sides = "b") +
+  geom_point(aes(fill = correlação), alpha = 0.5) +
+  geom_smooth(method = "lm", color = "Red", se = FALSE) +
+  facet_wrap( ~ correlação, scales = "free", labeller = "label_both",ncol = 4) +
+  theme(legend.position = "none")
+```
+
+## Pressupostos da Correlação
+
+Todas correlações devem ser **aplicadas somente em variáveis contínuas, intervalares ou ordinais**. Elas **não podem ser usadas para variáveis nominais** (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam mensuráveis e comparáveis numericamente.
+
+## Tipos de correlação
+
+Até agora todas as correlações que mostramos são correlações de Pearson pois é o tipo de correlação padrão do R. Temos três tipos de correlações que são comumente empregadas:
+
+1. **Correlação de Pearson**^[também chamado de $r$ de Pearson] [@pearson1895]: a correlação de Pearson é a correlação mais utilizada em análises estatísticas. Ela é uma técnica paramétrica e possui o **pressuposto de que ambas as variáveis são distribuídas conforme uma distribuição Normal**. Caso tenha dados que violem o pressuposto da normalidade, correlação de Pearson não é o tipo de correlação que você deva usar.
+2. **Correlação de Spearman**^[também chamado de $\rho$ (letra grega rho) de Spearman] [@spearman1904]:
+3. **Correlação de Kendall**^[também chamado de $\tau$ (letra gregra tau) de Kendall] [@kendall1938]:
+
+```{r fig-pearson-spearman-kendall, echo=FALSE, fig.show='hold',fig.align='center', out.width='33%', fig.cap='Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall'}
+knitr::include_graphics(c("images/fisher.jpg", "images/spearman.jpg", "images/kendall.jpg"))
+```
 
 
 ## Ambiente

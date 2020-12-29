@@ -2401,6 +2401,8 @@ Conteúdos Auxiliares
 <h3>Contents</h3>
 <ul>
 <li><a href="#correlações-e-desvio-padrão">Correlações e Desvio Padrão</a></li>
+<li><a href="#pressupostos-da-correlação">Pressupostos da Correlação</a></li>
+<li><a href="#tipos-de-correlação">Tipos de correlação</a></li>
 <li><a href="#ambiente">Ambiente</a></li>
 </ul>
 </nav>
@@ -2412,7 +2414,7 @@ Conteúdos Auxiliares
 <li><strong>+1</strong>: correlação positiva perfeita.</li>
 </ul>
 <h2 id="correlações-e-desvio-padrão">Correlações e Desvio Padrão</h2>
-<p>Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura <a href="#fig:dist-norms"><strong>??</strong></a>, na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes</p>
+<p>Desvio padrão é uma métrica descritiva de uma variável que indica a magnitude de variação (dispersão de uma centralidade) que uma variável possui. Veja o exemplo da figura <a href="#fig:plot-distnorms">1</a>, na qual temos três distribuições normais com a mesma média 0, porém com desvio padrões diferentes. Quanto maior o desvio padrão, maior será a variação de uma variável.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
@@ -2420,16 +2422,68 @@ Conteúdos Auxiliares
   <span class='fu'><a href='https://rdrr.io/r/base/mapply.html'>mapply</a></span><span class='op'>(</span><span class='kw'>function</span><span class='op'>(</span><span class='va'>mean</span>, <span class='va'>sd</span>, <span class='va'>col</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_function.html'>stat_function</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='va'>dnorm</span>, args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='va'>mean</span>, sd <span class='op'>=</span> <span class='va'>sd</span><span class='op'>)</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>col</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
   <span class='op'>}</span>, 
-  <span class='co'># enter means, standard deviations and colors here</span>
   mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>3</span><span class='op'>)</span>, 
   sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>.5</span>, <span class='fl'>2</span><span class='op'>)</span>, 
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'1'</span>, <span class='st'>'0.5'</span>, <span class='st'>'2'</span><span class='op'>)</span>
-<span class='op'>)</span> <span class='op'>+</span>
+  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'1'</span>, <span class='st'>'0.5'</span>, <span class='st'>'2'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span><span class='st'>"Desvio\nPadrão"</span>, palette <span class='op'>=</span> <span class='st'>"Set1"</span>,
                       guide <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guide_legend.html'>guide_legend</a></span><span class='op'>(</span>ncol <span class='op'>=</span> <span class='fl'>1</span>,nrow <span class='op'>=</span> <span class='fl'>3</span>,byrow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="5-Correlacoes_files/figure-html5/dist-norms-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:plot-distnorms"></span>
+<img src="5-Correlacoes_files/figure-html5/plot-distnorms-1.png" alt="Distribuições Normais com diferentes Desvios Padrões" width="70%" />
+<p class="caption">
+Figure 1: Distribuições Normais com diferentes Desvios Padrões
+</p>
+</div>
+</div>
+<p>A correlação mensura o quanto de variação em unidades de desvio padrão duas variáveis estão associadas. Por exemplo, uma correlação de +0.8 indica que conforme <span class="math inline">\(X\)</span> varia 1 desvio padrão, observa-se uma variação de 0.8 desvio padrão em <span class="math inline">\(Y\)</span> e vice-versa<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Na figura <a href="#fig:plot-corr">2</a> é possível visualizar diagramas de dispersão de simulações com 50 observações de diferentes correlações acompanhadas de linhas de tendência em vermelho. No topo de cada diagrama de dispersão é possível ver a mangnitude da correlação utilizada na simulação.</p>
+<div class="layout-chunk" data-layout="l-screen">
+<div class="sourceCode">
+<pre><code><span class='va'>correlação</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0.2</span><span class='op'>)</span>
+
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>50</span>
+<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>50</span>, sd <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+
+<span class='va'>complemento</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>correlação</span>, <span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/missing.html'>missing</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span> <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># Optional: supply a default if `x` is not given</span>
+  <span class='va'>y.perp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>~</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>correlação</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>y.perp</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>y</span> <span class='op'>+</span> <span class='va'>y.perp</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>1</span> <span class='op'>-</span> <span class='va'>correlação</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>z <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>correlação</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>correlação</span><span class='op'>)</span> <span class='fu'>complemento</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>correlação</span>, <span class='va'>x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+                correlação <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>ordered</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>signif</a></span><span class='op'>(</span><span class='va'>correlação</span>, <span class='fl'>2</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>y</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+                y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>correlação</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>X</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>z</span>, group <span class='op'>=</span> <span class='va'>correlação</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_rug.html'>geom_rug</a></span><span class='op'>(</span>sides <span class='op'>=</span> <span class='st'>"b"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>correlação</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, color <span class='op'>=</span> <span class='st'>"Red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span> <span class='op'>~</span> <span class='va'>correlação</span>, scales <span class='op'>=</span> <span class='st'>"free"</span>, labeller <span class='op'>=</span> <span class='st'>"label_both"</span>,ncol <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:plot-corr"></span>
+<img src="5-Correlacoes_files/figure-html5/plot-corr-1.png" alt="Diagramas de Dispersão com linhas de tendências para as diversas correlações" width="100%" />
+<p class="caption">
+Figure 2: Diagramas de Dispersão com linhas de tendências para as diversas correlações
+</p>
+</div>
+</div>
+<h2 id="pressupostos-da-correlação">Pressupostos da Correlação</h2>
+<p>Todas correlações devem ser <strong>aplicadas somente em variáveis contínuas, intervalares ou ordinais</strong>. Elas <strong>não podem ser usadas para variáveis nominais</strong> (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam mensuráveis e comparáveis numericamente.</p>
+<h2 id="tipos-de-correlação">Tipos de correlação</h2>
+<p>Até agora todas as correlações que mostramos são correlações de Pearson pois é o tipo de correlação padrão do R. Temos três tipos de correlações que são comumente empregadas:</p>
+<ol type="1">
+<li><strong>Correlação de Pearson</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> <span class="citation" data-cites="pearson1895">(<a href="#ref-pearson1895" role="doc-biblioref">Pearson, 1895</a>)</span>: a correlação de Pearson é a correlação mais utilizada em análises estatísticas. Ela é uma técnica paramétrica e possui o <strong>pressuposto de que ambas as variáveis são distribuídas conforme uma distribuição Normal</strong>. Caso tenha dados que violem o pressuposto da normalidade, correlação de Pearson não é o tipo de correlação que você deva usar.</li>
+<li><strong>Correlação de Spearman</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="citation" data-cites="spearman1904">(<a href="#ref-spearman1904" role="doc-biblioref">Spearman, 1904</a>)</span>:</li>
+<li><strong>Correlação de Kendall</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <span class="citation" data-cites="kendall1938">(<a href="#ref-kendall1938" role="doc-biblioref">Kendall, 1938</a>)</span>:</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:fig-pearson-spearman-kendall"></span>
+<img src="images/fisher.jpg" alt="Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall" width="33%" /><img src="images/spearman.jpg" alt="Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall" width="33%" /><img src="images/kendall.jpg" alt="Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall" width="33%" />
+<p class="caption">
+Figure 3: Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall
+</p>
+</div>
 </div>
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2459,36 +2513,57 @@ other attached packages:
 [10] readxl_1.3.1      
 
 loaded via a namespace (and not attached):
- [1] lubridate_1.7.9.2  RColorBrewer_1.1-2 rprojroot_2.0.2   
- [4] ggsci_2.9          repr_1.1.0         tools_4.0.3       
- [7] backports_1.2.1    utf8_1.1.4         R6_2.5.0          
-[10] colorspace_2.0-0   withr_2.3.0        tidyselect_1.1.0  
-[13] Exact_2.1          downlit_0.2.1      curl_4.3          
-[16] compiler_4.0.3     cli_2.2.0          expm_0.999-5      
-[19] xml2_1.3.2         labeling_0.4.2     bookdown_0.21     
-[22] scales_1.1.1       mvtnorm_1.1-1      stringr_1.4.0     
-[25] digest_0.6.27      foreign_0.8-81     rmarkdown_2.6     
-[28] rio_0.5.16         base64enc_0.1-3    pkgconfig_2.0.3   
-[31] htmltools_0.5.0    highr_0.8          htmlwidgets_1.5.3 
-[34] rlang_0.4.9        rstudioapi_0.13    visNetwork_2.0.9  
-[37] farver_2.0.3       generics_0.1.0     jsonlite_1.7.2    
-[40] zip_2.1.1          distill_1.1        magrittr_2.0.1    
-[43] Matrix_1.3-0       Rcpp_1.0.5         munsell_0.5.0     
-[46] fansi_0.4.1        abind_1.4-5        reticulate_1.18   
-[49] lifecycle_0.2.0    stringi_1.5.3      yaml_2.2.1        
-[52] rootSolve_1.8.2.1  MASS_7.3-53        grid_4.0.3        
-[55] parallel_4.0.3     forcats_0.5.0      crayon_1.3.4      
-[58] lmom_2.8           lattice_0.20-41    haven_2.3.1       
-[61] hms_0.5.3          knitr_1.30         pillar_1.4.7      
-[64] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
-[67] glue_1.4.2         evaluate_0.14      data.table_1.13.4 
-[70] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
-[73] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
-[76] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
-[79] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
-[82] tibble_3.0.4       ellipsis_0.3.1    </code></pre>
+ [1] nlme_3.1-151       lubridate_1.7.9.2  RColorBrewer_1.1-2
+ [4] rprojroot_2.0.2    ggsci_2.9          repr_1.1.0        
+ [7] tools_4.0.3        backports_1.2.1    utf8_1.1.4        
+[10] R6_2.5.0           mgcv_1.8-33        colorspace_2.0-0  
+[13] withr_2.3.0        tidyselect_1.1.0   Exact_2.1         
+[16] downlit_0.2.1      curl_4.3           compiler_4.0.3    
+[19] cli_2.2.0          expm_0.999-5       xml2_1.3.2        
+[22] labeling_0.4.2     bookdown_0.21      scales_1.1.1      
+[25] mvtnorm_1.1-1      stringr_1.4.0      digest_0.6.27     
+[28] foreign_0.8-81     rmarkdown_2.6      rio_0.5.16        
+[31] base64enc_0.1-3    pkgconfig_2.0.3    htmltools_0.5.0   
+[34] highr_0.8          htmlwidgets_1.5.3  rlang_0.4.9       
+[37] rstudioapi_0.13    visNetwork_2.0.9   farver_2.0.3      
+[40] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
+[43] distill_1.1        magrittr_2.0.1     Matrix_1.3-0      
+[46] Rcpp_1.0.5         munsell_0.5.0      fansi_0.4.1       
+[49] abind_1.4-5        reticulate_1.18    lifecycle_0.2.0   
+[52] stringi_1.5.3      yaml_2.2.1         rootSolve_1.8.2.1 
+[55] MASS_7.3-53        grid_4.0.3         parallel_4.0.3    
+[58] forcats_0.5.0      crayon_1.3.4       lmom_2.8          
+[61] lattice_0.20-41    splines_4.0.3      haven_2.3.1       
+[64] hms_0.5.3          knitr_1.30         pillar_1.4.7      
+[67] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
+[70] glue_1.4.2         evaluate_0.14      data.table_1.13.4 
+[73] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
+[76] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
+[79] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
+[82] e1071_1.7-4        rstatix_0.6.0      viridisLite_0.3.0 
+[85] class_7.3-17       tibble_3.0.4       ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-kendall1938" class="csl-entry" role="doc-biblioentry">
+<p>Kendall, M. G. (1938). A new measure of rank correlation. <em>Biometrika</em>, <em>30</em>(1/2), 81–93.</p>
+</div>
+<div id="ref-pearson1895" class="csl-entry" role="doc-biblioentry">
+<p>Pearson, K. (1895). Notes on regression and inheritance in the case of two parents. <em>Proceedings of the royal society of london</em>, <em>58</em>, 240–242. Royal Society of London.</p>
+</div>
+<div id="ref-spearman1904" class="csl-entry" role="doc-biblioentry">
+<p>Spearman, C. (1904). The proof and measurement of association between two things. <em>American Journal of Psychology</em>, <em>15</em>, 72–101.</p>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>correlação é uma medida simétrica<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>também chamado de <span class="math inline">\(r\)</span> de Pearson<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>também chamado de <span class="math inline">\(\rho\)</span> (letra grega rho) de Spearman<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>também chamado de <span class="math inline">\(\tau\)</span> (letra gregra tau) de Kendall<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
