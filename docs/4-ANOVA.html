@@ -2640,7 +2640,7 @@ Residuals   58   3247      56
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>Podemos ver que o comprimento dos dentes <code>len</code> não muda conforme o método de entrega da dosagem <code>supp</code> (suco de laranja vs ácido ascórbico).</p>
+<p>Podemos ver que a diferença do comprimento dos dentes <code>len</code> conforme o método de dosagem <code>supp</code> (suco de laranja vs ácido ascórbico) não é estatisticamente significante (<span class="math inline">\(p&gt;0.06\)</span>). Ao comparar o nível de significância do teste (<span class="math inline">\(p=0.06\)</span>) com o limiar estabelecido (<span class="math inline">\(p&lt;0.05\)</span>) <strong>não conseguimos rejeitar a hipótese nula</strong> de que não há diferença no comprimento dos dentes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>fit2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
@@ -2653,7 +2653,7 @@ Residuals   57   1026      18
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>Porém, o comprimento dos dentes <code>len</code> muda conforme o tamanho da dose <code>dose</code> (0.5, 1.0 ou 2.0 mg).</p>
+<p>Porém, o comprimento dos dentes <code>len</code> muda conforme o tamanho da dose <code>dose</code> (0.5, 1.0 ou 2.0 mg) (<span class="math inline">\(p&lt;0.05\)</span>). Ao comparar o nível de significância do teste (<span class="math inline">\(p=0.00000000000000095\)</span>) com o limiar estabelecido (<span class="math inline">\(p&lt;0.05\)</span>) <strong>conseguimos rejeitar a hipótese nula</strong> de que não há diferença no comprimento dos dentes.</p>
 <h3 id="anova-bidirecional">ANOVA Bidirecional<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></h3>
 <p><strong>A ANOVA Bidirecional</strong> é uma extensão da ANOVA Unidirecional que examina a <strong>influência de duas variáveis independentes categóricas em uma variável contínua dependente</strong>. Há duas maneiras de analisarmos essa influência:</p>
 <ul>
@@ -2831,40 +2831,35 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] DescTools_0.99.39  skimr_2.1.2        ggpubr_0.4.0      
- [4] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
- [7] dplyr_1.0.2        ggplot2_3.3.2      DiagrammeR_1.0.6.1
-[10] readxl_1.3.1      
+[1] ggpubr_0.4.0      ggplot2_3.3.2     DescTools_0.99.39
+[4] car_3.0-10        carData_3.0-4     skimr_2.1.2      
 
 loaded via a namespace (and not attached):
- [1] lubridate_1.7.9.2  RColorBrewer_1.1-2 rprojroot_2.0.2   
- [4] ggsci_2.9          repr_1.1.0         tools_4.0.3       
- [7] backports_1.2.1    utf8_1.1.4         R6_2.5.0          
-[10] colorspace_2.0-0   withr_2.3.0        tidyselect_1.1.0  
-[13] Exact_2.1          downlit_0.2.1      curl_4.3          
-[16] compiler_4.0.3     cli_2.2.0          expm_0.999-5      
-[19] xml2_1.3.2         labeling_0.4.2     bookdown_0.21     
-[22] scales_1.1.1       mvtnorm_1.1-1      stringr_1.4.0     
-[25] digest_0.6.27      foreign_0.8-81     rmarkdown_2.6     
-[28] rio_0.5.16         base64enc_0.1-3    pkgconfig_2.0.3   
-[31] htmltools_0.5.0    highr_0.8          htmlwidgets_1.5.3 
-[34] rlang_0.4.9        rstudioapi_0.13    visNetwork_2.0.9  
-[37] farver_2.0.3       generics_0.1.0     jsonlite_1.7.2    
-[40] zip_2.1.1          distill_1.1        magrittr_2.0.1    
-[43] Matrix_1.3-0       Rcpp_1.0.5         munsell_0.5.0     
-[46] fansi_0.4.1        abind_1.4-5        reticulate_1.18   
-[49] lifecycle_0.2.0    stringi_1.5.3      yaml_2.2.1        
-[52] rootSolve_1.8.2.1  MASS_7.3-53        grid_4.0.3        
-[55] parallel_4.0.3     forcats_0.5.0      crayon_1.3.4      
-[58] lmom_2.8           lattice_0.20-41    haven_2.3.1       
-[61] hms_0.5.3          knitr_1.30         pillar_1.4.7      
-[64] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
-[67] glue_1.4.2         evaluate_0.14      data.table_1.13.4 
-[70] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
-[73] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
-[76] xfun_0.19          openxlsx_4.2.3     broom_0.7.3       
-[79] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
-[82] tibble_3.0.4       ellipsis_0.3.1    </code></pre>
+ [1] Rcpp_1.0.5        mvtnorm_1.1-1     lattice_0.20-41  
+ [4] tidyr_1.1.2       class_7.3-17      digest_0.6.27    
+ [7] R6_2.5.0          cellranger_1.1.0  repr_1.1.0       
+[10] backports_1.2.1   evaluate_0.14     rootSolve_1.8.2.1
+[13] e1071_1.7-4       highr_0.8         pillar_1.4.7     
+[16] rlang_0.4.9       Exact_2.1         curl_4.3         
+[19] readxl_1.3.1      rstudioapi_0.13   data.table_1.13.4
+[22] Matrix_1.3-0      rmarkdown_2.6     labeling_0.4.2   
+[25] stringr_1.4.0     foreign_0.8-81    munsell_0.5.0    
+[28] broom_0.7.3       compiler_4.0.3    xfun_0.19        
+[31] pkgconfig_2.0.3   base64enc_0.1-3   htmltools_0.5.0  
+[34] downlit_0.2.1     tidyselect_1.1.0  tibble_3.0.4     
+[37] lmom_2.8          expm_0.999-5      rio_0.5.16       
+[40] fansi_0.4.1       withr_2.3.0       crayon_1.3.4     
+[43] dplyr_1.0.2       MASS_7.3-53       grid_4.0.3       
+[46] jsonlite_1.7.2    gtable_0.3.0      lifecycle_0.2.0  
+[49] magrittr_2.0.1    scales_1.1.1      gld_2.6.2        
+[52] zip_2.1.1         stringi_1.5.3     farver_2.0.3     
+[55] ggsignif_0.6.0    ellipsis_0.3.1    generics_0.1.0   
+[58] vctrs_0.3.6       boot_1.3-25       openxlsx_4.2.3   
+[61] distill_1.1       ggsci_2.9         tools_4.0.3      
+[64] forcats_0.5.0     glue_1.4.2        purrr_0.3.4      
+[67] hms_0.5.3         abind_1.4-5       parallel_4.0.3   
+[70] yaml_2.2.1        colorspace_2.0-0  rstatix_0.6.0    
+[73] knitr_1.30        haven_2.3.1      </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

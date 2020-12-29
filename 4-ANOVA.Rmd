@@ -120,14 +120,14 @@ fit1 <- aov(len ~ supp, data = ToothGrowth)
 summary(fit1)
 ```
 
-Podemos ver que o comprimento dos dentes `len` não muda conforme o método de entrega da dosagem `supp` (suco de laranja vs ácido ascórbico).
+Podemos ver que a diferença do comprimento dos dentes `len` conforme o método de dosagem `supp` (suco de laranja vs ácido ascórbico) não é estatisticamente significante ($p>0.06$). Ao comparar o nível de significância do teste ($p=0.06$) com o limiar estabelecido ($p<0.05$) **não conseguimos rejeitar a hipótese nula** de que não há diferença no comprimento dos dentes.
 
 ```{r one-way-anova2}
 fit2 <- aov(len ~ dose, data = ToothGrowth)
 summary(fit2)
 ```
 
-Porém, o comprimento dos dentes `len` muda conforme o tamanho da dose `dose` (0.5, 1.0 ou 2.0 mg).
+Porém, o comprimento dos dentes `len` muda conforme o tamanho da dose `dose` (0.5, 1.0 ou 2.0 mg) ($p<0.05$). Ao comparar o nível de significância do teste ($p=0.00000000000000095$) com o limiar estabelecido ($p<0.05$) **conseguimos rejeitar a hipótese nula** de que não há diferença no comprimento dos dentes.
 
 ### ANOVA Bidirecional^[Termo inglês: *Two-Way ANOVA*.]
 
