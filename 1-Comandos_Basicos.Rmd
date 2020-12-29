@@ -67,7 +67,7 @@ head(df)
 
 ## Gráficos
 
-Geralmente no R você pode ~~*plotar*~~ motrar graficamente diversos objetos com o comando `plot()`. Quando você *plota* um *dataset* (conjunto de dados lido de um aquivo), o R retorna um gráfico chamado *Pair Plot*:
+Geralmente no R você pode ~~*plotar*~~ mostrar graficamente diversos objetos com o comando `plot()`. Quando você *plota* um *dataset* (conjunto de dados lido de um aquivo), o R retorna um gráfico chamado *Pair Plot*:
 
 -   Na diagonal: nome da variável (coluna do *dataset*)
 -   Fora da diagonal: um gráfico de dispersão entre a variável no eixo horizontal e a variável no eixo vertical
