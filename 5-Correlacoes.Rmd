@@ -214,7 +214,9 @@ Aqui também temos um $p$-valor significante.
 
 ## Paradoxo de Simpson
 
-O paradoxo de Simpson é um fenômeno que surge na análise de dados, que se não for considerado pode levar a conclusões espúrias ou previsões enganosas. A ideia geral do paradoxo é que um conjunto de dados em geral pode parecer uma tendência em uma direção (positiva ou negativa), mas tender na direção oposta quando dividido por subgrupos. Isso é problemático porque olhar para dados agregados pode levar a acreditar que os dados têm uma associação positiva/negativa para todos os grupos, porém ao subdividirmos os dados em subgrupos e analisarmos as associações vemos que a tendência que era positiva/negativa é totalmente revertida.
+O paradoxo de Simpson é um fenômeno que surge na análise de dados, que se não for considerado pode levar a conclusões espúrias ou previsões enganosas [@simpson1951interpretation; @pearl2014comment]. A ideia geral do paradoxo é que um conjunto de dados em geral pode parecer uma tendência em uma direção (positiva ou negativa), mas tender na direção oposta quando dividido por subgrupos. Isso é problemático porque olhar para dados agregados pode levar a acreditar que os dados têm uma associação positiva/negativa para todos os grupos, porém ao subdividirmos os dados em subgrupos e analisarmos as associações vemos que a tendência que era positiva/negativa é totalmente revertida.
+
+O paradoxo de Simpson já ocorreu em cenários como: estudo de viés de gênero na entrada de alunos de mestrado e doutorado em UC Berkeley [@bickel1975sex]; estudo médico sobre tratamento de pedra de rim [@julious1994confounding]; análise de médias de rebatidas em Baseball [@ross2007mathematician]; análise da disparidade racial em penas de morte [@radelet1981racial]; entre outros...
 
 ### Pinguins de Palmer
 
