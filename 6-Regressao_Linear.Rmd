@@ -27,15 +27,61 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = "70%",
                       fig.align = "center",
                       fig.retina = 3)
+set.seed(123)
 ```
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+## Regressão Robusta na presença de *outliers*^[Nesta seção apenas apresentaremos alternativas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.]
 
+Regressão linear não é uma boa alternativa na presença de observações extremas (também chamadas de *outliers*). O pressuposto de que os erros (ou resíduos) são distribuidos conforme uma distribuição Normal com média 0 faz com que as estimativas de uma regressão linear fiquem instáveis. Para exemplificar isso, vamos fazer uma simulação com 50 observações sendo que 40 observações são distribuídas como uma distribuição Normal e 10 observações são extremas (estão além de dois desvios padrões -- $\pm 2 \times \sigma$).
 
+```{r simul-linear-reg, warning=FALSE, message=TRUE}
+library(dplyr)
 
+n_sims <- 50
 
+sims <- tibble(
+  x = 1:n_sims,
+  y = c(rnorm(floor(4 * n_sims/5)), sample(c(-4:-3, 3:4),ceiling(n_sims/5), 1)),
+  tipo = c(rep("normal", floor(4 * n_sims/5)), rep("extrema", ceiling(n_sims/5)))
+) %>% 
+  sample_frac(1L)  ## Randomize!
+```
 
+A figura \@ref(fig:plot-simul-linear-reg) mostra um diagrama de pontos (*dotplot*) da simulação e duas distribuições estimadas com os dados: Normal e $t$ de Student (graus de liberdade = 3). Devido às observações extremas, a distribuição Normal, para comportar todas as observações, se alarga e achata. Tal achatamento e alargamento não ocorrem na distribuição $t$ de Student. Isto se traduz em estimativas mais estáveis dos coeficientes da regressão na presença de observações extremas. Por esses motivos, para nós, a melhor a maneira de aplicar um modelo de regressão na presença de observações extremas é por meio de Estatística Bayesiana usando uma distribuição $t$ de Student como o "motor" de inferência.
+
+<aside>
+O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma das aulas é sobre [regressão robusta usando distribuição $t$ de Student](https://storopoli.github.io/Estatistica-Bayesiana/8-Regressao_Robusta.html).
+</aside>
+
+```{r plot-simul-linear-reg, warning=FALSE, message=FALSE, fig.cap='Simulação com Observações Normais e Extremas -- Distribuição Normal vs t de Student'}
+library(ggplot2)
+sims %>%
+  ggplot(aes(y, fill = tipo)) +
+  geom_dotplot(alpha = 0.5) +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(sims$y), sd = sd(sims$y)),
+                aes(color = "Distribuição\nNormal"), size = 3) +
+  stat_function(fun = dt,
+                args = list(df = 3),
+                aes(color = "Distribuição t\nde Student"), size = 3) +
+  scale_fill_brewer("Tipo de Observação", palette = "Set1",
+                    guide = guide_legend(ncol = 1,nrow = 2,byrow = TRUE)) +
+  scale_colour_brewer("Tipo de Distribuição", palette = "Set3",
+                      guide = guide_legend(ncol = 1,nrow = 2,byrow = TRUE))+
+  theme(legend.position = "bottom") +
+  ylim(c(0, 0.4))
+```
+
+Caso o leitor não queria sair do paradigma NHST (afinal em Estatística Bayesiana não temos $H_0$ nem $p$-valores), há duas alternativas de [regressão robusta](https://en.wikipedia.org/wiki/Robust_regression):
+
+1. **M-estimação**^[Termo inglês: *M-estimation*] [@huber1964]: robusta à observações extremas na variável dependentes, mas não nas independentes.
+2. **Mínimos quadrados aparados**^[Termo inglês: *least trimmed squares* -- LTS] [@rousseeuw1984least]: robusto tanto à observações extremas na variável dependente quanto nas independentes. O método recomendado atualmente por diversas fontes [@ryan2008modern; @rousseeuw2006computing]
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```
