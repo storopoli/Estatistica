@@ -150,6 +150,17 @@ map(1:4, ~ lm(y ~ x, subset(anscombe, conjunto == .x))) %>%
   plot_layout(ncol = 2)
 ```
 
+Inclusive quando fazemos o teste studentizado de Breusch-Pagan[@breusch1979simple; @koenker1981note], todos os modelos falham em rejeitar a hipótese nula de que "a variância dos resíduos são iguais". Provavelmente isto se deve por conta do tamanho da amostra ser pequeno ($n=11$) em todos os quatro conjuntos.
+
+```{r breusch-pagan}
+library(lmtest)
+bptest(lm(y ~ x, subset(anscombe, conjunto == 1)))
+bptest(lm(y ~ x, subset(anscombe, conjunto == 2)))
+bptest(lm(y ~ x, subset(anscombe, conjunto == 3)))
+bptest(lm(y ~ x, subset(anscombe, conjunto == 4)))
+```
+
+
 ## Comentários Finais
 
 O quarteto de Anscombe [@anscombe1973graphs] é uma maneira de ilustrar a importância de visualizações na análise de dados. Deve-se sempre olhar um conjunto de dados graficamente antes de começar a qualquer análise. Em especial, são ilustrados diversos contextos nos quais as propriedades estatísticas básicas para descrever conjuntos de dados são inadequadas.

@@ -2580,9 +2580,9 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <ul>
 <li><strong>Independência das observações</strong>: o valor de uma observação não influencia ou afeta o valor de outras observações.</li>
 <li><strong>Normalidade</strong>: variável dependente distribuída conforme uma distribuição Normal.</li>
-<li><strong>Homogeneidade das Variâncias</strong>: variável dependente possui variâncias similares variância os grupos.</li>
+<li><strong>Homogeneidade das Variâncias</strong>: variável dependente possui homogeneidade de variância dentre os grupos.</li>
 </ul>
-<p>Além disso, a ANOVA é utiliza apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).</p>
+<p>Além disso, a ANOVA é utilizada apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).</p>
 <p>O pressuposto da normalidade, já coberto na <a href="2-p-valores.html">aula de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Shapiro-Wilk usando a função <code>shapiro.test()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2619,7 +2619,7 @@ group  2    0.65   0.53
 <p>O <span class="math inline">\(p\)</span>-valor de ambos testes para a homogeneidade de variâncias de <code>len</code> nos grupos de <code>supp</code> e <code>dose</code> são respectivamente <code>0.28</code> e <code>0.53</code>. Com isso falhamos em rejeitar a hipótese nula de que <code>len</code> possui variâncias homogêneas nos grupos tanto de <code>supp</code> quanto de <code>dose</code>. Ou seja, <strong>pressuposto de homogeneidade de variâncias não violado</strong>.</p>
 <h3 id="anova-unidirecional">ANOVA Unidirecional<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h3>
 <p>A ANOVA mais simples é chamada de <strong>ANOVA Unidirecional</strong> que examina a <strong>influência de uma variável independente categórica em uma variável contínua dependente</strong>.</p>
-<p>O R possui uma função padrão para calcular ANOVAs <code>aov()</code> e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário tem que passar dois argumentos:</p>
+<p>O R possui uma função padrão para calcular ANOVAs <code>aov()</code> e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário fornecer dois argumentos:</p>
 <ol type="1">
 <li>Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: <code>variavel ~ grupo</code>.</li>
 <li>O <em>dataset</em> no qual deverá ser encontrados tanto a varíavel quanto os grupos.</li>
@@ -2627,7 +2627,7 @@ group  2    0.65   0.53
 <aside>
 <code>aov()</code> quer dizer <strong>A</strong>nalysis <strong>o</strong>f <strong>V</strong>ariance.
 </aside>
-<p>A saída função <code>aov()</code> é um objeto <code>aov</code> que pode ser passado para uma função <code>summary()</code> eu nos trás os resultados da ANOVA.</p>
+<p>A saída da função <code>aov()</code> é um objeto <code>aov</code> que pode ser passado para uma função <code>summary()</code> eu nos trás os resultados da ANOVA.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>fit1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>

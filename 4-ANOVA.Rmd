@@ -78,9 +78,9 @@ A ANOVA é uma técnica paramétrica e seus pressupostos são similares ao teste
 
 * **Independência das observações**: o valor de uma observação não influencia ou afeta o valor de outras observações.
 * **Normalidade**: variável dependente distribuída conforme uma distribuição Normal.
-* **Homogeneidade das Variâncias**: variável dependente possui variâncias similares variância os grupos.
+* **Homogeneidade das Variâncias**: variável dependente possui homogeneidade de variância dentre os grupos.
 
-Além disso, a ANOVA é utiliza apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).
+Além disso, a ANOVA é utilizada apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).
 
 O pressuposto da normalidade, já coberto na [aula de $p$-valores](2-p-valores.html), pode ser testado com o teste de Shapiro-Wilk usando a função `shapiro.test()`.
 
@@ -104,7 +104,7 @@ O $p$-valor de ambos testes para a homogeneidade de variâncias de `len` nos gru
   
 A ANOVA mais simples é chamada de **ANOVA Unidirecional** que examina a **influência de uma variável independente categórica em uma variável contínua dependente**.
 
-O R possui uma função padrão para calcular ANOVAs `aov()` e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário tem que passar dois argumentos:
+O R possui uma função padrão para calcular ANOVAs `aov()` e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário fornecer dois argumentos:
 
 1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
 2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
@@ -113,7 +113,7 @@ O R possui uma função padrão para calcular ANOVAs `aov()` e sua funcionalidad
 `aov()` quer dizer **A**nalysis **o**f **V**ariance.
 </aside>
 
-A saída função `aov()` é um objeto `aov` que pode ser passado para uma função `summary()` eu nos trás os resultados da ANOVA.
+A saída da função `aov()` é um objeto `aov` que pode ser passado para uma função `summary()` eu nos trás os resultados da ANOVA.
 
 ```{r one-way-anova}
 fit1 <- aov(len ~ supp, data = ToothGrowth)

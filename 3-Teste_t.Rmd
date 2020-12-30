@@ -62,7 +62,7 @@ Em 1947, Bernard Lewis Welch, estatístico britânico adaptou o teste $t$ de Stu
 
 Quando temos dois grupos na mesma amostra, usamos o teste $t$ para amostras independentes. A função `t.test()` é incluída como padrão no R. Aqui vamos simular dois grupos `A` e `B` cada um com 20 observações e vamos amostrar de uma distribuição Normal para cada um dos grupos com médias diferentes.
 
-A fórmula que deve ser passada na função `t.test()` segue a mesma lógica das fórmulas do Teste de Bartlett e de Levene, sendo que é necessário tem que passar dois argumentos:
+A fórmula que deve ser passada na função `t.test()` segue a mesma lógica das fórmulas do Teste de Bartlett e de Levene, sendo que é necessário fornecer dois argumentos:
 
 1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.
 2. O *dataset* no qual deverá ser encontrados tanto a varíavel quanto os grupos.
