@@ -47,9 +47,9 @@ gt(anscombe, rownames_to_stub = TRUE) %>%
   tab_header(title="Quarteto de Anscombe")
 ```
 
-```{r, include=FALSE}
+```{r tidy anscombe, include=FALSE}
 anscombe <- anscombe %>%
- pivot_longer(everything(),
+ tidyr::pivot_longer(everything(),
    names_to = c(".value", "conjunto"),
    names_pattern = "(.)(.)")
 ```
@@ -92,21 +92,67 @@ tbl_summary(anscombe,
   italicize_levels() %>%
   as_gt() %>% 
   tab_header(title="Estatísticas Descritivas do Quarteto de Anscombe",
-             subtitle = "Agrupadas por conjunto")
+             subtitle = "Agrupadas por Conjunto")
 ```
 
 Além disso, a correlação é a mesma (`r cor(anscombe$x, anscombe$y)`) nos quatro conjuntos:
 
 ```{r corr-anscombe}
-tibble(conjunto = as.factor(unique(anscombe$conjunto)),
+library(dplyr)
+library(purrr)
+tibble(conjunto = as.factor(1:4),
        correlação = unique(anscombe$conjunto) %>% 
-  purrr::map_dbl(~ cor(subset(anscombe, conjunto == .x, select = x), subset(anscombe, conjunto == .x, select = y)))) %>% 
+  map_dbl(~ cor(subset(anscombe, conjunto == .x, select = x),
+                subset(anscombe, conjunto == .x, select = y)))) %>% 
   gt() %>% 
   tab_header(title="Correlações do Quarteto de Anscombe") %>% 
-  tab_source_note("Observação: Correlação calculada conforme a correlação de Pearson")
+  tab_source_note(md("*Observação: Correlação calculada conforme a correlação de Pearson*"))
 ```
 
 ## Modelos de Regressão
+
+O mais interessante é que **se formos aplicar uma regressão linear teremos os mesmo $p$-valores, coeficientes, $R^2$ e $R^2$ ajustado para todos os quatro conjuntos**. Veja na tabela abaixo:
+
+```{r anscombe-lm}
+library(broom)
+map_dfr(1:4,
+        ~ tidy(lm(y ~ x, subset(anscombe, conjunto == .x)), conf.int = TRUE)) %>% 
+  filter(term == "x") %>% 
+  mutate(Conjunto = unique(anscombe$conjunto)) %>% 
+  inner_join(map_dfr(unique(anscombe$conjunto),
+                     ~ glance(lm(y ~ x, subset(anscombe, conjunto == .x)),
+                              conf.int = TRUE)) %>% 
+               mutate(Conjunto = unique(anscombe$conjunto)),
+             by = "Conjunto") %>% 
+  relocate(Conjunto) %>% 
+  select(Conjunto, estimate, std.error, p.value.x,
+         conf.low, conf.high, r.squared, adj.r.squared) %>% 
+  gt() %>% 
+  tab_header("Modelo de Regressão Linear do Quarteto de Anscombe",
+             md("Fórmula: `y ~ x`"))
+```
+
+Uma maneira de diferenciar os quatro conjuntos de Anscombe numa regressão linear é analisar os seus resíduos, conforme figura \@ref(fig:anscombe-resid). Aqui claramente vemos que apenas o gráfico do canto superior direito possui resíduos nos quais não é possível identificar nenhum padrão ou característica^[para saber mais sobre regressão linear e seus pressupostos veja o [conteúdo da aula sobre regressão linear](6-Regressao_Linear.html)].
+
+```{r anscombe-resid, warning=FALSE, message=FALSE, fig.cap='Resíduos dos Modelos de Regressão Linear Quarteto de Anscombe'}
+library(patchwork)
+map(1:4, ~ lm(y ~ x, subset(anscombe, conjunto == .x))) %>% 
+  map2(1:4,
+     ~ ggplot(augment(.x), aes(x = .fitted, y = .resid)) +
+       geom_point() +
+       geom_smooth(se = FALSE, method = "lm") +
+       labs(
+         x = "Valor de x",
+         y = "Resíduos",
+         title = paste("Conjunto", as.character(.y))
+       )) %>% 
+  reduce(`+`) +
+  plot_layout(ncol = 2)
+```
+
+## Comentários Finais
+
+O quarteto de Anscombe [@anscombe1973graphs] é uma maneira de ilustrar a importância de visualizações na análise de dados. Deve-se sempre olhar um conjunto de dados graficamente antes de começar a qualquer análise. Em especial, são ilustrados diversos contextos nos quais as propriedades estatísticas básicas para descrever conjuntos de dados são inadequadas.
 
 ## Ambiente
 
