@@ -64,7 +64,7 @@ grViz("
 
 ## Estatística Inferencial
 
-O nosso foco nesse conjunto de tutoriais é focar na **Estatística inferencial**, porque, ao contrário da Estatística descritiva, a Estatística inferencial é raramente compreendida ao ponto do usuário e consumidor estarem aptos à realizar e consumir análises, respectivamente.
+O nosso intuito nesse conjunto de tutoriais é focar na **Estatística inferencial**, porque, ao contrário da Estatística descritiva, a Estatística inferencial é raramente compreendida ao ponto do usuário e consumidor estarem aptos à realizar e consumir análises, respectivamente.
 
 A Estatística inferencial têm suas origens no final do século XIX, especialmente no trabalho de Karl Pearson [^13] e se baseia em um conjunto de técnicas e procedimentos para testar hipóteses sobre uma amostra generalizando para uma população-alvo.
 
@@ -101,7 +101,7 @@ Quem ficou curioso com a história da Estatística. Recomendo um livro de Stephe
 knitr::include_graphics("images/meme-pvalue2.jpg")
 ```
 
-Sem dúvida, esta parte da Estatística inferencial é a mais complicada e menos intuitiva. Parafraseando Andrew Gelman, estatístico da Columbia University, "Para definir $p$-valores, escolha uma das duas características: intuitiva ou precisa. Ou sua definição é intuitiva mas imprecisa, ou sua definição é precisa mas não intuitiva". A grande maioria dos pesquisadores[^6] possui uma definição incorreta do que é um $p$-valor [@cumming2009inference]. E quando vemos evidências do campo da medicina, que talvez seja o campo com maior quantidade de recursos disponíveis para pesquisa e avanço do conhecimento, também encontramos muitos problemas no uso dos $p$-valores [@Ioannidis2019]. Antes de entrarmos nas definições de $p$-valores, vale a pena tranquilizá-los: $p$-valores são uma coisa complicada e se você não entender na primeira vez que ler as definições abaixo, não se preocupe, você não estará em má companhia; respire fundo e tente novamente.
+Sem dúvida, esta parte da Estatística inferencial é a mais complicada e menos intuitiva. Parafraseando Andrew Gelman, estatístico da Columbia University, "Para definir $p$-valores, escolha uma das duas características: intuitiva ou precisa. Ou sua definição é intuitiva mas imprecisa, ou sua definição é precisa mas não intuitiva". A grande maioria dos pesquisadores[^6] possui uma definição incorreta do que é um $p$-valor [@cumming2009inference]. E quando vemos evidências do campo da medicina, que talvez seja o campo com maior quantidade de recursos disponíveis para pesquisa e avanço do conhecimento, também encontramos muitos problemas no uso dos $p$-valores [@Ioannidis2019]. Antes de entrarmos nas definições de $p$-valores, vale a pena tranquilizá-los: $p$-valores são uma coisa complicada e se você não entender na primeira vez que ler as definições abaixo, não se preocupe, você não estará em má companhia; respire fundo e tente ler mais uma vez.
 
 [^6]: Inclusive muitos renomados e citados em abundância em suas áreas.
 
@@ -251,7 +251,7 @@ knitr::include_graphics("images/assumptions.jpeg")
 
 ### Independência dos Dados
 
-Primeiramente, para quase toda a estatística inferencial, temos o pressuposto de **independência dos dados**. Isso é valido para teste $t$, ANOVA, regressões, entre outros... O pressuposto de independência dos dados quer dizer que o valor de uma observação não influencia ou afeta o valor de outras observações. Caso você encontre dados que violam esse pressuposto, é necessário de alguma maneira incorporar tal dependência na sua análise[^3]. Fontes comuns de não-independência são[^2]:
+Primeiramente, para quase toda a estatística inferencial, temos o pressuposto de **independência dos dados**. Isso é válido para teste $t$, ANOVA, regressões, entre outros... O pressuposto de independência dos dados quer dizer que o valor de uma observação não influencia ou afeta o valor de outras observações. Caso você encontre dados que violam esse pressuposto, é necessário de alguma maneira incorporar tal dependência na sua análise[^3]. Fontes comuns de não-independência são[^2]:
 
 [^1]: Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.
 [^3]: Isso geralmente requer o uso de técnicas especificamente criadas para dados que natualmente possuem um certo tipo de dependência.

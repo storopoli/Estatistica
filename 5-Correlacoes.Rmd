@@ -79,7 +79,7 @@ X <- data.frame(z = as.vector(sapply(correlação,
                 y = rep(y, length(correlação)))
 ggplot(X, aes(y, z, group = correlação)) +
   geom_rug(sides = "b") +
-  geom_point(aes(fill = correlação), alpha = 0.5) +
+  geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
   facet_wrap( ~ correlação, scales = "free", labeller = "label_both", ncol = 4) +
   theme(legend.position = "none")
@@ -178,7 +178,7 @@ cor(mv_student$V1, mv_student$V2, method = "kendall")
 
 ### Realizando um teste estatístico de hipótese nula sobre a correlação de duas variáveis
 
-Além de computarmos o valor da correlação entre duas variáveis, é possível também realizar um teste estatístico de hipótese nula sobre a correlação de duas variáveis. **A hipótese nula $H_0$ nesse caso é de que "as variáveis possuem correlação iguala a zero"**.
+Além de computarmos o valor da correlação entre duas variáveis, é possível também realizar um teste estatístico de hipótese nula sobre a correlação de duas variáveis. **A hipótese nula $H_0$ nesse caso é de que "as variáveis possuem correlação igual a zero"**.
 
 Para fazermos um teste de hipótese de correlação usamos a função padrão do R `cor.test()` que funciona similar à `cor()`. Devemos usar como arguento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor.test()` usará como padrão `method = "pearson"`]:
 

@@ -16,6 +16,8 @@ author:
 date: "`r Sys.Date()`"
 citation_url: https://storopoli.github.io/Estatistica/aux-Dados_Faltantes.html
 slug: storopoli2020dadosfaltantesR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}

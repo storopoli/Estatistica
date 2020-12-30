@@ -16,6 +16,8 @@ author:
 date: "`r Sys.Date()`"
 citation_url: https://storopoli.github.io/Estatistica/aux-Tamanho_Amostra.html
 slug: storopoli2020tamanhoamostraR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}
