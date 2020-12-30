@@ -173,14 +173,14 @@ shapiro.test(mv_normal$V1)
 shapiro.test(mv_normal$V2)
 ```
 
-Como podem ver, ambos os testes para as distribuições multivariadas Normais geram $p$-valores acima de 0.05 o que faz com que falhamos em rejeitar a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal".
+Como podem ver, ambos os testes para as distribuições multivariadas Normais geram $p$-valores acima de 0.05 o que faz com que falhemos em rejeitar a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal".
 
 ```{r shapiro-mv_student}
 shapiro.test(mv_student$V1)
 shapiro.test(mv_student$V2)
 ```
 
-Como podem ver, ambos os testes para as distribuições multivariadas $t$ de Student geram $p$-valores abaixo de 0.05 o que faz com que falhamos em rejeitar a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal".
+Como podem ver, ambos os testes para as distribuições multivariadas $t$ de Student geram $p$-valores abaixo de 0.05 o que faz com que a hipótese nula de que "os dados são distribuídos conforme uma distribuição Normal" é rejeitada.
 
 ### Calculando a medida de correlação entre duas variáveis
 
