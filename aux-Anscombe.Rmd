@@ -1,7 +1,7 @@
 ---
 title: "Quarteto de Anscombe"
 description: |
-  A new article created using the Distill format.
+  A importância de visualizar dados antes de aplicar testes estatísticos inferenciais e a limitação das estatísticas descritivas.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -16,6 +16,8 @@ author:
 date: "`r Sys.Date()`"
 citation_url: https://storopoli.github.io/Estatistica/aux-Anscombe.html
 slug: storopoli2020anscombeR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -29,6 +31,87 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+**O quarteto de Anscombe compreende quatro conjuntos de dados que têm estatísticas descritivas simples quase idênticas, mas têm distribuições muito diferentes e parecem muito diferentes quando representados graficamente**. Cada conjunto de dados consiste em onze (x, y) pontos. Eles foram construídos em 1973 pelo estatístico Francis Anscombe [@anscombe1973graphs] para demonstrar a **importância dos dados gráficos antes de analisá-los** e o **efeito de *outliers* e outras observações influentes nas propriedades estatísticas**. Ele descreveu o artigo como tendo a intenção de contrariar a impressão entre os estatísticos de que "os cálculos numéricos são exatos, mas os gráficos são aproximados".
+
+Falamos na [aula 2 de $p$-valores](2-p-valores.html) que "somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para **provar** algo é necessário um teste estatístico." Para mostrar a importância dos gráficos vamos explorar um pouco os 4 conjuntos de dados do quarteto de Anscombe. A moral da história aqui é que se deve olhar um conjunto de dados graficamente antes de começar a analisar de acordo com um tipo particular de relacionamento, além da inadequação das propriedades estatísticas básicas para descrever conjuntos de dados realistas.
+
+## *Dataset* `anscombe`
+
+O R possui como padrão o *dataset* `anscombe` que pode ser carregado pela função `data()` sem a instalação de qualquer biblioteca adicional. O *dataset* `anscombe` possui os quatro conjuntos de (x,y) como colunas (variáveis) e são identificadas de `x1` e `y1` à `x4` e `y4`. Veja na tabela abaixo as onze observações dos quatro conjuntos de Anscombe do *dataset* `anscombe`[^1]:
+
+```{r anscombe}
+library(gt)
+data("anscombe")
+gt(anscombe, rownames_to_stub = TRUE) %>%
+  tab_header(title="Quarteto de Anscombe")
+```
+
+```{r, include=FALSE}
+anscombe <- anscombe %>%
+ pivot_longer(everything(),
+   names_to = c(".value", "conjunto"),
+   names_pattern = "(.)(.)")
+```
+
+
+## Visualizações
+
+Aqui na figura \@ref(fig:plot-anscombe) vocês podem observar a diferença entre os quatro conjuntos de Anscombe:
+
+* **O primeiro gráfico de dispersão (canto superior esquerdo) parece ser uma relação linear simples**, correspondendo a duas variáveis correlacionadas onde `y` pode ser modelado como gaussiano com a média linearmente dependente de `x`.
+* **O segundo gráfico (canto superior direito) não é distribuído Normalmente; embora uma relação entre as duas variáveis seja óbvia, não é linear** e o coeficiente de correlação de Pearson não é relevante. Uma regressão usando um termo quadrático ($x^2$) seria mais apropriada.
+* **No terceiro gráfico (canto inferior esquerdo), a distribuição é linear, mas deve ter uma linha de regressão diferente (uma regressão robusta teria sido necessária)**. A regressão calculada é compensada por um *outlier* que exerce influência suficiente para diminuir o coeficiente de correlação de 1 para 0.816.
+* Finalmente, **o quarto gráfico (canto inferior direito) mostra um exemplo em que um ponto de alta influência é suficiente para produzir um alto coeficiente de correlação**, embora os outros pontos de dados não indiquem qualquer relação entre as variáveis.
+
+```{r plot-anscombe, message=FALSE, warning=FALSE, fig.cap='O quarteto de Anscombe'}
+library(ggplot2)
+anscombe %>% 
+  ggplot(aes(x, y, group = conjunto)) +
+  geom_point() +
+  geom_smooth(method = "lm", color = "Red", se = FALSE) +
+  facet_wrap( ~ conjunto, labeller = "label_both", ncol = 2) +
+  theme(legend.position = "none")
+```
+
+## Estatísticas Descritivas
+
+O mais intrigante é que esses **quatro conjuntos, quando visualizados demonstram sem dúvida quatro naturezas de relações entre variáveis diferentes**; mas quando **analisamos apenas as estatísticas descritivas temos o mesmo resultado**, conforme demonstrado na tabela com estatísticas descritivas dos quatro conjuntos[^1]:
+
+```{r gtsummary, message=FALSE, warning=FALSE}
+library(gtsummary)
+theme_gtsummary_language("pt")
+tbl_summary(anscombe,
+            by = conjunto,
+            type = all_continuous() ~ "continuous2",
+            statistic = list(
+              all_continuous() ~ c("{mean}",
+                                   "{sd}")),
+	digits = all_continuous() ~ 2) %>%
+  bold_labels() %>%
+  italicize_levels() %>%
+  as_gt() %>% 
+  tab_header(title="Estatísticas Descritivas do Quarteto de Anscombe",
+             subtitle = "Agrupadas por conjunto")
+```
+
+Além disso, a correlação é a mesma (`r cor(anscombe$x, anscombe$y)`) nos quatro conjuntos:
+
+```{r corr-anscombe}
+tibble(conjunto = as.factor(unique(anscombe$conjunto)),
+       correlação = unique(anscombe$conjunto) %>% 
+  purrr::map_dbl(~ cor(subset(anscombe, conjunto == .x, select = x), subset(anscombe, conjunto == .x, select = y)))) %>% 
+  gt() %>% 
+  tab_header(title="Correlações do Quarteto de Anscombe") %>% 
+  tab_source_note("Observação: Correlação calculada conforme a correlação de Pearson")
+```
+
+## Modelos de Regressão
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```
+
+[^1]: Caso fique interessado em como montar tabelas para publicações, veja o nosso [conteúdo auxiliar de tabelas para publicação](aux-Tabelas_para_Publicacao.html).

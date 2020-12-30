@@ -33,6 +33,10 @@ set.seed(123)
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
 
+## Coeficientes Brutos versus Padronizados
+
+## Conexões com o Teste $t$, ANOVA e Correlações
+
 ## Regressão Robusta na presença de *outliers*^[Nesta seção apenas apresentaremos alternativas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.]
 
 Regressão linear não é uma boa alternativa na presença de observações extremas (também chamadas de *outliers*). O pressuposto de que os erros (ou resíduos) são distribuidos conforme uma distribuição Normal com média 0 faz com que as estimativas de uma regressão linear fiquem instáveis. Para exemplificar isso, vamos fazer uma simulação com 50 observações sendo que 40 observações são distribuídas como uma distribuição Normal e 10 observações são extremas (estão além de dois desvios padrões -- $\pm 2 \times \sigma$).

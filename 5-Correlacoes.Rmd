@@ -94,12 +94,13 @@ Além disso, **as variáveis tem que possuir um critério de linearidade entre e
 ```{r linearidade, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Linearidade vs Não-Linearidade'}
 library(tidyr)
 library(patchwork)
+
 data("anscombe")
 anscombe <- anscombe %>%
  pivot_longer(everything(),
    names_to = c(".value", "conjunto"),
-   names_pattern = "(.)(.)"
- )
+   names_pattern = "(.)(.)")
+
 p_a <- anscombe %>%
   dplyr::filter(conjunto == 1) %>% 
   ggplot(aes(x, y)) +
@@ -292,7 +293,6 @@ penguins %>%
 Veja o que acontece quando dividimos os dados por subgrupos (no caso espécies). Na figura \@ref(fig:fig-group-penguins) é possível ver um diagrama de dispersão do comprimento e altura dos bicos dos pinguins, subdividos em espécie por cor, e com uma linha de tendência na cor de cada espécie. A correlação, por esse gráfico de dispersão, mostra uma associação positiva entre comprimento e altura do bico quando consideramos espécie.
 
 ```{r fig-group-penguins, warning=FALSE, message=FALSE, fig.cap='Diagrama de dispersão subdividido em espécies do comprimento e altura dos bicos dos pinguins'}
-library(ggforce)
 penguins %>% 
   ggplot(aes(bill_length_mm, bill_depth_mm, color = species)) +
   geom_point() +

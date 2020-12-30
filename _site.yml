@@ -36,8 +36,6 @@ navbar:
           href: aux-Dados_Faltantes.html
         - text: "Tamanho de Amostra e Tamanho de Efeito"
           href: aux-Tamanho_Amostra.html
-        - text: "Como ler Tabelas Em Estudos Científicos"
-          href: aux-Tabelas.html
         - text: "Tabelas para Publicação"
           href: aux-Tabelas_para_Publicacao.html
 output:

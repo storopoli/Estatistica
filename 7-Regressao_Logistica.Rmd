@@ -36,6 +36,4 @@ Distill is a publication format for scientific and technical writing, native to 
 Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
 
 
-
-
-
+## Por que não usar Regressão Linear?
