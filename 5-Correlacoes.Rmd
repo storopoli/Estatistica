@@ -87,7 +87,39 @@ ggplot(X, aes(y, z, group = correlação)) +
 
 ## Pressupostos da Correlação
 
-Todas correlações devem ser **aplicadas somente em variáveis contínuas, intervalares ou ordinais**. Elas **não podem ser usadas para variáveis nominais** (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam "mensuráveis e comparáveis numericamente" entre si.
+Correlação deve ser **aplicada somente em variáveis contínuas, intervalares ou ordinais**. Correlação **não podem ser usadas para variáveis nominais** (também chamada de categóricas). A lógica por trás desse pressuposto é que magnitudes de associação somente podem ser mensuradas em variáveis que de alguma maneira sejam "mensuráveis e comparáveis numericamente" entre si.
+
+Além disso, **as variáveis tem que possuir um critério de linearidade entre elas. Isto quer dizer que quanto mais/menos de `x` mais/menos de `y`**. Este conceito fica mais claro ao ser visualizado. Na figura \@ref(fig:linearidade) é possível ver duas relações entre variáveis `x` e `y`: à esquerda, uma relação linear; e à direita, uma relação não-linear.
+
+```{r linearidade, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Linearidade vs Não-Linearidade'}
+library(tidyr)
+library(patchwork)
+data("anscombe")
+anscombe <- anscombe %>%
+ pivot_longer(everything(),
+   names_to = c(".value", "conjunto"),
+   names_pattern = "(.)(.)"
+ )
+p_a <- anscombe %>%
+  dplyr::filter(conjunto == 1) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, color = "Red") +
+  scale_x_continuous(limits = c(4, 14), breaks = 4:14) + 
+  scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
+  ggtitle("Relação Linear")
+
+p_b <- anscombe %>%
+  dplyr::filter(conjunto == 2) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, color = "Red") +
+  scale_x_continuous(limits = c(4, 14), breaks = 4:14) + 
+  scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
+  ggtitle("Relação Não-Linear")
+
+p_a + p_b
+```
 
 ## Tipos de correlação
 
@@ -98,7 +130,6 @@ Até agora todas as correlações que mostramos são correlações de Pearson po
 3. **Correlação de Kendall**^[também chamado de $\tau$ (letra gregra tau) de Kendall] [@kendall1938]: Assim, como a correlação de Spearman, a correlação de Kendall também é uma técnica **não-paramétrica**. Sendo também uma **alternativa viável quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
 
 ```{r fig-pearson-spearman-kendall, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
-library(patchwork)
 library(cowplot)
 
 p1 <- ggdraw() + draw_image("images/pearson.jpg")
@@ -280,6 +311,8 @@ A correlação é uma métrica extremamente útil para quantificar a magnitude d
 Sobre as técnicas de correlação em si, precisamos estar atentos a quais tipos de dados que temos. Caso as variáveis que desejamos correlacionar possuam uma distribuição similar à distribuição Normal (teste de Shapiro-Wilk com $p$-valor acima de 0.05) podemos usar a correlação de Pearson; caso contrário teremos que usar uma técnica de correlação não-paramétrica e escolher entre correlação de Spearman ou correlação de Kendall.
 
 Sobre a interpretação das correlações e associações, não se esqueça do mantra da [aula 2 sobre $p$-valores](2-p-valores.html): "correlação não é causalidade". Além disso, se atentem ao paradoxo de Simpson, especialmente quando estiverem com dados que podem ser subdividos em grupos.
+
+Caso tenha sido intrigado pelo paradoxo de Simpson, não deixe de olhar o nosso [conteúdo auxiliar sobre o quarteto de Anscombe](aux-Anscombe.html).
 
 ## Ambiente
 
