@@ -1,5 +1,7 @@
 name: "Estatistica"
 title: "Estatística com R"
+base_url: https://storopoli.github.io/Estatistica
+google_analytics: "G-KGTTCLE1HC"
 theme: "theme.css"
 output_dir: "docs"
 alt_formats: true
