@@ -290,7 +290,7 @@ ggplot(aes(x)) +
 
 #### Como eu sei que minha variável dependente é Normal?
 
-Muitos gostam de plotar um gráfico para ~~bisolhar~~ estimar se uma varíavel segue uma distribuição Normal ou não. Somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para **provar** algo é necessário um teste estatístico.
+Muitos gostam de plotar um gráfico para ~~bisolhar~~ estimar se uma varíavel segue uma distribuição Normal ou não. Somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para **provar** algo, é necessário um teste estatístico.
 
 Há dois testes estatísticos para saber se uma variável é distribuída conforme uma distribuição Normal: Komolgorov-Smirnov e Shapiro-Wilk. Ambos possuem como hipótese nula ($H_0$) que "os dados são distribuídos conforme uma distribuição Normal".
 
