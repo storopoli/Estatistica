@@ -172,7 +172,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 
 ### Intervalos de Confiança
 
-Intervalos de confiança foram criados como uma solução para os problemas de má-interpretação dos $p$-valores e sua aplicação se destina ao **tamanho do efeito**. Se você achou $p$-valor confuso, se prepare! Intervalos de confiança são ainda mais confusos...Vamos para a definição estatística:
+Intervalos de confiança foram criados como uma solução para os problemas de má-interpretação dos $p$-valores e sua aplicação se destina ao **tamanho do efeito**. Se você achou $p$-valor confuso, se prepare! Intervalos de confiança são ainda mais confusos e muitos pesquisadores e cientistas também não possuem a compreensão correta [@Morey2016]...Vamos para a definição estatística:
 
 > Intervalo de confiança é o intervalo de valores que incluem um valor de uma população com um certo nível de confiança.
 

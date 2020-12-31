@@ -134,6 +134,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_reference" content="citation_title=The introductory statistics course: A ptolemaic curriculum?;citation_publication_date=2007;citation_volume=1;citation_author=George W Cobb"/>
   <meta name="citation_reference" content="citation_title=Statistical procedures and the justification of knowledge in psychological science;citation_publication_date=1989;citation_publisher=American Psychological Association (PsycARTICLES);citation_volume=44;citation_author=Ralph L Rosnow;citation_author=Robert Rosenthal"/>
   <meta name="citation_reference" content="citation_title=Causality;citation_publication_date=2009;citation_publisher=Cambridge university press;citation_author=Judea Pearl"/>
+  <meta name="citation_reference" content="citation_title=The fallacy of placing confidence in confidence intervals;citation_publication_date=2016;citation_publisher=Springer New York LLC;citation_volume=23;citation_doi=10.3758/s13423-015-0947-8;citation_issn=1069-9384;citation_author=Richard D. Morey;citation_author=Rink Hoekstra;citation_author=Jeffrey N. Rouder;citation_author=Michael D. Lee;citation_author=Eric-Jan Wagenmakers"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
@@ -2464,8 +2465,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-4a835618205a408286ec" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4a835618205a408286ec">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-185c243fd8d6782a2978" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-185c243fd8d6782a2978">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2554,7 +2555,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 <li><p><strong><span class="math inline">\(p\)</span>-valor mensura o tamanho do efeito de um teste estatístico</strong> - Também não… <span class="math inline">\(p\)</span>-valor não diz nada sobre o tamanho do efeito. Apenas sobre se o quanto os dados observados divergem do esperado sob a hipótese nula. É claro que efeitos grandes são mais prováveis de serem estatisticamente significantes que efeitos pequenos. Mas isto não é via de regra e nunca julguem um achado pelo seu <span class="math inline">\(p\)</span>-valor, mas sim pelo seu tamanho de efeito. Além disso, <span class="math inline">\(p\)</span>-valores podem ser “hackeados” de diversas maneiras <span class="citation" data-cites="head2015extent">(<a href="#ref-head2015extent" role="doc-biblioref">Head, Holman, Lanfear, Kahn, &amp; Jennions, 2015</a>)</span> e muitas vezes seu valor é uma consequência direta do tamanho da amostra. Mais sobre isso no <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar sobre tamanho de amostra</a>.</p></li>
 </ol>
 <h3 id="intervalos-de-confiança">Intervalos de Confiança</h3>
-<p>Intervalos de confiança foram criados como uma solução para os problemas de má-interpretação dos <span class="math inline">\(p\)</span>-valores e sua aplicação se destina ao <strong>tamanho do efeito</strong>. Se você achou <span class="math inline">\(p\)</span>-valor confuso, se prepare! Intervalos de confiança são ainda mais confusos…Vamos para a definição estatística:</p>
+<p>Intervalos de confiança foram criados como uma solução para os problemas de má-interpretação dos <span class="math inline">\(p\)</span>-valores e sua aplicação se destina ao <strong>tamanho do efeito</strong>. Se você achou <span class="math inline">\(p\)</span>-valor confuso, se prepare! Intervalos de confiança são ainda mais confusos e muitos pesquisadores e cientistas também não possuem a compreensão correta <span class="citation" data-cites="Morey2016">(<a href="#ref-Morey2016" role="doc-biblioref">Morey, Hoekstra, Rouder, Lee, &amp; Wagenmakers, 2016</a>)</span>…Vamos para a definição estatística:</p>
 <blockquote>
 <p>Intervalo de confiança é o intervalo de valores que incluem um valor de uma população com um certo nível de confiança.</p>
 </blockquote>
@@ -2958,6 +2959,9 @@ Head, M. L., Holman, L., Lanfear, R., Kahn, A. T., &amp; Jennions, M. D. (2015).
 </div>
 <div id="ref-Ioannidis2019" class="csl-entry" role="doc-biblioentry">
 Ioannidis, J. P. A. (2019). <span class="nocase">What Have We (Not) Learnt from Millions of Scientific Papers with <span>&lt;</span>i<span>&gt;</span>P<span>&lt;</span>/i<span>&gt;</span> Values?</span> <em>The American Statistician</em>, <em>73</em>(sup1), 20–25. <a href="https://doi.org/10.1080/00031305.2018.1447512">https://doi.org/10.1080/00031305.2018.1447512</a>
+</div>
+<div id="ref-Morey2016" class="csl-entry" role="doc-biblioentry">
+Morey, R. D., Hoekstra, R., Rouder, J. N., Lee, M. D., &amp; Wagenmakers, E.-J. (2016). <span class="nocase">The fallacy of placing confidence in confidence intervals</span>. <em>Psychonomic Bulletin <span>&amp;</span> Review</em>, <em>23</em>(1), 103–123. <a href="https://doi.org/10.3758/s13423-015-0947-8">https://doi.org/10.3758/s13423-015-0947-8</a>
 </div>
 <div id="ref-pearl2009causality" class="csl-entry" role="doc-biblioentry">
 Pearl, J. (2009). <em>Causality</em>. Cambridge university press.
