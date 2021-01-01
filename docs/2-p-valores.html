@@ -2466,8 +2466,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-f1b37b9c2389d82ba916" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f1b37b9c2389d82ba916">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-be05b6b60536effde4d3" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be05b6b60536effde4d3">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2570,7 +2570,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 <h4 id="falácias">Falácias</h4>
 <p>Em um artigo bem controverso, <span class="citation" data-cites="Morey2016"><a href="#ref-Morey2016" role="doc-biblioref">Morey, Hoekstra, Rouder, Lee, &amp; Wagenmakers</a> (<a href="#ref-Morey2016" role="doc-biblioref">2016</a>)</span> mostram as três grandes falácias (qualquer enunciado ou raciocínio falso que entretanto simula a veracidade) dos intervalos de confiança (a tradução é livre e feita por nós):</p>
 <ol type="1">
-<li><p><strong>A falácia fundamental dos intervalos de confiança</strong>: Um intervalo de confiança de X% para um parâmetro é um intervalo (a, b) gerado por um procedimento que na amostragem repetida tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro. probabilidade de que um intervalo aleatório contém o valor verdadeiro é X%, então a plausibilidade ou probabilidade de que um determinado intervalo observado contém o valor verdadeiro também é X%; ou, alternativamente, podemos ter X% de confiança de que o intervalo observado contém o valor real<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p></li>
+<li><p><strong>A falácia fundamental dos intervalos de confiança</strong>: Um intervalo de confiança de X% para um parâmetro é um intervalo (a, b) gerado por um procedimento que na amostragem repetida tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro. A probabilidade de que um intervalo aleatório contém o valor verdadeiro é X%, então a plausibilidade ou probabilidade de que um determinado intervalo observado contém o valor verdadeiro também é X%; ou, alternativamente, podemos ter X% de confiança de que o intervalo observado contém o valor real<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>.</p></li>
 <li><p><strong>A falácia da precisão</strong>: A largura de um intervalo de confiança indica a precisão de nosso conhecimento sobre o parâmetro. Intervalos de confiança estreitos correspondem a conhecimentos precisos, enquanto erros de confiança amplos correspondem a conhecimentos imprecisos<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>.</p></li>
 <li><p><strong>A falácia da probabilidade</strong>: Um intervalo de confiança contém os valores prováveis para o parâmetro. Os valores dentro do intervalo de confiança são mais prováveis do que os externos. Essa falácia existe em várias variedades, às vezes envolvendo plausibilidade, credibilidade ou razoabilidade de crenças sobre o parâmetro<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p></li>
 </ol>
@@ -2918,31 +2918,27 @@ attached base packages:
 other attached packages:
 [1] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
 [4] dplyr_1.0.2        ggplot2_3.3.3      DiagrammeR_1.0.6.1
-[7] readxl_1.3.1      
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5         lubridate_1.7.9.2  lattice_0.20-41   
- [4] visNetwork_2.0.9   assertthat_0.2.1   rprojroot_2.0.2   
- [7] digest_0.6.27      utf8_1.1.4         R6_2.5.0          
-[10] cellranger_1.1.0   evaluate_0.14      highr_0.8         
-[13] pillar_1.4.7       rlang_0.4.10       curl_4.3          
-[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.3-0      
-[19] reticulate_1.18    rmarkdown_2.6      labeling_0.4.2    
-[22] stringr_1.4.0      foreign_0.8-81     htmlwidgets_1.5.3 
-[25] munsell_0.5.0      compiler_4.0.3     xfun_0.19         
-[28] pkgconfig_2.0.3    htmltools_0.5.0    downlit_0.2.1     
-[31] tidyselect_1.1.0   tibble_3.0.4       bookdown_0.21     
-[34] rio_0.5.16         fansi_0.4.1        crayon_1.3.4      
-[37] withr_2.3.0        grid_4.0.3         jsonlite_1.7.2    
-[40] gtable_0.3.0       lifecycle_0.2.0    magrittr_2.0.1    
-[43] scales_1.1.1       zip_2.1.1          cli_2.2.0         
-[46] stringi_1.5.3      farver_2.0.3       xml2_1.3.2        
-[49] ellipsis_0.3.1     generics_0.1.0     vctrs_0.3.6       
-[52] openxlsx_4.2.3     distill_1.1        RColorBrewer_1.1-2
-[55] tools_4.0.3        forcats_0.5.0      glue_1.4.2        
-[58] purrr_0.3.4        hms_0.5.3          abind_1.4-5       
-[61] parallel_4.0.3     yaml_2.2.1         colorspace_2.0-0  
-[64] knitr_1.30         haven_2.3.1       </code></pre>
+ [1] tidyselect_1.1.0   xfun_0.19          purrr_0.3.4       
+ [4] haven_2.3.1        colorspace_2.0-0   vctrs_0.3.6       
+ [7] generics_0.1.0     htmltools_0.5.0    yaml_2.2.1        
+[10] rlang_0.4.10       pillar_1.4.7       foreign_0.8-81    
+[13] glue_1.4.2         withr_2.3.0        RColorBrewer_1.1-2
+[16] readxl_1.3.1       lifecycle_0.2.0    stringr_1.4.0     
+[19] munsell_0.5.0      gtable_0.3.0       cellranger_1.1.0  
+[22] zip_2.1.1          visNetwork_2.0.9   htmlwidgets_1.5.3 
+[25] evaluate_0.14      labeling_0.4.2     knitr_1.30        
+[28] rio_0.5.16         forcats_0.5.0      parallel_4.0.3    
+[31] curl_4.3           fansi_0.4.1        highr_0.8         
+[34] Rcpp_1.0.5         scales_1.1.1       jsonlite_1.7.2    
+[37] abind_1.4-5        farver_2.0.3       distill_1.1       
+[40] hms_0.5.3          digest_0.6.27      stringi_1.5.3     
+[43] openxlsx_4.2.3     grid_4.0.3         tools_4.0.3       
+[46] magrittr_2.0.1     tibble_3.0.4       crayon_1.3.4      
+[49] pkgconfig_2.0.3    downlit_0.2.1      ellipsis_0.3.1    
+[52] data.table_1.13.6  rmarkdown_2.6      rstudioapi_0.13   
+[55] R6_2.5.0           compiler_4.0.3    </code></pre>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
