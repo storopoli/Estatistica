@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
+title: "Dados Faltantes"
 description: |
-  A new article created using the Distill format.
+  Como identificar, remover ou imputar valores de dados faltantes.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -31,11 +31,111 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
+Dados faltantes são um problema comum em qualquer análise de dados.
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+## O que são dados faltantes?
+
+Os valores ausentes podem ser de três tipos gerais [@rubin1976inference; @kang2013prevention]:
+
+1. **Totalmente ausente de maneira aleatória** (*missing completely at random* -- MCAR): Quando os dados ausentes são MCAR, a presença / ausência de dados é completamente independente das variáveis observáveis e dos parâmetros de interesse. Nesse caso, as análises realizadas nos dados são imparciais. Na prática, é altamente improvável. Pode haver perda de potência das técnicas estatísticas, mas os parâmetros estimados não são influenciados pela ausência de dados.
+2. **Ausente de maneira aleatória** (*missing at random* -- MAR): Quando os dados ausentes não são aleatórios, mas podem ser totalmente relacionados a uma variável onde há informações completas. Um exemplo^[adaptado de @obadia2017] é que os homens têm menos probabilidade de preencher uma pesquisa sobre depressão, mas isso não tem nada a ver com seu nível de depressão, após levar em conta a masculinidade. Esse tipo de dados ausentes pode induzir um viés em sua análise, especialmente se desequilibrar seus dados por causa de muitos valores ausentes em uma determinada categoria.
+3. **Ausente de maneira não-aleatória** (*missing not at random* -- MNAR): Quando os valores ausentes não são MCAR nem MAR. No exemplo anterior, esse seria o caso se as pessoas tendessem a não responder à pesquisa dependendo de seu nível de depressão. Os casos de dados MNAR são problemáticos. A única maneira de obter uma estimativa imparcial dos parâmetros em tal caso é modelar os dados ausentes^[algo que não será demonstrado aqui. Recomendamos um livro-texto seminal de @little2019statistical]. O modelo pode então ser incorporado em um mais complexo para estimar os valores ausentes.
+
+## Como testar para dados faltantes?
+
+Um teste muito usado é o **Teste de MCAR de Little [@little1988] que possui como hipótese nula "os dados faltantes são totalmente ausentes de maneira aleatória (MCAR)"**. Ou seja, um $p$-valor pequeno ($p < 0.05$) é geralmente interpretado como evidências contrárias que os dados são MCAR. O teste é baseado em um teste de chi-quadrado sobre frequências esperadas vs frequências observadas.
+
+A biblioteca `{naniar}` [@naniar] possui a função `mcar_test()` que implementa o teste de MCAR de Little. Além disso, possui diversas outras funcionalidades para sumarizar, visualizar e manipular com dados faltantes. Caso queira incorporar na sua análise recomendamos ler o [manual da biblioteca](http://naniar.njtierney.com/index.html).
+
+## O que fazer com dados faltantes?
+
+O melhor método possível de lidar com os dados ausentes é evitar o problema planejando bem o estudo e coletando os dados cuidadosamente. Caso isso não seja possível, temos duas abordagens básicas para lidar com dados faltantes:
+
+1. **remover os dados faltantes**.
+2. **imputar valores nos dados faltantes**.
+
+### Remover dados faltantes
+
+A remoção de dados faltantes se divide em duas principais abordagens usando a função `na.omit()` padrão do R:
+
+1. **remoção de observações com dados faltantes**: aqui removemos as *linhas* com dados faltantes `df <- na.omit(df)`.
+2. **remoção de variáveis com dados faltantes**: aqui removemos as *colunas* com dados faltantes `df <- t(na.omit(t(df)))`.
+
+### Imputar valores nos dados faltantes
+
+> "The idea of imputation is both seductive and dangerous" [@little2019statistical]
+
+A **imputação de dados é um método aplicado para imputar um valor para cada item ausente**. De acordo com @little2019statistical, imputações de dados simples podem ser definidas como médias ou extrações de uma distribuição preditiva de valores ausentes, requerem um método de criação de uma distribuição preditiva para imputação com base nos dados observados e definem **duas abordagens genéricas** para gerar tal distribuição preditiva: **modelagem explícita** e **modelagem implícita**.
+
+Na modelagem explícita, a distribuição preditiva é baseada em um modelo estatístico formal, por exemplo, normal multivariado, portanto, as suposições são explícitas. Exemplos de modelagem explícita são imputação de média, imputação de regressão, imputação de regressão estocástica.
+
+Na modelagem implícita^[não abordaremos essas técnicas], o foco está em um algoritmo, o que implica um modelo subjacente. Suposições estão implícitas, mas ainda precisam ser avaliadas com cuidado para garantir que sejam razoáveis.
+
+Dentre as diversas maneiras de *imputar* valores ao dados faltantes, as mais comuns são três:
+
+1. **imputar a média**.
+2. **imputar a mediana**.
+3. **imputar o último valor ocorrido** (*last observation carried forward* -- LOFC): muito usada em séries temporais.
+
+Mas ainda há maneiras mais avançadas e que desempenham melhor em certas condições (não cobriremos essas técnicas aqui):
+
+1. **Imputação por $k$-vizinhos mais próximos** (*$k$-nearest neighbors imputation*) [@troyanskaya2001missing].
+2. **Imputação por florestas aleatórias** (*random forest imputation*) [@pantanowitz2009].
+
+A biblioteca `DescTools`[@DescTools] é uma coleção de funções focadas especialmente na parte descritiva de análise de um *dataset*. Inclusive a função `Impute()` -- imputar valores em dados faltates usando qualquer função do R -- e a função `LOCF()` que permite imputar o último valor ocorrido.
+
+Para mostrar as abordagens, geramos um *dataset* de uma série temporal de uma semana com dados faltantes:
+
+```{r sim}
+library(DescTools)
+set.seed(123)
+df <- data.frame(
+  dia = c("seg", "ter", "qua", "qui", "sex", "sab", "dom"),
+  valor = runif(7))
+indices_aleatorios <- sample(1:nrow(df), 2)
+df[indices_aleatorios[1], 2] <- NA
+df[indices_aleatorios[2], 2] <- NA
+```
+
+#### Teste MCAR de Little
+
+```{r mcar}
+library(naniar)
+mcar_test(df)
+```
+O teste retornou um $p$-valor de `r mcar_test(df)$p.value`, e não conseguimos rejeitar a $H_0$ de que "os dados faltantes são totalmente ausentes de maneira aleatória (MCAR)". Notem que o nosso *dataset* possui apenas `r nrow(df)` observações e por isso o teste não possui poder o suficiente para rejeitar a hipótese nula caso ela seja falsa.
+
+#### Imputar a média
+
+```{r mean-imputation}
+df$media <- Impute(df$valor, FUN = mean(df$valor, na.rm = T))
+```
 
 
+#### Imputar a mediana
+
+```{r median-imputation}
+df$mediana <- Impute(df$valor, FUN = median(df$valor, na.rm = T))
+```
+
+#### Imputar o último valor ocorrido -- LOCF
+
+```{r LOCF-imputation}
+df$LOCF <- LOCF(df$valor)
+```
 
 
+#### Comparação dos resultados
 
+```{r comparison}
+library(skimr)
+library(gt)
+df %>% gt() %>% tab_header("Dados Faltantes usando as diferentes Técnicas de Imputação")
+skim(df)
+```
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```
