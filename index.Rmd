@@ -32,6 +32,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
 ## Por que R?
 
 R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](0-Por_que_R.html) ou clicando no banner superior em "Por que R?".
@@ -104,3 +106,14 @@ xaringanExtra::embed_xaringan(
 
 [^1]: Não temos nada a ver com a Amazon. Caso queira comprar em qualquer outra loja fique à vontade, ou algum sebo... Jeff Bezos nem sabe que nós existimos...
 [^2]: Geralmente nossos Slides são extremamente enxutos e o real conteúdo fica na nossa fala e na interatividade da apresentação. Provavelmente você não entenderá nada desses slides, mas a sua experiência conosco apresentando-os deverá ser excepcional.
+
+## Licença
+
+Este obra está licenciado com uma Licença
+[Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg

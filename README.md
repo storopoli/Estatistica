@@ -1,5 +1,7 @@
 # Estatística com R
 
+[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
+
 Disciplina de Estatística da [UNINOVE](https://www.uninove.br)
 
 Disciplina do Mestrado e Doutorado da **UNINOVE**. O conteúdo todo consegue ser acessado num formato interativo [aqui](https://storopoli.github.io/Estatistica).
@@ -83,3 +85,14 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 * Aguinis, H., Gottfredson, R. K., & Joo, H. (2013). Best-Practice Recommendations for Defining, Identifying, and Handling Outliers. In Organizational Research Methods (Vol. 16, Issue 2, pp. 270–301). https://doi.org/10.1177/1094428112470848
 * Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). Good enough practices in scientific computing. PLOS Computational Biology, 13(6), e1005510. https://doi.org/10.1371/journal.pcbi.1005510
 * Tierney, N. J., & Ram, K. (2020). A Realistic Guide to Making Data Available Alongside Code to Improve Reproducibility. https://arxiv.org/abs/2002.11626
+
+## Licença
+
+Este obra está licenciado com uma Licença
+[Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
