@@ -399,7 +399,7 @@ tibble::tribble(
 
 ## Técnicas Avançadas de Regressão Linear
 
-Nesta seção apenas apresentaremos alternativas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.
+Nesta seção apenas apresentaremos alternativas avançadas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.
 
 * **Regressão Robusta**
 * **Regressão Regularizada**
