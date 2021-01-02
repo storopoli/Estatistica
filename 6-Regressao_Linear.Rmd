@@ -373,7 +373,7 @@ Todos as técnicas estatísticas que vimos até agora (teste $t$, ANOVA e correl
 Conforme o autor 2, regressão linear é pizza e "tudo acaba em pizza".
 </aside>
 
-```{r echo=FALSE}
+```{r gt, echo=FALSE}
 library(gt)
 tibble::tribble(
                                           ~"Nome do Teste",                        ~"função do R", ~"Modelo de Regressão equivalente no R",
@@ -383,11 +383,11 @@ tibble::tribble(
   "N: Teste de Wilcoxon para duas Amostras Pareadaspairs",  "wilcox.test(y1, y2, paired=TRUE)",        "lm(signed_rank(y2 - y1) ~ 1)",
                                "P: Correlação de Pearson",  "cor.test(x, y, method=’Pearson’)",                       "lm(y ~ 1 + x)",
                               "N: Correlação de Spearman", "cor.test(x, y, method=’Spearman’)",           "lm(rank(y) ~ 1 + rank(x))",
-             "P: Teste t para Duas Amostras não-Pareadas",    "t.test(y1, y2, var.equal=TRUE)",                     "lm(y ~ 1 + G2)A",
-                               "N: Teste de Mann-Whitney",               "wilcox.test(y1, y2)",        "lm(signed_rank(y) ~ 1 + G2)A",
-                                 "P: ANOVA Unidirecional",                    "aov(y ~ group)",         "lm(y ~ 1 + G2 + G3 +…+ GN)A",
-                             "N: Teste de Kruskal-Wallis",           "kruskal.test(y ~ group)",   "lm(rank(y) ~ 1 + G2 + G3 +…+ GN)A",
-           "P: ANOVA Bidirecional com efeitos principais",                "aov(y ~ group + x)",     "lm(y ~ 1 + G2 + G3 +…+ GN + x)A",
+             "P: Teste t para Duas Amostras não-Pareadas",    "t.test(y1, y2, var.equal=TRUE)",                     "lm(y ~ 1 + G2)",
+                               "N: Teste de Mann-Whitney",               "wilcox.test(y1, y2)",        "lm(signed_rank(y) ~ 1 + G2)",
+                                 "P: ANOVA Unidirecional",                    "aov(y ~ group)",         "lm(y ~ 1 + G2 + G3 +…+ GN)",
+                             "N: Teste de Kruskal-Wallis",           "kruskal.test(y ~ group)",   "lm(rank(y) ~ 1 + G2 + G3 +…+ GN)",
+           "P: ANOVA Bidirecional com efeitos principais",                "aov(y ~ group + x)",     "lm(y ~ 1 + G2 + G3 +…+ GN + x)",
          "P: ANOVA Bidirecional com efeitos de interação",              "aov(y ~ group * sex)",         "lm(y ~ 1 + G2 + G3 +…+ GN + S2 + S3 +…+ SK + G2*S2 + G3*S3 + … + GN*SK)"
 ) %>% 
   gt() %>% 
