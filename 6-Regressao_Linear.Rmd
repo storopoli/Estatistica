@@ -231,7 +231,7 @@ modelo_interacao <- lm(mpg ~ hp + wt + cyl*am, data = mtcars)
 summary(modelo_interacao)
 ```
 
-A interpretação do coeficiente `cyl:am` é a seguinte: `cyl` (ou `am`) **modera positivamente** a relação entre `am` (ou `cyl`) e `mpg`. Note que o $p$-valor de `cyl:am` não significância estatística ($p = 0.181$).
+A interpretação do coeficiente `cyl:am` é a seguinte: `cyl` (ou `am`) **modera positivamente** a relação entre `am` (ou `cyl`) e `mpg`. Note que o $p$-valor de `cyl:am` não possui significância estatística ($p = 0.181$).
 
 ### Efeitos Não-Lineares
 
