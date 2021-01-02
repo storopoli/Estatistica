@@ -85,9 +85,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Estatística com R: Untitled</title>
+  <title>Estatística com R: Regressão Logística</title>
 
-  <meta property="description" itemprop="description" content="A new article created using the Distill format."/>
+  <meta property="description" itemprop="description" content="Regressão para o caso de uma variável dependente binária."/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
@@ -98,19 +98,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="article:author" content="Leonardo Vils"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Estatística com R: Untitled"/>
+  <meta property="og:title" content="Estatística com R: Regressão Logística"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A new article created using the Distill format."/>
+  <meta property="og:description" content="Regressão para o caso de uma variável dependente binária."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Estatística com R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Estatística com R: Untitled"/>
-  <meta property="twitter:description" content="A new article created using the Distill format."/>
+  <meta property="twitter:title" content="Estatística com R: Regressão Logística"/>
+  <meta property="twitter:description" content="Regressão para o caso de uma variável dependente binária."/>
 
   <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-  <meta name="citation_title" content="Estatística com R: Untitled"/>
+  <meta name="citation_title" content="Estatística com R: Regressão Logística"/>
   <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html"/>
   <meta name="citation_fulltext_world_readable" content=""/>
   <meta name="citation_online_date" content="2021/01/11"/>
@@ -121,10 +121,26 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_author_institution" content="UNINOVE"/>
   <!--/radix_placeholder_meta_tags-->
   
+  <meta name="citation_reference" content="citation_title=An R companion to applied regression;citation_publication_date=2019;citation_publisher=Sage;citation_author=John Fox;citation_author=Sanford Weisberg"/>
+  <meta name="citation_reference" content="citation_title=DescTools: Tools for descriptive statistics;citation_publication_date=2020;citation_author=Signorell Andri et mult. al."/>
+  <meta name="citation_reference" content="citation_title=A note on studentizing a test for heteroscedasticity;citation_publication_date=1981;citation_publisher=Elsevier;citation_volume=17;citation_author=Roger Koenker"/>
+  <meta name="citation_reference" content="citation_title=Regularization paths for cox’s proportional hazards model via coordinate descent;citation_publication_date=2011;citation_volume=39;citation_author=Noah Simon;citation_author=Jerome Friedman;citation_author=Trevor Hastie;citation_author=Rob Tibshirani"/>
+  <meta name="citation_reference" content="citation_title=On the stability of inverse problems;citation_publication_date=1943;citation_volume=39;citation_author=Andrey Nikolayevich Tikhonov"/>
+  <meta name="citation_reference" content="citation_title=Generalized additive models;citation_publication_date=1986;citation_publisher=Institute of Mathematical Statistics;citation_volume=1;citation_author=Trevor Hastie;citation_author=Robert Tibshirani;citation_author=Generalized additive models"/>
+  <meta name="citation_reference" content="citation_title=Gam: Generalized additive models;citation_publication_date=2020;citation_author=Trevor Hastie"/>
+  <meta name="citation_reference" content="citation_title=Fitting linear mixed-effects models using lme4;citation_publication_date=2015;citation_volume=67;citation_doi=10.18637/jss.v067.i01;citation_author=Douglas Bates;citation_author=Martin Mächler;citation_author=Ben Bolker;citation_author=Steve Walker"/>
+  <meta name="citation_reference" content="citation_title=Multilevel modeling;citation_publication_date=2019;citation_publisher=SAGE Publications, Incorporated;citation_volume=143;citation_author=Douglas A Luke"/>
+  <meta name="citation_reference" content="citation_title=sjPlot: Data visualization for statistics in social science;citation_publication_date=2020;citation_author=Daniel Lüdecke"/>
+  <meta name="citation_reference" content="citation_title=Diagnostic checking in regression relationships;citation_publication_date=2002;citation_volume=2;citation_author=Achim Zeileis;citation_author=Torsten Hothorn"/>
+  <meta name="citation_reference" content="citation_title=Multivariate data analysis;citation_publication_date=1998;citation_publisher=Prentice hall Upper Saddle River, NJ;citation_volume=5;citation_author=Joseph F Hair;citation_author=William C Black;citation_author=Barry J Babin;citation_author=Rolph E Anderson;citation_author=Ronald L Tatham;citation_author=Multivariate data analysis"/>
+  <meta name="citation_reference" content="citation_title=Modern applied statistics with s;citation_publication_date=2002;citation_publisher=Springer;citation_author=W. N. Venables;citation_author=B. D. Ripley"/>
+  <meta name="citation_reference" content="citation_title=Conditional logit analysis of qualitative choice behavior;citation_publication_date=1973;citation_publisher=Institute of Urban; Regional Development, University of California …;citation_author=Daniel McFadden;citation_author=Conditional logit analysis of qualitative choice behavior"/>
+  <meta name="citation_reference" content="citation_title=The regression analysis of binary sequences;citation_publication_date=1958;citation_publisher=Wiley Online Library;citation_volume=20;citation_author=David R Cox"/>
+  <meta name="citation_reference" content="citation_title=Generalized linear models;citation_publication_date=1972;citation_publisher=Wiley Online Library;citation_volume=135;citation_author=John Ashworth Nelder;citation_author=Robert WM Wedderburn"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Untitled"]},{"type":"character","attributes":{},"value":["A new article created using the Distill format.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html"]},{"type":"character","attributes":{},"value":["storopoli2021regressaologisticaR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Regressão Logística"]},{"type":"character","attributes":{},"value":["Regressão para o caso de uma variável dependente binária.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html"]},{"type":"character","attributes":{},"value":["storopoli2021regressaologisticaR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2331,7 +2347,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Untitled","description":"A new article created using the Distill format.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2021"}
+{"title":"Regressão Logística","description":"Regressão para o caso de uma variável dependente binária.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2397,10 +2413,10 @@ Conteúdos Auxiliares
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Untitled</h1>
+<h1>Regressão Logística</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A new article created using the Distill format.</p></p>
+<p><p>Regressão para o caso de uma variável dependente binária.</p></p>
 </div>
 
 <div class="d-byline">
@@ -2416,15 +2432,707 @@ Conteúdos Auxiliares
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
+<li><a href="#função-logística">Função Logística</a></li>
 <li><a href="#por-que-não-usar-regressão-linear">Por que não usar Regressão Linear?</a></li>
+<li><a href="#pressupostos-da-regressão-logística">Pressupostos da Regressão Logística</a></li>
+<li><a href="#como-aplicar-uma-regressão-logística-no-r">Como aplicar uma Regressão Logística no R</a>
+<ul>
+<li><a href="#interpretação-dos-coeficientes">Interpretação dos Coeficientes</a></li>
+<li><a href="#variáveis-qualitativas">Variáveis Qualitativas</a></li>
+<li><a href="#efeitos-principais-e-efeitos-de-interação">Efeitos Principais e Efeitos de Interação</a></li>
+<li><a href="#visualização-de-regressão-logística">Visualização de Regressão Logística</a></li>
+<li><a href="#verificação-de-pressupostos">Verificação de Pressupostos</a></li>
+</ul></li>
+<li><a href="#pseudo-r2">Pseudo-<span class="math inline">\(R^2\)</span></a></li>
+<li><a href="#técnicas-avançadas-de-modelos-lineares-generalizados.">Técnicas Avançadas de Modelos Lineares Generalizados.</a>
+<ul>
+<li><a href="#modelos-lineares-generalizados-regularizados">Modelos Lineares Generalizados Regularizados</a></li>
+<li><a href="#regressão-aditiva---modelos-aditivos-generalizados">Regressão Aditiva - Modelos Aditivos Generalizados</a></li>
+<li><a href="#regressão-multinível">Regressão Multinível</a></li>
+</ul></li>
+<li><a href="#comentários-finais">Comentários Finais</a></li>
+<li><a href="#ambiente">Ambiente</a></li>
 </ul>
 </nav>
 </div>
 <p><link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/></p>
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill for R Markdown at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<p>A regressão linear é uma técnica tão ampla que originou <strong>diversas <del>gambiarras</del> extensões para acomodar os mais diferentes tipos de variáveis dependentes para além de apenas contínuas</strong>. Essas extensões da regressão logística são chamadas de <strong>modelos lineares generalizados e a sua lógica se baseia em transformar a variável dependente de alguma maneira para que ela se torne “linear” e “contínua”</strong>. Nesse tutorial vamos focar no caso da <strong>regressão logística</strong> que usa uma transformação logística de variáveis binárias (também chamadas de dicotômicas ou <em>dummy</em>) – que tomam apenas dois valores discretos<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Antes de continuar, recomendamos fortemente que leia o <a href="6-Regressao_Linear.html">tutorial nosso de regressão linear</a>, pois muitos conceitos serão abordados novamente.</p>
+<p>O <strong>foco em variáveis binárias (logo, em regressão logística) se dá pela quantidade de dados e modelos que são usados para modelar resultados binários</strong>. Por exemplo:</p>
+<ul>
+<li>Como a probabilidade de desenvolver câncer de pulmão (sim vs. não) muda para cada quilo adicional que uma pessoa está acima do peso e para cada maço de cigarros fumado por dia?</li>
+<li>O peso corporal, a ingestão de calorias, a ingestão de gordura e a idade influenciam a probabilidade de um ataque cardíaco (sim x não)?</li>
+<li>Quais palavras, qual hora do dia, quais assuntos e qual domínio do remetentem influenciam a probabilidade de um e-mail ser <em>spam</em> (sim x não)?</li>
+</ul>
+<p>Todos esses exemplos são questões que a regressão logística pode responder. <strong>Toda vez que precisamos responder uma pergunta na qual pode ser reduzida a uma pergunta de sim/não ou esse/aquele, regressão logística é a principal técnica a ser empregada</strong>.</p>
+<h2 id="função-logística">Função Logística</h2>
+<p>Uma <strong>regressão logística se comporta exatamente como um modelo linear</strong>: faz uma predição simplesmente computando uma soma ponderada das variáveis independentes, mais uma constante. Porém ao invés de retornar um valor contínuo, como a regressão linear, retorna a função logística desse valor.</p>
+<p><span class="math display">\[\operatorname{Logística}(x) = \frac{1}{1 + e^{(-x)}}\]</span></p>
+<p><strong>A função logística é uma <del>gambiarra</del> transformação que pega <em>qualquer</em> valor entre menos infinito <span class="math inline">\(-\infty\)</span> e mais infinito <span class="math inline">\(+\infty\)</span> e transforma em um valor entre 0 e 1</strong>. Veja na figura <a href="#fig:logit"><strong>??</strong></a> uma representação gráfica da função logística.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>,
+  logit <span class='op'>=</span> <span class='fl'>1</span> <span class='op'>/</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>logit</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="7-Regressao_Logistica_files/figure-html5/logit-1.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>A função logística foi desenvolvida como modelo de crescimento populacional e denominada “logística” por Pierre François Verhulst nas décadas de 1830 e 1840, sob a orientação de Adolphe Quetelet. Regressão Logística como a empregamos hoje passou por vários refinamentos até <span class="citation" data-cites="cox1958regression"><a href="#ref-cox1958regression" role="doc-biblioref">Cox</a> (<a href="#ref-cox1958regression" role="doc-biblioref">1958</a>)</span> que é mais ou menos a versão atual que usamos.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:fig-verhulst-quetelet"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/fig-verhulst-quetelet-1.png" alt="Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox -- Figuras de https://www.wikipedia.org" width="20%" class=external />
+<p class="caption">
+Figure 1: Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox – Figuras de <a href="https://www.wikipedia.org" class="uri">https://www.wikipedia.org</a>
+</p>
+</div>
+</div>
 <h2 id="por-que-não-usar-regressão-linear">Por que não usar Regressão Linear?</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos gerar um <em>dataset</em> com 30 observações com duas variáveis: uma variável contínua <code>idade</code> e uma variável binária <code>comprado</code>. Para ilustrar o primeiro cenário, imagine que somente as pessoas com menos de 20 anos compraram algum produto, <code>comprado = 1</code>, e as pessoas com 20 anos ou mais não compraram o produto, <code>comprado = 0</code>. Veja na figura <a href="#fig:sim1">2</a> o que acontece se usarmos uma regressão linear (em vermelho) ou uma regressão logística (em azul) neste cenário. Qual modelo explica melhor a relação entre os dados é evidente: regressão logística.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>sim1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  idade <span class='op'>=</span> <span class='fl'>10</span><span class='op'>:</span><span class='fl'>29</span>,
+  comprado <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>sim1</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>idade</span>, <span class='va'>comprado</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span>  <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"glm"</span>,
+              method.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"binomial"</span><span class='op'>)</span>,
+              se<span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:sim1"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/sim1-1.png" alt="Reta vs Curva Logística" width="70%" />
+<p class="caption">
+Figure 2: Reta vs Curva Logística
+</p>
+</div>
+</div>
+<p>Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto <code>comprado = 0</code>. Nesse cenário, figura <a href="#fig:sim2">3</a>, a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>sim2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  idade <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>29</span>, <span class='fl'>60</span><span class='op'>:</span><span class='fl'>69</span><span class='op'>)</span>,
+  comprado <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>sim2</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>idade</span>, <span class='va'>comprado</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span>  <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"glm"</span>,
+              method.args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>family <span class='op'>=</span> <span class='st'>"binomial"</span><span class='op'>)</span>,
+              se<span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:sim2"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/sim2-1.png" alt="Reta vs Curva Logística -- Dados Desbalanceados" width="70%" />
+<p class="caption">
+Figure 3: Reta vs Curva Logística – Dados Desbalanceados
+</p>
+</div>
+</div>
+<p>Acreditamos que com essas duas simulações o argumento e favor de regressão logística tenha sido aceito incondicionalmente.</p>
+<h2 id="pressupostos-da-regressão-logística">Pressupostos da Regressão Logística</h2>
+<p>Para interpretar os resultados de uma regressão logística como uma quantidade estatística significativa que mede os relacionamentos do mundo real, precisamos contar com uma série de suposições clássicas. Os quatro principais pressupostos da regressão logística são:</p>
+<ol type="1">
+<li><strong>Independência dos Dados</strong>: o valor de uma observação não influencia ou afeta o valor de outras observações. Este é o pressuposto clássico de todas as técnicas abordadas até agora.</li>
+<li><strong>Linearidade dos Dados</strong>: a relação entre as variáveis independentes e a <strong>curva logística</strong> da variável dependente é considerada linear (quanto mais/menos de uma, mais/menos de outra). Linearidade dos Dados pode ser verificada graficamente observando a dispersão dos resíduos com os valores previstos pela regressão.</li>
+<li><strong>Independência dos Erros / Resíduos</strong>: os erros (também chamados de resíduos) não devem possuir correlação. Este pressuposto pode ser testado pelo teste de Durbin-Watson e observando o gráfico quantil-quantil (Q-Q) dos resíduos padronizados.</li>
+<li><strong>Homogeneidade de Variância dos Erros / Resíduos</strong>: os erros devem ter média zero e desvio padrão constante ao longo das observações. Similar ao teste de Levene, mas aplicado aos resíduos da regressão. Pode ser testado usando o Teste de Breusch-Pagan.</li>
+<li><strong>Ausência de Multicolinearidade</strong>: multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o Fator de Inflação de Variância (<em>Variance Inflation Factor</em> – VIF).</li>
+</ol>
+<p>Os pressupostos de regressão logística são os <strong>mesmos da <a href="6-Regressao_Linear.html">regressão linear</a></strong>, com a exceção de que o <strong>pressuposto de linearidade é aplicado à curva logística da variável dependente</strong>.</p>
+<h2 id="como-aplicar-uma-regressão-logística-no-r">Como aplicar uma Regressão Logística no R</h2>
+<p>Para exemplificar as regressões nesse tutorial, usaremos o <em>dataset</em> <code>TitanicSurvival</code> da biblioteca <code>{carData}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span>. <code>TitanicSurvival</code> é uma base de dados com os tripulantes e passageiros do Titanic que afundou em 15 de Abril de 1912. Possui 1309 observações e 4 variáveis:</p>
+<ul>
+<li><code>survived</code> – sobreviveu (binária qualitativa): <code>0</code> não sobreviveu, <code>1</code> sobreviveu</li>
+<li><code>sex</code> – gênero (binária qualitativa): <code>female</code> feminino, <code>male</code> masculino</li>
+<li><code>age</code> – idade (contínua)</li>
+<li><code>passengerClass</code> – classe do passageiro (qualitativa): <code>1st</code> primeira classe, <code>2nd</code> segunda classe e <code>3rd</code> terceira classe</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>carData</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"TitanicSurvival"</span>, package <span class='op'>=</span> <span class='st'>"carData"</span><span class='op'>)</span>
+<span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>TitanicSurvival</span><span class='op'>)</span>
+</code></pre>
+</div>
+<table>
+<caption><span id="tab:skim-titanic">Table 1: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">TitanicSurvival</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">1309</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">factor</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: factor</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: left;">ordered</th>
+<th style="text-align: right;">n_unique</th>
+<th style="text-align: left;">top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">survived</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">no: 809, yes: 500</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sex</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">mal: 843, fem: 466</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">passengerClass</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">3rd: 709, 1st: 323, 2nd: 277</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">263</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: left;">▂▇▅▂▁</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Para aplicar uma regressão logística no R usamos a função <code>glm()</code> (<em><strong>g</strong>eneralized <strong>l</strong>inear <strong>m</strong>odel</em>) padrão do R. Sua funcionalidade é idêntica à função <code>lm()</code> de regressão linear, sendo que, além de fórmula e <em>dataset</em>, é necessário fornecer um argumento extra <code>family</code>:</p>
+<ol type="1">
+<li>Fórmula designando a variável dependente e a(s) variável(eis) independente(s) designada pela seguinte síntaxe: <code>dependente ~ independente_1 + independente_2 + ...</code>.</li>
+<li>O <em>dataset</em> no qual deverá ser encontradas as variáveis presentes na fórmula.</li>
+<li><code>family</code>: tipo de modelo linear generalizado que deseja utilizar. Para regressão logística usamos <code>family = binomial</code>.</li>
+</ol>
+<p>Começaremos com um exemplo simples de regressão logística do <code>TitanicSurvival</code> usando como variável independente <code>survived</code> e variáveis independentes <code>age</code> e <code>sex</code>. Podemos inspecionar o resultado de uma regressão logística com a função <code>summary()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>modelo_simples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span>, data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+glm(formula = survived ~ age + sex, family = binomial, data = TitanicSurvival)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-1.725  -0.686  -0.660   0.755   1.874  
+
+Coefficients:
+            Estimate Std. Error z value             Pr(&gt;|z|)    
+(Intercept)  1.23541    0.19203    6.43        0.00000000012 ***
+age         -0.00425    0.00521   -0.82                 0.41    
+sexmale     -2.46069    0.15232  -16.16 &lt; 0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1414.6  on 1045  degrees of freedom
+Residual deviance: 1101.3  on 1043  degrees of freedom
+  (263 observations deleted due to missingness)
+AIC: 1107
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<h3 id="interpretação-dos-coeficientes">Interpretação dos Coeficientes</h3>
+<p>Na saída de <code>summary()</code> podemos ver que são produzidos os <strong>coeficientes da regressão na coluna <code>Estimate</code></strong>, associados ao respectivos desvio padrão dos resíduos <code>Std. Error</code> e <span class="math inline">\(p\)</span>-valores <code>Pr(&gt;|t|)</code>. Importante destacar que a <strong>hipótese nula dos coeficientes da regressão é de que “os coeficientes são nulos/zeros”</strong>, então os <span class="math inline">\(p\)</span>-valores devem ser interpretados como <strong>a probabilidade de observamos valores de coeficientes tão extremos dado que a hipótese nula é verdadeira</strong>. Para facilitar, o R informa com asteriscos quais variáveis possuem coeficientes estatisticamente significantes: <code>*</code> para <span class="math inline">\(p &lt; 0.05\)</span>, <code>**</code> para <span class="math inline">\(p &lt; 0.01\)</span>, e <code>***</code> para <span class="math inline">\(p &lt; 0.001\)</span>.</p>
+<p>Os coeficientes de regressão logística <strong>não são interpretáveis em escala bruta</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. É necessário <strong>inverter a transformação logística exponenciando os coeficientes</strong> – <span class="math inline">\(e^x\)</span>. Isso faz com que os coeficientes se transformem em razões de chance (<em>odds ratio</em> – OR) que permite uma melhor interpretabilidade.</p>
+<p>Razões de chance funcionam muito similar com as chances de uma aposta. Quando a chance é justa tanto para a variável dependente ser 0 quanto 1 ela é expressada como uma chance 1 para 1 (1:1) – <span class="math inline">\(\frac{1}{1}\)</span>. Qualquer valor abaixo de 0 faz com que a chance da variável dependente ser 0 aumentar, e qualquer valor acima de 1 a chance da variável dependente ser 1 aumenta. Para transformar os coeficientes de um modelo de regressão logística em OR, usamos a função <code>exp()</code> base do R nos coeficientes <code>coef()</code> do modelo.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>(Intercept)         age     sexmale 
+      3.440       0.996       0.085 </code></pre>
+</div>
+<p>A interpretação dessa saída de OR é a seguinte:</p>
+<ul>
+<li><code>age</code> – A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 0.42% (<span class="math inline">\(1 - \text{OR}_\text{age}\)</span>).</li>
+<li><code>sexmale</code> – A cada aumento de uma unidade de idade (ou seja sexomale é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 91.46% (<span class="math inline">\(1 - \text{OR}_\text{sexmale}\)</span>).</li>
+</ul>
+<p>Para produzir intervalos de confiança precisamos usar a função <code>confint()</code> do pacote MASS <span class="citation" data-cites="MASS">(<a href="#ref-MASS" role="doc-biblioref">Venables &amp; Ripley, 2002</a>)</span>, uma vez que a função <code>confint()</code> base do R não dá suporte à OR. Como padrão, <code>MASS::confint()</code>, assim como <code>confint()</code> base do R, produz intervalos de confiança 95%.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>             2.5 %  97.5 %
+(Intercept)  0.865  1.6182
+age         -0.015  0.0059
+sexmale     -2.763 -2.1661</code></pre>
+</div>
+<h3 id="variáveis-qualitativas">Variáveis Qualitativas</h3>
+<p>Além de variáveis independentes quantitativas, regressão logística, assim como a linear, também permite utilizarmos <strong>variáveis qualitativas (discretas)</strong> como variáveis independentes.</p>
+<p>Vamos estender o nosso modelo simples adicionando a variável <code>passengerClass</code>. Note que, no <em>dataset</em> <code>TitanicSurvival</code>, <code>passengerClass</code> já está convertida para qualitativa (<code>factor</code>), não sendo necessário usar a função padrão do R <code>as.factor()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>modelo_quali</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>passengerClass</span>,
+                    data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+glm(formula = survived ~ age + sex + passengerClass, family = binomial, 
+    data = TitanicSurvival)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-2.640  -0.698  -0.434   0.669   2.396  
+
+Coefficients:
+                  Estimate Std. Error z value             Pr(&gt;|z|)
+(Intercept)        3.52207    0.32670   10.78 &lt; 0.0000000000000002
+age               -0.03439    0.00633   -5.43          0.000000056
+sexmale           -2.49784    0.16604  -15.04 &lt; 0.0000000000000002
+passengerClass2nd -1.28057    0.22554   -5.68          0.000000014
+passengerClass3rd -2.28966    0.22580  -10.14 &lt; 0.0000000000000002
+                     
+(Intercept)       ***
+age               ***
+sexmale           ***
+passengerClass2nd ***
+passengerClass3rd ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1414.62  on 1045  degrees of freedom
+Residual deviance:  982.45  on 1041  degrees of freedom
+  (263 observations deleted due to missingness)
+AIC: 992.5
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<p>Quando uma variável é convertida para fator, o R rotula os diferentes níveis (<em>levels</em>) conforme ordem alfabética. Portanto, no nosso exemplo, <code>passengerClass</code> possui 3 níveis: <code>1st</code>, <code>2nd</code> e <code>3rd</code> (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão logística que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso <code>1st</code>) como referência. Portanto a interpretações de <code>passengerClass</code> devem se atentar que a referência é <code>passengerClass = 1st</code>. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto <code>glm</code> acessando seu atributo <code>xlevels</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>modelo_quali</span><span class='op'>$</span><span class='va'>xlevels</span>
+</code></pre>
+</div>
+<pre><code>$sex
+[1] &quot;female&quot; &quot;male&quot;  
+
+$passengerClass
+[1] &quot;1st&quot; &quot;2nd&quot; &quot;3rd&quot;</code></pre>
+</div>
+<h3 id="efeitos-principais-e-efeitos-de-interação">Efeitos Principais e Efeitos de Interação</h3>
+<p>Todos os modelos de regressão logística que mostramos até aqui usaram apenas efeitos principais. Mas <strong>podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis</strong>. Similar ao exposto no <a href="6-Regressao_Linear.html">tutorial sobre regressão linear</a>, podemos incluir <strong>dois tipos de efeitos na regressão logística</strong>:</p>
+<ul>
+<li><strong>Efeitos principais</strong>: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de <strong>aditivos</strong> pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.</li>
+<li><strong>Efeitos de interações</strong>: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação <strong>não são aditivos</strong> pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. <strong>Há uma interação entre as variáveis independentes</strong>.</li>
+</ul>
+<p>Veja na figura <a href="#fig:titanic-interaction">4</a> uma representação gráfica da interação entre <code>sex</code> e <code>passengerClass</code>. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de <code>passengerClass</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>TitanicSurvival</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>survived <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>==</span> <span class='st'>"yes"</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>,
+         sex <span class='op'>=</span> <span class='fu'>forcats</span><span class='fu'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_rev.html'>fct_rev</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>sex</span>, <span class='va'>passengerClass</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>survived <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>survived</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sex</span>, y <span class='op'>=</span> <span class='va'>survived</span>, color <span class='op'>=</span> <span class='va'>passengerClass</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>passengerClass</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set1"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:titanic-interaction"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/titanic-interaction-1.png" alt="Interação entre `sex` e `passengerClass` do *dataset* `mtcars`" width="70%" />
+<p class="caption">
+Figure 4: Interação entre <code>sex</code> e <code>passengerClass</code> do <em>dataset</em> <code>mtcars</code>
+</p>
+</div>
+</div>
+<p>Para incluirmos efeitos de interações entre duas variáveis independentes em regressões logísticas, incluímos na fórmula entre as duas variáveis um sinal de multiplicação<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <code>*</code> indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>modelo_interacao</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span><span class='op'>*</span><span class='va'>passengerClass</span>,
+                        data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_interacao</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+Call:
+glm(formula = survived ~ age + sex * passengerClass, family = binomial, 
+    data = TitanicSurvival)
+
+Deviance Residuals: 
+   Min      1Q  Median      3Q     Max  
+-3.078  -0.660  -0.494   0.426   2.494  
+
+Coefficients:
+                          Estimate Std. Error z value
+(Intercept)                4.80435    0.54694    8.78
+age                       -0.03840    0.00674   -5.70
+sexmale                   -3.88639    0.49238   -7.89
+passengerClass2nd         -1.52987    0.56648   -2.70
+passengerClass3rd         -4.06497    0.51066   -7.96
+sexmale:passengerClass2nd -0.07040    0.63098   -0.11
+sexmale:passengerClass3rd  2.48881    0.54004    4.61
+                                      Pr(&gt;|z|)    
+(Intercept)               &lt; 0.0000000000000002 ***
+age                         0.0000000123304439 ***
+sexmale                     0.0000000000000029 ***
+passengerClass2nd                       0.0069 ** 
+passengerClass3rd           0.0000000000000017 ***
+sexmale:passengerClass2nd               0.9112    
+sexmale:passengerClass3rd   0.0000040548929135 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1414.62  on 1045  degrees of freedom
+Residual deviance:  931.99  on 1039  degrees of freedom
+  (263 observations deleted due to missingness)
+AIC: 946
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+<p>A interpretação de interações de regressão logística é a mesma da interpretação de interações da <a href="6-Regressao_Linear.html">regressão linear</a>. Por exemplo, a interpretação do coeficiente <code>sexmale:passengerClass3rd</code> é a seguinte: ser um passageiros da terceira classe <strong>modera positivamente</strong> a relação entre sexo masculino e <code>survived</code>. Note que o <span class="math inline">\(p\)</span>-valor de <code>sexmale:passengerClass3rd</code> possui significância estatística (<span class="math inline">\(p &lt; 0.001\)</span>).</p>
+<h3 id="visualização-de-regressão-logística">Visualização de Regressão Logística</h3>
+<p>Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca <code>{sjPlot}</code> <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke, 2020</a>)</span> e sua função <code>plot_model()</code>. Como padrão, a função <code>plot_model()</code> produz um gráfico de floresta (<em>forest plot</em>) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como <code>"std"</code> em <code>plot_model()</code>, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Já mostramos a função <code>plot_model()</code> no tutorial de <a href="6-Regressao_Linear.html">regressão linear</a> e ela funciona de maneira idêntica à modelos de regressão logística, com uma exceção que os <strong>coeficientes já são apresentados em formato OR</strong>. Veja um exemplo na figura <a href="#fig:sjPlot">5</a>: na parte superior temos o gráfico de floresta para coeficientes brutos e na parte inferior para coeficientes padrões.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
+<span class='va'>forest_raw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
+<span class='va'>forest_std</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span>, type <span class='op'>=</span> <span class='st'>"std"</span><span class='op'>)</span>
+<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'>plot_layout</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>2</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:sjPlot"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/sjPlot-1.png" alt="Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato *Odds Ratio* -- OR" width="70%" />
+<p class="caption">
+Figure 5: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato <em>Odds Ratio</em> – OR
+</p>
+</div>
+</div>
+<p>Caso queira mais opções de visualizações para modelos de regressão não deixe de conferir o <a href="https://strengejacke.github.io/sjPlot/">site da biblioteca <code>{sfPlot}</code></a>.</p>
+<h3 id="verificação-de-pressupostos">Verificação de Pressupostos</h3>
+<p>Podemos realizar diversos testes estatísticos de hipótese nula para verificar se o modelo de regressão logística possui pressupostos violados ou não. Para isso recomendamos a biblioteca <code>{lmtest}</code> <span class="citation" data-cites="lmtest">(<a href="#ref-lmtest" role="doc-biblioref">Zeileis &amp; Hothorn, 2002</a>)</span>.</p>
+<p>Os pressupostos de regressão logística são os <strong>mesmos da <a href="6-Regressao_Linear.html">regressão linear</a></strong>, com a exceção de que o <strong>pressuposto de linearidade é aplicado à curva logística da variável dependente</strong>.</p>
+<h4 id="teste-de-breusch-pagan">Teste de Breusch-Pagan</h4>
+<p>O <strong>teste de Breusch-Pagan<span class="citation" data-cites="breusch1979simple cook1983diagnostics">(<a href="#ref-breusch1979simple" role="doc-biblioref">Breusch &amp; Pagan, 1979</a>; <a href="#ref-cook1983diagnostics" role="doc-biblioref">Cook &amp; Weisberg, 1983</a>)</span> usado para testar o pressuposto da independência dos resíduos</strong> possui como hipótese nula que “as variâncias de erro são todas iguais” e como hipótese alternativa que “as variâncias de erro são uma função multiplicativa de uma ou mais variáveis.” Recomendamos que usem os resíduos “Studentizados” (quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão – uma forma de estatística <span class="math inline">\(t\)</span> de Student, com a estimativa de erro variando entre os pontos) no teste de Breusch-Pagan <span class="citation" data-cites="koenker1981note">(<a href="#ref-koenker1981note" role="doc-biblioref">Koenker, 1981</a>)</span>. A função <code>bptest()</code> da biblioteca <code>{lmtest}</code> aceita como argumento um modelo de regressão logística (objeto <code>glm</code>) e já possui como padrão resíduos “Studentizados.” Caso queira usar resíduos brutos indique o argumento <code>studentize</code> como <code>FALSE</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>lmtest</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/bptest.html'>bptest</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  modelo_simples
+BP = 20, df = 2, p-value = 0.00005</code></pre>
+</div>
+<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Breusch-Pagan para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências que os resíduos não são independentes.</p>
+<h4 id="teste-de-durbin-watson">Teste de Durbin-Watson</h4>
+<p>O <strong>teste de Durbin-Watson <span class="citation" data-cites="durbin1950testing durbin1951testing">(<a href="#ref-durbin1950testing" role="doc-biblioref">Durbin &amp; Watson, 1950</a>, <a href="#ref-durbin1951testing" role="doc-biblioref">1951</a>)</span> é um teste estatístico usado para detectar a presença de autocorrelação dos resíduos de um modelo de regressão e testa o pressuposto da homogeneidade de variância dos resíduos</strong>. Possui como hipótese nula que os “erros são serialmente não correlacionados.” A função <code>dwtest()</code> da biblioteca <code>{lmtest}</code> aceita como argumento um modelo de regressão logística (objeto <code>glm</code>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/dwtest.html'>dwtest</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Durbin-Watson test
+
+data:  modelo_simples
+DW = 2, p-value = 0.000002
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Durbin-Watson para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.</p>
+<h4 id="multicolinearidade">Multicolinearidade</h4>
+<p><strong>Multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos</strong>. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o <strong>Fator de Inflação de Variância (<em>Variance Inflation Factor</em> – VIF)</strong>.</p>
+<p>Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 <span class="citation" data-cites="hair1998multivariate">(<a href="#ref-hair1998multivariate" role="doc-biblioref">Hair et al., 1998</a>)</span>. Para calcular os VIFs de uma modelo de regressão logística <code>glm</code> use a função <code>vif()</code> da biblioteca <code>{car}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>age sex 
+  1   1 </code></pre>
+</div>
+<p>Note que os valores de VIFs para as variáveis independentes do <code>modelo_simples</code> estão todos dentro do limite aceitável (<span class="math inline">\(&lt;10\)</span>), demonstrando ausência de multicolinearidade e evidenciando que o pressuposto não foi violado.</p>
+<h2 id="pseudo-r2">Pseudo-<span class="math inline">\(R^2\)</span></h2>
+<blockquote>
+<p>Observe que, embora muitos softwares estatísticos computem um pseudo-<span class="math inline">\(R^2\)</span> para modelos de regressão logística, essa medida de determinação não é diretamente comparável ao <span class="math inline">\(R^2\)</span> calculado para modelos de regressão linear. Na verdade, alguns estatísticos recomendam evitar a publicação de <span class="math inline">\(R^2\)</span> <span class="citation" data-cites="hosmer2013applied harrell2015regression">(<a href="#ref-harrell2015regression" role="doc-biblioref">Harrell Jr, 2015</a>; <a href="#ref-hosmer2013applied" role="doc-biblioref">Hosmer Jr, Lemeshow, &amp; Sturdivant, 2013</a>)</span>, uma vez que pode ser mal interpretado em um contexto de regressão logística.</p>
+</blockquote>
+<p>Há várias técnicas de como calcular um pseudo-<span class="math inline">\(R^2\)</span> propostas na literatura sendo que a principal é o pseudo-<span class="math inline">\(R^2\)</span> e pseudo-<span class="math inline">\(R^2\)</span> ajustado de McFadden <span class="citation" data-cites="mcfadden1973conditional">(<a href="#ref-mcfadden1973conditional" role="doc-biblioref">McFadden &amp; others, 1973</a>)</span>.</p>
+<p>A função <code>PseudoR2()</code> da biblioteca <code>{DescTools}</code> <span class="citation" data-cites="desctools">(<a href="#ref-desctools" role="doc-biblioref">Andri et mult. al., 2020</a>)</span> possui todas as principais técnicas de cálculo de pseudo-<span class="math inline">\(R^2\)</span> podendo ser especificadas com o argumento <code>which</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://andrisignorell.github.io/DescTools/reference/PseudoR2.html'>PseudoR2</a></span><span class='op'>(</span><span class='va'>modelo_simples</span>, which <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"McFadden"</span>, <span class='st'>"McFaddenAdj"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>   McFadden McFaddenAdj 
+       0.22        0.22 </code></pre>
+</div>
+<h2 id="técnicas-avançadas-de-modelos-lineares-generalizados.">Técnicas Avançadas de Modelos Lineares Generalizados.</h2>
+<p>Assim como no <a href="6-Regressao_Linear.html">tutorial de Regressão Linear</a>, nesta seção apenas apresentaremos alternativas avançadas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<ul>
+<li><strong>Modelos Lineares Generalizados Regularizados</strong></li>
+<li><strong>Modelos Aditivos Generalizados</strong></li>
+<li><strong>Modelos Lineares Generalizados Multiníveis</strong></li>
+</ul>
+<h3 id="modelos-lineares-generalizados-regularizados">Modelos Lineares Generalizados Regularizados</h3>
+<p>Modelos lineares generalizados regularizados são um tipo de modelos lineares generalizados em que as estimativas dos coeficientes são restritas a zero. A magnitude (tamanho) dos coeficientes, bem como a magnitude do termo de erro, são penalizados. Modelos complexos são desencorajados, principalmente para evitar <em>overfitting</em>.</p>
+<h4 id="tipos-de-modelos-lineares-generalizados-regularizados">Tipos de Modelos Lineares Generalizados Regularizados</h4>
+<p><strong>Dois tipos comumente usados de métodos de modelos lineares generalizados regularizados são Ridge e Lasso</strong>.</p>
+<p><strong>Ridge<span class="citation" data-cites="tikhonov1943stability">(<a href="#ref-tikhonov1943stability" role="doc-biblioref">Tikhonov, 1943</a>)</span> é uma forma de criar um modelo parcimonioso quando o número de variáveis preditoras em um conjunto excede o número de observações (<span class="math inline">\(m &gt; p\)</span>) ou quando um conjunto de dados tem forte multicolinearidade (correlações entre variáveis preditoras)</strong>. A regressão Ridge pertence ao conjunto de <strong>ferramentas de regularização L2</strong>. A regularização L2 adiciona uma penalidade chamada penalidade L2, que é igual ao quadrado da magnitude dos coeficientes. Todos os coeficientes são reduzidos pelo mesmo fator, de modo que todos os coeficientes permanecem no modelo. A força do termo de penalidade é controlada por um parâmetro de ajuste. Quando este parâmetro de ajuste (<span class="math inline">\(\lambda\)</span>) é definido como zero, a regressão Ridge é igual à um modelo linear generalizado. Se <span class="math inline">\(\lambda = \infty\)</span>, todos os coeficientes são reduzidos a zero. A penalidade ideal é, portanto, algo entre <span class="math inline">\(0\)</span> e <span class="math inline">\(\infty\)</span>.</p>
+<p><strong>Lasso (<em>least absolute shrinkage and selection operator</em> – Lasso) <span class="citation" data-cites="tibshirani1996regression efron2016computer">(<a href="#ref-efron2016computer" role="doc-biblioref">Efron &amp; Hastie, 2016</a>; <a href="#ref-tibshirani1996regression" role="doc-biblioref">Tibshirani, 1996</a>)</span> é um tipo de modelo linear generalizado que usa encolhimento (<em>shrinkage</em>)</strong>. Encolhimento faz com os valores dos coeficientes sejam reduzidos em direção a um ponto central, como a média. Este tipo de redução é muito útil quando você tem altos níveis de muticolinearidade ou quando deseja automatizar certas partes da seleção de modelo, como seleção de variável / eliminação de parâmetro. Lasso usa a <strong>regularização L1 que limita o tamanho dos coeficientes adicionando uma penalidade L1 igual ao valor absoluto</strong>, ao invés do valor quadrado como L2, da magnitude dos coeficientes. Isso às vezes resulta na <strong>eliminação de alguns coeficientes completamente</strong>, o que pode resultar em modelos esparsos e seleção de variáveis.</p>
+<p>Para usar modelos lineares generalizados regularizados use a biblioteca <code>{glmnet}</code> <span class="citation" data-cites="glmnet">(<a href="#ref-glmnet" role="doc-biblioref">Simon, Friedman, Hastie, &amp; Tibshirani, 2011</a>)</span>.</p>
+<h3 id="regressão-aditiva---modelos-aditivos-generalizados">Regressão Aditiva - Modelos Aditivos Generalizados</h3>
+<p>Em estatística, um <strong>modelo aditivo generalizado (<em>generalized additive model</em> – GAM) é um modelo linear generalizado no qual a variável de resposta depende linearmente de funções suaves (chamadas de <em>splines</em>) desconhecidas de algumas variáveis preditoras, e o interesse se concentra na inferência sobre essas funções suaves</strong>. Os GAMs foram desenvolvidos originalmente por Trevor Hastie e Robert Tibshirani <span class="citation" data-cites="hastie1986generalized">(<a href="#ref-hastie1986generalized" role="doc-biblioref">Hastie, Tibshirani, &amp; others, 1986</a>)</span>. Para usar GAMs no R use a biblioteca <code>{gam}</code> <span class="citation" data-cites="gam">(<a href="#ref-gam" role="doc-biblioref">Hastie, 2020</a>)</span>.</p>
+<h3 id="regressão-multinível">Regressão Multinível</h3>
+<p><strong>Modelos multiníveis</strong> (também conhecidos como modelos lineares hierárquicos, modelo linear de efeitos mistos, modelos mistos, modelos de dados aninhados, coeficiente aleatório, modelos de efeitos aleatórios, modelos de parâmetros aleatórios ou designs de gráfico dividido) são <strong>modelos estatísticos de parâmetros que variam em mais de um nível</strong> <span class="citation" data-cites="luke2019multilevel">(<a href="#ref-luke2019multilevel" role="doc-biblioref">Luke, 2019</a>)</span>.</p>
+<p>Modelos multiníveis são particularmente apropriados para projetos de pesquisa onde os <strong>dados dos participantes são organizados em mais de um nível</strong> (ou seja, dados aninhados). As unidades de análise geralmente são indivíduos (em um nível inferior) que estão aninhados em unidades contextuais / agregadas (em um nível superior).</p>
+<p><strong>Modelos multiníveis geralmente se dividem em três abordagens</strong>:</p>
+<ol type="1">
+<li><em>Random intercept model</em>: Modelo no qual cada grupo recebe uma constante (<em>intercept</em>) diferente</li>
+<li><em>Random slope model</em>: Modelo no qual cada grupo recebe um coeficiente diferente para cada variável independente</li>
+<li><em>Random intercept-slope model</em>: Modelo no qual cada grupo recebe tanto uma constante (<em>intercept</em>) quanto um coeficiente diferente para cada variável independente</li>
+</ol>
+<aside>
+O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Estatistica-Bayesiana/">Estatística Bayesiana com R</a> e uma das aulas é sobre <a href="https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html">regressão multinível</a>.
+</aside>
+<p>Para usar modelos multiníveis em R use a biblioteca <code>{lme4}</code> <span class="citation" data-cites="lme4">(<a href="#ref-lme4" role="doc-biblioref">Bates, Mächler, Bolker, &amp; Walker, 2015</a>)</span>.</p>
+<h2 id="comentários-finais">Comentários Finais</h2>
+<p>Regressão logística é a <strong>principal técnica de modelos lineares generalizados – extensão da regressão linear</strong>, sendo usada <strong>amplamente tanto em relatórios técnicos quanto na literatura científica, assim como tanto em contextos profissionais quanto acadêmicos</strong>. Caso o leitor tenha se interessado, convidamos à conhecer as <strong>outras técnicas de modelos lineares generalizados</strong> <span class="citation" data-cites="nelder1972generalized">(<a href="#ref-nelder1972generalized" role="doc-biblioref">Nelder &amp; Wedderburn, 1972</a>)</span>, como regressão de Poisson, regressão Binomial negativa, entre outros…</p>
+<h2 id="ambiente">Ambiente</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>R version 4.0.3 (2020-10-10)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods  
+[7] base     
+
+other attached packages:
+ [1] DescTools_0.99.39 car_3.0-10        lmtest_0.9-38    
+ [4] zoo_1.8-8         sjPlot_2.8.6      carData_3.0-4    
+ [7] skimr_2.1.2       cowplot_1.1.1     patchwork_1.1.1  
+[10] ggplot2_3.3.3     dplyr_1.0.2      
+
+loaded via a namespace (and not attached):
+ [1] nlme_3.1-151       insight_0.11.1     RColorBrewer_1.1-2
+ [4] repr_1.1.0         tools_4.0.3        backports_1.2.1   
+ [7] R6_2.5.0           sjlabelled_1.1.7   mgcv_1.8-33       
+[10] colorspace_2.0-0   withr_2.3.0        Exact_2.1         
+[13] tidyselect_1.1.0   emmeans_1.5.3      downlit_0.2.1     
+[16] curl_4.3           compiler_4.0.3     performance_0.6.1 
+[19] expm_0.999-5       sandwich_3.0-0     labeling_0.4.2    
+[22] bayestestR_0.8.0   scales_1.1.1       mvtnorm_1.1-1     
+[25] stringr_1.4.0      digest_0.6.27      foreign_0.8-81    
+[28] minqa_1.2.4        rmarkdown_2.6      rio_0.5.16        
+[31] base64enc_0.1-3    pkgconfig_2.0.3    htmltools_0.5.0   
+[34] lme4_1.1-26        highr_0.8          readxl_1.3.1      
+[37] rlang_0.4.10       rstudioapi_0.13    farver_2.0.3      
+[40] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
+[43] distill_1.1        magrittr_2.0.1     parameters_0.10.1 
+[46] Matrix_1.3-0       Rcpp_1.0.5         munsell_0.5.0     
+[49] fansi_0.4.1        abind_1.4-5        lifecycle_0.2.0   
+[52] stringi_1.5.3      multcomp_1.4-15    yaml_2.2.1        
+[55] snakecase_0.11.0   rootSolve_1.8.2.1  MASS_7.3-53       
+[58] grid_4.0.3         parallel_4.0.3     lmom_2.8          
+[61] sjmisc_2.8.5       forcats_0.5.0      crayon_1.3.4      
+[64] lattice_0.20-41    ggeffects_1.0.1    haven_2.3.1       
+[67] splines_4.0.3      sjstats_0.18.0     hms_0.5.3         
+[70] magick_2.5.2       knitr_1.30         pillar_1.4.7      
+[73] gld_2.6.2          boot_1.3-25        estimability_1.3  
+[76] effectsize_0.4.1   codetools_0.2-18   glue_1.4.2        
+[79] evaluate_0.14      data.table_1.13.6  modelr_0.1.8      
+[82] vctrs_0.3.6        nloptr_1.2.2.2     cellranger_1.1.0  
+[85] gtable_0.3.0       purrr_0.3.4        tidyr_1.1.2       
+[88] xfun_0.19          openxlsx_4.2.3     xtable_1.8-4      
+[91] broom_0.7.3        e1071_1.7-4        coda_0.19-4       
+[94] class_7.3-17       survival_3.2-7     tibble_3.0.4      
+[97] statmod_1.4.35     TH.data_1.0-10     ellipsis_0.3.1    </code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-desctools" class="csl-entry" role="doc-biblioentry">
+Andri et mult. al., S. (2020). <em><span>DescTools</span>: Tools for descriptive statistics</em>. Retrieved from <a href="https://cran.r-project.org/package=DescTools">https://cran.r-project.org/package=DescTools</a>
+</div>
+<div id="ref-lme4" class="csl-entry" role="doc-biblioentry">
+Bates, D., Mächler, M., Bolker, B., &amp; Walker, S. (2015). Fitting linear mixed-effects models using <span class="nocase">lme4</span>. <em>Journal of Statistical Software</em>, <em>67</em>(1), 1–48. <a href="https://doi.org/10.18637/jss.v067.i01">https://doi.org/10.18637/jss.v067.i01</a>
+</div>
+<div id="ref-breusch1979simple" class="csl-entry" role="doc-biblioentry">
+Breusch, T. S., &amp; Pagan, A. R. (1979). A simple test for heteroscedasticity and random coefficient variation. <em>Econometrica: Journal of the Econometric Society</em>, 1287–1294.
+</div>
+<div id="ref-cook1983diagnostics" class="csl-entry" role="doc-biblioentry">
+Cook, R. D., &amp; Weisberg, S. (1983). Diagnostics for heteroscedasticity in regression. <em>Biometrika</em>, <em>70</em>(1), 1–10.
+</div>
+<div id="ref-cox1958regression" class="csl-entry" role="doc-biblioentry">
+Cox, D. R. (1958). The regression analysis of binary sequences. <em>Journal of the Royal Statistical Society: Series B (Methodological)</em>, <em>20</em>(2), 215–232.
+</div>
+<div id="ref-durbin1950testing" class="csl-entry" role="doc-biblioentry">
+Durbin, J., &amp; Watson, G. S. (1950). Testing for serial correlation in least squares regression: i. <em>Biometrika</em>, <em>37</em>(3/4), 409–428.
+</div>
+<div id="ref-durbin1951testing" class="csl-entry" role="doc-biblioentry">
+Durbin, J., &amp; Watson, G. S. (1951). Testing for serial correlation in least squares regression. II. <em>Biometrika</em>, <em>38</em>(1/2), 159–179.
+</div>
+<div id="ref-efron2016computer" class="csl-entry" role="doc-biblioentry">
+Efron, B., &amp; Hastie, T. (2016). <em>Computer age statistical inference</em> (Vol. 5). Cambridge University Press.
+</div>
+<div id="ref-car" class="csl-entry" role="doc-biblioentry">
+Fox, J., &amp; Weisberg, S. (2019). <em>An <span>R</span> companion to applied regression</em> (Third). Retrieved from <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a>
+</div>
+<div id="ref-hair1998multivariate" class="csl-entry" role="doc-biblioentry">
+Hair, J. F., Black, W. C., Babin, B. J., Anderson, R. E., Tatham, R. L., &amp; others. (1998). <em>Multivariate data analysis</em> (Vol. 5). Prentice hall Upper Saddle River, NJ.
+</div>
+<div id="ref-harrell2015regression" class="csl-entry" role="doc-biblioentry">
+Harrell Jr, F. E. (2015). <em>Regression modeling strategies: With applications to linear models, logistic and ordinal regression, and survival analysis</em>. Springer.
+</div>
+<div id="ref-gam" class="csl-entry" role="doc-biblioentry">
+Hastie, T. (2020). <em>Gam: Generalized additive models</em>. Retrieved from <a href="https://CRAN.R-project.org/package=gam">https://CRAN.R-project.org/package=gam</a>
+</div>
+<div id="ref-hastie1986generalized" class="csl-entry" role="doc-biblioentry">
+Hastie, T., Tibshirani, R., &amp; others. (1986). Generalized additive models. <em>Statistical Science</em>, <em>1</em>(3), 297–310.
+</div>
+<div id="ref-hosmer2013applied" class="csl-entry" role="doc-biblioentry">
+Hosmer Jr, D. W., Lemeshow, S., &amp; Sturdivant, R. X. (2013). <em>Applied logistic regression</em> (Vol. 398). John Wiley &amp; Sons.
+</div>
+<div id="ref-koenker1981note" class="csl-entry" role="doc-biblioentry">
+Koenker, R. (1981). A note on studentizing a test for heteroscedasticity. <em>Journal of Econometrics</em>, <em>17</em>(1), 107–112.
+</div>
+<div id="ref-luke2019multilevel" class="csl-entry" role="doc-biblioentry">
+Luke, D. A. (2019). <em>Multilevel modeling</em> (Vol. 143). SAGE Publications, Incorporated.
+</div>
+<div id="ref-sjPlot" class="csl-entry" role="doc-biblioentry">
+Lüdecke, D. (2020). <em>sjPlot: Data visualization for statistics in social science</em>. Retrieved from <a href="https://CRAN.R-project.org/package=sjPlot">https://CRAN.R-project.org/package=sjPlot</a>
+</div>
+<div id="ref-mcfadden1973conditional" class="csl-entry" role="doc-biblioentry">
+McFadden, D., &amp; others. (1973). <em>Conditional logit analysis of qualitative choice behavior</em>.
+</div>
+<div id="ref-nelder1972generalized" class="csl-entry" role="doc-biblioentry">
+Nelder, J. A., &amp; Wedderburn, R. W. (1972). Generalized linear models. <em>Journal of the Royal Statistical Society: Series A (General)</em>, <em>135</em>(3), 370–384.
+</div>
+<div id="ref-glmnet" class="csl-entry" role="doc-biblioentry">
+Simon, N., Friedman, J., Hastie, T., &amp; Tibshirani, R. (2011). Regularization paths for cox’s proportional hazards model via coordinate descent. <em>Journal of Statistical Software</em>, <em>39</em>(5), 1–13. Retrieved from <a href="http://www.jstatsoft.org/v39/i05/">http://www.jstatsoft.org/v39/i05/</a>
+</div>
+<div id="ref-tibshirani1996regression" class="csl-entry" role="doc-biblioentry">
+Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. <em>Journal of the Royal Statistical Society: Series B (Methodological)</em>, <em>58</em>(1), 267–288.
+</div>
+<div id="ref-tikhonov1943stability" class="csl-entry" role="doc-biblioentry">
+Tikhonov, A. N. (1943). On the stability of inverse problems. <em>Dokl. Akad. Nauk SSSR</em>, <em>39</em>, 195–198.
+</div>
+<div id="ref-MASS" class="csl-entry" role="doc-biblioentry">
+Venables, W. N., &amp; Ripley, B. D. (2002). <em>Modern applied statistics with s</em> (Fourth). Retrieved from <a href="http://www.stats.ox.ac.uk/pub/MASS4/">http://www.stats.ox.ac.uk/pub/MASS4/</a>
+</div>
+<div id="ref-lmtest" class="csl-entry" role="doc-biblioentry">
+Zeileis, A., &amp; Hothorn, T. (2002). Diagnostic checking in regression relationships. <em>R News</em>, <em>2</em>(3), 7–10. Retrieved from <a href="https://CRAN.R-project.org/doc/Rnews/">https://CRAN.R-project.org/doc/Rnews/</a>
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>caso o leitor se interesse existe diversas outras transformações que dão origens a diferentes modelos lineares generalizados, veja <span class="citation" data-cites="nelder1972generalized"><a href="#ref-nelder1972generalized" role="doc-biblioref">Nelder &amp; Wedderburn</a> (<a href="#ref-nelder1972generalized" role="doc-biblioref">1972</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>em sua escala bruta os coeficientes de uma regressão logística estão representados como o logaritmo da chance (<em>log odds</em>).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>matematicamente falando <em>interação</em> é uma <em>multiplicação</em> entre as duas variáveis independentes<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>podem ser escolhidas dentre as técnicas: <code>"McFadden"</code>, <code>"McFaddenAdj"</code>, <code>"CoxSnell"</code>, <code>"Nagelkerke"</code>, <code>"AldrichNelson"</code>, <code>"VeallZimmermann"</code>, <code>"Efron"</code>, <code>"McKelveyZavoina"</code>, <code>"Tjur"</code>; ou todas <code>"all"</code>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Note que todas as técnicas avançadas listadas aqui são as mesmas listadas no <a href="6-Regressao_Linear.html">tutorial de Regressão Linear</a> apenas com a nomenclatura de “modelos lineares generalizados” ao invés de “regressão linear.”<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2432,6 +3140,15 @@ Conteúdos Auxiliares
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
@@ -2445,11 +3162,11 @@ Conteúdos Auxiliares
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source code is available at <a href="https://github.com/storopoli/Estatistica">https://github.com/storopoli/Estatistica</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 <h3 id="citation">Citation</h3>
 <p>For attribution, please cite this work as</p>
-<pre class="citation-appendix short">Storopoli &amp; Vils (2021, Jan. 11). Estatística com R: Untitled. Retrieved from https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html</pre>
+<pre class="citation-appendix short">Storopoli &amp; Vils (2021, Jan. 11). Estatística com R: Regressão Logística. Retrieved from https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html</pre>
 <p>BibTeX citation</p>
 <pre class="citation-appendix long">@misc{storopoli2021regressaologisticaR,
   author = {Storopoli, Jose and Vils, Leonardo},
-  title = {Estatística com R: Untitled},
+  title = {Estatística com R: Regressão Logística},
   url = {https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html},
   year = {2021}
 }</pre>

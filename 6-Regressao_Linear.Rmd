@@ -224,7 +224,7 @@ mtcars %>%
   scale_colour_brewer(palette = "Set1")
 ```
 
-Para incluirmos efeitos de interações entre duas variáveis independentes em regressões lineares, incluímos na fórmula entre as duas variáveis um sinal de multiplicação[^Matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
+Para incluirmos efeitos de interações entre duas variáveis independentes em regressões lineares, incluímos na fórmula entre as duas variáveis um sinal de multiplicação^[matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
 
 ```{r lm-interaction}
 modelo_interacao <- lm(mpg ~ hp + wt + cyl*am, data = mtcars)
@@ -296,7 +296,7 @@ Além de visualizações diagnóstica, podemos realizar diversos testes estatís
 
 O **teste de Breusch-Pagan[@breusch1979simple; @cook1983diagnostics] usado para testar o pressuposto da independência dos resíduos** possui como hipótese nula que "as variâncias de erro são todas iguais" e como hipótese alternativa que "as variâncias de erro são uma função multiplicativa de uma ou mais variáveis". Recomendamos que usem os resíduos "Studentizados" (quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão -- uma forma de estatística $t$ de Student, com a estimativa de erro variando entre os pontos) no teste de Breusch-Pagan [@koenker1981note]. A função `bptest()` da biblioteca `{lmtest}` aceita como argumento um modelo de regressão linear (objeto `lm`) e já possui como padrão resíduos "Studentizados". Caso queira usar resíduos brutos indique o argumento `studentize` como `FALSE`.
 
-```{r bptest}
+```{r bptest, warning=FALSE, message=FALSE}
 library(lmtest)
 bptest(modelo_simples)
 ```
@@ -311,7 +311,7 @@ O **teste de Durbin-Watson [@durbin1950testing; @durbin1951testing] é um teste 
 dwtest(modelo_simples)
 ```
 
-Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é 0.02, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
+Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
 
 ##### Multicolinearidade
 
@@ -319,7 +319,7 @@ Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é 0.02, 
 
 Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 [@hair1998multivariate]. Para calcular os VIFs de uma modelo `lm` use a função `vif()` da biblioteca `{car}` [@car].
 
-```{r vif, warning=FALSE}
+```{r vif, warning=FALSE, message=FALSE}
 library(car)
 vif(modelo_simples)
 ```

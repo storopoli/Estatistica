@@ -2693,7 +2693,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </div>
 <p>Pelos resultados, podemos ver que <strong>tanto <code>supp</code> e <code>dose</code> são estatisticamente significantes</strong>. Sendo que <code>dose</code> possui o maior tamanho de efeito (<code>F value</code>) <code>124.0</code> contra <code>11.4</code> de <code>supp</code>.</p>
 <h4 id="anova-bidirecional-com-efeitos-de-interação">ANOVA Bidirecional com efeitos de interação<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></h4>
-<p>Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função <code>aov()</code> do R que gerará o mesmo objeto <code>aov</code>, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação[^Matematicamente falando <em>interação</em> é uma <em>multiplicação</em> entre as duas variáveis independentes] <code>*</code> indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise:</p>
+<p>Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função <code>aov()</code> do R que gerará o mesmo objeto <code>aov</code>, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> <code>*</code> indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>fit4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span> <span class='op'>*</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
@@ -2709,7 +2709,7 @@ Residuals   54    712      13
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <p>Como resultado vemos que os efeitos principais tanto de <code>supp</code> e <code>dose</code> se mantiveram com <span class="math inline">\(p\)</span>-valores e tamanho de efeitos similares. Mas a grande novidade agora é que <strong>a interação <code>supp:dose</code> também é estatisticamente significante</strong>. Nesse caso devemos usar a <strong>ANOVA com efeito de interação e não a ANOVA com efeitos principais</strong>. Caso a interação <code>supp:dose</code> não fosse estatisticamente significante deveríamos usar a ANOVA com efeitos principais e não a ANOVA com efeito de interação.</p>
-<h2 id="anova-não-paramétrica-teste-kruskal-wallis">ANOVA Não-Paramétrica – Teste Kruskal-Wallis<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></h2>
+<h2 id="anova-não-paramétrica-teste-kruskal-wallis">ANOVA Não-Paramétrica – Teste Kruskal-Wallis<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h2>
 <p>O que fazer se minha variável dependente viola os pressupostos de normalidade ou de homogeneidade de variâncias? Nesse caso devemos usar uma abordagem <strong>não-paramétrica</strong>. A ANOVA clássica é uma abordagem paramétrica: depende fortemente da suposição que os dados estejam distribuídos de acordo com uma distribuição específica e que as variâncias entre os grupos é igual. Testes não-paramétricos não fazem suposições sobre a distribuição dos dados e portanto podem ser usados quando os pressupostos dos testes paramétricos são violados.</p>
 <p><strong>Atenção</strong>: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado <span class="citation" data-cites="zimmerman1998nonparametric">(<a href="#ref-zimmerman1998nonparametric" role="doc-biblioref">Zimmerman, 1998</a>)</span>. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.</p>
 <p><strong>A versão não-paramétrica da ANOVA é o teste de Kruskal-Wallis</strong> (também chamado de teste de Kruskal-Wallis por postos ou teste H de Kruskal-Wallis) foi desenvolvido em 1952 por William Kruskal e W. Allen Wallis <span class="citation" data-cites="kruskal1952use">(<a href="#ref-kruskal1952use" role="doc-biblioref">Kruskal &amp; Wallis, 1952</a>)</span>. O teste pode ser encontrada na função padrão que vem com o R <code>kruskal.test()</code> e funciona identicamente a <code>aov()</code>, com a exceção de que aceita somente <em>uma</em> variável independente. <code>kruskal.test()</code> aceita dois argumentos:</p>
@@ -2733,7 +2733,7 @@ data:  len by supp
 Kruskal-Wallis chi-squared = 3, df = 1, p-value = 0.06</code></pre>
 </div>
 <p>Como podem ver, o resultado é o mesmo que o da ANOVA paramétrica <code>aov()</code>.</p>
-<h2 id="anova-de-medidas-repetidas">ANOVA de Medidas Repetidas<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h2>
+<h2 id="anova-de-medidas-repetidas">ANOVA de Medidas Repetidas<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h2>
 <p>Caso você esteja procurando por uma extensão natural ao teste <span class="math inline">\(t\)</span> para duas amostras pareadas na ANOVA. Sim, ela existe e se chama ANOVA de Medidas Repetidas, mas nós <strong>recomendamos fortemente que você <em>não</em> use ANOVA de Medidas Repetidas</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/dont-do-it.png" width="70%" style="display: block; margin: auto;" /></p>
@@ -2745,7 +2745,7 @@ Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a 
 <h2 id="comparações-múltiplas-entre-grupos">Comparações Múltiplas entre Grupos</h2>
 <p>Embora ANOVA seja uma abordagem paramétrica poderosa e útil para analisar dados aproximadamente normalmente distribuídos com mais de dois grupos, ela não fornece nenhuma visão mais profunda dos padrões ou comparações entre grupos específicos.</p>
 <p>Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparação <em>post-hoc</em> usando um conjunto de técnicas comparativas de média entre grupos que controlam a taxa de erro familiar. A principal <strong>técnica paramétrica</strong> é o <strong>teste de Tukey</strong> e a principal técnica <strong>não-paramétrica</strong> é o <strong>teste de Dunn</strong>.</p>
-<h3 id="teste-de-tukey">Teste de Tukey<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h3>
+<h3 id="teste-de-tukey">Teste de Tukey<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h3>
 <p>Um método comum e popular de análise post-hoc é o Teste de Tukey. O teste é conhecido por vários nomes diferentes: teste de Tukey da diferença honestamente significativa, teste de Tukey da diferença totalmente significativa, entre outros… <strong>O teste de Tukey compara as médias de todos os grupos entre si e é considerado o melhor método disponível nos casos em que os intervalos de confiança são desejados ou se os tamanhos das amostras são desiguais</strong>.</p>
 <p>A estatística de teste usada no teste de Tukey é denotada <span class="math inline">\(q\)</span> e é essencialmente uma estatística <span class="math inline">\(t\)</span> modificada que corrige múltiplas comparações.</p>
 <p>O teste de Tukey pode ser encontrado na função padrão que vem com o R <code>tukeyHSD()</code> e aceita como argumento um objeto <code>aov</code> resultante de uma ANOVA:</p>
@@ -2762,7 +2762,7 @@ Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a 
 <li><code>upr</code> – intervalo de confiança 95% superior da diferença.</li>
 <li><code>p adj</code> – estatística <span class="math inline">\(q\)</span> do Teste de Tukey, aqui referida como um <span class="math inline">\(p\)</span>-valor ajustado.</li>
 </ul>
-<h3 id="teste-de-dunn">Teste de Dunn<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h3>
+<h3 id="teste-de-dunn">Teste de Dunn<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></h3>
 <p>O teste de Tukey assume que a variável dependente é normalmente distribuída e, portanto, não é apropriado como um teste post-hoc após um teste não-paramétrico como Kruskal-Wallis. <strong>O único teste <em>post-hoc</em> não paramétrico para esse contexto é o teste de Dunn</strong><span class="citation" data-cites="dunn1964multiple">(<a href="#ref-dunn1964multiple" role="doc-biblioref">Dunn, 1964</a>)</span>.</p>
 <p>Para executar o teste de Dunn é necessário usar a função <code>DunnTest()</code> da biblioteca <code>{DescTools}</code> <span class="citation" data-cites="desctools">(<a href="#ref-desctools" role="doc-biblioref">Andri et mult. al., 2020</a>)</span>. Ela aceita argumentos similares à função <code>kruskal.test()</code>:</p>
 <ol type="1">
@@ -2940,10 +2940,11 @@ Zimmerman, D. W. (1998). Invalidation of parametric and nonparametric statistica
 <li id="fn5" role="doc-endnote"><p>Termo inglês: <em>Two-Way ANOVA</em>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>Termo inglês: <em>Main Effects Two-Way ANOVA</em>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7" role="doc-endnote"><p>Termo inglês: <em>Interaction Effects Two-Way ANOVA</em>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>Termos inglês: <em>Kruskal–Wallis test by ranks</em> ou <em>Kruskal–Wallis H test</em>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>Termo inglês: <em>Repeated Measures ANOVA</em><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>Termo inglês: <em>Tukey’s HSD (honestly significant difference) test</em>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>Termo inglês: <em>Dunn’s Test</em>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>matematicamente falando <em>interação</em> é uma <em>multiplicação</em> entre as duas variáveis independentes<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>Termos inglês: <em>Kruskal–Wallis test by ranks</em> ou <em>Kruskal–Wallis H test</em>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>Termo inglês: <em>Repeated Measures ANOVA</em><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Termo inglês: <em>Tukey’s HSD (honestly significant difference) test</em>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>Termo inglês: <em>Dunn’s Test</em>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

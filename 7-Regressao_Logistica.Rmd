@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
+title: "Regressão Logística"
 description: |
-  A new article created using the Distill format.
+  Regressão para o caso de uma variável dependente binária.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -31,9 +31,315 @@ knitr::opts_chunk$set(echo = TRUE,
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
+A regressão linear é uma técnica tão ampla que originou **diversas ~~gambiarras~~ extensões para acomodar os mais diferentes tipos de variáveis dependentes para além de apenas contínuas**. Essas extensões da regressão logística são chamadas de **modelos lineares generalizados e a sua lógica se baseia em transformar a variável dependente de alguma maneira para que ela se torne "linear" e "contínua"**. Nesse tutorial vamos focar no caso da **regressão logística** que usa uma transformação logística de variáveis binárias (também chamadas de dicotômicas ou *dummy*) -- que tomam apenas dois valores discretos^[caso o leitor se interesse existe diversas outras transformações que dão origens a diferentes modelos lineares generalizados, veja @nelder1972generalized.]. Antes de continuar, recomendamos fortemente que leia o [tutorial nosso de regressão linear](6-Regressao_Linear.html), pois muitos conceitos serão abordados novamente.
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+O **foco em variáveis binárias (logo, em regressão logística) se dá pela quantidade de dados e modelos que são usados para modelar resultados binários**. Por exemplo:
 
+* Como a probabilidade de desenvolver câncer de pulmão (sim vs. não) muda para cada quilo adicional que uma pessoa está acima do peso e para cada maço de cigarros fumado por dia?
+* O peso corporal, a ingestão de calorias, a ingestão de gordura e a idade influenciam a probabilidade de um ataque cardíaco (sim x não)?
+* Quais palavras, qual hora do dia, quais assuntos e qual domínio do remetentem influenciam a probabilidade de um e-mail ser *spam* (sim x não)?
+
+Todos esses exemplos são questões que a regressão logística pode responder. **Toda vez que precisamos responder uma pergunta na qual pode ser reduzida a uma pergunta de sim/não ou esse/aquele, regressão logística é a principal técnica a ser empregada**.
+
+## Função Logística
+
+Uma **regressão logística se comporta exatamente como um modelo linear**: faz uma predição simplesmente computando uma soma ponderada das variáveis independentes, mais uma constante. Porém ao invés de retornar um valor contínuo, como a regressão linear, retorna a função logística desse valor.
+
+$$\operatorname{Logística}(x) = \frac{1}{1 + e^{(-x)}}$$
+
+**A função logística é uma ~~gambiarra~~ transformação que pega *qualquer* valor entre menos infinito $-\infty$ e mais infinito $+\infty$ e transforma em um valor entre 0 e 1**. Veja na figura \@ref(fig:logit) uma representação gráfica da função logística.
+
+```{r logit, warning=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+tibble(
+  x = seq(-10, 10, length.out = 100),
+  logit = 1 / (1 + exp(-x))) %>% 
+  ggplot(aes(x, logit)) +
+  geom_line()
+```
+
+A função logística foi desenvolvida como modelo de crescimento populacional e denominada "logística" por Pierre François Verhulst nas décadas de 1830 e 1840, sob a orientação de Adolphe Quetelet. Regressão Logística como a empregamos hoje passou por vários refinamentos até @cox1958regression que é mais ou menos a versão atual que usamos.
+
+```{r fig-verhulst-quetelet, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
+library(patchwork)
+library(cowplot)
+
+pgalton <- ggdraw() + draw_image("images/verhuls.jpg")
+ppearson <- ggdraw() + draw_image("images/quetelet.jpg")
+pyule <- ggdraw() + draw_image("images/cox.jpg")
+pgalton + ppearson + pyule + plot_layout(nrow = 1, widths = 1)
+```
 
 ## Por que não usar Regressão Linear?
+
+Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos gerar um *dataset* com 30 observações com duas variáveis: uma variável contínua `idade` e uma variável binária `comprado`. Para ilustrar o primeiro cenário, imagine que somente as pessoas com menos de 20 anos compraram algum produto, `comprado = 1`, e as pessoas com 20 anos ou mais não compraram o produto, `comprado = 0`. Veja na figura \@ref(fig:sim1) o que acontece se usarmos uma regressão linear (em vermelho) ou uma regressão logística (em azul) neste cenário. Qual modelo explica melhor a relação entre os dados é evidente: regressão logística.
+
+```{r sim1, warning=FALSE, message=FALSE, fig.cap='Reta vs Curva Logística'}
+sim1 <- tibble(
+  idade = 10:29,
+  comprado = c(rep(1, 10), rep(0,10))
+)
+
+sim1 %>% ggplot(aes(idade, comprado)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se =  FALSE, color = "Red") +
+  geom_smooth(method = "glm",
+              method.args = list(family = "binomial"),
+              se= FALSE, color = "Blue") +
+  scale_y_continuous(breaks = c(0,1))
+```
+
+Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto `comprado = 0`. Nesse cenário, figura \@ref(fig:sim2), a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.
+
+```{r sim2, warning=FALSE, message=FALSE, fig.cap='Reta vs Curva Logística -- Dados Desbalanceados'}
+sim2 <- tibble(
+  idade = c(10:29, 60:69),
+  comprado = c(rep(1, 10), rep(0,20))
+)
+
+sim2 %>% ggplot(aes(idade, comprado)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se =  FALSE, color = "Red") +
+  geom_smooth(method = "glm",
+              method.args = list(family = "binomial"),
+              se= FALSE, color = "Blue") +
+  scale_y_continuous(breaks = c(0,1))
+```
+
+Acreditamos que com essas duas simulações o argumento e favor de regressão logística tenha sido aceito incondicionalmente.
+
+## Pressupostos da Regressão Logística
+
+Para interpretar os resultados de uma regressão logística como uma quantidade estatística significativa que mede os relacionamentos do mundo real, precisamos contar com uma série de suposições clássicas. Os quatro principais pressupostos da regressão logística são:
+
+1. **Independência dos Dados**: o valor de uma observação não influencia ou afeta o valor de outras observações. Este é o pressuposto clássico de todas as técnicas abordadas até agora.
+2. **Linearidade dos Dados**: a relação entre as variáveis independentes e a **curva logística** da variável dependente é considerada linear (quanto mais/menos de uma, mais/menos de outra). Linearidade dos Dados pode ser verificada graficamente observando a dispersão dos resíduos com os valores previstos pela regressão.
+2. **Independência dos Erros / Resíduos**: os erros (também chamados de resíduos) não devem possuir correlação. Este pressuposto pode ser testado pelo teste de Durbin-Watson e observando o gráfico quantil-quantil (Q-Q) dos resíduos padronizados.
+3. **Homogeneidade de Variância dos Erros / Resíduos**: os erros devem ter média zero e desvio padrão constante ao longo das observações. Similar ao teste de Levene, mas aplicado aos resíduos da regressão. Pode ser testado usando o Teste de Breusch-Pagan.
+4. **Ausência de Multicolinearidade**: multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o Fator de Inflação de Variância (*Variance Inflation Factor* -- VIF).
+
+Os pressupostos de regressão logística são os **mesmos da [regressão linear](6-Regressao_Linear.html)**, com a exceção de que o **pressuposto de linearidade é aplicado à curva logística da variável dependente**.
+
+## Como aplicar uma Regressão Logística no R
+
+Para exemplificar as regressões nesse tutorial, usaremos o *dataset* `TitanicSurvival` da biblioteca `{carData}` [@car]. `TitanicSurvival` é uma base de dados com os tripulantes e passageiros do Titanic que afundou em 15 de Abril de 1912. Possui 1309 observações e 4 variáveis:
+
+* `survived` -- sobreviveu (binária qualitativa): `0` não sobreviveu, `1` sobreviveu
+* `sex` -- gênero (binária qualitativa): `female` feminino, `male` masculino
+* `age` -- idade (contínua)
+* `passengerClass` -- classe do passageiro (qualitativa): `1st` primeira classe, `2nd` segunda classe e `3rd` terceira classe
+
+```{r skim-titanic}
+library(skimr)
+library(carData)
+data("TitanicSurvival", package = "carData")
+skim(TitanicSurvival)
+```
+
+Para aplicar uma regressão logística no R usamos a função `glm()` (_**g**eneralized **l**inear **m**odel_) padrão do R. Sua funcionalidade é idêntica à função `lm()` de regressão linear, sendo que, além de fórmula e *dataset*,  é necessário fornecer um argumento extra `family`:
+
+1. Fórmula designando a variável dependente e a(s) variável(eis) independente(s) designada pela seguinte síntaxe: `dependente ~ independente_1 + independente_2 + ...`.
+2. O *dataset* no qual deverá ser encontradas as variáveis presentes na fórmula.
+3. `family`: tipo de modelo linear generalizado que deseja utilizar. Para regressão logística usamos `family = binomial`.
+
+Começaremos com um exemplo simples de regressão logística do `TitanicSurvival` usando como variável independente `survived` e variáveis independentes `age` e `sex`. Podemos inspecionar o resultado de uma regressão logística com a função `summary()`.
+
+```{r glm-simples}
+modelo_simples <- glm(survived ~ age + sex, data = TitanicSurvival, family = binomial)
+summary(modelo_simples)
+```
+
+### Interpretação dos Coeficientes
+
+Na saída de `summary()` podemos ver que são produzidos os **coeficientes da regressão na coluna `Estimate`**, associados ao respectivos desvio padrão dos resíduos `Std. Error` e $p$-valores `Pr(>|t|)`. Importante destacar que a **hipótese nula dos coeficientes da regressão é de que "os coeficientes são nulos/zeros"**, então os $p$-valores devem ser interpretados como **a probabilidade de observamos valores de coeficientes tão extremos dado que a hipótese nula é verdadeira**. Para facilitar, o R informa com asteriscos quais variáveis possuem coeficientes estatisticamente significantes: `*` para $p < 0.05$, `**` para $p < 0.01$, e `***` para $p < 0.001$.
+
+Os coeficientes de regressão logística **não são interpretáveis em escala bruta**^[em sua escala bruta os coeficientes de uma regressão logística estão representados como o logaritmo da chance (*log odds*).]. É necessário **inverter a transformação logística exponenciando os coeficientes** --  $e^x$. Isso faz com que os coeficientes se transformem em razões de chance (*odds ratio* -- OR) que permite uma melhor interpretabilidade.
+
+Razões de chance funcionam muito similar com as chances de uma aposta. Quando a chance é justa tanto para a variável dependente ser 0 quanto 1 ela é expressada como uma chance 1 para 1 (1:1) -- $\frac{1}{1}$. Qualquer valor abaixo de 0 faz com que a chance da variável dependente ser 0 aumentar, e qualquer valor acima de 1 a chance da variável dependente ser 1 aumenta. Para transformar os coeficientes de um modelo de regressão logística em OR, usamos a função `exp()` base do R nos coeficientes `coef()` do modelo.
+
+```{r glm-exp}
+exp(coef(modelo_simples))
+```
+
+A interpretação dessa saída de OR é a seguinte:
+
+* `age` -- A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["age"]) * 100`% ($1 - \text{OR}_\text{age}$).
+* `sexmale` -- A cada aumento de uma unidade de idade (ou seja sexomale é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["sexmale"]) * 100`% ($1 - \text{OR}_\text{sexmale}$).
+
+
+Para produzir intervalos de confiança precisamos usar a função `confint()` do pacote MASS [@MASS], uma vez que a função `confint()` base do R não dá suporte à OR. Como padrão, `MASS::confint()`, assim como `confint()` base do R, produz intervalos de confiança 95%.
+
+```{r glm-confint, warning=FALSE, message=FALSE}
+confint(modelo_simples)
+```
+
+### Variáveis Qualitativas
+
+Além de variáveis independentes quantitativas, regressão logística, assim como a linear, também permite utilizarmos **variáveis qualitativas (discretas)** como variáveis independentes.
+
+Vamos estender o nosso modelo simples adicionando a variável `passengerClass`. Note que, no *dataset* `TitanicSurvival`, `passengerClass` já está convertida para qualitativa (`factor`), não sendo necessário usar a função padrão do R `as.factor()`.
+
+```{r glm-quali}
+modelo_quali <- glm(survived ~ age + sex + passengerClass,
+                    data = TitanicSurvival, family = binomial)
+summary(modelo_quali)
+```
+
+Quando uma variável é convertida para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `passengerClass` possui 3 níveis: `1st`, `2nd` e `3rd` (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão logística que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `1st`) como referência. Portanto a interpretações de `passengerClass` devem se atentar que a referência é `passengerClass = 1st`. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `glm` acessando seu atributo `xlevels`.
+
+```{r glm-quali-xleves}
+modelo_quali$xlevels
+```
+
+### Efeitos Principais e Efeitos de Interação
+
+Todos os modelos de regressão logística que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre regressão linear](6-Regressao_Linear.html), podemos incluir **dois tipos de efeitos na regressão logística**: 
+
+* **Efeitos principais**: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de **aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.
+* **Efeitos de interações**: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação **não são aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. **Há uma interação entre as variáveis independentes**.
+
+Veja na figura \@ref(fig:titanic-interaction) uma representação gráfica da interação entre `sex` e `passengerClass`. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de `passengerClass`.
+
+```{r titanic-interaction, warning=FALSE, message=FALSE, fig.cap='Interação entre `sex` e `passengerClass` do *dataset* `mtcars`'}
+TitanicSurvival %>% 
+  mutate(survived = ifelse(survived == "yes", 1, 0),
+         sex = forcats::fct_rev(sex)) %>% 
+  group_by(sex, passengerClass) %>% 
+  summarise(survived = mean(survived)) %>% 
+  ggplot(aes(x = sex, y = survived, color = passengerClass)) +
+  geom_line(aes(group = passengerClass)) +
+  geom_point() +
+  scale_colour_brewer(palette = "Set1")
+```
+
+Para incluirmos efeitos de interações entre duas variáveis independentes em regressões logísticas, incluímos na fórmula entre as duas variáveis um sinal de multiplicação^[matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
+
+```{r glm-interaction}
+modelo_interacao <- glm(survived ~ age + sex*passengerClass,
+                        data = TitanicSurvival, family = binomial)
+summary(modelo_interacao)
+```
+
+A interpretação de interações de regressão logística é a mesma da interpretação de interações da [regressão linear](6-Regressao_Linear.html). Por exemplo, a interpretação do coeficiente `sexmale:passengerClass3rd` é a seguinte: ser um passageiros da terceira classe **modera positivamente** a relação entre sexo masculino  e `survived`. Note que o $p$-valor de `sexmale:passengerClass3rd` possui significância estatística ($p < 0.001$).
+
+### Visualização de Regressão Logística
+
+Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca `{sjPlot}` [@sjPlot] e sua função `plot_model()`. Como padrão, a função `plot_model()` produz um gráfico de floresta (*forest plot*) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como `"std"` em `plot_model()`, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Já mostramos a função `plot_model()` no tutorial de [regressão linear](6-Regressao_Linear.html) e ela funciona de maneira idêntica à modelos de regressão logística, com uma exceção que os **coeficientes já são apresentados em formato OR**. Veja um exemplo na figura \@ref(fig:sjPlot): na parte superior temos o gráfico de floresta para coeficientes brutos e na parte inferior para coeficientes padrões.
+
+```{r sjPlot, warning=FALSE, message=FALSE, fig.cap='Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato *Odds Ratio* -- OR'}
+library(sjPlot)
+forest_raw <- plot_model(modelo_quali)
+forest_std <- plot_model(modelo_quali, type = "std")
+forest_raw + forest_std + plot_layout(nrow = 2, widths = 1)
+```
+
+Caso queira mais opções de visualizações para modelos de regressão não deixe de conferir o [site da biblioteca `{sfPlot}`](https://strengejacke.github.io/sjPlot/).
+
+### Verificação de Pressupostos
+
+Podemos realizar diversos testes estatísticos de hipótese nula para verificar se o modelo de regressão logística possui pressupostos violados ou não. Para isso recomendamos a biblioteca `{lmtest}` [@lmtest].
+
+Os pressupostos de regressão logística são os **mesmos da [regressão linear](6-Regressao_Linear.html)**, com a exceção de que o **pressuposto de linearidade é aplicado à curva logística da variável dependente**.
+
+#### Teste de Breusch-Pagan
+
+O **teste de Breusch-Pagan[@breusch1979simple; @cook1983diagnostics] usado para testar o pressuposto da independência dos resíduos** possui como hipótese nula que "as variâncias de erro são todas iguais" e como hipótese alternativa que "as variâncias de erro são uma função multiplicativa de uma ou mais variáveis". Recomendamos que usem os resíduos "Studentizados" (quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão -- uma forma de estatística $t$ de Student, com a estimativa de erro variando entre os pontos) no teste de Breusch-Pagan [@koenker1981note]. A função `bptest()` da biblioteca `{lmtest}` aceita como argumento um modelo de regressão logística (objeto `glm`) e já possui como padrão resíduos "Studentizados". Caso queira usar resíduos brutos indique o argumento `studentize` como `FALSE`.
+
+```{r bptest, warning=FALSE, message=FALSE}
+library(lmtest)
+bptest(modelo_simples)
+```
+
+Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos não são independentes.
+
+#### Teste de Durbin-Watson
+
+O **teste de Durbin-Watson [@durbin1950testing; @durbin1951testing] é um teste estatístico usado para detectar a presença de autocorrelação dos resíduos de um modelo de regressão e testa o pressuposto da homogeneidade de variância dos resíduos**. Possui como hipótese nula que os "erros são serialmente não correlacionados". A função `dwtest()` da biblioteca `{lmtest}` aceita como argumento um modelo de regressão logística (objeto `glm`).
+
+```{r dwtest}
+dwtest(modelo_simples)
+```
+
+Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
+
+#### Multicolinearidade
+
+**Multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos**. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o **Fator de Inflação de Variância (_Variance Inflation Factor_ -- VIF)**.
+
+Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 [@hair1998multivariate]. Para calcular os VIFs de uma modelo de regressão logística `glm` use a função `vif()` da biblioteca `{car}` [@car].
+
+```{r vif, warning=FALSE, message=FALSE}
+library(car)
+vif(modelo_simples)
+```
+
+Note que os valores de VIFs para as variáveis independentes do `modelo_simples` estão todos dentro do limite aceitável ($<10$), demonstrando ausência de multicolinearidade e evidenciando que o pressuposto não foi violado.
+
+## Pseudo-$R^2$
+
+>Observe que, embora muitos softwares estatísticos computem um pseudo-$R^2$ para modelos de regressão logística, essa medida de determinação não é diretamente comparável ao $R^2$ calculado para modelos de regressão linear. Na verdade, alguns estatísticos recomendam evitar a publicação de $R^2$ [@hosmer2013applied; @harrell2015regression], uma vez que pode ser mal interpretado em um contexto de regressão logística.
+
+Há várias técnicas de como calcular um pseudo-$R^2$ propostas na literatura sendo que a principal é o pseudo-$R^2$ e pseudo-$R^2$ ajustado de McFadden [@mcfadden1973conditional].
+
+A função `PseudoR2()` da biblioteca `{DescTools}` [@desctools] possui todas as principais técnicas de cálculo de pseudo-$R^2$ podendo ser especificadas com o argumento `which`^[podem ser escolhidas dentre as técnicas: `"McFadden"`, `"McFaddenAdj"`, `"CoxSnell"`, `"Nagelkerke"`, `"AldrichNelson"`, `"VeallZimmermann"`, `"Efron"`, `"McKelveyZavoina"`, `"Tjur"`; ou todas `"all"`.].
+
+```{r pseudo-r2, warning=FALSE, message=FALSE}
+library(DescTools)
+PseudoR2(modelo_simples, which = c("McFadden", "McFaddenAdj"))
+```
+
+
+## Técnicas Avançadas de Modelos Lineares Generalizados.
+
+Assim como no [tutorial de Regressão Linear](6-Regressao_Linear.html), nesta seção apenas apresentaremos alternativas avançadas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta ^[Note que todas as técnicas avançadas listadas aqui são as mesmas listadas no [tutorial de Regressão Linear](6-Regressao_Linear.html) apenas com a nomenclatura de "modelos lineares generalizados" ao invés de "regressão linear".].
+
+* **Modelos Lineares Generalizados Regularizados**
+* **Modelos Aditivos Generalizados**
+* **Modelos Lineares Generalizados Multiníveis**
+
+### Modelos Lineares Generalizados Regularizados
+
+Modelos lineares generalizados regularizados são um tipo de modelos lineares generalizados em que as estimativas dos coeficientes são restritas a zero. A magnitude (tamanho) dos coeficientes, bem como a magnitude do termo de erro, são penalizados. Modelos complexos são desencorajados, principalmente para evitar *overfitting*.
+
+#### Tipos de Modelos Lineares Generalizados Regularizados
+
+**Dois tipos comumente usados de métodos de modelos lineares generalizados regularizados são Ridge e Lasso**.
+
+**Ridge[@tikhonov1943stability] é uma forma de criar um modelo parcimonioso quando o número de variáveis preditoras em um conjunto excede o número de observações ($m > p$) ou quando um conjunto de dados tem forte multicolinearidade (correlações entre variáveis preditoras)**. A regressão Ridge pertence ao conjunto de **ferramentas de regularização L2**. A regularização L2 adiciona uma penalidade chamada penalidade L2, que é igual ao quadrado da magnitude dos coeficientes. Todos os coeficientes são reduzidos pelo mesmo fator, de modo que todos os coeficientes permanecem no modelo. A força do termo de penalidade é controlada por um parâmetro de ajuste. Quando este parâmetro de ajuste ($\lambda$) é definido como zero, a regressão Ridge é igual à um modelo linear generalizado. Se $\lambda = \infty$, todos os coeficientes são reduzidos a zero. A penalidade ideal é, portanto, algo entre $0$ e $\infty$.
+
+**Lasso (*least absolute shrinkage and selection operator* -- Lasso) [@tibshirani1996regression; @efron2016computer] é um tipo de modelo linear generalizado que usa encolhimento (*shrinkage*)**. Encolhimento faz com os valores dos coeficientes sejam reduzidos em direção a um ponto central, como a média. Este tipo de redução é muito útil quando você tem altos níveis de muticolinearidade ou quando deseja automatizar certas partes da seleção de modelo, como seleção de variável / eliminação de parâmetro. Lasso usa a **regularização L1 que limita o tamanho dos coeficientes adicionando uma penalidade L1 igual ao valor absoluto**, ao invés do valor quadrado como L2, da magnitude dos coeficientes. Isso às vezes resulta na **eliminação de alguns coeficientes completamente**, o que pode resultar em modelos esparsos e seleção de variáveis.
+
+Para usar modelos lineares generalizados regularizados use a biblioteca `{glmnet}` [@glmnet].
+
+### Regressão Aditiva - Modelos Aditivos Generalizados
+
+Em estatística, um **modelo aditivo generalizado (*generalized additive model* -- GAM) é um modelo linear generalizado no qual a variável de resposta depende linearmente de funções suaves (chamadas de *splines*) desconhecidas de algumas variáveis preditoras, e o interesse se concentra na inferência sobre essas funções suaves**. Os GAMs foram desenvolvidos originalmente por Trevor Hastie e Robert Tibshirani [@hastie1986generalized]. Para usar GAMs no R use a biblioteca `{gam}` [@gam].
+
+### Regressão Multinível
+
+**Modelos multiníveis** (também conhecidos como modelos lineares hierárquicos, modelo linear de efeitos mistos, modelos mistos, modelos de dados aninhados, coeficiente aleatório, modelos de efeitos aleatórios, modelos de parâmetros aleatórios ou designs de gráfico dividido) são **modelos estatísticos de parâmetros que variam em mais de um nível** [@luke2019multilevel].
+
+Modelos multiníveis são particularmente apropriados para projetos de pesquisa onde os **dados dos participantes são organizados em mais de um nível** (ou seja, dados aninhados). As unidades de análise geralmente são indivíduos (em um nível inferior) que estão aninhados em unidades contextuais / agregadas (em um nível superior).
+
+**Modelos multiníveis geralmente se dividem em três abordagens**:
+
+1.  *Random intercept model*: Modelo no qual cada grupo recebe uma constante (*intercept*) diferente
+2.  *Random slope model*: Modelo no qual cada grupo recebe um coeficiente diferente para cada variável independente
+3.  *Random intercept-slope model*: Modelo no qual cada grupo recebe tanto uma constante (*intercept*) quanto um coeficiente diferente para cada variável independente
+
+<aside>
+O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma das aulas é sobre [regressão multinível](https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html).
+</aside>
+
+Para usar modelos multiníveis em R use a biblioteca `{lme4}` [@lme4].
+
+## Comentários Finais
+
+Regressão logística é a **principal técnica de modelos lineares generalizados -- extensão da regressão linear**, sendo usada **amplamente tanto em relatórios técnicos quanto na literatura científica, assim como tanto em contextos profissionais quanto acadêmicos**. Caso o leitor tenha se interessado, convidamos à conhecer as **outras técnicas de modelos lineares generalizados** [@nelder1972generalized], como regressão de Poisson, regressão Binomial negativa, entre outros...
+
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```
