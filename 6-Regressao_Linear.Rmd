@@ -455,12 +455,6 @@ Caso o leitor não queria sair do paradigma NHST (afinal em Estatística Bayesia
 
 ### Regressão Regularizada
 
-Regularized regression is a type of regression where the coefficient estimates are constrained to zero. The magnitude (size) of coefficients, as well as the magnitude of the error term, are penalized. Complex models are discouraged, primarily to avoid overfitting.
-
-
-“Regularization” is a way to give a penalty to certain models (usually overly complex ones). Ridge regression belongs to the set of L2 regularization tools. L2 regularization adds a penalty called an L2 penalty, which is the same as the square of the magnitude of coefficients. All coefficients are shrunk by the same factor, so all the coefficients remain in the model. The strength of the penalty term is controlled by a tuning parameter. When this tuning parameter (λ) is set to zero, ridge regression equals least squares regression. If λ = ∞, all coefficients are shrunk to zero. The ideal penalty is therefore somewhere in between 0 and ∞.
-The other type of regularization, L1 regularization, limits the size of the coefficients by adding an L1 penalty equal to the absolute value of the magnitude of coefficients. This sometimes results in the elimination of some coefficients altogether, which can result in sparse models.
-
 A regressão regularizada é um tipo de regressão em que as estimativas dos coeficientes são restritas a zero. A magnitude (tamanho) dos coeficientes, bem como a magnitude do termo de erro, são penalizados. Modelos complexos são desencorajados, principalmente para evitar *overfitting*.
 
 #### Tipos de regressão regularizada
