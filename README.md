@@ -86,6 +86,25 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 * Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., & Teal, T. K. (2017). Good enough practices in scientific computing. PLOS Computational Biology, 13(6), e1005510. https://doi.org/10.1371/journal.pcbi.1005510
 * Tierney, N. J., & Ram, K. (2020). A Realistic Guide to Making Data Available Alongside Code to Improve Reproducibility. https://arxiv.org/abs/2002.11626
 
+## Como citar esse conteúdo
+
+Para citar o conteúdo use: 
+
+```
+Storopoli & Vils (2021). Estatística com R. Disponível em: https://storopoli.github.io/Estatistica
+```
+
+Ou em formato BibTeX para LaTeX:
+
+```
+@misc{storopoli2021estatisticaR,
+  author = {Storopoli, Jose and Vils, Leonardo},
+  title = {Estatística com R},
+  url = {https://storopoli.github.io/Estatistica},
+  year = {2021}
+}
+```
+
 ## Licença
 
 Este obra está licenciado com uma Licença

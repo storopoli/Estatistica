@@ -14,9 +14,9 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 site: distill::distill_website
-date: "`r Sys.Date()`"
+date: January 11, 2021
 citation_url: https://storopoli.github.io/Estatistica
-slug: storopoli2020estatisticaR
+slug: storopoli2021estatisticaR
 ---
 
 ```{r setup, include=FALSE}

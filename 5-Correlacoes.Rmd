@@ -13,9 +13,9 @@ author:
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
-date: "`r Sys.Date()`"
+date: January 11, 2021
 citation_url: https://storopoli.github.io/Estatistica/5-Correlacoes.html
-slug: storopoli2020correlacoesR
+slug: storopoli2021correlacoesR
 bibliography: bibliografia.bib
 csl: apa.csl
 ---

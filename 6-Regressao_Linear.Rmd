@@ -13,9 +13,9 @@ author:
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
-date: "`r Sys.Date()`"
+date: January 11, 2021
 citation_url: https://storopoli.github.io/Estatistica/6-Regressao_Linear.html
-slug: storopoli2020regressaolinearR
+slug: storopoli2021regressaolinearR
 bibliography: bibliografia.bib
 csl: apa.csl
 ---
@@ -38,7 +38,7 @@ Muitas vezes precisamos de técnicas que tolerem varíaveis independente contín
 Regressão Linear é a técnica preferida do autor 1
 </aside>
 
-**Regressão linear permite com que você coloque uma ou mais variáveis discretas ou contínuas como variáveis independentes e mensurar o poder de associação com a variável dependente, que deve ser contínua**^[variáveis dependentes binárias ou discretas serão apresentadas na [aula de Regressão Logística](7-Regressao_Logistica.html)].
+**Regressão linear permite com que você use uma ou mais variáveis discretas ou contínuas como variáveis independentes e mensurar o poder de associação com a variável dependente, que deve ser contínua**^[variáveis dependentes binárias ou discretas serão apresentadas na [aula de Regressão Logística](7-Regressao_Logistica.html)].
 
 ## Interpretações
 
@@ -51,7 +51,7 @@ Para compreender regressão linear podemos usar de três interpretações distin
 
 Essas interpretações descrevem a mesma técnica mas sob aspectos diferentes. Lembra um pouco a metáfora dos sete sábios e o elefante (figura \@ref(fig:sete-sabios)):
 
-> Numa pequena cidade viviam sete sábios cegos. Por conta de sua reconhecida sabedoria, as pessoas os procuravam em busca de conselhos para solução de seus problemas. Apesar de amigos, os sábios mantinham entre si uma competitividade acirrada, discutiam o tempo todo tentando provar quem era o mais sábio. Um dia trouxeram um elefante para a cidade. Os cegos rodearam o elefante para tocá-lo. Cada um pegou em uma parte distinta do animal e o descreve de acordo com aquela parte. Eles estão descrevendo o mesmo animal, mas cada um descrevendo apenas uma parte e pensando que é o todo. Eles estão, ao mesmo tempo, certos e errados^[regressão também é o motor que tem por de trás de quase todos os algoritmos e modelos de *machine learning*].
+> Numa pequena cidade viviam sete sábios cegos. Por conta de sua reconhecida sabedoria, as pessoas os procuravam em busca de conselhos para solução de seus problemas. Apesar de amigos, os sábios mantinham entre si uma competitividade acirrada, discutiam o tempo todo tentando provar quem era o mais sábio. Um dia trouxeram um elefante para a cidade. Os cegos rodearam o elefante para tocá-lo. Cada um pegou em uma parte distinta do animal e o descreve de acordo com aquela parte. Eles estão descrevendo o mesmo animal, mas cada um descrevendo apenas uma parte e pensando que é o todo. Eles estão, ao mesmo tempo, certos e errados^[regressão também é o motor que tem por de trás de quase todos os algoritmos e modelos de *machine learning*.].
 
 ```{r sete-sabios, echo=FALSE, fig.cap='Os Sete Sábios e o Elefante. Figura de https://nsjour.wordpress.com/2012/10/21/seven-blind-men-and-the-elephant/', out.extra='class=external'}
 knitr::include_graphics("images/elephant-parable.jpg")
@@ -60,11 +60,11 @@ knitr::include_graphics("images/elephant-parable.jpg")
 
 ### Interpretação Geométrica
 
-Imagine que seus dados são pontos que vivem em um espaço multidimensional. **A regressão é uma técnica para encontrar a melhor reta^[tecnicamente um hiperplano que é subespaço de dimensão $n-1$ de um espaço de dimensão $n$**, por exemplo uma reta é um hiperplano 1-D de uma plano 2-D e um plano 2-D é um hiperplano de um plano 3-D e assim por diante] entre o conjunto de dados levando em conta todas as observações.
+Imagine que seus dados são pontos que vivem em um espaço multidimensional. **A regressão é uma técnica para encontrar a melhor reta^[tecnicamente reta aqui se refere um hiperplano que é subespaço de dimensão $n-1$ de um espaço de dimensão $n$. Por exemplo, uma reta é um hiperplano 1-D de uma plano 2-D; um plano 2-D é um hiperplano de um plano 3-D; e assim por diante...] entre o conjunto de dados levando em conta todas as observações**.
 
-Isto é valido para qualquer espaço multidimensional, até para além de 3-D. Vamos mostrar um exemplo em 2-D que é a relação entre `x` e `y`^[acreditamos que visualizações 3-D de dados somente são aplicáveis em dois contextos: se você está usando mapas nas suas visualizações ou se você possui uma impressora 3D. Como não estamos fazendo nenhum dos dois, não vamos nos aventurar em imagens 3D (#ficaadica)], mas isto poder ser estendido para a relação `x1`, `x2`, ... e `y`.
+Isto é valido para qualquer espaço multidimensional, até para além de 3-D. Vamos mostrar um exemplo em 2-D da relação entre `x` e `y`^[acreditamos que visualizações 3-D de dados somente são aplicáveis em dois contextos: se você está usando mapas nas suas visualizações ou se você possui uma impressora 3D. Como não estamos fazendo nenhum dos dois, não nos aventuraremos em imagens 3D (#ficaadica).], mas isto poder ser estendido para a relação `x1`, `x2`, ... e `y`.
 
-```{r regressao-reta, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='Uma relação entre x e y representado por uma reta de tendência'}
+```{r regressao-reta, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='Uma relação entre variáveis representada por uma reta de tendência'}
 library(ggplot2)
 library(dplyr)
 library(patchwork)
@@ -84,13 +84,13 @@ p2 <- p1 +
 p1 + p2 + plot_layout(nrow = 1, widths = 1)
 ```
 
-Vejam que regressão linear usando apenas uma variável dependente e uma variável independente é a mesma coisa que que correlação^[usando a técnica de Pearson].
+Vejam que regressão linear usando apenas uma variável dependente e uma variável independente é a mesma coisa que que correlação^[usando a técnica de Pearson.].
 
 ### Interpretação Matemática
 
-**A interpretação matemática é vista como uma otimização: encontrar a melhor reta entre os pontos que minimiza o erro quadrático médio (*mean squared error* -- MSE)**. Ao escolhermos a melhor reta, devemos escolher a melhor reta que minimiza as distâncias entre os pontos, sendo que podemos errar para mais ou para menos. E para evitarmos que os erros se cancelem, precisamos eliminar o sinal negativo de alguns erros e convertê-los para valores positivos. Para isso, pegamos todas os erros (diferenças entre o valor previsto pela reta e o valor verdadeiro) e elevamos ao quadrado (assim todo número negativo se tornará positivo e todo positivo se manterá positivo)^[tecnicamente podemos também pegar o valor absoluto de cada erro. Isto se chama erro absoluto médio (*mean absolute error* -- MAE). Mas não possui as mesmas propriedades analíticas que o MSE e é computacionalmente menos estável.]. Portanto, a **regressão se torna a busca do menor valor de uma função erro (MSE)** que possui uma formato de parábola (pois é uma função quadrática). Para os que tenham tido a oportunidade de estudar cálculo: estamos falando em achar o valor de `x` quando a derivada do MSE é zero ($\text{MSE}^{\prime} = 0$). 
+**A interpretação matemática é vista como uma otimização: encontrar a melhor reta entre os pontos que minimiza o erro quadrático médio (*mean squared error* -- MSE)**. Ao escolhermos a melhor reta, devemos escolher a melhor reta que minimiza as distâncias entre os pontos, sendo que podemos errar para mais ou para menos. Para evitarmos que os erros se cancelem, precisamos eliminar o sinal negativo de alguns erros e convertê-los para valores positivos. Para isso, pegamos todas os erros (diferenças entre o valor previsto pela reta e o valor verdadeiro) e elevamos ao quadrado (assim todo número negativo se tornará positivo e todo positivo se manterá positivo)^[tecnicamente podemos também pegar o valor absoluto de cada erro. Isto se chama erro absoluto médio (*mean absolute error* -- MAE). Mas não possui as mesmas propriedades analíticas que o MSE e é computacionalmente menos estável.]. Portanto, a **regressão se torna a busca do menor valor de uma função erro (MSE)**^[Para os que tenham tido a oportunidade de estudar cálculo: estamos falando em achar o valor de `x` quando a derivada do MSE é zero ($\text{MSE}^{\prime} = 0$).]. 
 
-```{r regressao-mse, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='A melhor reta que minimiza a distância dos erros.'}
+```{r regressao-mse, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='A melhor reta que minimiza a distância dos erros'}
 library(broom)
 
 lm_sim <- augment(lm(y ~ x, data = sim))
@@ -109,11 +109,13 @@ p3 + p4 + plot_layout(nrow = 1, widths = 1)
 
 ### Interpretação Estatística
 
-O efeito de X em Y mantendo Z fixo
+A regressão linear usando uma única variável independente contínua se torna exatamente uma correlação^[usando a técnica de Pearson.]. Agora quando empregamos mais de uma variável independente, a interpretação da regressão se torna: **"O efeito de `X` em `Y` mantendo `Z` fixo"**. Isto quer dizer que a regressão lienar **controla os efeitos das diferentes variáveis independentes ao calcular o efeito de uma certa variável independente**. Esta é o que chamamos de **interpretação estatística** da regressão linear.
+
+Por exemplo, digamos que você esteja em busca dos fatores que acarretam ataque cardíaco. Você coleta dados de pessoas que quantifiquem as seguintes variáveis: sono, stress, tabagismo, sedentarismo, entre outros... A regressão te permite mensurar o efeito de qualquer uma dessas variáveis na prevalência de ataque cardíaco controlando para outros efeitos. Em outras palavras, é possível mensurar o efeito de stress em ataque cardíaco, mantendo fixo os efeitos de sono, tabagismo, psedentarismo, etc... Isso permite você isolar o efeito de uma variável sem deixar que outras variáveis a influenciem na mensuração da sua relação com a variável dependente (no nosso caso: ataque cardíaco).
 
 ## História da Regressão
 
-The term "regression" was coined by Francis Galton in the nineteenth century to describe a biological phenomenon. The phenomenon was that the heights of descendants of tall ancestors tend to regress down towards a normal average (a phenomenon also known as regression toward the mean) [@galton1890kinship]. For Galton, regression had only this biological meaning [@galton1877typical], but his work was later extended by Udny Yule [@yule1897theory] and Karl Pearson [@pearson1903law] to a more general statistical context.
+O termo "regressão" foi cunhado por Francis Galton no século XIX para descrever um fenômeno biológico. O fenômeno era que as alturas dos descendentes de ancestrais altos tendem a regredir para uma média normal (um fenômeno também conhecido como regressão em direção à média) [@galton1890kinship]. Para Galton, a regressão tinha apenas este significado biológico [@ galton1877typical], mas seu trabalho foi posteriormente estendido por Udny Yule [@yule1897theory] e Karl Pearson [@pearson1903law] para um contexto estatístico mais geral.
 
 ```{r fig-galton-pearson-yule, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
 library(cowplot)
@@ -126,29 +128,238 @@ pgalton + ppearson + pyule + plot_layout(nrow = 1, widths = 1)
 
 ## Pressupostos da Regressão Linear
 
-By itself, a regression is simply a calculation using the data. In order to interpret the output of a regression as a meaningful statistical quantity that measures real-world relationships, researchers often rely on a number of classical assumptions. These often include:
+Para interpretar os resultados de uma regressão como uma quantidade estatística significativa que mede os relacionamentos do mundo real, precisamos contar com uma série de suposições clássicas. Os quatro principais pressupostos da regressão são:
 
-1. The sample is representative of the population at large.
-2. The independent variables are measured with no error.
-3. Deviations from the model have an expected value of zero, conditional on covariates:  E(e_{i}|X_{i})=0
-4. The variance of the residuals e_{i} is constant across observations (homoscedasticity).
-5. The residuals e_{i} are uncorrelated with one another. Mathematically, the variance–covariance matrix of the errors is diagonal.
+1. **Independência dos Dados**: o valor de uma observação não influencia ou afeta o valor de outras observações. Este é o pressuposto clássico de todas as técnicas abordadas até agora.
+2. **Linearidade dos Dados**: a relação entre as variáveis independentes e a variável dependente é considerada linear (quanto mais/menos de uma, mais/menos de outra). Linearidade dos Dados pode ser verificada graficamente observando a dispersão dos resíduos com os valores previstos pela regressão.
+2. **Independência dos Erros / Resíduos**: os erros (também chamados de resíduos) não devem possuir correlação. Este pressuposto pode ser testado pelo teste de Durbin-Watson e observando o gráfico quantil-quantil (Q-Q) dos resíduos padronizados.
+3. **Homogeneidade de Variância dos Erros / Resíduos**: os erros devem ter média zero e desvio padrão constante ao longo das observações. Similar ao teste de Levene, mas aplicado aos resíduos da regressão. Pode ser testado usando o Teste de Breusch-Pagan.
+4. **Ausência de Multicolinearidade**: multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o Fator de Inflação de Variância (*Variance Inflation Factor* -- VIF).
 
-## Efeitos Principais e Efeitos de Interação
+## Como aplicar uma Regressão Linear no R
 
-## Efeitos Não-Lineares
+Para exemplificar as regressões nesse tutorial, usaremos o *dataset* já incluido no R `mtcars` [@henderson1981building]. `mtcars` é uma base de dados extraída da revista americana sobre carros *Motor Trend US* de 1974. Possui 32 observações de carros e 11 variáveis:
 
-x^2
+* `mpg`: Milhas por Galão (consumo)
+* `cyl`: Número de cilíndros
+* `disp`: Cilindada (em polegada cúbica)
+* `hp`: Cavalos de Potência (HP)
+* `drat`: Relação do eixo traseiro
+* `wt`:	Peso em (1,000 libras)
+* `qsec`: Tempo que atinge 400m (1/4 de milha)
+* `vs`: Motor (0 = Forma em V, 1 = Reto)
+* `am`: Transmissão (0 = Automático, 1 = Manual)
+* `gear`: Número de marchas
+* `carb`: Número de carburadores
 
-## Visualização
+```{r skim-mtcars}
+library(skimr)
+data(mtcars)
+skim(mtcars)
+```
 
-1. Coeficientes `{sjPlot}` [@sjPlot]
-2. Diagnóstico `{ggfortify}` [@ggfortify]
+
+Para aplicar uma regressão linear no R usamos a função `lm()` (***l**inear **m**odel*) padrão do R. Sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário fornecer dois argumentos:
+
+1. Fórmula designando a variável dependente e a(s) variável(eis) independente(s) designada pela seguinte síntaxe: `dependente ~ independente_1 + independente_2 + ...`.
+2. O *dataset* no qual deverá ser encontradas as variáveis presentes na fórmula.
+
+Começaremos com um exemplo simples de regressão do `mtcars` usando como variável independente `mpg` e variáveis independentes `hp` e `wt`. Podemos inspecionar o resultado de uma regressão linear com a função `summary()`.
+
+```{r lm-simples}
+modelo_simples <- lm(mpg ~ hp + wt, data = mtcars)
+summary(modelo_simples)
+```
+
+### Interpretação dos Coeficientes
+
+Na saída de `summary()` podemos ver que são produzidos os **coeficientes da regressão na coluna `Estimate`**, associados ao respectivos desvio padrão dos resíduos `Std. Error` e $p$-valores `Pr(>|t|)`. Importante destacar que a **hipótese nula dos coeficientes da regressão é de que "os coeficientes são nulos/zeros"**, então os $p$-valores devem ser interpretados como **a probabilidade de observamos valores de coeficientes tão extremos dado que a hipótese nula é verdadeira**. Para facilitar, o R informa com asteriscos quais variáveis possuem coeficientes estatisticamente significantes: `*` para $p < 0.05$, `**` para $p < 0.01$, e `***` para $p < 0.001$.
+
+Os coeficientes de objetos `lm` devem ser interpretados em **escala bruta** na qual **o acréscimo de 1 unidade da variável independente gera o aumento de `<coeficiente>` unidade(s) da variável dependente**. No nosso exemplo, a cada acréscimo de 1 `hp`, `mpg` reduz em `r modelo_simples$coefficients["hp"]`; e a cada acréscimo de 1 `wt`, `mpg` reduz em `r modelo_simples$coefficients["wt"]`. Além disso, a **regressão linear controla os efeitos de outras variáveis indepedente**. Então o impacto de `hp` em `mpg` no nosso exemplo controla o efeito de `wt`, matendo-o fixo ao calcular o coeficiente de `hp`.
+
+O coeficiente `(Intercept)` é o que chamamos de constante (*intercept*) da regressão. **A constante representa o valor médio da variável dependente quando todas as variáveis independentes possuem valor nulo (zero)**. No nosso exemplo, as observações possuem em média `r modelo_simples$coefficients["(Intercept)"]` `mpg` quando tanto `hp` e `wt` são 0.
+
+Note que podemos produzir **intervalos de confiança usando a função padrão do R `confint()` inserindo como argumento um objeto `lm`**. `confint()` como padrão produz intervalos de confiança 95%.
+
+```{r lm-confint}
+confint(modelo_simples)
+```
+
+### Variáveis Qualitativas
+
+Além de variáveis independentes quantitativas, regressão linear também permite utilizarmos **variáveis qualitativas (discretas)** como variáveis independentes.
+
+Vamos estender o nosso modelo simples adicionando a variável `am`. Note que vamos convertê-la para qualitativa (`factor`) usando a função padrão do R `as.factor()`, Isto é necessário para que o R interprete `am` como fator (nomenclatura do R para variáveis qualitativas).
+
+```{r lm-quali}
+modelo_quali <- mtcars %>% 
+  mutate(am = as.factor(am)) %>% 
+  lm(mpg ~ hp + wt + am, data = .)
+summary(modelo_quali)
+```
+
+Quando convertemos uma variável para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `am` possui 2 níveis: `0` e `1` (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão linear que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `am0`) como referência. Portanto a interpretação do coeficiente `am1` deve ser a seguinte: observações com `am = 1` possuem um acréscimo em média de `r modelo_quali$coefficients["am1"]` `mpg`. Note também que a variável `am` não possui significância estatística para a difença entre o nível de referência `am0` e o nível `am1` com $p = 0.14$. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `lm` acessando seu atributo `xlevels`.
+
+```{r lm-quali-xleves}
+modelo_quali$xlevels
+```
+
+### Efeitos Principais e Efeitos de Interação
+
+Todos os modelos de regressão que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre ANOVA](4-ANOVA.html), podemos incluir **dois tipos de efeitos na regressão linear**: 
+
+* **Efeitos principais**: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de **aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.
+* **Efeitos de interações**: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação **não são aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. **Há uma interação entre as variáveis independentes**.
+
+Veja na figura \@ref(fig:mtcars-interaction) uma representação gráfica da interação entre `am` e `cyl`. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de `cyl`^[convertemos `cyl` em fator para que, no gráfico `cyl` seja representado como quantidades discretas ao invés de contínuas.].
+
+```{r mtcars-interaction, warning=FALSE, message=FALSE, fig.cap='Interação entre `am` e `cyl` do *dataset* `mtcars`'}
+mtcars %>% 
+  mutate(across(c(am, cyl), as.factor)) %>% 
+  group_by(am, cyl) %>% 
+  summarise(mpg = mean(mpg)) %>% 
+  ggplot(aes(x = am, y = mpg, color = cyl)) +
+  geom_line(aes(group = cyl)) +
+  geom_point() +
+  scale_colour_brewer(palette = "Set1")
+```
+
+Para incluirmos efeitos de interações entre duas variáveis independentes em regressões lineares, incluímos na fórmula entre as duas variáveis um sinal de multiplicação[^Matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
+
+```{r lm-interaction}
+modelo_interacao <- lm(mpg ~ hp + wt + cyl*am, data = mtcars)
+summary(modelo_interacao)
+```
+
+A interpretação do coeficiente `cyl:am` é a seguinte: `cyl` (ou `am`) **modera positivamente** a relação entre `am` (ou `cyl`) e `mpg`. Note que o $p$-valor de `cyl:am` não significância estatística ($p = 0.181$).
+
+### Efeitos Não-Lineares
+
+Podemos também incluir efeitos não-lineares em modelos de regressão linear. Uma **relação não-linear é aquela que a representação entre as variáveis não pode ser representada de maneira fidedigna de maneira linear (com uma reta, mas sim com uma curva)**. Na ciência, há diversos fenômenos que não podem ser representados linearmente. Na figura @\ref(fig:mtcars-poly) é possível ver a relação entre `hp` e `mpg`: a linha vermelha mostra uma tendência linear e a linha azul uma tendência não-linear.
+
+```{r mtcars-poly, warning=FALSE, message=FALSE, fig.cap='Relação Não-Linear entre `hp` e `mpg` do *dataset* `mtcars`'}
+mtcars %>% 
+  ggplot(aes(hp, mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "Red") +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "Blue")
+```
+
+Para inserirmos efeitos não-lineares, incluímos na fórmula a função `poly()` com as variáveis que desejamos efeitos não-linares. A função `poly()` gera polinômios das variáveis conforme o grau especificado. No nosso exemplo abaixo, usaremos um polynômio de grau 2 (efeito quadrático).
+
+```{r lm-poly}
+modelo_naolinear <- lm(mpg ~ poly(hp, 2) + wt, data = mtcars)
+summary(modelo_naolinear)
+```
+
+Veja que ambos os coeficientes `poly(hp, 2)1` (que deve ser interpretado como $\text{hp}^1$) e `poly(hp, 2)2` (que deve ser interpretado como $\text{hp}^2$) possuem significância estatística ($p < 0.05$).
+
+### Visualização de Regressão Linear
+
+Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca `{sjPlot}` [@sjPlot] e sua função `plot_model()`. Como padrão, a função `plot_model()` produz um gráfico de floresta (*forest plot*) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como `"std"` em `plot_model()`, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Veja um exemplo na figura \@ref(fig:sjPlot): no lado esquerdo temos o gráfico de floresta para coeficientes brutos e no lado direto para coeficientes padrões.
+
+```{r sjPlot, warning=FALSE, message=FALSE, fig.cap='Gráfico de Floresta dos Coeficientes de uma Regressão Linear'}
+library(sjPlot)
+forest_raw <- plot_model(modelo_quali)
+forest_std <- plot_model(modelo_quali, type = "std")
+forest_raw + forest_std + plot_layout(nrow = 1, widths = 1)
+```
+Caso queira mais opções de visualizações para modelos de regressão não deixe de conferir o [site da biblioteca `{sfPlot}`](https://strengejacke.github.io/sjPlot/).
+
+### Verificação de Pressupostos
+
+**A verificação de pressupostos se divide em visualizações e testes estatísticos**.
+
+#### Visualizações
+
+Para as visualizações diagnóstica de modelos de regressão linear temos a opção `plot()` padrão do R para modelos `lm`. Mas essa visualização não é interessante pois usa o sistema padrão do R para visualizações ao invés do sistema `{ggplot2}` [@ggplot2] que permite maiores configurações e controle. Para visualizar diagnósticos de objetos `lm` usando o sistema `{ggplot2}` recomendamos a biblioteca `{ggfortify}` [@ggfortify].
+
+A a função `autoplot()` da biblioteca `{ggfortify}` mostra os resíduos em quatro gráficos diferentes: 
+
+1. **_Residuals vs Fitted_ (Resíduos vs Valores Previstos)**: utilizado para verificar os pressupostos de linearidade. Uma linha horizontal, sem padrões distintos é um indicativo de uma relação linear, o que indica que o pressuposto não foi violado.
+2. **_Normal Q-Q_ (Q-Q dos Resíduos)**: utilizado para verificar se os resíduos estão normalmente distribuídos. Se os pontos residuais seguirem a linha reta tracejada, indica que o pressuposto de independência dos resíduos não foi violado.
+3. **_Scale-Location_ (Resíduos "Studentizados" vs Valores Previstos)**: utilizado para verificar a homogeneidade da variância dos resíduos (homocedasticidade). Uma linha horizontal com pontos igualmente espalhados é uma boa indicação que o pressuposto não foi violado. Usa o formato "Studentizado" dos resíduos que é o quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão. É uma forma de estatística $t$ de Student, com a estimativa de erro variando entre os pontos.
+4. **_Residuals vs Leverage_ (Resíduos vs Influências)**: Utilizado para identificar casos influentes, ou seja, valores extremos que podem influenciar os resultados da regressão quando incluídos ou excluídos da análise. 
+
+Veja um exemplo de visualização diagnóstica do `modelo_simples` na figura \@ref(fig:ggfortify). É um bom exemplo que demonstra diversas patologias (problemas) do modelo. Os resíduos (gráfico superior esquerdo) possui um padrão evidente, o gráfico Q-Q dos resíduos (gráfico superior direito) evidencia algumas observações com resíduos que ferem o pressuposto de independência dos resíduos, e por fim possuímos uma observação extremamente influente (gráfico inferior direito -- Maserati B) que talvez prejudique as inferências do modelo.
+
+```{r ggfortify, warning=FALSE, message=FALSE, out.width='100%', fig.asp=NULL, fig.cap='Diagnósticos de Regressão Linear'}
+library(ggfortify)
+autoplot(modelo_simples)
+```
+
+#### Testes Estatísticos
+
+Além de visualizações diagnóstica, podemos realizar diversos testes estatísticos de hipótese nula para verificar se o modelo de regressão linear possui pressupostos violados ou não. Para isso recomendamos a biblioteca `{lmtest}` [@lmtest].
+
+##### Teste de Breusch-Pagan
+
+O **teste de Breusch-Pagan[@breusch1979simple; @cook1983diagnostics] usado para testar o pressuposto da independência dos resíduos** possui como hipótese nula que "as variâncias de erro são todas iguais" e como hipótese alternativa que "as variâncias de erro são uma função multiplicativa de uma ou mais variáveis". Recomendamos que usem os resíduos "Studentizados" (quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão -- uma forma de estatística $t$ de Student, com a estimativa de erro variando entre os pontos) no teste de Breusch-Pagan [@koenker1981note]. A função `bptest()` da biblioteca `{lmtest}` aceita como argumento um modelo de regressão linear (objeto `lm`) e já possui como padrão resíduos "Studentizados". Caso queira usar resíduos brutos indique o argumento `studentize` como `FALSE`.
+
+```{r bptest}
+library(lmtest)
+bptest(modelo_simples)
+```
+
+Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é 0.6, demonstrando fortes evidências que os resíduos são independentes.
+
+##### Teste de Durbin-Watson
+
+O **teste de Durbin-Watson [@durbin1950testing; @durbin1951testing] é um teste estatístico usado para detectar a presença de autocorrelação dos resíduos de um modelo de regressão e testa o pressuposto da homogeneidade de variância dos resíduos**. Possui como hipótese nula que os "erros são serialmente não correlacionados". A função `dwtest()` da biblioteca `{lmtest}` aceita como argumento um modelo de regressão linear (objeto `lm`).
+
+```{r dwtest}
+dwtest(modelo_simples)
+```
+
+Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é 0.02, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
+
+##### Multicolinearidade
+
+**Multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos**. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o **Fator de Inflação de Variância (_Variance Inflation Factor_ -- VIF)**.
+
+Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 [@hair1998multivariate]. Para calcular os VIFs de uma modelo `lm` use a função `vif()` da biblioteca `{car}` [@car].
+
+```{r vif, warning=FALSE}
+library(car)
+vif(modelo_simples)
+```
+
+Note que os valores de VIFs para as variáveis independentes do `modelo_simples` estão todos dentro do limite aceitável ($<10$), demonstrando ausência de multicolinearidade e evidenciando que o pressuposto não foi violado.
 
 ## $R^2$ e $R^2$ ajustado
 
+O leitor curioso e atencioso talvez tenha percebido que não comentamos uma métrica dos modelos de regressão: R-quadrado ($R^2$) e R-quadrado ajustado ($R^2$ ajustado).
+
+O $R^2$ também conhecido como **coeficiente de determinação  representa a proporção da variabilidade na variável dependente prevista^[muitas definições usam o termo "explicada" o que evitamos pois implica intuitivamente em uma relação causal.] pelas variável independentes**. É uma métrica que **quantifica o poder preditivo de um modelo de regressão**.
+
+Já o $R^2$ ajustado inclui uma pequena **penalidade pelo número de variáveis independentes usada no modelo de regressão**. Conforme você adiciona variáveis independentes à um modelo de regressão, o seu $R^2$ sempre aumentará, mas o $R^2$ ajustado somente aumentará se você adicionar **variáveis independentes úteis ao modelo** (variáveis que aumentem o $R^2$ um valor maior que a penalidade pela sua inclusão).
+
+```{r summary-lm}
+summary(modelo_simples)
+```
+
+Veja que o `modelo_simples` possui como $R^2$ um valor de `r summary(modelo_simples)$r.squared`: isto quer dizer que o `modelo_simples` possui um poder preditivo de 83% da variância de `mpg`. Além disso seu $R^2$ ajustado é `r summary(modelo_simples)$dj.r.squared` que pode ser útil na hora de comparar diferentes modelos que usem o mesmo conjunto de dados `mtcars` e a mesma variável dependente `mpg`.
 
 ## Coeficientes Brutos versus Padronizados
+
+Além de coeficientes brutos, podemos também obter coeficientes padronizados por desvios padrões de regressão linear usando a biblioteca `{lm.beta}` [@lmbeta]. Tal interpretação é vantajosa quando temos variáveis na regressão que possuem medidas diversas e que a comparação não seria tão simples. Os coeficientes padronizados são disponibilizados na coluna `Standardized`.
+
+```{r lm.beta-simples}
+library(lm.beta)
+modelo_simples_padronizado <- lm.beta(modelo_simples)
+summary(modelo_simples_padronizado)
+```
+
+A interpretação de coeficientes padronizados é quase a mesma que coeficientes padrões, apenas mudando a escala de comparação, que deve ser interpretada em **escala padronizada em desvios padrões**: **o acréscimo de 1 unidade de desvio padrão variável independente gera o aumento de `<coeficiente>` unidade(s) de desvio padrão(ões) da variável dependente**. No nosso exemplo, a cada acréscimo de 1 desvio padrão de `hp`, `mpg` reduz em `r modelo_simples_padronizado$standardized.coefficients["hp"]` desvio padrão; e a cada acréscimo de 1 desvio padrão `wt`, `mpg` reduz em `r modelo_simples_padronizado$standardized.coefficients["wt"]` desvio padrão.
+
+Note que a constante `(Intercept)` não deve ser usada em escalas padronizada por desvio padrão, por isso que a saída de objetos `lm.beta` possui valor 0 para a constante `(Intercept)`.
+
+Para gerar intervalos de confiança podemos usar a função `confint()` para objetos `lm.beta` da mesma maneira que usamos para objetos `lm`:
+
+```{r lm.beta-confint}
+confint(modelo_simples_padronizado)
+```
+
 
 ## Conexões com o Teste $t$, ANOVA e Correlações
 
@@ -156,12 +367,35 @@ x^2
 knitr::include_graphics("images/meme-regressao-scooby.jpg")
 ```
 
+Todos as técnicas estatísticas que vimos até agora (teste $t$, ANOVA e correlação) são casos especiais de regressão linear^[inclusive a função `aov()` de ANOVA por de baixo dos panos faz um chamado à função `lm()`. Ou seja é um *wrapper*, também chamado de açúcar sintático (*syntatic sugar*), da função `lm()`.]. Caso o leitor se interesse aconselhamos a leitura do capítulo 5 de @poldrack2018 e o excelente tutorial de @lindelov2019. Caso o leitor queira substituir todos os testes estatísticos pela função `lm()` veja a tabela abaixo:
 
-Capítulo 5 de @poldrack2018 (Fitting models to data)
+<aside>
+Conforme o autor 2, regressão linear é pizza e "tudo acaba em pizza".
+</aside>
 
-https://lindeloev.github.io/tests-as-linear/ @lindelov2019
+```{r echo=FALSE}
+library(gt)
+tibble::tribble(
+                                          ~"Nome do Teste",                        ~"função do R", ~"Modelo de Regressão equivalente no R",
+                 "P: teste t para Amostras Independentes",                         "t.test(y)",                           "lm(y ~ 1)",
+                                   "N: Teste de Wilcoxon",                    "wilcox.test(y)",              "lm(signed_rank(y) ~ 1)",
+                 "P: Teste t para duas Amostras Pareadas",       "t.test(y1, y2, paired=TRUE)",                     "lm(y2 - y1 ~ 1)",
+  "N: Teste de Wilcoxon para duas Amostras Pareadaspairs",  "wilcox.test(y1, y2, paired=TRUE)",        "lm(signed_rank(y2 - y1) ~ 1)",
+                               "P: Correlação de Pearson",  "cor.test(x, y, method=’Pearson’)",                       "lm(y ~ 1 + x)",
+                              "N: Correlação de Spearman", "cor.test(x, y, method=’Spearman’)",           "lm(rank(y) ~ 1 + rank(x))",
+             "P: Teste t para Duas Amostras não-Pareadas",    "t.test(y1, y2, var.equal=TRUE)",                     "lm(y ~ 1 + G2)A",
+                               "N: Teste de Mann-Whitney",               "wilcox.test(y1, y2)",        "lm(signed_rank(y) ~ 1 + G2)A",
+                                 "P: ANOVA Unidirecional",                    "aov(y ~ group)",         "lm(y ~ 1 + G2 + G3 +…+ GN)A",
+                             "N: Teste de Kruskal-Wallis",           "kruskal.test(y ~ group)",   "lm(rank(y) ~ 1 + G2 + G3 +…+ GN)A",
+           "P: ANOVA Bidirecional com efeitos principais",                "aov(y ~ group + x)",     "lm(y ~ 1 + G2 + G3 +…+ GN + x)A",
+         "P: ANOVA Bidirecional com efeitos de interação",              "aov(y ~ group * sex)",         "lm(y ~ 1 + G2 + G3 +…+ GN + S2 + S3 +…+ SK + G2*S2 + G3*S3 + … + GN*SK)"
+) %>% 
+  gt() %>% 
+  tab_source_note("Fonte: adaptado de Lindelov (2019).") %>% 
+  tab_footnote(footnote = md("**P**: paramétrico - **N**: não-paramétrico"),
+               locations = cells_column_labels(columns = vars("Nome do Teste"))) 
+```
 
-Tudo acaba em pizza.
 
 ## Técnicas Avançadas de Regressão Linear
 
@@ -260,6 +494,10 @@ O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://st
 </aside>
 
 Para usar modelos multiníveis em R use a biblioteca `{lme4}` [@lme4].
+
+## Comentários Finais
+
+**Regressão Linear é a porta de entrada para os modelos lineares**. Tais modelos são o "pão-com-manteiga" das ciências sociais aplicadas, usado extensamente tanto em relatórios técnicos quanto na literatura científica, assim como tanto em contextos profissionais quanto acadêmicos. Acreditamos que **regressão linear é o conteúdo mais importante** (logo atrás de $p$-valores) desse conjunto de tutoriais. Tal importância se dá por dois fatores. Primeiro, **todas as técnicas estatística que vimos até agora (teste $t$, ANOVA e correlação) podem ser substituídas por casos especiais de regressão linear**. Segundo,  **eles são a base de entendimento para todos os modelos de regressão existentes** (alguns listados na seção de "Técnicas Avançadas").
 
 ## Ambiente
 

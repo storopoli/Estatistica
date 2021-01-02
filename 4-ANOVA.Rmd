@@ -13,9 +13,9 @@ author:
     affiliation: UNINOVE
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
-date: "`r Sys.Date()`"
+date: January 11, 2021
 citation_url: https://storopoli.github.io/Estatistica/4-ANOVA.html
-slug: storopoli2020anovaR
+slug: storopoli2021anovaR
 bibliography: bibliografia.bib
 csl: apa.csl
 ---
@@ -149,7 +149,7 @@ Pelos resultados, podemos ver que **tanto `supp` e `dose` são estatisticamente 
 
 #### ANOVA Bidirecional com efeitos de interação^[Termo inglês: *Interaction Effects Two-Way ANOVA*.]
 
-Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função `aov()` do R que gerará o mesmo objeto `aov`, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação[^Matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e de interação na análise:
+Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função `aov()` do R que gerará o mesmo objeto `aov`, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação[^Matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise:
 
 ```{r two-way-anova-interaction-effects}
 fit4 <- aov(len ~ supp * dose, data = ToothGrowth)
