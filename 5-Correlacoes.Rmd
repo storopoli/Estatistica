@@ -184,7 +184,7 @@ Como podem ver, ambos os testes para as distribuições multivariadas $t$ de Stu
 
 ### Calculando a medida de correlação entre duas variáveis
 
-Para calcular a correlação de duas variáveis usamos a função padrão do R `cor()`. Devemos usar como arguento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor()` usará como padrão `method = "pearson"`]:
+Para calcular a correlação de duas variáveis usamos a função padrão do R `cor()`. Devemos usar como argumento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor()` usará como padrão `method = "pearson"`]:
 
 * `method = "pearson"` -- Correlação de Pearson.
 * `method = "spearman"` -- Correlação de Spearman.
@@ -212,7 +212,7 @@ cor(mv_student$V1, mv_student$V2, method = "kendall")
 
 Além de computarmos o valor da correlação entre duas variáveis, é possível também realizar um teste estatístico de hipótese nula sobre a correlação de duas variáveis. **A hipótese nula $H_0$ nesse caso é de que "as variáveis possuem correlação igual a zero"**.
 
-Para fazermos um teste de hipótese de correlação usamos a função padrão do R `cor.test()` que funciona similar à `cor()`. Devemos usar como arguento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor.test()` usará como padrão `method = "pearson"`]:
+Para fazermos um teste de hipótese de correlação usamos a função padrão do R `cor.test()` que funciona similar à `cor()`. Devemos usar como argumento das *duas* variáveis que queremos calcular a correlação e como terceiro argumento o tipo de correlação que queremos^[esse argumento é opcional e caso não seja especificado `cor.test()` usará como padrão `method = "pearson"`]:
 
 * `method = "pearson"` -- Correlação de Pearson.
 * `method = "spearman"` -- Correlação de Spearman.

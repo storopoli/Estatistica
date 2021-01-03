@@ -245,7 +245,7 @@ mtcars %>%
   geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "Blue")
 ```
 
-Para inserirmos efeitos não-lineares, incluímos na fórmula a função `poly()` com as variáveis que desejamos efeitos não-linares. A função `poly()` gera polinômios das variáveis conforme o grau especificado. No nosso exemplo abaixo, usaremos um polynômio de grau 2 (efeito quadrático).
+Para inserirmos efeitos não-lineares, incluímos na fórmula a função `poly()` com as variáveis que desejamos efeitos não-linares. A função `poly()` gera polinômios das variáveis conforme o grau especificado. No nosso exemplo abaixo, usaremos um polinômio de grau 2 (efeito quadrático).
 
 ```{r lm-poly}
 modelo_naolinear <- lm(mpg ~ poly(hp, 2) + wt, data = mtcars)

@@ -2814,7 +2814,7 @@ wt          -5.17 -2.584</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>modelo_quali</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>am <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>am</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>am <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>am</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>hp</span> <span class='op'>+</span> <span class='va'>wt</span> <span class='op'>+</span> <span class='va'>am</span>, data <span class='op'>=</span> <span class='va'>.</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 </code></pre>
@@ -2859,13 +2859,13 @@ F-statistic:   49 on 3 and 28 DF,  p-value: 0.0000000000291</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>mtcars</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>mpg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>am</span>, y <span class='op'>=</span> <span class='va'>mpg</span>, color <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set1"</span><span class='op'>)</span>
+  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>summarise</span><span class='op'>(</span>mpg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>am</span>, y <span class='op'>=</span> <span class='va'>mpg</span>, color <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_colour_brewer</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set1"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:mtcars-interaction"></span>
@@ -2911,10 +2911,10 @@ F-statistic: 31.7 on 5 and 26 DF,  p-value: 0.000000000279</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>mtcars</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>2</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>2</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:mtcars-poly"></span>
@@ -2924,7 +2924,7 @@ Figure 6: Relação Não-Linear entre <code>hp</code> e <code>mpg</code> do <em>
 </p>
 </div>
 </div>
-<p>Para inserirmos efeitos não-lineares, incluímos na fórmula a função <code>poly()</code> com as variáveis que desejamos efeitos não-linares. A função <code>poly()</code> gera polinômios das variáveis conforme o grau especificado. No nosso exemplo abaixo, usaremos um polynômio de grau 2 (efeito quadrático).</p>
+<p>Para inserirmos efeitos não-lineares, incluímos na fórmula a função <code>poly()</code> com as variáveis que desejamos efeitos não-linares. A função <code>poly()</code> gera polinômios das variáveis conforme o grau especificado. No nosso exemplo abaixo, usaremos um polinômio de grau 2 (efeito quadrático).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>modelo_naolinear</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>hp</span>, <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> <span class='va'>wt</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span>
@@ -2960,7 +2960,7 @@ F-statistic: 56.6 on 3 and 28 DF,  p-value: 0.00000000000529</code></pre>
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
 <span class='va'>forest_raw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 <span class='va'>forest_std</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span>, type <span class='op'>=</span> <span class='st'>"std"</span><span class='op'>)</span>
-<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'><a href='https://patchwork.data-imaginist.com/reference/plot_layout.html'>plot_layout</a></span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'>plot_layout</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:sjPlot"></span>
@@ -2986,7 +2986,7 @@ Figure 7: Gráfico de Floresta dos Coeficientes de uma Regressão Linear
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sinhrks/ggfortify'>ggfortify</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:ggfortify"></span>
@@ -3661,54 +3661,45 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] gt_0.2.2             lm.beta_1.5-1        lmtest_0.9-38       
- [4] zoo_1.8-8            ggfortify_0.4.11     sjPlot_2.8.6        
- [7] broom_0.7.3          palmerpenguins_0.1.0 magrittr_2.0.1      
-[10] mnormt_2.0.2         cowplot_1.1.1        tidyr_1.1.2         
-[13] DescTools_0.99.39    skimr_2.1.2          ggpubr_0.4.0        
-[16] car_3.0-10           carData_3.0-4        patchwork_1.1.1     
-[19] dplyr_1.0.2          ggplot2_3.3.3        DiagrammeR_1.0.6.1  
-[22] readxl_1.3.1        
+ [1] gt_0.2.2         lm.beta_1.5-1    car_3.0-10      
+ [4] carData_3.0-4    lmtest_0.9-38    zoo_1.8-8       
+ [7] ggfortify_0.4.11 sjPlot_2.8.6     skimr_2.1.2     
+[10] cowplot_1.1.1    broom_0.7.3      patchwork_1.1.1 
+[13] dplyr_1.0.2      ggplot2_3.3.3   
 
 loaded via a namespace (and not attached):
-  [1] backports_1.2.1    repr_1.1.0         splines_4.0.3     
-  [4] TH.data_1.0-10     digest_0.6.27      htmltools_0.5.0   
-  [7] magick_2.5.2       fansi_0.4.1        checkmate_2.0.0   
- [10] openxlsx_4.2.3     modelr_0.1.8       sandwich_3.0-0    
- [13] colorspace_2.0-0   haven_2.3.1        xfun_0.19         
- [16] crayon_1.3.4       jsonlite_1.7.2     Exact_2.1         
- [19] lme4_1.1-26        survival_3.2-7     glue_1.4.2        
- [22] gtable_0.3.0       emmeans_1.5.3      sjstats_0.18.0    
- [25] sjmisc_2.8.5       abind_1.4-5        scales_1.1.1      
- [28] mvtnorm_1.1-1      rstatix_0.6.0      ggeffects_1.0.1   
- [31] Rcpp_1.0.5         xtable_1.8-4       performance_0.6.1 
- [34] tmvnsim_1.0-2      reticulate_1.18    foreign_0.8-81    
- [37] htmlwidgets_1.5.3  RColorBrewer_1.1-2 ellipsis_0.3.1    
- [40] pkgconfig_2.0.3    farver_2.0.3       sass_0.2.0        
- [43] utf8_1.1.4         tidyselect_1.1.0   labeling_0.4.2    
- [46] rlang_0.4.10       effectsize_0.4.1   munsell_0.5.0     
- [49] cellranger_1.1.0   tools_4.0.3        visNetwork_2.0.9  
- [52] cli_2.2.0          generics_0.1.0     sjlabelled_1.1.7  
- [55] evaluate_0.14      stringr_1.4.0      yaml_2.2.1        
- [58] knitr_1.30         zip_2.1.1          purrr_0.3.4       
- [61] rootSolve_1.8.2.1  nlme_3.1-151       xml2_1.3.2        
- [64] compiler_4.0.3     rstudioapi_0.13    curl_4.3          
- [67] e1071_1.7-4        ggsignif_0.6.0     tibble_3.0.4      
- [70] statmod_1.4.35     stringi_1.5.3      highr_0.8         
- [73] parameters_0.10.1  forcats_0.5.0      lattice_0.20-41   
- [76] Matrix_1.3-0       commonmark_1.7     nloptr_1.2.2.2    
- [79] ggsci_2.9          vctrs_0.3.6        pillar_1.4.7      
- [82] lifecycle_0.2.0    estimability_1.3   data.table_1.13.6 
- [85] insight_0.11.1     lmom_2.8           R6_2.5.0          
- [88] bookdown_0.21      gridExtra_2.3      rio_0.5.16        
- [91] gld_2.6.2          codetools_0.2-18   distill_1.1       
- [94] boot_1.3-25        MASS_7.3-53        assertthat_0.2.1  
- [97] rprojroot_2.0.2    withr_2.3.0        multcomp_1.4-15   
-[100] mgcv_1.8-33        bayestestR_0.8.0   expm_0.999-5      
-[103] parallel_4.0.3     hms_0.5.3          grid_4.0.3        
-[106] coda_0.19-4        class_7.3-17       minqa_1.2.4       
-[109] rmarkdown_2.6      snakecase_0.11.0   downlit_0.2.1     
-[112] lubridate_1.7.9.2  base64enc_0.1-3   </code></pre>
+ [1] nlme_3.1-151       insight_0.11.1     RColorBrewer_1.1-2
+ [4] repr_1.1.0         tools_4.0.3        backports_1.2.1   
+ [7] R6_2.5.0           sjlabelled_1.1.7   mgcv_1.8-33       
+[10] colorspace_2.0-0   withr_2.3.0        tidyselect_1.1.0  
+[13] gridExtra_2.3      emmeans_1.5.3      downlit_0.2.1     
+[16] curl_4.3           compiler_4.0.3     performance_0.6.1 
+[19] sandwich_3.0-0     sass_0.2.0         labeling_0.4.2    
+[22] bayestestR_0.8.0   checkmate_2.0.0    scales_1.1.1      
+[25] mvtnorm_1.1-1      commonmark_1.7     stringr_1.4.0     
+[28] digest_0.6.27      foreign_0.8-81     minqa_1.2.4       
+[31] rmarkdown_2.6      rio_0.5.16         base64enc_0.1-3   
+[34] pkgconfig_2.0.3    htmltools_0.5.0    lme4_1.1-26       
+[37] highr_0.8          readxl_1.3.1       rlang_0.4.10      
+[40] farver_2.0.3       generics_0.1.0     jsonlite_1.7.2    
+[43] zip_2.1.1          distill_1.1        magrittr_2.0.1    
+[46] parameters_0.10.1  Matrix_1.3-0       Rcpp_1.0.5        
+[49] munsell_0.5.0      fansi_0.4.1        abind_1.4-5       
+[52] lifecycle_0.2.0    stringi_1.5.3      multcomp_1.4-15   
+[55] yaml_2.2.1         snakecase_0.11.0   MASS_7.3-53       
+[58] grid_4.0.3         parallel_4.0.3     sjmisc_2.8.5      
+[61] forcats_0.5.0      crayon_1.3.4       lattice_0.20-41   
+[64] ggeffects_1.0.1    haven_2.3.1        splines_4.0.3     
+[67] sjstats_0.18.0     hms_0.5.3          magick_2.5.2      
+[70] knitr_1.30         pillar_1.4.7       boot_1.3-25       
+[73] estimability_1.3   effectsize_0.4.1   codetools_0.2-18  
+[76] glue_1.4.2         evaluate_0.14      data.table_1.13.6 
+[79] modelr_0.1.8       vctrs_0.3.6        nloptr_1.2.2.2    
+[82] cellranger_1.1.0   gtable_0.3.0       purrr_0.3.4       
+[85] tidyr_1.1.2        openxlsx_4.2.3     xfun_0.19         
+[88] xtable_1.8-4       coda_0.19-4        survival_3.2-7    
+[91] tibble_3.0.4       statmod_1.4.35     TH.data_1.0-10    
+[94] ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
