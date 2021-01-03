@@ -310,7 +310,7 @@ A correlação é uma métrica extremamente útil para quantificar a magnitude d
 
 Sobre as técnicas de correlação em si, precisamos estar atentos a quais tipos de dados que temos. Caso as variáveis que desejamos correlacionar possuam uma distribuição similar à distribuição Normal (teste de Shapiro-Wilk com $p$-valor acima de 0.05) podemos usar a correlação de Pearson; caso contrário teremos que usar uma técnica de correlação não-paramétrica e escolher entre correlação de Spearman ou correlação de Kendall.
 
-Sobre a interpretação das correlações e associações, não se esqueça do mantra da [aula 2 sobre $p$-valores](2-p-valores.html): "correlação não é causalidade". Além disso, se atentem ao paradoxo de Simpson, especialmente quando estiverem com dados que podem ser subdividos em grupos.
+Sobre a interpretação das correlações e associações, não se esqueça do mantra da [tutorial 2 sobre $p$-valores](2-p-valores.html): "correlação não é causalidade". Além disso, se atentem ao paradoxo de Simpson, especialmente quando estiverem com dados que podem ser subdividos em grupos.
 
 Caso tenha sido intrigado pelo paradoxo de Simpson, não deixe de olhar o nosso [conteúdo auxiliar sobre o quarteto de Anscombe](aux-Anscombe.html).
 

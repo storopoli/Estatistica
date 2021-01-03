@@ -47,7 +47,7 @@ Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparaç
 
 A ANOVA foi primeira proposta por Ronald Fisher[^1] em 1921 [@fisher1210probable] e foi incluída no seu livro de 1925 que popularizou as técnicas de Estatística inferencial [@fisher1925statistical]. A estatística que a ANOVA calcula para testar sua hipótese nula é chamada de **Estatística F**, em homenagem à Fisher. Em 1919 Fisher foi trabalhar em um instituto de pesquisa agrícola chamado *Rothamsted Experimental Station* na Inglaterra, onde ficou até 1933. Foi nesse instituto que Fisher, ao ter acesso a uma vasta quantidade de dados sobre dados de safra agrícola acumulados desde 1842, desenvolveu e fez as primeiras aplicações de ANOVA.
 
-[^1]: Sim, o mesmo Fisher da [aula de $p$-valores](2-p-valores.html). Mais uma contribuição crucial para a ciência e Estatística. Lembrando que Fisher possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias.
+[^1]: Sim, o mesmo Fisher da [tutorial de $p$-valores](2-p-valores.html). Mais uma contribuição crucial para a ciência e Estatística. Lembrando que Fisher possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias.
 
 ```{r fig-fisher, echo=FALSE, fig.cap='Ronald Fisher. Figura de https://www.wikipedia.org', out.extra='class=external'}
 knitr::include_graphics("images/fisher.jpg")
@@ -82,7 +82,7 @@ A ANOVA é uma técnica paramétrica e seus pressupostos são similares ao teste
 
 Além disso, a ANOVA é utilizada apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).
 
-O pressuposto da normalidade, já coberto na [aula de $p$-valores](2-p-valores.html), pode ser testado com o teste de Shapiro-Wilk usando a função `shapiro.test()`.
+O pressuposto da normalidade, já coberto na [tutorial de $p$-valores](2-p-valores.html), pode ser testado com o teste de Shapiro-Wilk usando a função `shapiro.test()`.
 
 ```{r shapiro}
 shapiro.test(ToothGrowth$len)
@@ -90,7 +90,7 @@ shapiro.test(ToothGrowth$len)
 
 O $p$-valor do teste é `r shapiro.test(ToothGrowth$len)$p.value` e com isso falhamos em rejeitar a hipótese nula de que `len` é distribuída conforma uma distribuição Normal. Ou seja, **pressuposto de normalidade não violado**.
 
-Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na [aula de $p$-valores](2-p-valores.html), pode ser testado com o teste de Levene usando a função `leveneTest()` da biblioteca `{car}`.
+Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na [tutorial de $p$-valores](2-p-valores.html), pode ser testado com o teste de Levene usando a função `leveneTest()` da biblioteca `{car}`.
 
 ```{r levene, warning=FALSE, message=FALSE}
 library(car)
@@ -167,7 +167,7 @@ O que fazer se minha variável dependente viola os pressupostos de normalidade o
 **A versão não-paramétrica da ANOVA é o teste de Kruskal-Wallis** (também chamado de teste de Kruskal-Wallis por postos ou teste H de Kruskal-Wallis) foi desenvolvido em 1952 por  William Kruskal e W. Allen Wallis [@kruskal1952use]. O teste pode ser encontrada na função padrão que vem com o R `kruskal.test()` e funciona identicamente a `aov()`, com a exceção de que aceita somente *uma* variável independente. `kruskal.test()` aceita dois argumentos:
 
 <aside>
-Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o leitor precise usar uma técnica não-paramétrica para mais de duas variáveis independentes, recomendamos um abordagem que empregue algum modelo linear ([aula 6](6-Regressao_Linear.html)) ou modelo linear generalizado ([aula 7](7-Regressao_Logistica.html)).
+Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o leitor precise usar uma técnica não-paramétrica para mais de duas variáveis independentes, recomendamos um abordagem que empregue algum modelo linear ([tutorial 6](6-Regressao_Linear.html)) ou modelo linear generalizado ([tutorial 7](7-Regressao_Logistica.html)).
 </aside>
 
 1. Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: `variavel ~ grupo`.

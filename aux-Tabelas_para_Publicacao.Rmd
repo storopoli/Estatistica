@@ -1,7 +1,7 @@
 ---
-title: "Untitled"
+title: "Tabelas para Publicação"
 description: |
-  A new article created using the Distill format.
+  Como montar tabelas de modelos de regressão prontas para publicação.
 author:
   - name: Jose Storopoli
     url: https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en
@@ -16,6 +16,8 @@ author:
 date: January 11, 2021
 citation_url: https://storopoli.github.io/Estatistica/aux_Tabelas_para_Publicacao.html
 slug: storopoli2021tabelaspublicR
+bibliography: bibliografia.bib
+csl: apa.csl
 ---
 
 ```{r setup, include=FALSE}
@@ -25,15 +27,105 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = "70%",
                       fig.align = "center",
                       fig.retina = 3)
+library(gtsummary)
 ```
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Distill is a publication format for scientific and technical writing, native to the web. 
+o invés de ser obrigado a passar horas a fio formatando tabelas em ~~Excel~~ softwares pagos, você pode usar a biblioteca `{gtsummary}` [@gtsummary] para formatar automaticamente suas tabelas:
 
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
+* **Estatísticas Descritivas**: `gtsummary::tbl_summary()`
+* **Regressões**: `gtsummary::tbl_regression()`
+
+O idioma das tabelas de `{gtsummary}` pode ser definido com a função `theme_gtsummary_language()`
+
+## Estatísticas Descritivas
+
+O pacote [`gtsummary`](https://github.com/ddsjoberg/gtsummary) possui um conjunto de funções para sumarizar dados e tabelas. Nós particularmente usamos a função [`gtsummary::tbl_summary()`](http://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html). Ela formata uma tabela de Estatística Descritiva de maneira bem conveniente.
+
+```{r tbl_summary, message=FALSE, warning=FALSE}
+theme_gtsummary_language("pt")
+
+gtsummary::tbl_summary(
+  mtcars,
+  by = am,
+  type = all_continuous() ~ "continuous2",
+  statistic = list(
+    all_continuous() ~ c("{N_nonmiss}",
+                         "{median} ({p25}, {p75})", 
+                         "{min}, {max}"),
+    all_categorical() ~ "{n} ({p}%)"),
+  missing = "no",
+  digits = all_continuous() ~ 2) %>%
+  add_overall() %>%
+  bold_labels() %>%
+  italicize_levels() %>%
+  modify_header(list(label ~ "**Variáveis**",
+                     stat_1 ~ "**Automático**, N = 18",
+                     stat_2 ~ "**Manual**, N = 14")) %>% 
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Automáticos vs Manuais**") %>% 
+  add_n()
+```
 
 
+### Tabela de Regressão Linear/Logística
+
+A função [`gtsummary::tbl_regression()`](http://www.danieldsjoberg.com/gtsummary//reference/tbl_regression.html) pode ser usada para modelos de regressão tanto linear quanto logística. Caso deseje incluir coeficientes padronizados em desvio padrões indique o argumento `tidy_fun = tidy_standardize`.
+
+```{r tbl_regression-lm, message=FALSE, warning=FALSE}
+library(gtsummary)
+modelo_linear <- lm(mpg ~ hp + wt, data = mtcars)
+
+tbl_regression(
+  modelo_linear,
+  tidy_fun = tidy_standardize) %>%
+	bold_labels() %>%
+	add_glance_source_note(c(r.squared, adj.r.squared)) %>% 
+  modify_header(list(estimate ~ "**Beta Padronizados**"))
+```
+
+No caso de regressão logísticos os coeficientes são mostrados em formato bruto: logaritmo natural de [razões de probabilidades (*odds ratio* -- OR)](https://pt.wikipedia.org/wiki/Razão_de_possibilidades). Caso deseje exibir os coeficientes em razões de probabilidade (OR) para uma melhor interpretação, indique o argumento `exponentiate = TRUE`.
+
+```{r tbl_regression-glm, message=FALSE, warning=FALSE}
+data("TitanicSurvival", package = "carData")
+modelo_logistico <- glm(survived ~ age + sex,
+                        data = TitanicSurvival, family = binomial)
+
+tbl_regression(
+  modelo_logistico,
+  exponentiate = TRUE) %>% 
+  bold_labels() %>%
+  bold_p()
+```
+
+Além disso conseguimos facilmente comparar diferentes modelos de regressão em uma mesma tabela com a função [`gtsummary::tbl_merge()`](http://www.danieldsjoberg.com/gtsummary//reference/tbl_merge.html)
+
+```{r tbl_merge, message=FALSE, warning=FALSE}
+modelo_simples <- glm(survived ~ age + sex,
+                      data = TitanicSurvival, family = binomial)
+modelo_quali <- glm(survived ~ age + sex + passengerClass,
+                    data = TitanicSurvival, family = binomial)
+modelo_interacao <- glm(survived ~ age + sex*passengerClass,
+                        data = TitanicSurvival, family = binomial)
+
+tabelas_modelos <- list(modelo_simples, modelo_quali, modelo_interacao) %>%
+  purrr::map(~ tbl_regression(
+  .,
+  exponentiate = TRUE) %>% 
+  bold_labels() %>%
+  bold_p())
 
 
+tbl_merge(
+  tabelas_modelos,
+  tab_spanner = c("**Modelo Simples**",
+                  "**Modelo Qualitativo**",
+                  "**Modelo Interação**")
+)
+```
 
+## Ambiente
+
+```{r SessionInfo}
+sessionInfo()
+```

@@ -2689,7 +2689,8 @@ Figure 3: Reta vs Curva Logística – Dados Desbalanceados
 <p>Começaremos com um exemplo simples de regressão logística do <code>TitanicSurvival</code> usando como variável independente <code>survived</code> e variáveis independentes <code>age</code> e <code>sex</code>. Podemos inspecionar o resultado de uma regressão logística com a função <code>summary()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>modelo_simples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span>, data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
+<pre><code><span class='va'>modelo_simples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span>,
+                      data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2883,7 +2884,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
 <span class='va'>forest_raw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 <span class='va'>forest_std</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span>, type <span class='op'>=</span> <span class='st'>"std"</span><span class='op'>)</span>
-<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'>plot_layout</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>2</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'><a href='https://patchwork.data-imaginist.com/reference/plot_layout.html'>plot_layout</a></span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>2</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:sjPlot"></span>
@@ -2981,7 +2982,7 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <li><em>Random intercept-slope model</em>: Modelo no qual cada grupo recebe tanto uma constante (<em>intercept</em>) quanto um coeficiente diferente para cada variável independente</li>
 </ol>
 <aside>
-O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Estatistica-Bayesiana/">Estatística Bayesiana com R</a> e uma das aulas é sobre <a href="https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html">regressão multinível</a>.
+O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Estatistica-Bayesiana/">Estatística Bayesiana com R</a> e uma dos tutoriais é sobre <a href="https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html">regressão multinível</a>.
 </aside>
 <p>Para usar modelos multiníveis em R use a biblioteca <code>{lme4}</code> <span class="citation" data-cites="lme4">(<a href="#ref-lme4" role="doc-biblioref">Bates, Mächler, Bolker, &amp; Walker, 2015</a>)</span>.</p>
 <h2 id="comentários-finais">Comentários Finais</h2>
@@ -3008,45 +3009,54 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] DescTools_0.99.39 car_3.0-10        lmtest_0.9-38    
- [4] zoo_1.8-8         sjPlot_2.8.6      carData_3.0-4    
- [7] skimr_2.1.2       cowplot_1.1.1     patchwork_1.1.1  
-[10] ggplot2_3.3.3     dplyr_1.0.2      
+ [1] gt_0.2.2             lm.beta_1.5-1        lmtest_0.9-38       
+ [4] zoo_1.8-8            ggfortify_0.4.11     sjPlot_2.8.6        
+ [7] broom_0.7.3          palmerpenguins_0.1.0 magrittr_2.0.1      
+[10] mnormt_2.0.2         cowplot_1.1.1        tidyr_1.1.2         
+[13] DescTools_0.99.39    skimr_2.1.2          ggpubr_0.4.0        
+[16] car_3.0-10           carData_3.0-4        patchwork_1.1.1     
+[19] dplyr_1.0.2          ggplot2_3.3.3        DiagrammeR_1.0.6.1  
+[22] readxl_1.3.1        
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-151       insight_0.11.1     RColorBrewer_1.1-2
- [4] repr_1.1.0         tools_4.0.3        backports_1.2.1   
- [7] R6_2.5.0           sjlabelled_1.1.7   mgcv_1.8-33       
-[10] colorspace_2.0-0   withr_2.3.0        Exact_2.1         
-[13] tidyselect_1.1.0   emmeans_1.5.3      downlit_0.2.1     
-[16] curl_4.3           compiler_4.0.3     performance_0.6.1 
-[19] expm_0.999-5       sandwich_3.0-0     labeling_0.4.2    
-[22] bayestestR_0.8.0   scales_1.1.1       mvtnorm_1.1-1     
-[25] stringr_1.4.0      digest_0.6.27      foreign_0.8-81    
-[28] minqa_1.2.4        rmarkdown_2.6      rio_0.5.16        
-[31] base64enc_0.1-3    pkgconfig_2.0.3    htmltools_0.5.0   
-[34] lme4_1.1-26        highr_0.8          readxl_1.3.1      
-[37] rlang_0.4.10       rstudioapi_0.13    farver_2.0.3      
-[40] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
-[43] distill_1.1        magrittr_2.0.1     parameters_0.10.1 
-[46] Matrix_1.3-0       Rcpp_1.0.5         munsell_0.5.0     
-[49] fansi_0.4.1        abind_1.4-5        lifecycle_0.2.0   
-[52] stringi_1.5.3      multcomp_1.4-15    yaml_2.2.1        
-[55] snakecase_0.11.0   rootSolve_1.8.2.1  MASS_7.3-53       
-[58] grid_4.0.3         parallel_4.0.3     lmom_2.8          
-[61] sjmisc_2.8.5       forcats_0.5.0      crayon_1.3.4      
-[64] lattice_0.20-41    ggeffects_1.0.1    haven_2.3.1       
-[67] splines_4.0.3      sjstats_0.18.0     hms_0.5.3         
-[70] magick_2.5.2       knitr_1.30         pillar_1.4.7      
-[73] gld_2.6.2          boot_1.3-25        estimability_1.3  
-[76] effectsize_0.4.1   codetools_0.2-18   glue_1.4.2        
-[79] evaluate_0.14      data.table_1.13.6  modelr_0.1.8      
-[82] vctrs_0.3.6        nloptr_1.2.2.2     cellranger_1.1.0  
-[85] gtable_0.3.0       purrr_0.3.4        tidyr_1.1.2       
-[88] xfun_0.19          openxlsx_4.2.3     xtable_1.8-4      
-[91] broom_0.7.3        e1071_1.7-4        coda_0.19-4       
-[94] class_7.3-17       survival_3.2-7     tibble_3.0.4      
-[97] statmod_1.4.35     TH.data_1.0-10     ellipsis_0.3.1    </code></pre>
+  [1] backports_1.2.1    repr_1.1.0         splines_4.0.3     
+  [4] TH.data_1.0-10     digest_0.6.27      htmltools_0.5.0   
+  [7] magick_2.5.2       fansi_0.4.1        checkmate_2.0.0   
+ [10] openxlsx_4.2.3     modelr_0.1.8       sandwich_3.0-0    
+ [13] colorspace_2.0-0   haven_2.3.1        xfun_0.19         
+ [16] crayon_1.3.4       jsonlite_1.7.2     Exact_2.1         
+ [19] lme4_1.1-26        survival_3.2-7     glue_1.4.2        
+ [22] gtable_0.3.0       emmeans_1.5.3      sjstats_0.18.0    
+ [25] sjmisc_2.8.5       abind_1.4-5        scales_1.1.1      
+ [28] mvtnorm_1.1-1      rstatix_0.6.0      ggeffects_1.0.1   
+ [31] Rcpp_1.0.5         xtable_1.8-4       performance_0.6.1 
+ [34] tmvnsim_1.0-2      reticulate_1.18    foreign_0.8-81    
+ [37] htmlwidgets_1.5.3  RColorBrewer_1.1-2 ellipsis_0.3.1    
+ [40] pkgconfig_2.0.3    farver_2.0.3       sass_0.2.0        
+ [43] utf8_1.1.4         tidyselect_1.1.0   labeling_0.4.2    
+ [46] rlang_0.4.10       effectsize_0.4.1   munsell_0.5.0     
+ [49] cellranger_1.1.0   tools_4.0.3        visNetwork_2.0.9  
+ [52] cli_2.2.0          generics_0.1.0     sjlabelled_1.1.7  
+ [55] evaluate_0.14      stringr_1.4.0      yaml_2.2.1        
+ [58] knitr_1.30         zip_2.1.1          purrr_0.3.4       
+ [61] rootSolve_1.8.2.1  nlme_3.1-151       xml2_1.3.2        
+ [64] compiler_4.0.3     rstudioapi_0.13    curl_4.3          
+ [67] e1071_1.7-4        ggsignif_0.6.0     tibble_3.0.4      
+ [70] statmod_1.4.35     stringi_1.5.3      highr_0.8         
+ [73] parameters_0.10.1  forcats_0.5.0      lattice_0.20-41   
+ [76] Matrix_1.3-0       commonmark_1.7     nloptr_1.2.2.2    
+ [79] ggsci_2.9          vctrs_0.3.6        pillar_1.4.7      
+ [82] lifecycle_0.2.0    estimability_1.3   data.table_1.13.6 
+ [85] insight_0.11.1     lmom_2.8           R6_2.5.0          
+ [88] bookdown_0.21      gridExtra_2.3      rio_0.5.16        
+ [91] gld_2.6.2          codetools_0.2-18   distill_1.1       
+ [94] boot_1.3-25        MASS_7.3-53        assertthat_0.2.1  
+ [97] rprojroot_2.0.2    withr_2.3.0        multcomp_1.4-15   
+[100] mgcv_1.8-33        bayestestR_0.8.0   expm_0.999-5      
+[103] parallel_4.0.3     hms_0.5.3          grid_4.0.3        
+[106] coda_0.19-4        class_7.3-17       minqa_1.2.4       
+[109] rmarkdown_2.6      snakecase_0.11.0   downlit_0.2.1     
+[112] lubridate_1.7.9.2  base64enc_0.1-3   </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

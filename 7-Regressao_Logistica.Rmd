@@ -146,7 +146,8 @@ Para aplicar uma regressão logística no R usamos a função `glm()` (_**g**ene
 Começaremos com um exemplo simples de regressão logística do `TitanicSurvival` usando como variável independente `survived` e variáveis independentes `age` e `sex`. Podemos inspecionar o resultado de uma regressão logística com a função `summary()`.
 
 ```{r glm-simples}
-modelo_simples <- glm(survived ~ age + sex, data = TitanicSurvival, family = binomial)
+modelo_simples <- glm(survived ~ age + sex,
+                      data = TitanicSurvival, family = binomial)
 summary(modelo_simples)
 ```
 
@@ -329,7 +330,7 @@ Modelos multiníveis são particularmente apropriados para projetos de pesquisa 
 3.  *Random intercept-slope model*: Modelo no qual cada grupo recebe tanto uma constante (*intercept*) quanto um coeficiente diferente para cada variável independente
 
 <aside>
-O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma das aulas é sobre [regressão multinível](https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html).
+O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma dos tutoriais é sobre [regressão multinível](https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html).
 </aside>
 
 Para usar modelos multiníveis em R use a biblioteca `{lme4}` [@lme4].

@@ -38,7 +38,7 @@ Muitas vezes precisamos de técnicas que tolerem varíaveis independente contín
 Regressão Linear é a técnica preferida do autor 1
 </aside>
 
-**Regressão linear permite com que você use uma ou mais variáveis discretas ou contínuas como variáveis independentes e mensurar o poder de associação com a variável dependente, que deve ser contínua**^[variáveis dependentes binárias ou discretas serão apresentadas na [aula de Regressão Logística](7-Regressao_Logistica.html)].
+**Regressão linear permite com que você use uma ou mais variáveis discretas ou contínuas como variáveis independentes e mensurar o poder de associação com a variável dependente, que deve ser contínua**^[variáveis dependentes binárias ou discretas serão apresentadas na [tutorial de Regressão Logística](7-Regressao_Logistica.html)].
 
 ## Interpretações
 
@@ -426,7 +426,7 @@ sims <- tibble(
 A figura \@ref(fig:plot-simul-linear-reg) mostra um diagrama de pontos (*dotplot*) da simulação e duas distribuições estimadas com os dados: Normal e $t$ de Student (graus de liberdade = 3). Devido às observações extremas, a distribuição Normal, para comportar todas as observações, se alarga e achata. Tal achatamento e alargamento não ocorrem na distribuição $t$ de Student. Isto se traduz em estimativas mais estáveis dos coeficientes da regressão na presença de observações extremas. Por esses motivos, para nós, a melhor a maneira de aplicar um modelo de regressão na presença de observações extremas é por meio de Estatística Bayesiana usando uma distribuição $t$ de Student como o "motor" de inferência.
 
 <aside>
-O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma das aulas é sobre [regressão robusta usando distribuição $t$ de Student](https://storopoli.github.io/Estatistica-Bayesiana/8-Regressao_Robusta.html).
+O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e um dos tutoriais é sobre [regressão robusta usando distribuição $t$ de Student](https://storopoli.github.io/Estatistica-Bayesiana/8-Regressao_Robusta.html).
 </aside>
 
 ```{r plot-simul-linear-reg, warning=FALSE, message=FALSE, fig.cap='Simulação com Observações Normais e Extremas -- Distribuição Normal vs t de Student'}
@@ -484,7 +484,7 @@ Modelos multiníveis são particularmente apropriados para projetos de pesquisa 
 3.  *Random intercept-slope model*: Modelo no qual cada grupo recebe tanto uma constante (*intercept*) quanto um coeficiente diferente para cada variável independente
 
 <aside>
-O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e uma das aulas é sobre [regressão multinível](https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html).
+O primeiro autor possui um tutorial de [Estatística Bayesiana com R](https://storopoli.github.io/Estatistica-Bayesiana/) e um dos tutoriais é sobre [regressão multinível](https://storopoli.github.io/Estatistica-Bayesiana/9-Regressao_Multinivel.html).
 </aside>
 
 Para usar modelos multiníveis em R use a biblioteca `{lme4}` [@lme4].

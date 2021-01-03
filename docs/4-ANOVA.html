@@ -2599,7 +2599,7 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <li><strong>Homogeneidade das Variâncias</strong>: variável dependente possui homogeneidade de variância dentre os grupos.</li>
 </ul>
 <p>Além disso, a ANOVA é utilizada apenas quando as variáveis independentes são categóricas (discretas, como por exemplo grupos diferentes).</p>
-<p>O pressuposto da normalidade, já coberto na <a href="2-p-valores.html">aula de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Shapiro-Wilk usando a função <code>shapiro.test()</code>.</p>
+<p>O pressuposto da normalidade, já coberto na <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Shapiro-Wilk usando a função <code>shapiro.test()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>len</span><span class='op'>)</span>
@@ -2612,7 +2612,7 @@ data:  ToothGrowth$len
 W = 1, p-value = 0.1</code></pre>
 </div>
 <p>O <span class="math inline">\(p\)</span>-valor do teste é 0.11 e com isso falhamos em rejeitar a hipótese nula de que <code>len</code> é distribuída conforma uma distribuição Normal. Ou seja, <strong>pressuposto de normalidade não violado</strong>.</p>
-<p>Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na <a href="2-p-valores.html">aula de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Levene usando a função <code>leveneTest()</code> da biblioteca <code>{car}</code>.</p>
+<p>Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Levene usando a função <code>leveneTest()</code> da biblioteca <code>{car}</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
@@ -2714,7 +2714,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p><strong>Atenção</strong>: testes não-paramétricos são menos sensíveis em rejeitar a hipótese nula quando ela é verdadeira (erro tipo I) do que testes paramétricos quando o pressuposto de normalidade não é violado <span class="citation" data-cites="zimmerman1998nonparametric">(<a href="#ref-zimmerman1998nonparametric" role="doc-biblioref">Zimmerman, 1998</a>)</span>. Então não pense que deve sempre aplicar um teste não-paramétrico em todas as ocasiões.</p>
 <p><strong>A versão não-paramétrica da ANOVA é o teste de Kruskal-Wallis</strong> (também chamado de teste de Kruskal-Wallis por postos ou teste H de Kruskal-Wallis) foi desenvolvido em 1952 por William Kruskal e W. Allen Wallis <span class="citation" data-cites="kruskal1952use">(<a href="#ref-kruskal1952use" role="doc-biblioref">Kruskal &amp; Wallis, 1952</a>)</span>. O teste pode ser encontrada na função padrão que vem com o R <code>kruskal.test()</code> e funciona identicamente a <code>aov()</code>, com a exceção de que aceita somente <em>uma</em> variável independente. <code>kruskal.test()</code> aceita dois argumentos:</p>
 <aside>
-Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o leitor precise usar uma técnica não-paramétrica para mais de duas variáveis independentes, recomendamos um abordagem que empregue algum modelo linear (<a href="6-Regressao_Linear.html">aula 6</a>) ou modelo linear generalizado (<a href="7-Regressao_Logistica.html">aula 7</a>).
+Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o leitor precise usar uma técnica não-paramétrica para mais de duas variáveis independentes, recomendamos um abordagem que empregue algum modelo linear (<a href="6-Regressao_Linear.html">tutorial 6</a>) ou modelo linear generalizado (<a href="7-Regressao_Logistica.html">tutorial 7</a>).
 </aside>
 <ol type="1">
 <li>Fórmula designando a variável cuja média deve ser analisada e os grupos em relação aos quais as médias serão analisadas. A fórmula é designada pela seguinte síntaxe: <code>variavel ~ grupo</code>.</li>
@@ -2935,7 +2935,7 @@ Zimmerman, D. W. (1998). Invalidation of parametric and nonparametric statistica
 <ol>
 <li id="fn1" role="doc-endnote"><p>O número de testes pode ser calculado pela combinação de <span class="math inline">\(n\)</span> grupos tomados 2 a 2 <span class="math inline">\({n \choose 2}\)</span>, então para 3 grupos temos 3 testes, para 4 grupos 6 testes e assim por diante…<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Termo inglês: <em><strong>F</strong>amily-<strong>w</strong>ise <strong>e</strong>rror <strong>r</strong>ate</em> – FWER.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Sim, o mesmo Fisher da <a href="2-p-valores.html">aula de <span class="math inline">\(p\)</span>-valores</a>. Mais uma contribuição crucial para a ciência e Estatística. Lembrando que Fisher possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Sim, o mesmo Fisher da <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>. Mais uma contribuição crucial para a ciência e Estatística. Lembrando que Fisher possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4" role="doc-endnote"><p>Termo inglês: <em>One-Way ANOVA</em>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>Termo inglês: <em>Two-Way ANOVA</em>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>Termo inglês: <em>Main Effects Two-Way ANOVA</em>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

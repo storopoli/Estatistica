@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 **O quarteto de Anscombe compreende quatro conjuntos de dados que têm estatísticas descritivas simples quase idênticas, mas têm distribuições muito diferentes e parecem muito diferentes quando representados graficamente**. Cada conjunto de dados consiste em onze (x, y) pontos. Eles foram construídos em 1973 pelo estatístico Francis Anscombe [@anscombe1973graphs] para demonstrar a **importância dos dados gráficos antes de analisá-los** e o **efeito de *outliers* e outras observações influentes nas propriedades estatísticas**. Ele descreveu o artigo como tendo a intenção de contrariar a impressão entre os estatísticos de que "os cálculos numéricos são exatos, mas os gráficos são aproximados".
 
-Falamos na [aula 2 de $p$-valores](2-p-valores.html) que "somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para **provar** algo, é necessário um teste estatístico." Para mostrar a importância dos gráficos vamos explorar um pouco os 4 conjuntos de dados do quarteto de Anscombe. A moral da história aqui é que se deve olhar um conjunto de dados graficamente antes de começar a analisar de acordo com um tipo particular de relacionamento, além da inadequação das propriedades estatísticas básicas para descrever conjuntos de dados realistas.
+Falamos na [tutorial 2 de $p$-valores](2-p-valores.html) que "somos adeptos de visualizações e usamos constantemente nas nossas análises. Mas, na Estatística, as visualizações são muito boas para mostrar alguma tendência, característica ou peculiaridade dos dados. Agora, para **provar** algo, é necessário um teste estatístico." Para mostrar a importância dos gráficos vamos explorar um pouco os 4 conjuntos de dados do quarteto de Anscombe. A moral da história aqui é que se deve olhar um conjunto de dados graficamente antes de começar a analisar de acordo com um tipo particular de relacionamento, além da inadequação das propriedades estatísticas básicas para descrever conjuntos de dados realistas.
 
 ## *Dataset* `anscombe`
 
@@ -132,7 +132,7 @@ map_dfr(1:4,
              md("Fórmula: `y ~ x`"))
 ```
 
-Uma maneira de diferenciar os quatro conjuntos de Anscombe numa regressão linear é analisar os seus resíduos, conforme figura \@ref(fig:anscombe-resid). Aqui claramente vemos que apenas o gráfico do canto superior direito possui resíduos nos quais não é possível identificar nenhum padrão ou característica^[para saber mais sobre regressão linear e seus pressupostos veja o [conteúdo da aula sobre regressão linear](6-Regressao_Linear.html)].
+Uma maneira de diferenciar os quatro conjuntos de Anscombe numa regressão linear é analisar os seus resíduos, conforme figura \@ref(fig:anscombe-resid). Aqui claramente vemos que apenas o gráfico do canto superior direito possui resíduos nos quais não é possível identificar nenhum padrão ou característica^[para saber mais sobre regressão linear e seus pressupostos veja o [conteúdo do tutorial sobre regressão linear](6-Regressao_Linear.html)].
 
 ```{r anscombe-resid, warning=FALSE, message=FALSE, fig.cap='Resíduos dos Modelos de Regressão Linear Quarteto de Anscombe'}
 library(patchwork)
