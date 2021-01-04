@@ -166,8 +166,7 @@ exp(coef(modelo_simples))
 A interpretação dessa saída de OR é a seguinte:
 
 * `age` -- A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["age"]) * 100`% ($1 - \text{OR}_\text{age}$).
-* `sexmale` -- A cada aumento de uma unidade de idade (ou seja sexomale é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["sexmale"]) * 100`% ($1 - \text{OR}_\text{sexmale}$).
-
+* `sexmale` -- A cada aumento de uma unidade de `sexmal` (ou seja `sexomale` é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["sexmale"]) * 100`% ($1 - \text{OR}_\text{sexmale}$).
 
 Para produzir intervalos de confiança precisamos usar a função `confint()` do pacote MASS [@MASS], uma vez que a função `confint()` base do R não dá suporte à OR. Como padrão, `MASS::confint()`, assim como `confint()` base do R, produz intervalos de confiança 95%.
 
@@ -252,7 +251,7 @@ library(lmtest)
 bptest(modelo_simples)
 ```
 
-Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos não são independentes.
+Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências em favor da não rejeição da hipótese nula de dependência dos resíduos.
 
 #### Teste de Durbin-Watson
 
@@ -262,7 +261,7 @@ O **teste de Durbin-Watson [@durbin1950testing; @durbin1951testing] é um teste 
 dwtest(modelo_simples)
 ```
 
-Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
+Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, indicando a rejeição da hipótese nula de não-correlação, violando o pressuposto da homogeneidade de variância dos resíduos.
 
 #### Multicolinearidade
 

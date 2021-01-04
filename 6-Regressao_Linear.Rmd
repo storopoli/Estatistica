@@ -32,7 +32,7 @@ set.seed(123)
 
 <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css"/>
 
-Muitas vezes precisamos de técnicas que tolerem varíaveis independente contínuas. Não conseguimos usar ANOVA pois as variáveis independentes são discretas e representam grupos distintos de observações (uma variável independente -- Anova Unidireacional, duas variáveis independentes -- Anova Bidirecional, etc.). Muito menos teste $t$, pois segue o mesmo princípio da ANOVA mas se restringindo a apenas dois grupos, ou seja, apenas variável independente categórica binária. Para isso temos a técnica de Regressão Linear.
+Muitas vezes precisamos de técnicas que tolerem varíaveis independentes contínuas. Não conseguimos usar ANOVA pois as variáveis independentes são discretas e representam grupos distintos de observações (uma variável independente -- Anova Unidireacional, duas variáveis independentes -- Anova Bidirecional, etc.). Muito menos teste $t$, pois segue o mesmo princípio da ANOVA mas se restringindo a apenas dois grupos, ou seja, apenas variável independente categórica binária. Para isso temos a técnica de Regressão Linear.
 
 <aside>
 Regressão Linear é a técnica preferida do autor 1
@@ -272,7 +272,7 @@ Caso queira mais opções de visualizações para modelos de regressão não dei
 
 #### Visualizações
 
-Para as visualizações diagnóstica de modelos de regressão linear temos a opção `plot()` padrão do R para modelos `lm`. Mas essa visualização não é interessante pois usa o sistema padrão do R para visualizações ao invés do sistema `{ggplot2}` [@ggplot2] que permite maiores configurações e controle. Para visualizar diagnósticos de objetos `lm` usando o sistema `{ggplot2}` recomendamos a biblioteca `{ggfortify}` [@ggfortify].
+Para visualização diagnóstica de modelos de regressão linear temos a opção `plot()` padrão do R para modelos `lm`. Mas essa visualização não é interessante pois usa o sistema padrão do R para visualizações ao invés do sistema `{ggplot2}` [@ggplot2] que permite maiores configurações e controle. Para visualizar diagnósticos de objetos `lm` usando o sistema `{ggplot2}` recomendamos a biblioteca `{ggfortify}` [@ggfortify].
 
 A a função `autoplot()` da biblioteca `{ggfortify}` mostra os resíduos em quatro gráficos diferentes: 
 
@@ -301,7 +301,7 @@ library(lmtest)
 bptest(modelo_simples)
 ```
 
-Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é 0.6, demonstrando fortes evidências que os resíduos são independentes.
+Note que o $p$-valor do Teste de Breusch-Pagan para o `modelo_simples` é 0.6, demonstrando fortes evidências em favor da não-rejeição da hipótese nula de dependência dos resíduos.
 
 ##### Teste de Durbin-Watson
 
@@ -311,7 +311,7 @@ O **teste de Durbin-Watson [@durbin1950testing; @durbin1951testing] é um teste 
 dwtest(modelo_simples)
 ```
 
-Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.
+Note que o $p$-valor do Teste de Durbin-Watson para o `modelo_simples` é menor que 0.05, indicando a rejeição da hipótese nula de não-correlação entre os resíduos, violando o pressuposto da homogeneidade de variância dos resíduos.
 
 ##### Multicolinearidade
 
@@ -330,7 +330,7 @@ Note que os valores de VIFs para as variáveis independentes do `modelo_simples`
 
 O leitor curioso e atencioso talvez tenha percebido que não comentamos uma métrica dos modelos de regressão: R-quadrado ($R^2$) e R-quadrado ajustado ($R^2$ ajustado).
 
-O $R^2$ também conhecido como **coeficiente de determinação  representa a proporção da variabilidade na variável dependente prevista^[muitas definições usam o termo "explicada" o que evitamos pois implica intuitivamente em uma relação causal.] pelas variável independentes**. É uma métrica que **quantifica o poder preditivo de um modelo de regressão**.
+O $R^2$ também conhecido como **coeficiente de determinação  representa a proporção da variabilidade na variável dependente prevista^[muitas definições usam o termo "explicada" o que evitamos pois implica intuitivamente em uma relação causal.] pelas variáveis independentes**. É uma métrica que **quantifica o poder preditivo de um modelo de regressão**.
 
 Já o $R^2$ ajustado inclui uma pequena **penalidade pelo número de variáveis independentes usada no modelo de regressão**. Conforme você adiciona variáveis independentes à um modelo de regressão, o seu $R^2$ sempre aumentará, mas o $R^2$ ajustado somente aumentará se você adicionar **variáveis independentes úteis ao modelo** (variáveis que aumentem o $R^2$ um valor maior que a penalidade pela sua inclusão).
 

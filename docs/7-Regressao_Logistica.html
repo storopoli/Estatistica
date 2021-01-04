@@ -2734,7 +2734,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>A interpretação dessa saída de OR é a seguinte:</p>
 <ul>
 <li><code>age</code> – A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 0.42% (<span class="math inline">\(1 - \text{OR}_\text{age}\)</span>).</li>
-<li><code>sexmale</code> – A cada aumento de uma unidade de idade (ou seja sexomale é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 91.46% (<span class="math inline">\(1 - \text{OR}_\text{sexmale}\)</span>).</li>
+<li><code>sexmale</code> – A cada aumento de uma unidade de <code>sexmal</code> (ou seja <code>sexomale</code> é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 91.46% (<span class="math inline">\(1 - \text{OR}_\text{sexmale}\)</span>).</li>
 </ul>
 <p>Para produzir intervalos de confiança precisamos usar a função <code>confint()</code> do pacote MASS <span class="citation" data-cites="MASS">(<a href="#ref-MASS" role="doc-biblioref">Venables &amp; Ripley, 2002</a>)</span>, uma vez que a função <code>confint()</code> base do R não dá suporte à OR. Como padrão, <code>MASS::confint()</code>, assim como <code>confint()</code> base do R, produz intervalos de confiança 95%.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2912,7 +2912,7 @@ Figure 5: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em 
 data:  modelo_simples
 BP = 20, df = 2, p-value = 0.00005</code></pre>
 </div>
-<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Breusch-Pagan para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências que os resíduos não são independentes.</p>
+<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Breusch-Pagan para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências em favor da não rejeição da hipótese nula de dependência dos resíduos.</p>
 <h4 id="teste-de-durbin-watson">Teste de Durbin-Watson</h4>
 <p>O <strong>teste de Durbin-Watson <span class="citation" data-cites="durbin1950testing durbin1951testing">(<a href="#ref-durbin1950testing" role="doc-biblioref">Durbin &amp; Watson, 1950</a>, <a href="#ref-durbin1951testing" role="doc-biblioref">1951</a>)</span> é um teste estatístico usado para detectar a presença de autocorrelação dos resíduos de um modelo de regressão e testa o pressuposto da homogeneidade de variância dos resíduos</strong>. Possui como hipótese nula que os “erros são serialmente não correlacionados.” A função <code>dwtest()</code> da biblioteca <code>{lmtest}</code> aceita como argumento um modelo de regressão logística (objeto <code>glm</code>).</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2927,7 +2927,7 @@ data:  modelo_simples
 DW = 2, p-value = 0.000002
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
-<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Durbin-Watson para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências que os resíduos são correlacionados entre si, violando o pressuposto da homogeneidade de variância dos resíduos.</p>
+<p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Durbin-Watson para o <code>modelo_simples</code> é menor que 0.05, indicando a rejeição da hipótese nula de não-correlação, violando o pressuposto da homogeneidade de variância dos resíduos.</p>
 <h4 id="multicolinearidade">Multicolinearidade</h4>
 <p><strong>Multicolinearidade é a ocorrência de alta correlação entre duas ou mais variáveis independentes e pode levar a resultados distorcidos</strong>. Em geral, a multicolinearidade pode fazer com que os intervalos de confiança se ampliem, ou até mudar o sinal de influência das variáveis independentes (de positivo para negativo, por exemplo). Portanto, as inferências estatísticas de uma regressão com multicolinearidade não são confiáveis. Pode ser testado usando o <strong>Fator de Inflação de Variância (<em>Variance Inflation Factor</em> – VIF)</strong>.</p>
 <p>Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 <span class="citation" data-cites="hair1998multivariate">(<a href="#ref-hair1998multivariate" role="doc-biblioref">Hair et al., 1998</a>)</span>. Para calcular os VIFs de uma modelo de regressão logística <code>glm</code> use a função <code>vif()</code> da biblioteca <code>{car}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span>.</p>
