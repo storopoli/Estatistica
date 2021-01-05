@@ -281,6 +281,15 @@ ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) +
 ]
 
 ---
+# Pressupostos vs Realidade
+
+```{r assumptions-vs-reality, out.width='100%'}
+knitr::include_graphics("images/assumptions-vs-reality.jpeg")
+```
+
+.footnote[Figura de https://www.khstats.com/blog/tmle/tutorial/]
+
+---
 class: middle
 # Medidas de Centralidade
 
