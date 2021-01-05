@@ -49,7 +49,7 @@ $$\operatorname{Logística}(x) = \frac{1}{1 + e^{(-x)}}$$
 
 **A função logística é uma ~~gambiarra~~ transformação que pega *qualquer* valor entre menos infinito $-\infty$ e mais infinito $+\infty$ e transforma em um valor entre 0 e 1**. Veja na figura \@ref(fig:logit) uma representação gráfica da função logística.
 
-```{r logit, warning=FALSE, message=FALSE}
+```{r logit, warning=FALSE, message=FALSE, fig.cap='Função Logística'}
 library(dplyr)
 library(ggplot2)
 tibble(
@@ -107,7 +107,7 @@ sim2 %>% ggplot(aes(idade, comprado)) +
   scale_y_continuous(breaks = c(0,1))
 ```
 
-Acreditamos que com essas duas simulações o argumento e favor de regressão logística tenha sido aceito incondicionalmente.
+Acreditamos que com essas duas simulações o argumento a favor de regressão logística tenha sido aceito incondicionalmente.
 
 ## Pressupostos da Regressão Logística
 

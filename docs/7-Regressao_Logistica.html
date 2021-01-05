@@ -2467,7 +2467,7 @@ Conteúdos Auxiliares
 <h2 id="função-logística">Função Logística</h2>
 <p>Uma <strong>regressão logística se comporta exatamente como um modelo linear</strong>: faz uma predição simplesmente computando uma soma ponderada das variáveis independentes, mais uma constante. Porém ao invés de retornar um valor contínuo, como a regressão linear, retorna a função logística desse valor.</p>
 <p><span class="math display">\[\operatorname{Logística}(x) = \frac{1}{1 + e^{(-x)}}\]</span></p>
-<p><strong>A função logística é uma <del>gambiarra</del> transformação que pega <em>qualquer</em> valor entre menos infinito <span class="math inline">\(-\infty\)</span> e mais infinito <span class="math inline">\(+\infty\)</span> e transforma em um valor entre 0 e 1</strong>. Veja na figura <a href="#fig:logit"><strong>??</strong></a> uma representação gráfica da função logística.</p>
+<p><strong>A função logística é uma <del>gambiarra</del> transformação que pega <em>qualquer</em> valor entre menos infinito <span class="math inline">\(-\infty\)</span> e mais infinito <span class="math inline">\(+\infty\)</span> e transforma em um valor entre 0 e 1</strong>. Veja na figura <a href="#fig:logit">1</a> uma representação gráfica da função logística.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -2479,19 +2479,24 @@ Conteúdos Auxiliares
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="7-Regressao_Logistica_files/figure-html5/logit-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span id="fig:logit"></span>
+<img src="7-Regressao_Logistica_files/figure-html5/logit-1.png" alt="Função Logística" width="70%" />
+<p class="caption">
+Figure 1: Função Logística
+</p>
+</div>
 </div>
 <p>A função logística foi desenvolvida como modelo de crescimento populacional e denominada “logística” por Pierre François Verhulst nas décadas de 1830 e 1840, sob a orientação de Adolphe Quetelet. Regressão Logística como a empregamos hoje passou por vários refinamentos até <span class="citation" data-cites="cox1958regression"><a href="#ref-cox1958regression" role="doc-biblioref">Cox</a> (<a href="#ref-cox1958regression" role="doc-biblioref">1958</a>)</span> que é mais ou menos a versão atual que usamos.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:fig-verhulst-quetelet"></span>
 <img src="7-Regressao_Logistica_files/figure-html5/fig-verhulst-quetelet-1.png" alt="Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox -- Figuras de https://www.wikipedia.org" width="20%" class=external />
 <p class="caption">
-Figure 1: Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox – Figuras de <a href="https://www.wikipedia.org" class="uri">https://www.wikipedia.org</a>
+Figure 2: Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e David Cox – Figuras de <a href="https://www.wikipedia.org" class="uri">https://www.wikipedia.org</a>
 </p>
 </div>
 </div>
 <h2 id="por-que-não-usar-regressão-linear">Por que não usar Regressão Linear?</h2>
-<p>Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos gerar um <em>dataset</em> com 30 observações com duas variáveis: uma variável contínua <code>idade</code> e uma variável binária <code>comprado</code>. Para ilustrar o primeiro cenário, imagine que somente as pessoas com menos de 20 anos compraram algum produto, <code>comprado = 1</code>, e as pessoas com 20 anos ou mais não compraram o produto, <code>comprado = 0</code>. Veja na figura <a href="#fig:sim1">2</a> o que acontece se usarmos uma regressão linear (em vermelho) ou uma regressão logística (em azul) neste cenário. Qual modelo explica melhor a relação entre os dados é evidente: regressão logística.</p>
+<p>Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos gerar um <em>dataset</em> com 30 observações com duas variáveis: uma variável contínua <code>idade</code> e uma variável binária <code>comprado</code>. Para ilustrar o primeiro cenário, imagine que somente as pessoas com menos de 20 anos compraram algum produto, <code>comprado = 1</code>, e as pessoas com 20 anos ou mais não compraram o produto, <code>comprado = 0</code>. Veja na figura <a href="#fig:sim1">3</a> o que acontece se usarmos uma regressão linear (em vermelho) ou uma regressão logística (em azul) neste cenário. Qual modelo explica melhor a relação entre os dados é evidente: regressão logística.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>sim1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
@@ -2511,11 +2516,11 @@ Figure 1: Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e
 <div class="figure" style="text-align: center"><span id="fig:sim1"></span>
 <img src="7-Regressao_Logistica_files/figure-html5/sim1-1.png" alt="Reta vs Curva Logística" width="70%" />
 <p class="caption">
-Figure 2: Reta vs Curva Logística
+Figure 3: Reta vs Curva Logística
 </p>
 </div>
 </div>
-<p>Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto <code>comprado = 0</code>. Nesse cenário, figura <a href="#fig:sim2">3</a>, a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.</p>
+<p>Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto <code>comprado = 0</code>. Nesse cenário, figura <a href="#fig:sim2">4</a>, a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>sim2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
@@ -2535,11 +2540,11 @@ Figure 2: Reta vs Curva Logística
 <div class="figure" style="text-align: center"><span id="fig:sim2"></span>
 <img src="7-Regressao_Logistica_files/figure-html5/sim2-1.png" alt="Reta vs Curva Logística -- Dados Desbalanceados" width="70%" />
 <p class="caption">
-Figure 3: Reta vs Curva Logística – Dados Desbalanceados
+Figure 4: Reta vs Curva Logística – Dados Desbalanceados
 </p>
 </div>
 </div>
-<p>Acreditamos que com essas duas simulações o argumento e favor de regressão logística tenha sido aceito incondicionalmente.</p>
+<p>Acreditamos que com essas duas simulações o argumento a favor de regressão logística tenha sido aceito incondicionalmente.</p>
 <h2 id="pressupostos-da-regressão-logística">Pressupostos da Regressão Logística</h2>
 <p>Para interpretar os resultados de uma regressão logística como uma quantidade estatística significativa que mede os relacionamentos do mundo real, precisamos contar com uma série de suposições clássicas. Os quatro principais pressupostos da regressão logística são:</p>
 <ol type="1">
@@ -2809,7 +2814,7 @@ $passengerClass
 <li><strong>Efeitos principais</strong>: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de <strong>aditivos</strong> pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.</li>
 <li><strong>Efeitos de interações</strong>: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação <strong>não são aditivos</strong> pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. <strong>Há uma interação entre as variáveis independentes</strong>.</li>
 </ul>
-<p>Veja na figura <a href="#fig:titanic-interaction">4</a> uma representação gráfica da interação entre <code>sex</code> e <code>passengerClass</code>. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de <code>passengerClass</code>.</p>
+<p>Veja na figura <a href="#fig:titanic-interaction">5</a> uma representação gráfica da interação entre <code>sex</code> e <code>passengerClass</code>. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de <code>passengerClass</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>TitanicSurvival</span> <span class='op'>%&gt;%</span> 
@@ -2826,7 +2831,7 @@ $passengerClass
 <div class="figure" style="text-align: center"><span id="fig:titanic-interaction"></span>
 <img src="7-Regressao_Logistica_files/figure-html5/titanic-interaction-1.png" alt="Interação entre `sex` e `passengerClass` do *dataset* `mtcars`" width="70%" />
 <p class="caption">
-Figure 4: Interação entre <code>sex</code> e <code>passengerClass</code> do <em>dataset</em> <code>mtcars</code>
+Figure 5: Interação entre <code>sex</code> e <code>passengerClass</code> do <em>dataset</em> <code>mtcars</code>
 </p>
 </div>
 </div>
@@ -2878,7 +2883,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 </div>
 <p>A interpretação de interações de regressão logística é a mesma da interpretação de interações da <a href="6-Regressao_Linear.html">regressão linear</a>. Por exemplo, a interpretação do coeficiente <code>sexmale:passengerClass3rd</code> é a seguinte: ser um passageiros da terceira classe <strong>modera positivamente</strong> a relação entre sexo masculino e <code>survived</code>. Note que o <span class="math inline">\(p\)</span>-valor de <code>sexmale:passengerClass3rd</code> possui significância estatística (<span class="math inline">\(p &lt; 0.001\)</span>).</p>
 <h3 id="visualização-de-regressão-logística">Visualização de Regressão Logística</h3>
-<p>Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca <code>{sjPlot}</code> <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke, 2020</a>)</span> e sua função <code>plot_model()</code>. Como padrão, a função <code>plot_model()</code> produz um gráfico de floresta (<em>forest plot</em>) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como <code>"std"</code> em <code>plot_model()</code>, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Já mostramos a função <code>plot_model()</code> no tutorial de <a href="6-Regressao_Linear.html">regressão linear</a> e ela funciona de maneira idêntica à modelos de regressão logística, com uma exceção que os <strong>coeficientes já são apresentados em formato OR</strong>. Veja um exemplo na figura <a href="#fig:sjPlot">5</a>: na parte superior temos o gráfico de floresta para coeficientes brutos e na parte inferior para coeficientes padrões.</p>
+<p>Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca <code>{sjPlot}</code> <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke, 2020</a>)</span> e sua função <code>plot_model()</code>. Como padrão, a função <code>plot_model()</code> produz um gráfico de floresta (<em>forest plot</em>) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como <code>"std"</code> em <code>plot_model()</code>, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Já mostramos a função <code>plot_model()</code> no tutorial de <a href="6-Regressao_Linear.html">regressão linear</a> e ela funciona de maneira idêntica à modelos de regressão logística, com uma exceção que os <strong>coeficientes já são apresentados em formato OR</strong>. Veja um exemplo na figura <a href="#fig:sjPlot">6</a>: na parte superior temos o gráfico de floresta para coeficientes brutos e na parte inferior para coeficientes padrões.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
@@ -2890,7 +2895,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:sjPlot"></span>
 <img src="7-Regressao_Logistica_files/figure-html5/sjPlot-1.png" alt="Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato *Odds Ratio* -- OR" width="70%" />
 <p class="caption">
-Figure 5: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato <em>Odds Ratio</em> – OR
+Figure 6: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em formato <em>Odds Ratio</em> – OR
 </p>
 </div>
 </div>
