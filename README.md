@@ -1,14 +1,12 @@
 # Estatística com R
 
-[![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
-
 Disciplina de Estatística da [UNINOVE](https://www.uninove.br)
 
-Disciplina do Mestrado e Doutorado da **UNINOVE**. O conteúdo todo consegue ser acessado num formato interativo [aqui](https://storopoli.github.io/Estatistica).
+Disciplina do Mestrado e Doutorado da **UNINOVE**. O conteúdo todo consegue ser acessado num formato interativo [aqui](https://storopoli.io/Estatistica).
 
 ## Professor
 
-* [Prof. Dr. José Eduardo Storopoli](https://storopoli.github.io) - [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - [josees@uni9.pro.br](mailto:josees@uni9.pro.br)
+* [Prof. Dr. José Eduardo Storopoli](https://storopoli.io) - [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) - [ORCID](https://orcid.org/0000-0002-0559-5176) - [josees@uni9.pro.br](mailto:josees@uni9.pro.br)
 * [Prof. Dr. Leonardo Vils - Currículo *Lattes*](http://lattes.cnpq.br/3969955798466284 ) - [ORCID](https://orcid.org/0000-0003-3059-1967) - [leonardo.vils@uni9.pro.br](mailto:leonardo.vils@uni9.pro.br)
 
 ## Como usar esse conteúdo?
@@ -27,7 +25,7 @@ Clique aqui: [![Binder](http://mybinder.org/badge_logo.svg)](http://mybinder.org
 
 ## Por que R?
 
-R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](https://storopoli.github.io/Estatistica/0-Por_que_R.html)
+R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto ecossistema de bibliotecas e é amplamente usado na ciência e em especial nas ciências aplicadas. Fizemos toda uma argumentação de porque você deve usar R [aqui](https://storopoli.io/Estatistica/0-Por_que_R.html)
 
 ## Aulas
 
@@ -88,10 +86,10 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 
 ## Como citar esse conteúdo
 
-Para citar o conteúdo use: 
+Para citar o conteúdo use:
 
 ```
-Storopoli & Vils (2021). Estatística com R. Disponível em: https://storopoli.github.io/Estatistica
+Storopoli & Vils (2021, Jan. 11). Estatística com R. Retrieved from https://storopoli.io/Estatistica
 ```
 
 Ou em formato BibTeX para LaTeX:
@@ -100,18 +98,7 @@ Ou em formato BibTeX para LaTeX:
 @misc{storopoli2021estatisticaR,
   author = {Storopoli, Jose and Vils, Leonardo},
   title = {Estatística com R},
-  url = {https://storopoli.github.io/Estatistica},
+  url = {https://storopoli.io/Estatistica},
   year = {2021}
 }
 ```
-
-## Licença
-
-Este obra está licenciado com uma Licença
-[Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional][cc-by-sa].
-
-[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
-
-[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
-[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
