@@ -15,5 +15,3 @@ LaTeX: XeLaTeX
 AutoAppendNewline: Yes
 
 BuildType: Website
-
-SpellingDictionary: pt_BR
