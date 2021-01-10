@@ -29,22 +29,23 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 
 ## Aulas
 
+Acesse o site dos tutoriais em [storopoli.io/Estatistica](https://storopoli.io/Estatistica).
+
 ### Conteúdos Principais
 
-1. Comandos Básicos de R
-2. $p$-Valores, Hipóteses Nula e Pressupostos
-3. Teste de Hipóteses e Teste $t$
-4. Análise de Variância (ANOVA)
-5. Correlações
-6. Regressão Linear
-7. Regressão Logística
-
+1. [Comandos Básicos de R](https://storopoli.io/Estatistica/1-Comandos_Basicos.html)
+2. [$p$-Valores, Hipóteses Nula e Pressupostos](https://storopoli.io/Estatistica/2-p-valores.html)
+3. [Teste de Hipóteses e Teste $t$](https://storopoli.io/Estatistica/3-Teste_t.html)
+4. [Análise de Variância (ANOVA)](https://storopoli.io/Estatistica/4-ANOVA.html)
+5. [Correlações](https://storopoli.io/Estatistica/5-Correlacoes.html)
+6. [Regressão Linear](https://storopoli.io/Estatistica/6-Regressao_Linear.html)
+7. [Regressão Logística](https://storopoli.io/Estatistica/7-Regressao_Logistica.html)
 ### Conteúdos Auxiliares
 
-* Quarteto de Anscombe
-* Dados Faltantes
-* Tamanho de Amostra e Tamanho de Efeito
-* Tabelas para Publicação
+* [Quarteto de Anscombe](https://storopoli.io/Estatistica/aux-Anscombe.html)
+* [Dados Faltantes](https://storopoli.io/Estatistica/aux-Dados_Faltantes.html)
+* [Tamanho de Amostra e Tamanho de Efeito](https://storopoli.io/Estatistica/aux-Tamanho_Amostra.html)
+* [Tabelas para Publicação](https://storopoli.io/Estatistica/aux-Tabelas_para_Publicacao.html)
 
 ## Referências
 
@@ -89,7 +90,7 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um vasto 
 Para citar o conteúdo use:
 
 ```
-Storopoli & Vils (2021, Jan. 11). Estatística com R. Retrieved from https://storopoli.io/Estatistica
+Storopoli & Vils (2021). Estatística com R. Retrieved from https://storopoli.io/Estatistica
 ```
 
 Ou em formato BibTeX para LaTeX:
@@ -102,3 +103,13 @@ Ou em formato BibTeX para LaTeX:
   year = {2021}
 }
 ```
+## Licença
+
+Este obra está licenciado com uma Licença
+[Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional][cc-by-sa].
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
