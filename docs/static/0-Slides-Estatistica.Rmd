@@ -4,7 +4,7 @@ subtitle: "O que é que eu estou fazendo aqui?"
 author: 
   - "Jose Storopoli"
   - "Leonardo Vils"
-  - '`r knitr::include_graphics("images/hex_UNINOVE.png", dpi = 400)`'
+  - '`r knitr::include_graphics(c("images/UNINOVE_CIS.png", "images/UNINOVE_PPGA.png"), dpi = 400)`'
 date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
@@ -26,7 +26,8 @@ library(magrittr)
 library(DiagrammeR)
 library(countdown)
 library(audio)
-options(htmltools.dir.version = FALSE)
+options(htmltools.dir.version = FALSE,
+        htmltools.preserve.raw = FALSE)
 knitr::opts_chunk$set(fig.retina = 4,
                       warning = FALSE,
                       message = FALSE,
