@@ -462,15 +462,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     top: 0;
   }
 
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -578,21 +571,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             var results = fuse.search(query, searchOptions);
             callback(results
               .map(function(result) { return result.item; })
+              .filter(function(item) { return !!item.description; })
             );
           },
           templates: {
             suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
               var html = `
                 <div class="search-item">
                   <h3>${suggestion.title}</h3>
                   <div class="search-item-description">
-                    ${suggestion.description || ''}
+                    ${suggestion.description}
                   </div>
                   <div class="search-item-preview">
-                    ${img}
+                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
                   </div>
                 </div>
               `;
@@ -615,10 +606,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   </script>
 
   <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
 
   /* Algolioa Autocomplete */
 
@@ -694,7 +681,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
     margin-block-start: 0;
     margin-block-end: 5px;
   }
@@ -922,11 +908,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     text-decoration: underline;
   }
 
-  d-article details {
-    grid-column: text;
-    margin-bottom: 0.8em;
-  }
-
   @media(min-width: 768px) {
 
   d-article pre,
@@ -1081,17 +1062,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
-  }
-
-  /* Citation hover box */
-
-  .tippy-box[data-theme~=light-border] {
-    background-color: rgba(250, 250, 250, 0.95);
-  }
-
-  .tippy-content > p {
-    margin-bottom: 0;
-    padding: 2px;
   }
 
 
@@ -1759,7 +1729,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      var elements = $(this).children().not('div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1874,20 +1844,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
-
-      // hoverable references
-      $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
-        window.tippy(this, {
-          allowHTML: true,
-          content: refHtml,
-          maxWidth: 500,
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start'
-        });
-      });
 
       // clear polling timer
       clearInterval(tid);
@@ -2228,7 +2184,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   d-article div.sourceCode code,
   d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
+  	font-family: var(--mono-font), var(--mono-default);
   }
 
 
@@ -2253,78 +2209,76 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
+  /* only text inside of <p> tags */
+  d-article > p {
     color: var(--body-color, rgba(0, 0, 0, 0.8));
     font-size: var(--body-size, 1.06rem);
   }
 
-
   /*-- CODE --*/
   d-article div.sourceCode code,
   d-article pre code {
-    font-size: var(--code-size, 14px);
+  	font-size: var(--code-size, 14px);
   }
 
   /*-- ASIDE --*/
   d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
+  	font-size: var(--aside-size, 12px);
+  	color: var(--aside-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- FIGURE CAPTIONS --*/
   figure .caption,
   figure figcaption,
   .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
+  	font-size: var(--fig-cap-size, 13px);
+  	color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- METADATA --*/
   d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
+  	font-size: var(--heading-size, 0.6rem);
+  	color: var(--heading-color, rgba(0, 0, 0, 0.5));
   }
 
   d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
+  	font-size: var(--body-size, 0.8rem);
+  	color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   d-byline a,
   d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
+  	color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   /*-- TABLE OF CONTENTS --*/
   .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
+  	font-size: var(--heading-size, 18px);
   }
 
   .d-contents nav a {
-    font-size: var(--contents-size, 13px);
+  	font-size: var(--contents-size, 13px);
   }
 
   /*-- APPENDIX --*/
   d-appendix h3 {
     font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
+  	color: var(--heading-color, rgba(0, 0, 0, 0.65));
   }
 
   d-appendix {
     font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
+  	color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
+  	color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   /*-- WEBSITE HEADER + FOOTER --*/
   .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
+  	font-size: var(--title-size, 18px);
+  	font-family: var(--navbar-font), var(--heading-default);
   }
 
   .distill-site-header a,
@@ -2332,44 +2286,35 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     font-family: var(--navbar-font), var(--heading-default);
   }
 
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
+  .distill-site-header a:hover {
+  	color: var(--hover-color, white);
   }
 
   .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
+  	font-size: var(--text-size, 15px);
+  	color: var(--text-color, rgba(255, 255, 255, 0.8));
+  	background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
+  	font-size: var(--text-size, 15px);
+  	color: var(--text-color, rgba(255, 255, 255, 0.8));
+  	background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer a:hover {
-    color: var(--hover-color, white);
+  	color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
-  <script type="text/javascript" cookie-consent="tracking">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
+  <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -2484,7 +2429,7 @@ Conteúdos Auxiliares
 <p>Este arquivo é um documento <a href="http://rmarkdown.rstudio.com">R Markdown</a>. Ele é uma proposta de prosa com código em R, além de ser o formato preferido nosso de comunicar nossas análises. Quando renderizamos o documento no formato desejado. Todo código que é inserido nele é executado e as saídas são incorporadas no documento final. Isto vale para tabelas e gráficos. Por exemplo, podemos pedir para o R imprimir algo com a função <code>print()</code> e o resultado será o código que foi executado e o seu resultado.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Você executou um código"</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"Você executou um código"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>[1] &quot;Você executou um código&quot;</code></pre>
@@ -2499,7 +2444,7 @@ O <a href="https://storopoli.github.io">site do primeiro autor</a> foi feito usa
 <p>Para ler um arquivo CSV (<code>.csv</code>) no R execute a função <code>read.csv()</code> para arquivos CSV formato americano (vírgula como separador e decimais como ponto) ou a função <code>read.csv2()</code> para arquivos CSV formato europeu/brasileiro (ponto-e-vírgula como separador e decimais como vírgula). Não esqueça de designar a leitura para uma variável com o designador <code>&lt;-</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv2</a></span><span class='op'>(</span><span class='st'>"datasets/mtcars.csv"</span>, row.names <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<pre><code><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv2</a></span><span class='op'>(</span><span class='st'>"datasets/mtcars.csv"</span>, row.names <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2515,7 +2460,7 @@ Valiant            18   6  225 105  2.8 3.5   20  1  0    3    1</code></pre>
 <p>Para ler um arquivo Excel (<code>.xls</code> ou <code>.xlsx</code>) no R é necessário importar um pacote chamado <code>readxl</code> que contem a função <code>read_excel</code>. Para importar um pacote no R executamos o comando <code>library()</code> com um argumento único sendo o nome do pacote. Caso não tenha o pacote instalado, deve instalar ele com o comando <code>install.packages()</code>. Não esqueça de colocar o nome do pacote entre aspas <code>"nome_do_pacote"</code> dentro do parênteses da função.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("readxl")</span>
+<pre><code><span class='co'># install.packages("readxl")</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>
 <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='st'>"datasets/mtcars.xlsx"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
@@ -2541,7 +2486,7 @@ Valiant            18   6  225 105  2.8 3.5   20  1  0    3    1</code></pre>
 <p>Exemplo: na figura <a href="#fig:plot">1</a> veja a relação entre <code>disp</code> (cilindrada) e <code>hp</code> (cavalos de potência). Ela é uma relação positiva. Quanto maior <code>disp</code> maior <code>hp</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:plot"></span>
@@ -2554,7 +2499,7 @@ Figure 1: <em>Pair Plot</em> do <em>dataset</em> <code>mtcars</code>
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
@@ -2576,19 +2521,19 @@ other attached packages:
 [1] readxl_1.3.1
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.6        highr_0.8         compiler_4.0.3   
+ [1] Rcpp_1.0.5        highr_0.8         compiler_4.0.3   
  [4] cellranger_1.1.0  pillar_1.4.7      tools_4.0.3      
  [7] digest_0.6.27     downlit_0.2.1     lubridate_1.7.9.2
-[10] jsonlite_1.7.2    evaluate_0.14     tibble_3.0.5     
+[10] jsonlite_1.7.2    evaluate_0.14     tibble_3.0.4     
 [13] lifecycle_0.2.0   lattice_0.20-41   pkgconfig_2.0.3  
 [16] rlang_0.4.10      Matrix_1.3-2      cli_2.2.0        
-[19] rstudioapi_0.13   distill_1.2       yaml_2.2.1       
+[19] rstudioapi_0.13   distill_1.1       yaml_2.2.1       
 [22] parallel_4.0.3    xfun_0.20         stringr_1.4.0    
 [25] xml2_1.3.2        knitr_1.30        generics_0.1.0   
 [28] vctrs_0.3.6       rprojroot_2.0.2   grid_4.0.3       
-[31] reticulate_1.18   glue_1.4.2        fansi_0.4.2      
+[31] reticulate_1.18   glue_1.4.2        fansi_0.4.1      
 [34] rmarkdown_2.6     bookdown_0.21     magrittr_2.0.1   
-[37] htmltools_0.5.1   ellipsis_0.3.1    assertthat_0.2.1 
+[37] htmltools_0.5.0   ellipsis_0.3.1    assertthat_0.2.1 
 [40] utf8_1.1.4        stringi_1.5.3     crayon_1.3.4     </code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

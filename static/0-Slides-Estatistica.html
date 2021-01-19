@@ -6,7 +6,7 @@
     <meta name="author" content="Jose Storopoli" />
     <meta name="author" content="Leonardo Vils" />
     <meta name="author" content="" />
-    <meta name="date" content="2021-01-19" />
+    <meta name="date" content="2021-01-05" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
     <script src="libs/tile-view/tile-view.js"></script>
@@ -30,22 +30,54 @@ class: center, middle, inverse, title-slide
 ## O que é que eu estou fazendo aqui?
 ### Jose Storopoli
 ### Leonardo Vils
-### <img src="images/UNINOVE_CIS.png" width="124" /><img src="images/UNINOVE_PPGA.png" width="124" />
-### 2021-01-19
+### <img src="images/hex_UNINOVE.png" width="124" />
+### 2021-01-05
 
 ---
-
-
-
-
-
-
 
 
 class: animated, fadeIn
 layout: true
 
 ---
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 55px;
+z-index: 0;
+background-image: url(https://raw.githubusercontent.com/storopoli/UNINOVE-xaringan-theme/master/resources/uninove.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.uninove.br'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
 # Por quê estou aqui?
 
 .pull-left[
@@ -108,20 +140,14 @@ class: Large
 
 .pull-left[
 ## Descritiva
-
-```{=html}
-&lt;div id="htmlwidget-9eceb20dc2a931752ae4" style="width:100%;height:504px;" class="grViz html-widget"&gt;&lt;/div&gt;
-&lt;script type="application/json" data-for="htmlwidget-9eceb20dc2a931752ae4"&gt;{"x":{"diagram":"\n digraph estatistica_descritiva {\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = LR]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Dados\nObservados\"]\n  node [shape = box,\n        fontname = Helvetica]\n  B [label = \"Média\"]; C [label = \"Mediana\"]; D [label = \"Moda\"]; E [label = \"Desvio\nPadrão\"]\n  A -&gt; {B C D E} [dir = forward,\n                    tailport = \"e\",\n                    headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}&lt;/script&gt;
-```
+<div id="htmlwidget-9eceb20dc2a931752ae4" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9eceb20dc2a931752ae4">{"x":{"diagram":"\n digraph estatistica_descritiva {\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = LR]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Dados\nObservados\"]\n  node [shape = box,\n        fontname = Helvetica]\n  B [label = \"Média\"]; C [label = \"Mediana\"]; D [label = \"Moda\"]; E [label = \"Desvio\nPadrão\"]\n  A -> {B C D E} [dir = forward,\n                    tailport = \"e\",\n                    headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 .pull-right[
 ## Inferencial
-
-```{=html}
-&lt;div id="htmlwidget-f30d7598595affc4f25a" style="width:100%;height:504px;" class="grViz html-widget"&gt;&lt;/div&gt;
-&lt;script type="application/json" data-for="htmlwidget-f30d7598595affc4f25a"&gt;{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -&gt; B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -&gt; A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}&lt;/script&gt;
-```
+<div id="htmlwidget-f30d7598595affc4f25a" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f30d7598595affc4f25a">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -233,11 +259,8 @@ Regressão Linear é uma técnica para estimar coeficientes de associação `\(\
 ---
 ### O que são modelos e por quê precisamos deles?
 
-
-```{=html}
-&lt;div id="htmlwidget-b85bf888dc62471906a9" style="width:100%;height:504px;" class="grViz html-widget"&gt;&lt;/div&gt;
-&lt;script type="application/json" data-for="htmlwidget-b85bf888dc62471906a9"&gt;{"x":{"diagram":"\n digraph model {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Densidade\nDemográfica\"]\n  AB[label = \"\", fixedsize = \"false\", width=0, height=0, shape=none]\n  B [label = \"Trânsito\n(km)\"]\n  C [label = \"mm de\nChuva\"]\n  A -&gt; AB [arrowhead = None, label = \"+\"]\n  AB -&gt; B \n  C -&gt; AB [xlabel = \"  +\"]\n {rank=same; A; AB; B}\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}&lt;/script&gt;
-```
+<div id="htmlwidget-b85bf888dc62471906a9" style="width:100%;height:504px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b85bf888dc62471906a9">{"x":{"diagram":"\n digraph model {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Densidade\nDemográfica\"]\n  AB[label = \"\", fixedsize = \"false\", width=0, height=0, shape=none]\n  B [label = \"Trânsito\n(km)\"]\n  C [label = \"mm de\nChuva\"]\n  A -> AB [arrowhead = None, label = \"+\"]\n  AB -> B \n  C -> AB [xlabel = \"  +\"]\n {rank=same; A; AB; B}\n} \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 .footnote[**Uma boa referência**: Smaldino, P. E. (2017). Models Are Stupid, and We Need More of Them. In Computational Social Psychology (Issue March, pp. 311–331). Routledge. https://doi.org/10.4324/9781315173726-14]
 
@@ -257,13 +280,9 @@ Acesse [http://bit.ly/s2estatistica](http://bit.ly/s2estatistica)
 * Linha de Pesquisa
 ]
 
-
-```{=html}
-&lt;div class="countdown" id="timer_600738e8" style="right:0;bottom:10%;" data-audio="true" data-warnwhen="10"&gt;
-&lt;code class="countdown-time"&gt;&lt;span class="countdown-digits minutes"&gt;03&lt;/span&gt;&lt;span class="countdown-digits colon"&gt;:&lt;/span&gt;&lt;span class="countdown-digits seconds"&gt;00&lt;/span&gt;&lt;/code&gt;
-&lt;/div&gt;
-```
-
+<div class="countdown" id="timer_5ff47f2a" style="right:0;bottom:10%;" data-audio="true" data-warnwhen="10">
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 
 .footnote[Se você cair em um grupo que não goste, culpe o script R e a seed do gerador de números aleatórios. Coisas ruins acontecem, você pode escolher se isso vai ser uma oportunidade de crescimento ou não...]
     </textarea>

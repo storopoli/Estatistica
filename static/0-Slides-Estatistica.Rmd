@@ -4,7 +4,7 @@ subtitle: "O que é que eu estou fazendo aqui?"
 author: 
   - "Jose Storopoli"
   - "Leonardo Vils"
-  - '`r knitr::include_graphics(c("images/UNINOVE_CIS.png", "images/UNINOVE_PPGA.png"), dpi = 400)`'
+  - '`r knitr::include_graphics("images/hex_UNINOVE.png", dpi = 400)`'
 date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
@@ -16,6 +16,10 @@ output:
       countIncrementalSlides: false
 ---
 
+class: animated, fadeIn
+layout: true
+
+---
 ```{r setup, include=FALSE}
 library(ggplot2)
 library(magrittr)
@@ -57,7 +61,7 @@ style_mono_accent(
 )
 ```
 
-```{r xaringan-logo, include=FALSE, echo=FALSE}
+```{r xaringan-logo, echo=FALSE}
 # xaringanExtra tile view press key "O"
 xaringanExtra::use_tile_view()
 
@@ -75,10 +79,6 @@ xaringanExtra::use_tachyons()
 xaringanExtra::use_webcam()
 ```
 
-class: animated, fadeIn
-layout: true
-
----
 # Por quê estou aqui?
 
 .pull-left[

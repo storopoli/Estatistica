@@ -479,15 +479,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     top: 0;
   }
 
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -595,21 +588,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             var results = fuse.search(query, searchOptions);
             callback(results
               .map(function(result) { return result.item; })
+              .filter(function(item) { return !!item.description; })
             );
           },
           templates: {
             suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
               var html = `
                 <div class="search-item">
                   <h3>${suggestion.title}</h3>
                   <div class="search-item-description">
-                    ${suggestion.description || ''}
+                    ${suggestion.description}
                   </div>
                   <div class="search-item-preview">
-                    ${img}
+                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
                   </div>
                 </div>
               `;
@@ -632,10 +623,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   </script>
 
   <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
 
   /* Algolioa Autocomplete */
 
@@ -711,7 +698,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
     margin-block-start: 0;
     margin-block-end: 5px;
   }
@@ -939,11 +925,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     text-decoration: underline;
   }
 
-  d-article details {
-    grid-column: text;
-    margin-bottom: 0.8em;
-  }
-
   @media(min-width: 768px) {
 
   d-article pre,
@@ -1098,17 +1079,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
-  }
-
-  /* Citation hover box */
-
-  .tippy-box[data-theme~=light-border] {
-    background-color: rgba(250, 250, 250, 0.95);
-  }
-
-  .tippy-content > p {
-    margin-bottom: 0;
-    padding: 2px;
   }
 
 
@@ -1776,7 +1746,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      var elements = $(this).children().not('div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1891,20 +1861,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
-
-      // hoverable references
-      $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
-        window.tippy(this, {
-          allowHTML: true,
-          content: refHtml,
-          maxWidth: 500,
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start'
-        });
-      });
 
       // clear polling timer
       clearInterval(tid);
@@ -2245,7 +2201,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   d-article div.sourceCode code,
   d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
+  	font-family: var(--mono-font), var(--mono-default);
   }
 
 
@@ -2270,78 +2226,76 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
+  /* only text inside of <p> tags */
+  d-article > p {
     color: var(--body-color, rgba(0, 0, 0, 0.8));
     font-size: var(--body-size, 1.06rem);
   }
 
-
   /*-- CODE --*/
   d-article div.sourceCode code,
   d-article pre code {
-    font-size: var(--code-size, 14px);
+  	font-size: var(--code-size, 14px);
   }
 
   /*-- ASIDE --*/
   d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
+  	font-size: var(--aside-size, 12px);
+  	color: var(--aside-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- FIGURE CAPTIONS --*/
   figure .caption,
   figure figcaption,
   .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
+  	font-size: var(--fig-cap-size, 13px);
+  	color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- METADATA --*/
   d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
+  	font-size: var(--heading-size, 0.6rem);
+  	color: var(--heading-color, rgba(0, 0, 0, 0.5));
   }
 
   d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
+  	font-size: var(--body-size, 0.8rem);
+  	color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   d-byline a,
   d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
+  	color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   /*-- TABLE OF CONTENTS --*/
   .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
+  	font-size: var(--heading-size, 18px);
   }
 
   .d-contents nav a {
-    font-size: var(--contents-size, 13px);
+  	font-size: var(--contents-size, 13px);
   }
 
   /*-- APPENDIX --*/
   d-appendix h3 {
     font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
+  	color: var(--heading-color, rgba(0, 0, 0, 0.65));
   }
 
   d-appendix {
     font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
+  	color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
+  	color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   /*-- WEBSITE HEADER + FOOTER --*/
   .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
+  	font-size: var(--title-size, 18px);
+  	font-family: var(--navbar-font), var(--heading-default);
   }
 
   .distill-site-header a,
@@ -2349,44 +2303,35 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     font-family: var(--navbar-font), var(--heading-default);
   }
 
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
+  .distill-site-header a:hover {
+  	color: var(--hover-color, white);
   }
 
   .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
+  	font-size: var(--text-size, 15px);
+  	color: var(--text-color, rgba(255, 255, 255, 0.8));
+  	background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
+  	font-size: var(--text-size, 15px);
+  	color: var(--text-color, rgba(255, 255, 255, 0.8));
+  	background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer a:hover {
-    color: var(--hover-color, white);
+  	color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
-  <script type="text/javascript" cookie-consent="tracking">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
+  <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -2525,7 +2470,7 @@ Conteúdos Auxiliares
 <p><strong>A função logística é uma <del>gambiarra</del> transformação que pega <em>qualquer</em> valor entre menos infinito <span class="math inline">\(-\infty\)</span> e mais infinito <span class="math inline">\(+\infty\)</span> e transforma em um valor entre 0 e 1</strong>. Veja na figura <a href="#fig:logit">1</a> uma representação gráfica da função logística.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>10</span>, <span class='fl'>10</span>, length.out <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>,
@@ -2554,7 +2499,7 @@ Figure 2: Da esquerda para direita: Pierre François Verhuls, Adolphe Quetelet e
 <p>Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos gerar um <em>dataset</em> com 30 observações com duas variáveis: uma variável contínua <code>idade</code> e uma variável binária <code>comprado</code>. Para ilustrar o primeiro cenário, imagine que somente as pessoas com menos de 20 anos compraram algum produto, <code>comprado = 1</code>, e as pessoas com 20 anos ou mais não compraram o produto, <code>comprado = 0</code>. Veja na figura <a href="#fig:sim1">3</a> o que acontece se usarmos uma regressão linear (em vermelho) ou uma regressão logística (em azul) neste cenário. Qual modelo explica melhor a relação entre os dados é evidente: regressão logística.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+<pre><code><span class='va'>sim1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   idade <span class='op'>=</span> <span class='fl'>10</span><span class='op'>:</span><span class='fl'>29</span>,
   comprado <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
@@ -2578,7 +2523,7 @@ Figure 3: Reta vs Curva Logística
 <p>Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto <code>comprado = 0</code>. Nesse cenário, figura <a href="#fig:sim2">4</a>, a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+<pre><code><span class='va'>sim2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   idade <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>:</span><span class='fl'>29</span>, <span class='fl'>60</span><span class='op'>:</span><span class='fl'>69</span><span class='op'>)</span>,
   comprado <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
@@ -2620,7 +2565,7 @@ Figure 4: Reta vs Curva Logística – Dados Desbalanceados
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>carData</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"TitanicSurvival"</span>, package <span class='op'>=</span> <span class='st'>"carData"</span><span class='op'>)</span>
 <span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>TitanicSurvival</span><span class='op'>)</span>
@@ -2749,7 +2694,7 @@ Figure 4: Reta vs Curva Logística – Dados Desbalanceados
 <p>Começaremos com um exemplo simples de regressão logística do <code>TitanicSurvival</code> usando como variável independente <code>survived</code> e variáveis independentes <code>age</code> e <code>sex</code>. Podemos inspecionar o resultado de uma regressão logística com a função <code>summary()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_simples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span>,
+<pre><code><span class='va'>modelo_simples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span>,
                       data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
@@ -2785,7 +2730,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>Razões de chance funcionam muito similar com as chances de uma aposta. Quando a chance é justa tanto para a variável dependente ser 0 quanto 1 ela é expressada como uma chance 1 para 1 (1:1) – <span class="math inline">\(\frac{1}{1}\)</span>. Qualquer valor abaixo de 0 faz com que a chance da variável dependente ser 0 aumentar, e qualquer valor acima de 1 a chance da variável dependente ser 1 aumenta. Para transformar os coeficientes de um modelo de regressão logística em OR, usamos a função <code>exp()</code> base do R nos coeficientes <code>coef()</code> do modelo.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>(Intercept)         age     sexmale 
@@ -2799,7 +2744,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>Para produzir intervalos de confiança precisamos usar a função <code>confint()</code> do pacote MASS <span class="citation" data-cites="MASS">(<a href="#ref-MASS" role="doc-biblioref">Venables &amp; Ripley, 2002</a>)</span>, uma vez que a função <code>confint()</code> base do R não dá suporte à OR. Como padrão, <code>MASS::confint()</code>, assim como <code>confint()</code> base do R, produz intervalos de confiança 95%.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>             2.5 %  97.5 %
@@ -2812,7 +2757,7 @@ sexmale     -2.763 -2.1661</code></pre>
 <p>Vamos estender o nosso modelo simples adicionando a variável <code>passengerClass</code>. Note que, no <em>dataset</em> <code>TitanicSurvival</code>, <code>passengerClass</code> já está convertida para qualitativa (<code>factor</code>), não sendo necessário usar a função padrão do R <code>as.factor()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_quali</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>passengerClass</span>,
+<pre><code><span class='va'>modelo_quali</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span> <span class='op'>+</span> <span class='va'>passengerClass</span>,
                     data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 </code></pre>
@@ -2854,7 +2799,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>Quando uma variável é convertida para fator, o R rotula os diferentes níveis (<em>levels</em>) conforme ordem alfabética. Portanto, no nosso exemplo, <code>passengerClass</code> possui 3 níveis: <code>1st</code>, <code>2nd</code> e <code>3rd</code> (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão logística que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso <code>1st</code>) como referência. Portanto a interpretações de <code>passengerClass</code> devem se atentar que a referência é <code>passengerClass = 1st</code>. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto <code>glm</code> acessando seu atributo <code>xlevels</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_quali</span><span class='op'>$</span><span class='va'>xlevels</span>
+<pre><code><span class='va'>modelo_quali</span><span class='op'>$</span><span class='va'>xlevels</span>
 </code></pre>
 </div>
 <pre><code>$sex
@@ -2872,7 +2817,7 @@ $passengerClass
 <p>Veja na figura <a href="#fig:titanic-interaction">5</a> uma representação gráfica da interação entre <code>sex</code> e <code>passengerClass</code>. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de <code>passengerClass</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>TitanicSurvival</span> <span class='op'>%&gt;%</span> 
+<pre><code><span class='va'>TitanicSurvival</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>survived <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>==</span> <span class='st'>"yes"</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>,
          sex <span class='op'>=</span> <span class='fu'>forcats</span><span class='fu'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/fct_rev.html'>fct_rev</a></span><span class='op'>(</span><span class='va'>sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>sex</span>, <span class='va'>passengerClass</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -2893,7 +2838,7 @@ Figure 5: Interação entre <code>sex</code> e <code>passengerClass</code> do <e
 <p>Para incluirmos efeitos de interações entre duas variáveis independentes em regressões logísticas, incluímos na fórmula entre as duas variáveis um sinal de multiplicação<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <code>*</code> indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_interacao</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span><span class='op'>*</span><span class='va'>passengerClass</span>,
+<pre><code><span class='va'>modelo_interacao</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>survived</span> <span class='op'>~</span> <span class='va'>age</span> <span class='op'>+</span> <span class='va'>sex</span><span class='op'>*</span><span class='va'>passengerClass</span>,
                         data <span class='op'>=</span> <span class='va'>TitanicSurvival</span>, family <span class='op'>=</span> <span class='va'>binomial</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_interacao</span><span class='op'>)</span>
 </code></pre>
@@ -2941,7 +2886,7 @@ Number of Fisher Scoring iterations: 5</code></pre>
 <p>Uma vez que as variáveis dos modelos de regressão começam a ficar numerosas, as visualizações podem ajudar. Em especial, gostamos bastante da biblioteca <code>{sjPlot}</code> <span class="citation" data-cites="sjPlot">(<a href="#ref-sjPlot" role="doc-biblioref">Lüdecke, 2020</a>)</span> e sua função <code>plot_model()</code>. Como padrão, a função <code>plot_model()</code> produz um gráfico de floresta (<em>forest plot</em>) e também conhecido como blobograma no qual podemos visualizar as variáveis no eixo vertical e o tamanho do efeito, os coeficientes, no eixo horizontal. Além disso, coeficientes positivos são representados com a cor azul e negativos em vermelho; e os intervalos de confiança 95% como uma linha ao redor do valor médio do coeficiente (ponto). Ao especificarmos o tipo como <code>"std"</code> em <code>plot_model()</code>, o gráfico de floresta produzido utiliza os valores padronizados em desvios padrões. Já mostramos a função <code>plot_model()</code> no tutorial de <a href="6-Regressao_Linear.html">regressão linear</a> e ela funciona de maneira idêntica à modelos de regressão logística, com uma exceção que os <strong>coeficientes já são apresentados em formato OR</strong>. Veja um exemplo na figura <a href="#fig:sjPlot">6</a>: na parte superior temos o gráfico de floresta para coeficientes brutos e na parte inferior para coeficientes padrões.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
 <span class='va'>forest_raw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 <span class='va'>forest_std</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span>, type <span class='op'>=</span> <span class='st'>"std"</span><span class='op'>)</span>
 <span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'><a href='https://patchwork.data-imaginist.com/reference/plot_layout.html'>plot_layout</a></span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>2</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
@@ -2962,7 +2907,7 @@ Figure 6: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em 
 <p>O <strong>teste de Breusch-Pagan<span class="citation" data-cites="breusch1979simple cook1983diagnostics">(<a href="#ref-breusch1979simple" role="doc-biblioref">Breusch &amp; Pagan, 1979</a>; <a href="#ref-cook1983diagnostics" role="doc-biblioref">Cook &amp; Weisberg, 1983</a>)</span> usado para testar o pressuposto da independência dos resíduos</strong> possui como hipótese nula que “as variâncias de erro são todas iguais” e como hipótese alternativa que “as variâncias de erro são uma função multiplicativa de uma ou mais variáveis.” Recomendamos que usem os resíduos “Studentizados” (quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão – uma forma de estatística <span class="math inline">\(t\)</span> de Student, com a estimativa de erro variando entre os pontos) no teste de Breusch-Pagan <span class="citation" data-cites="koenker1981note">(<a href="#ref-koenker1981note" role="doc-biblioref">Koenker, 1981</a>)</span>. A função <code>bptest()</code> da biblioteca <code>{lmtest}</code> aceita como argumento um modelo de regressão logística (objeto <code>glm</code>) e já possui como padrão resíduos “Studentizados.” Caso queira usar resíduos brutos indique o argumento <code>studentize</code> como <code>FALSE</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>lmtest</span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>lmtest</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/bptest.html'>bptest</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2977,7 +2922,7 @@ BP = 20, df = 2, p-value = 0.00005</code></pre>
 <p>O <strong>teste de Durbin-Watson <span class="citation" data-cites="durbin1950testing durbin1951testing">(<a href="#ref-durbin1950testing" role="doc-biblioref">Durbin &amp; Watson, 1950</a>, <a href="#ref-durbin1951testing" role="doc-biblioref">1951</a>)</span> é um teste estatístico usado para detectar a presença de autocorrelação dos resíduos de um modelo de regressão e testa o pressuposto da homogeneidade de variância dos resíduos</strong>. Possui como hipótese nula que os “erros são serialmente não correlacionados.” A função <code>dwtest()</code> da biblioteca <code>{lmtest}</code> aceita como argumento um modelo de regressão logística (objeto <code>glm</code>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/dwtest.html'>dwtest</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/dwtest.html'>dwtest</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2993,7 +2938,7 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>Os VIFs medem o quanto da variância de cada coeficiente de regressão do modelo estatístico se encontra inflado em relação à situação em que as variáveis independentes não estão correlacionadas. Valores aceitáveis de VIF são menores que 10 <span class="citation" data-cites="hair1998multivariate">(<a href="#ref-hair1998multivariate" role="doc-biblioref">Hair et al., 1998</a>)</span>. Para calcular os VIFs de uma modelo de regressão logística <code>glm</code> use a função <code>vif()</code> da biblioteca <code>{car}</code> <span class="citation" data-cites="car">(<a href="#ref-car" role="doc-biblioref">Fox &amp; Weisberg, 2019</a>)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3009,7 +2954,7 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <p>A função <code>PseudoR2()</code> da biblioteca <code>{DescTools}</code> <span class="citation" data-cites="desctools">(<a href="#ref-desctools" role="doc-biblioref">Andri et mult. al., 2020</a>)</span> possui todas as principais técnicas de cálculo de pseudo-<span class="math inline">\(R^2\)</span> podendo ser especificadas com o argumento <code>which</code><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://andrisignorell.github.io/DescTools/reference/PseudoR2.html'>PseudoR2</a></span><span class='op'>(</span><span class='va'>modelo_simples</span>, which <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"McFadden"</span>, <span class='st'>"McFaddenAdj"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -3050,7 +2995,7 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
@@ -3070,54 +3015,53 @@ attached base packages:
 
 other attached packages:
  [1] gt_0.2.2             lm.beta_1.5-1        lmtest_0.9-38       
- [4] zoo_1.8-8            ggfortify_0.4.11     sjPlot_2.8.7        
+ [4] zoo_1.8-8            ggfortify_0.4.11     sjPlot_2.8.6        
  [7] broom_0.7.3          palmerpenguins_0.1.0 magrittr_2.0.1      
 [10] mnormt_2.0.2         cowplot_1.1.1        tidyr_1.1.2         
 [13] DescTools_0.99.39    skimr_2.1.2          ggpubr_0.4.0        
 [16] car_3.0-10           carData_3.0-4        patchwork_1.1.1     
-[19] dplyr_1.0.3          ggplot2_3.3.3        DiagrammeR_1.0.6.1  
+[19] dplyr_1.0.2          ggplot2_3.3.3        DiagrammeR_1.0.6.1  
 [22] readxl_1.3.1        
 
 loaded via a namespace (and not attached):
   [1] backports_1.2.1    repr_1.1.0         splines_4.0.3     
-  [4] TH.data_1.0-10     digest_0.6.27      htmltools_0.5.1   
-  [7] magick_2.6.0       fansi_0.4.2        checkmate_2.0.0   
+  [4] TH.data_1.0-10     digest_0.6.27      htmltools_0.5.0   
+  [7] magick_2.5.2       fansi_0.4.1        checkmate_2.0.0   
  [10] openxlsx_4.2.3     modelr_0.1.8       sandwich_3.0-0    
- [13] colorspace_2.0-0   rappdirs_0.3.1     haven_2.3.1       
- [16] xfun_0.20          crayon_1.3.4       jsonlite_1.7.2    
- [19] Exact_2.1          lme4_1.1-26        survival_3.2-7    
- [22] glue_1.4.2         gtable_0.3.0       emmeans_1.5.3     
- [25] sjstats_0.18.1     sjmisc_2.8.6       abind_1.4-5       
- [28] scales_1.1.1       mvtnorm_1.1-1      DBI_1.1.1         
- [31] rstatix_0.6.0      ggeffects_1.0.1    Rcpp_1.0.6        
- [34] xtable_1.8-4       performance_0.6.1  tmvnsim_1.0-2     
- [37] reticulate_1.18    foreign_0.8-81     htmlwidgets_1.5.3 
- [40] RColorBrewer_1.1-2 ellipsis_0.3.1     pkgconfig_2.0.3   
- [43] farver_2.0.3       sass_0.3.0         utf8_1.1.4        
- [46] tidyselect_1.1.0   labeling_0.4.2     rlang_0.4.10      
- [49] effectsize_0.4.3   munsell_0.5.0      cellranger_1.1.0  
- [52] tools_4.0.3        visNetwork_2.0.9   cli_2.2.0         
- [55] generics_0.1.0     sjlabelled_1.1.7   evaluate_0.14     
- [58] stringr_1.4.0      yaml_2.2.1         knitr_1.30        
- [61] zip_2.1.1          purrr_0.3.4        rootSolve_1.8.2.1 
- [64] nlme_3.1-151       xml2_1.3.2         compiler_4.0.3    
- [67] rstudioapi_0.13    curl_4.3           e1071_1.7-4       
- [70] ggsignif_0.6.0     tibble_3.0.5       statmod_1.4.35    
- [73] stringi_1.5.3      highr_0.8          parameters_0.11.0 
- [76] forcats_0.5.0      lattice_0.20-41    Matrix_1.3-2      
- [79] commonmark_1.7     nloptr_1.2.2.2     ggsci_2.9         
- [82] vctrs_0.3.6        pillar_1.4.7       lifecycle_0.2.0   
- [85] estimability_1.3   data.table_1.13.6  insight_0.12.0    
- [88] lmom_2.8           R6_2.5.0           bookdown_0.21     
- [91] gridExtra_2.3      rio_0.5.16         gld_2.6.2         
- [94] codetools_0.2-18   distill_1.2        boot_1.3-25       
- [97] MASS_7.3-53        assertthat_0.2.1   rprojroot_2.0.2   
-[100] withr_2.4.0        multcomp_1.4-15    mgcv_1.8-33       
-[103] bayestestR_0.8.0   expm_0.999-6       parallel_4.0.3    
-[106] hms_1.0.0          grid_4.0.3         coda_0.19-4       
-[109] class_7.3-17       minqa_1.2.4        rmarkdown_2.6     
-[112] snakecase_0.11.0   downlit_0.2.1      lubridate_1.7.9.2 
-[115] base64enc_0.1-3   </code></pre>
+ [13] colorspace_2.0-0   haven_2.3.1        xfun_0.20         
+ [16] crayon_1.3.4       jsonlite_1.7.2     Exact_2.1         
+ [19] lme4_1.1-26        survival_3.2-7     glue_1.4.2        
+ [22] gtable_0.3.0       emmeans_1.5.3      sjstats_0.18.0    
+ [25] sjmisc_2.8.6       abind_1.4-5        scales_1.1.1      
+ [28] mvtnorm_1.1-1      rstatix_0.6.0      ggeffects_1.0.1   
+ [31] Rcpp_1.0.5         xtable_1.8-4       performance_0.6.1 
+ [34] tmvnsim_1.0-2      reticulate_1.18    foreign_0.8-81    
+ [37] htmlwidgets_1.5.3  RColorBrewer_1.1-2 ellipsis_0.3.1    
+ [40] pkgconfig_2.0.3    farver_2.0.3       sass_0.2.0        
+ [43] utf8_1.1.4         tidyselect_1.1.0   labeling_0.4.2    
+ [46] rlang_0.4.10       effectsize_0.4.1   munsell_0.5.0     
+ [49] cellranger_1.1.0   tools_4.0.3        visNetwork_2.0.9  
+ [52] cli_2.2.0          generics_0.1.0     sjlabelled_1.1.7  
+ [55] evaluate_0.14      stringr_1.4.0      yaml_2.2.1        
+ [58] knitr_1.30         zip_2.1.1          purrr_0.3.4       
+ [61] rootSolve_1.8.2.1  nlme_3.1-151       xml2_1.3.2        
+ [64] compiler_4.0.3     rstudioapi_0.13    curl_4.3          
+ [67] e1071_1.7-4        ggsignif_0.6.0     tibble_3.0.4      
+ [70] statmod_1.4.35     stringi_1.5.3      highr_0.8         
+ [73] parameters_0.10.1  forcats_0.5.0      lattice_0.20-41   
+ [76] Matrix_1.3-2       commonmark_1.7     nloptr_1.2.2.2    
+ [79] ggsci_2.9          vctrs_0.3.6        pillar_1.4.7      
+ [82] lifecycle_0.2.0    estimability_1.3   data.table_1.13.6 
+ [85] insight_0.11.1     lmom_2.8           R6_2.5.0          
+ [88] bookdown_0.21      gridExtra_2.3      rio_0.5.16        
+ [91] gld_2.6.2          codetools_0.2-18   distill_1.1       
+ [94] boot_1.3-25        MASS_7.3-53        assertthat_0.2.1  
+ [97] rprojroot_2.0.2    withr_2.3.0        multcomp_1.4-15   
+[100] mgcv_1.8-33        bayestestR_0.8.0   expm_0.999-5      
+[103] parallel_4.0.3     hms_0.5.3          grid_4.0.3        
+[106] coda_0.19-4        class_7.3-17       minqa_1.2.4       
+[109] rmarkdown_2.6      snakecase_0.11.0   downlit_0.2.1     
+[112] lubridate_1.7.9.2  base64enc_0.1-3   </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
