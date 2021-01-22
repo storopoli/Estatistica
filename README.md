@@ -17,7 +17,7 @@ Este conteúdo possui *licença livre para uso*. Caso queira utilizar o conteúd
 
 1. Clone o repositório do GitHub: `git clone https://github.com/storopoli/Estatistica.git`
 2. Acesse o diretório: `cd Estatistica`
-3. Instale os pacotes necessários: `Rscript install.R`
+3. Instale os pacotes necessários: `Rscript .binder/install.R`
 
 ### Para usar na **RStudio** na nuvem gratuito
 

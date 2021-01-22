@@ -86,7 +86,7 @@ Para configurar um ambiente local:
 
 1. Clone o repositório do GitHub: `git clone https://github.com/storopoli/Estatistica.git`
 2. Acesse o diretório: `cd Estatistica`
-3. Instale os pacotes necessários: `Rscript install.R`
+3. Instale os pacotes necessários: `Rscript .binder/install.R`
 
 ## [Slides de Apresentação da Disciplina](static/0-Slides-Estatistica.html)[^2]
 

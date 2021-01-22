@@ -25,7 +25,6 @@ library(ggplot2)
 library(magrittr)
 library(DiagrammeR)
 library(countdown)
-library(audio)
 options(htmltools.dir.version = FALSE,
         htmltools.preserve.raw = FALSE)
 knitr::opts_chunk$set(fig.retina = 4,
@@ -139,6 +138,23 @@ class: Large
 * **_Opensource_**
   * `r icon::fontawesome$regular$frown` SPSS, Stata ou Excel
   * `r icon::fontawesome$regular$smile` JASP, Jamovi, R
+  
+---
+# Open Science
+
+.pull-left[
+```{r osf_example.png, out.width = '85%'}
+knitr::include_graphics("images/osf_example.png")
+```
+]
+
+.pull-right[
+```{r osf_logo.jpeg, out.width = '100%'}
+knitr::include_graphics("images/osf_logo.jpeg")
+```
+]
+
+.footnote[Storopoli, J., da Silva Neto, W. L. B., & Mesch, G. S. (2020). Confidence in social institutions, perceived vulnerability and the adoption of recommended protective behaviors in Brazil during the COVID-19 pandemic. Social Science & Medicine, 265, 113477. https://doi.org/10.1016/j.socscimed.2020.113477]
 
 ---
 # O que é estatística?
@@ -406,6 +422,6 @@ Acesse [http://bit.ly/s2estatistica](http://bit.ly/s2estatistica)
 * Linha de Pesquisa
 ]
 
-`r countdown(minutes = 3, seconds = 0, warn_when = 10, play_sound = TRUE, bottom = "10%")`
+`r countdown(minutes = 2, seconds = 0, warn_when = 10, play_sound = TRUE, bottom = "10%")`
 
 .footnote[Se você cair em um grupo que não goste, culpe o script R e a seed do gerador de números aleatórios. Coisas ruins acontecem, você pode escolher se isso vai ser uma oportunidade de crescimento ou não...]
