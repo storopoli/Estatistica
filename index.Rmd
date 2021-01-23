@@ -56,6 +56,7 @@ Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na forma
 * [Quarteto de Anscombe](aux-Anscombe.html)
 * [Dados Faltantes](aux-Dados_Faltantes.html)
 * [Tamanho de Amostra e Tamanho de Efeito](aux-Tamanho_Amostra.html)
+* [Likert e Escalas Ordinais](aux-Likert.html)
 * [Tabelas para Publicação](aux-Tabelas_para_Publicacao.html)
 
 ## O que esta disciplina **não** é

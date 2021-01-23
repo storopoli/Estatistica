@@ -45,6 +45,7 @@ Acesse o site dos tutoriais em [storopoli.io/Estatistica](https://storopoli.io/E
 * [Quarteto de Anscombe](https://storopoli.io/Estatistica/aux-Anscombe.html)
 * [Dados Faltantes](https://storopoli.io/Estatistica/aux-Dados_Faltantes.html)
 * [Tamanho de Amostra e Tamanho de Efeito](https://storopoli.io/Estatistica/aux-Tamanho_Amostra.html)
+* [Likert e Escalas Ordinais](https://storopoli.io/Estatistica/aux-Likert.html)
 * [Tabelas para Publicação](https://storopoli.io/Estatistica/aux-Tabelas_para_Publicacao.html)
 
 ## Referências
