@@ -154,13 +154,14 @@ knitr::include_graphics("images/osf_logo.jpeg")
 ```
 ]
 
-.footnote[Storopoli, J., da Silva Neto, W. L. B., & Mesch, G. S. (2020). Confidence in social institutions, perceived vulnerability and the adoption of recommended protective behaviors in Brazil during the COVID-19 pandemic. Social Science & Medicine, 265, 113477. https://doi.org/10.1016/j.socscimed.2020.113477]
+.footnote[[Repositório de dados da OSF](https://osf.io/ypbf6/) do artigo: Storopoli, J., da Silva Neto, W. L. B., & Mesch, G. S. (2020). Confidence in social institutions, perceived vulnerability and the adoption of recommended protective behaviors in Brazil during the COVID-19 pandemic. Social Science & Medicine, 265, 113477.]
 
 ---
 # O que é estatística?
 
+--
 .pull-left[
-## Descritiva
+**Descritiva**
 ```{r graph-estatistica-descritiva, out.width='100%', fig.align='left'}
 grViz("
  digraph estatistica_descritiva {
@@ -181,8 +182,9 @@ grViz("
 ```
 ]
 
+--
 .pull-right[
-## Inferencial
+**Inferencial**
 ```{r graph-estatistica-inferencial, out.width='100%', fig.align='right'}
 grViz("
  digraph estatistica_inferencial {
@@ -230,16 +232,18 @@ base_plot <- df %>%
   )
 ```
 
+--
 .pull-left[
-## Estatística
+**Estatística**
 
 ```{r estatistica-plot}
 base_plot + geom_smooth(size = 2, alpha = 0.5, method = "lm", se = F)
 ```
 ]
 
+--
 .pull-right[
-## Machine Learning
+**Machine Learning**
 
 ```{r ml-plot}
 base_plot + geom_smooth(size = 2, color = "red", span = 0.3, se = F)
@@ -249,6 +253,7 @@ base_plot + geom_smooth(size = 2, color = "red", span = 0.3, se = F)
 ---
 # Distribuições Normais e não-Normais
 
+--
 .pull-left[
 ```{r dist-normal}
 ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) + 
@@ -272,7 +277,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) +
   )
 ```
 ]
-
+--
 .pull-right[
 ```{r dist-not-normal}
 ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) + 
@@ -304,7 +309,7 @@ ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) +
 knitr::include_graphics("images/assumptions-vs-reality.jpeg")
 ```
 
-.footnote[Figura de https://www.khstats.com/blog/tmle/tutorial/]
+.footnote[Figura de [Katherine Hoffman](https://www.khstats.com/blog/tmle/tutorial/). Reprodução Autorizada.]
 
 ---
 class: middle
@@ -320,6 +325,18 @@ class: middle
 ```{r media-moda-mediana, out.width='75%'}
 knitr::include_graphics("images/media_mediana_moda.png")
 ```
+]
+
+---
+# Média vs Mediana
+
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+O que acontece quando o <u>Bill Gates</u> entra em um restaurante?
+]
+
+--
+.washed-blue.bg-red.b--dark-red.ba.bw2.br3.shadow-5.ph4.mt5[
+A <u>média salarial</u> dos consumidores do restaurante sobre 50 mil dólares!
 ]
 
 ---
@@ -339,6 +356,14 @@ knitr::include_graphics("images/media_mediana_moda.png")
 knitr::include_graphics("images/desvio_padrao.png", dpi = 300)
 ```
 ]
+
+---
+# Medidas de Dispersão - Percentil e IQR
+
+```{r percentil-IQR, out.width='50%', fig.align='center'}
+knitr::include_graphics("images/percentil-IQR.png", dpi = 300)
+```
+
 
 ---
 class: Large
