@@ -125,8 +125,8 @@ map_dfr(1:4,
                mutate(Conjunto = unique(anscombe$conjunto)),
              by = "Conjunto") %>%
   relocate(Conjunto) %>%
-  select(Conjunto, estimate, std.error, p.value.x,
-         conf.low, conf.high, r.squared, adj.r.squared) %>%
+  dplyr::select(Conjunto, estimate, std.error, p.value.x,
+          conf.low, conf.high, r.squared, adj.r.squared) %>%
   gt() %>%
   tab_header("Modelo de Regressão Linear do Quarteto de Anscombe",
              md("Fórmula: `y ~ x`"))

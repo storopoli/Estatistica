@@ -747,7 +747,7 @@ onde $\mathbf{E}(\epsilon | X) = 0$ e $\mathbf{V}(\epsilon | X) = \sigma^2$
 
 --
 .washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
-Regressão Linear é uma técnica para estimar coeficientes de associação $\beta$ entre um conjunto de variáveis independentes $X$ e uma variável dependente $Y$ e os erro $\epsilon$ do modelo pressupõem-se que possui média $\mu$ 0 e desvio padrão qualquer $\sigma^2$
+Regressão Linear é uma técnica para estimar coeficientes de associação $\beta$ entre um conjunto de variáveis independentes $X$ e uma variável dependente $Y$ e os erros $\epsilon$ do modelo pressupõem-se que possui média $\mu$ 0 e desvio padrão qualquer $\sigma^2$
 ]
 
 ---

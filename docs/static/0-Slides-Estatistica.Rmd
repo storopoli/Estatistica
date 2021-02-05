@@ -1,11 +1,11 @@
 ---
 title: "Estatística"
 subtitle: "O que é que eu estou fazendo aqui?"
-author: 
+author:
   - "Jose Storopoli"
   - "Leonardo Vils"
   - '`r knitr::include_graphics(c("images/UNINOVE_CIS.png", "images/UNINOVE_PPGA.png"), dpi = 400)`'
-date: '`r Sys.Date()`'
+date: "`r Sys.Date()` <br> [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -20,6 +20,7 @@ class: animated, fadeIn
 layout: true
 
 ---
+class: inverse, middle, Center
 ```{r setup, include=FALSE}
 library(ggplot2)
 library(magrittr)
@@ -46,7 +47,8 @@ extra_css <- list(
     display = "flex",
     width   = "100%",
     flex    = "1 1 auto"
-  )
+  ),
+  "white" = list("color" = "white !important")
 )
 
 # UNINOVE Colors
@@ -56,7 +58,7 @@ style_mono_accent(
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono"),
   text_font_size     = "1.5em",
-  footnote_font_size = "0.5em",
+  footnote_font_size = "0.4em",
   extra_css = extra_css
 )
 ```
@@ -81,22 +83,9 @@ xaringanExtra::use_webcam()
 
 # Por quê estou aqui?
 
-.pull-left[
 ```{r starwars-trap, out.width = '100%'}
 knitr::include_graphics("images/starwars-trap.gif")
 ```
-]
-
---
-
-.pull-right[
-```{r lancet-evidences, out.width = '80%', fig.cap='Lancet, 2017'}
-knitr::include_graphics("images/lancet-evidences.png")
-```
-]
-
-
-.footnote[Djulbegovic, B., & Guyatt, G. H. (2017). Progress in evidence-based medicine: a quarter century on. The Lancet, 390(10092), 415-423.]
 
 ---
 # Calma! Somos profissionais...
@@ -136,9 +125,9 @@ class: Large
 --
 
 * **_Opensource_**
-  * `r icon::fontawesome$regular$frown` SPSS, Stata ou Excel
-  * `r icon::fontawesome$regular$smile` JASP, Jamovi, R
-  
+  * `r icon::icon_style(icon::fontawesome("frown"), scale = 2)` SPSS, Stata ou Excel `r icon::icon_style(icon::fontawesome("creative-commons-nc"), scale = 2)`
+  * `r icon::icon_style(icon::fontawesome("smile"), scale = 2)` JASP, Jamovi, R `r icon::icon_style(icon::fontawesome("rocket"), scale = 2)`
+
 ---
 # Open Science
 
@@ -155,6 +144,143 @@ knitr::include_graphics("images/osf_logo.jpeg")
 ]
 
 .footnote[[Repositório de dados da OSF](https://osf.io/ypbf6/) do artigo: Storopoli, J., da Silva Neto, W. L. B., & Mesch, G. S. (2020). Confidence in social institutions, perceived vulnerability and the adoption of recommended protective behaviors in Brazil during the COVID-19 pandemic. Social Science & Medicine, 265, 113477.]
+
+---
+class: inverse, middle, center
+# Como a ciência avança?
+
+```{r science, out.width='80%'}
+knitr::include_graphics("images/science.png")
+```
+
+---
+
+# Como a Ciência Avança?
+
+**Método Científico Hipótetico Dedutivo**
+
+```{r graph-hipotetico-dedutivo, out.width='100%'}
+grViz("
+ digraph hipotetico_dedutivo {
+  forcelabels = true;
+  graph [overlap = false,
+         fontsize = 12,
+         rankdir = TD]
+  node [shape = oval,
+        fontname = Helvetica]
+  A [label = 'Teoria']
+  B [label = 'Realidade']
+  A -> B [dir = forward,
+          xlabel = 'Hipóteses ',
+          tailport = 'e',
+          headport = 'e']
+  B -> A [dir = backward,
+          xlabel = 'Predições ',
+          tailport = 'w',
+          headport = 'w']
+}
+")
+```
+
+.footnote[[Wikipedia - Método hipotético-dedutivo](https://pt.wikipedia.org/wiki/Método_hipotético-dedutivo).]
+
+---
+class: center, middle
+# Método Científico
+
+<video width="600" height="400" controls>
+  <source src="images/feynman.mp4" type="video/mp4">
+</video>
+
+.footnote[[Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman) - Universidade de Cornell, 9 de Novembro de 1964]
+
+---
+# Teoria vs Realidade
+
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+Se sua teoria discordar da realidade, sua teoria está errada. Não importa o quão bela ela é, o quão inteligente você é, quem você é. Se ela discorda da realidade ela está errada!
+]
+
+.footnote[[Richard Feynman](https://en.wikipedia.org/wiki/Richard_Feynman) - Universidade de Cornell, 9 de Novembro de 1964]
+
+---
+# Teoria vs Realidade
+
+.pull-left[
+Objetos pesados caem mais rápido que objetos leves.
+
+```{r aristotle, out.width='60%'}
+knitr::include_graphics("images/aristotle.png")
+```
+]
+
+--
+.pull-right[
+```{r galileo_pisa, out.width='70%'}
+knitr::include_graphics("images/galileo_pisa.jpg")
+```
+]
+
+---
+# Teoria vs Realidade
+
+.pull-left[
+A gravidade afeta não só a materia mas também a luz.
+
+```{r einstein, out.width='50%'}
+knitr::include_graphics("images/einstein.jpg")
+```
+]
+
+--
+.pull-right[
+```{r einstein_eclipse}
+knitr::include_graphics("images/einstein_eclipse.jpg")
+```
+]
+
+.footnote[
+[Eclipse Solar de 29 de Maio de 1919](https://en.wikipedia.org/wiki/Solar_eclipse_of_May_29,_1919)
+]
+
+???
+A previsão de Albert Einstein da curvatura da luz pela gravidade do Sol, um dos componentes de sua teoria geral da relatividade, pode ser testada durante um eclipse solar, quando estrelas com posição aparente perto do sol se tornam visíveis.
+
+---
+# Como que a Ciência Avança?
+
+.pull-left[
+### Hierarquia de Evidências
+
+* RCT - Ensaio Clínico Randomizado
+* Estudo de Coorte
+* Estudo de Caso-controle
+]
+
+.pull-right[
+```{r lancet-evidences, out.width = '80%', fig.cap='Lancet, 2017'}
+knitr::include_graphics("images/lancet-evidences.png")
+```
+]
+
+.footnote[Djulbegovic, B., & Guyatt, G. H. (2017). Progress in evidence-based medicine: a quarter century on. The Lancet, 390(10092), 415-423.]
+
+???
+Os **estudos de coorte** são um tipo
+específico de desenho de estudo observacional que apresenta um nível de
+evidência maior que os outros observacionais, mas menor nível de evidência que
+os estudos experimentais. Compara a experiência de um grupo exposto e outro não
+exposto ao longo do tempo, para a identificação dos efeitos da exposição na
+incidência do evento de interesse.
+
+---
+class: inverse, middle
+
+# Estatística
+
+```{r statistics_intro, out.width='80%'}
+knitr::include_graphics("images/statistics.jpg")
+```
 
 ---
 # O que é estatística?
@@ -177,7 +303,7 @@ grViz("
   A -> {B C D E} [dir = forward,
                     tailport = 'e',
                     headport = 'w']
-} 
+}
 ")
 ```
 ]
@@ -204,7 +330,7 @@ grViz("
           label = '  Inferência  ',
           tailport = 'w',
           headport = 'w']
-} 
+}
 ")
 ```
 ]
@@ -256,23 +382,23 @@ base_plot + geom_smooth(size = 2, color = "red", span = 0.3, se = F)
 --
 .pull-left[
 ```{r dist-normal}
-ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) + 
+ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) +
   mapply(function(mean, sd, col) {
     stat_function(fun = dnorm, args = list(mean = mean, sd = sd), col = col)
-  }, 
+  },
   # enter means, standard deviations and colors here
-  mean = c(0, 1, .5), 
-  sd = c(1, .5, 2), 
+  mean = c(0, 1, .5),
+  sd = c(1, .5, 2),
   col = c('red', 'blue', 'green')
 ) +
-  theme_void() +
+  theme_bw() +
   theme(
     axis.title.x = element_blank(),
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
+    #axis.text.x = element_blank(),
+    #axis.ticks.x = element_blank(),
     axis.title.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
+    #axis.text.y = element_blank(),
+    #axis.ticks.y = element_blank(),
     legend.position = "none"
   )
 ```
@@ -280,23 +406,23 @@ ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) +
 --
 .pull-right[
 ```{r dist-not-normal}
-ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) + 
+ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) +
   mapply(function(meanlog, sdlog, col) {
     stat_function(fun = dlnorm, args = list(meanlog = meanlog, sdlog = sdlog), col = col)
-  }, 
+  },
   # enter means, standard deviations and colors here
-  meanlog = c(0, 1, 1.5), 
-  sdlog = c(1, 1, 1), 
+  meanlog = c(0, 1, 1.5),
+  sdlog = c(1, 1, 1),
   col = c('red', 'blue', 'green')
 ) +
-  theme_void() +
+  theme_bw() +
   theme(
     axis.title.x = element_blank(),
-    axis.text.x = element_blank(),
-    axis.ticks.x = element_blank(),
+    #axis.text.x = element_blank(),
+    #axis.ticks.x = element_blank(),
     axis.title.y = element_blank(),
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
+    #axis.text.y = element_blank(),
+    #axis.ticks.y = element_blank(),
     legend.position = "none"
   )
 ```
@@ -310,6 +436,31 @@ knitr::include_graphics("images/assumptions-vs-reality.jpeg")
 ```
 
 .footnote[Figura de [Katherine Hoffman](https://www.khstats.com/blog/tmle/tutorial/). Reprodução Autorizada.]
+
+???
+**Katherine Hoffman**: Biostatistician at Weill Cornell Medicine in New York City
+
+---
+class: inverse, middle, center
+
+# Estatística Descritiva
+
+`r icon::icon_style(icon::fontawesome("chart-pie"), scale = 5)`
+
+---
+# Estatística Descritiva
+
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+"Sumariza e quantifica as características de uma amostra de dados observados".
+]
+
+--
+
+## Geralmente divide-se em:
+
+* **Medidas de Centralidade**: média, mediana, moda ...
+
+* **Medidas de Dispersão**: desvio padrão, variância, correlação, percentis, quartis ...
 
 ---
 class: middle
@@ -336,7 +487,7 @@ O que acontece quando o <u>Bill Gates</u> entra em um restaurante?
 
 --
 .washed-blue.bg-red.b--dark-red.ba.bw2.br3.shadow-5.ph4.mt5[
-A <u>média salarial</u> dos consumidores do restaurante sobre 50 mil dólares!
+A <u>média salarial</u> dos consumidores do restaurante sobe 50 mil dólares!
 ]
 
 ---
@@ -363,6 +514,201 @@ knitr::include_graphics("images/desvio_padrao.png", dpi = 300)
 ```{r percentil-IQR, out.width='50%', fig.align='center'}
 knitr::include_graphics("images/percentil-IQR.png", dpi = 300)
 ```
+
+---
+class: inverse, middle, center
+
+# Estatística Inferencial
+
+`r icon::icon_style(icon::fontawesome("chart-line"), scale = 5)`
+
+---
+# Estatística Inferencial
+
+"Conjunto de técnicas e procedimentos para testar hipóteses sobre uma amostra generalizando para uma população-alvo"
+
+## Mistureba de coisas
+
+--
+
+* **Testes Estatísticos** - Pearson & Student
+
+--
+
+* $p$-**valor** - Fisher
+
+--
+
+* **Hipótese Nula** (inclusive o tal dos 5%) - Neyman
+
+--
+
+* **Intervalos de Confiança** - Neyman
+
+.footnote[Além disso eles brigavam entre si...]
+
+---
+class: inverse, center, middle
+```{r statisticians}
+library(cowplot)
+p1 <- ggdraw() + draw_image("images/pearson.jpg") +
+  draw_label("Karl Pearson", color = "black", hjust = 1.2, vjust = 8, size = 16)
+p2 <- ggdraw() + draw_image("images/gosset.jpg") +
+  draw_label("William  Gosset\n(Student)", color = "orange", hjust = 0.8, vjust = 4, size = 16)
+p3 <- ggdraw() + draw_image("images/fisher.jpg") +
+  draw_label("Ronald Fisher", color = "white", hjust = 0.9, vjust = 10, size = 16)
+p4 <- ggdraw() + draw_image("images/neyman.jpeg") +
+  draw_label("Jerzy Newman", color = "white", hjust = 1.2, vjust = -1, size = 16)
+
+plot_grid(p1, p2, p3, p4,
+          ncol = 2,
+          label_colour = "red4") +
+  theme(plot.background = element_rect(fill = "#29427A", color = "#29427A"), )
+```
+
+
+.footnote[Figuras da [.white[Wikipedia]](https://www.wikipedia.org/).]
+
+---
+
+# Teste de Hipóteses
+
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+Forma de <u>inferência estatística</u> que usa dados de uma <u>amostra</u> para tirar conclusões sobre um <u>parâmetro populacional</u> ou uma <u>distribuição de probabilidade populacional</u>.
+]
+
+--
+
+.washed-blue.bg-red.b--dark-red.ba.bw2.br3.shadow-5.ph4.mt5[
+.small[Exemplo: Uma amostra de 40 pessoas separadas de maneira aleatória em dois grupos na qual testamos qual a <u>diferença</u> entre o tempo de internação na UTI (<u>parâmetro populacional</u>) para quem toma cloroquina (tratamento) ou comprimido de farinha (placebo).
+]
+]
+
+---
+# Hipótese Nula - $H_0$
+
+.washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
+Uma hipótese padrão de que uma quantidade a ser medida é **zero** (nula). Normalmente, a quantidade a ser medida é a **diferença entre duas situações**, ou que um **efeito é inexistente** (nulo).
+]
+
+---
+# Quando é que as coisas dão errado?
+
+--
+* **Amostra não representa a população**
+
+--
+  * Ex: Pesquisa de Intenção de Voto apenas na Avenida Paulista ao meio-dia.
+
+--
+* **Os dados não são independentes**
+
+--
+  * Ex: Dois sujeitos conhecidos são abordados ao mesmo tempo numa pesquisa de intenção de voto.
+
+--
+  * **Principais fontes de dependência?**
+    * Temporal
+    * Espacial
+    * E qualquer outra `r emo::ji("person_shrugging")`
+
+---
+class: inverse, middle, center
+# $p$-valor
+
+`r icon::icon_style(icon::fontawesome("exclamation-triangle"), scale = 5)`
+
+## $p$-valores são de difícil entendimento, $p<0.05$.
+
+---
+# O que é o $p$-valor?
+
+* $p$-valor é a probabilidade dos dados que você obteve condicionado que a hipótese nula é verdadeira.
+
+--
+
+* No mundo paralelo da Hipótese Nula, $p$-valor é a probabilidade de você obter dados como os quais da sua amostra.
+
+--
+
+* Para os que gostam do formalismo matemático: $$p = P(D|H_0).$$
+
+---
+# O que *não* é o $p$-valor?
+
+--
+
+* $p$-valor **não** é a probabilidade da Hipótese nula: $P(D|H_0) \neq P(H_0|D)$. Exemplo: $$P(\text{tosse} | \text{COVID}) \neq P(\text{COVID} | \text{tosse}).$$
+
+--
+
+* $p$-valor **não** é a probabilidade dos dados serem produzidos pelo acaso.
+
+--
+
+* $p$-valor **não** mensura o tamanho do efeito de um teste estatístico.
+
+---
+
+# Tamanho do Efeito
+
+```{r effectsize}
+plot_effectsize <- function(ES, show.legend = F) {
+  require(ggplot2)
+  require(dplyr)
+  # get mean2 depending on value of ES from d = (u1 - u2)/sd
+  mean1 <- ES * 1 + 1
+  df <- dplyr::tibble(
+    x = seq(1 - 3 * 1, mean1 + 3 * 1, .01),
+    y1 = dnorm(x, 1, 1),
+    y2 = dnorm(x, mean1, 1),
+    y.poly = pmin(y1, y2)
+  )
+  plot <- ggplot2::ggplot(data = df) +
+    # add line for treatment group
+    ggplot2::geom_line(aes(x = x, y = y1, color = "Grupo 2")) +
+    # add line for control group
+    ggplot2::geom_line(aes(x = x, y = y2, color = "Grupo 1")) +
+    # shade overlap
+    ggplot2::geom_polygon(aes(x = x, y = y.poly),
+                          fill = "red", alpha = I(4 / 10),
+                          show.legend = F) +
+    # add vlines for group means
+    ggplot2::geom_vline(xintercept = 1, linetype="dotted") +
+    ggplot2::geom_vline(xintercept = mean1, linetype="dotted") +
+    # add plot title
+    ggplot2::labs(title = paste0("Tamanho de Efeito " , ES),
+                  x = NULL,
+                  y = NULL) +
+    # change colors and legend annotation
+    ggplot2::scale_color_manual("Grupo",
+                                values = c("Grupo 2" = "black", "Grupo 1" = "red")) +
+    theme_bw()
+  if (show.legend == FALSE) {
+    plot <- plot + theme(legend.position = "none")
+    return(plot)
+  }
+  else{
+    return(plot)
+  }
+}
+```
+
+.pull-left[
+Todos esses resultados atingem $p$-valores menores que 5% se conseguirmos uma amostra grande o suficiente
+]
+
+.pull-right[
+```{r plot_effectsize}
+library(purrr)
+library(patchwork)
+list(0.2, 0.5, 0.8) %>%
+  map(~ plot_effectsize(.x)) %>%
+  reduce(`+`) +
+  plot_layout(nrow = 3, heights = 3)
+```
+
+]
 
 
 ---
@@ -401,7 +747,7 @@ onde $\mathbf{E}(\epsilon | X) = 0$ e $\mathbf{V}(\epsilon | X) = \sigma^2$
 
 --
 .washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
-Regressão Linear é uma técnica para estimar coeficientes de associação $\beta$ entre um conjunto de variáveis independentes $X$ e uma variável dependente $Y$ e os erro $\epsilon$ do modelo pressupõem-se que possui média $\mu$ 0 e desvio padrão qualquer $\sigma^2$
+Regressão Linear é uma técnica para estimar coeficientes de associação $\beta$ entre um conjunto de variáveis independentes $X$ e uma variável dependente $Y$ e os erros $\epsilon$ do modelo pressupõem-se que possui média $\mu$ 0 e desvio padrão qualquer $\sigma^2$
 ]
 
 ---
@@ -420,10 +766,10 @@ grViz("
   B [label = 'Trânsito\n(km)']
   C [label = 'mm de\nChuva']
   A -> AB [arrowhead = None, label = '+']
-  AB -> B 
+  AB -> B
   C -> AB [xlabel = '  +']
  {rank=same; A; AB; B}
-} 
+}
 ")
 ```
 
@@ -450,3 +796,28 @@ Acesse [http://bit.ly/s2estatistica](http://bit.ly/s2estatistica)
 `r countdown(minutes = 2, seconds = 0, warn_when = 10, play_sound = TRUE, bottom = "10%")`
 
 .footnote[Se você cair em um grupo que não goste, culpe o script R e a seed do gerador de números aleatórios. Coisas ruins acontecem, você pode escolher se isso vai ser uma oportunidade de crescimento ou não...]
+
+---
+# Créditos!
+
+Slides criado pelo pacote R [`xaringan`](https://github.com/yihui/xaringan).
+
+Código Fonte dos Slides disponível no GitHub [storopoli/Estatistica](https://github.com/storopoli/Estatistica).
+
+.pull-left[
+  ```{r hex_CIS}
+  knitr::include_graphics("images/UNINOVE_CIS.png")
+  ```
+]
+
+.pull-right[
+  ```{r hex_PPGA}
+  knitr::include_graphics("images/UNINOVE_PPGA.png")
+  ```
+]
+
+[![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
+
+[cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+[cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
