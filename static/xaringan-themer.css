@@ -114,7 +114,7 @@ a, a > code {
   position: absolute;
   bottom: 60px;
   padding-right: 4em;
-  font-size: 0.5em;
+  font-size: 0.4em;
 }
 .remark-code-line-highlighted {
   background-color: var(--code-highlight-color);
@@ -271,4 +271,7 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
   display: flex;
   width: 100%;
   flex: 1 1 auto;
+}
+white {
+  color: white !important;
 }
