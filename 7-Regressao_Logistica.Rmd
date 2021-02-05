@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html
+citation_url: https://storopoli.io/Estatistica/7-Regressao_Logistica.html
 slug: storopoli2021regressaologisticaR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -54,7 +54,7 @@ library(dplyr)
 library(ggplot2)
 tibble(
   x = seq(-10, 10, length.out = 100),
-  logit = 1 / (1 + exp(-x))) %>% 
+  logit = 1 / (1 + exp(-x))) %>%
   ggplot(aes(x, logit)) +
   geom_line()
 ```
@@ -81,8 +81,8 @@ sim1 <- tibble(
   comprado = c(rep(1, 10), rep(0,10))
 )
 
-sim1 %>% ggplot(aes(idade, comprado)) + 
-  geom_point() + 
+sim1 %>% ggplot(aes(idade, comprado)) +
+  geom_point() +
   geom_smooth(method = "lm", se =  FALSE, color = "Red") +
   geom_smooth(method = "glm",
               method.args = list(family = "binomial"),
@@ -98,8 +98,8 @@ sim2 <- tibble(
   comprado = c(rep(1, 10), rep(0,20))
 )
 
-sim2 %>% ggplot(aes(idade, comprado)) + 
-  geom_point() + 
+sim2 %>% ggplot(aes(idade, comprado)) +
+  geom_point() +
   geom_smooth(method = "lm", se =  FALSE, color = "Red") +
   geom_smooth(method = "glm",
               method.args = list(family = "binomial"),
@@ -194,7 +194,7 @@ modelo_quali$xlevels
 
 ### Efeitos Principais e Efeitos de Interação
 
-Todos os modelos de regressão logística que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre regressão linear](6-Regressao_Linear.html), podemos incluir **dois tipos de efeitos na regressão logística**: 
+Todos os modelos de regressão logística que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre regressão linear](6-Regressao_Linear.html), podemos incluir **dois tipos de efeitos na regressão logística**:
 
 * **Efeitos principais**: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de **aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.
 * **Efeitos de interações**: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação **não são aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. **Há uma interação entre as variáveis independentes**.
@@ -202,11 +202,11 @@ Todos os modelos de regressão logística que mostramos até aqui usaram apenas 
 Veja na figura \@ref(fig:titanic-interaction) uma representação gráfica da interação entre `sex` e `passengerClass`. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de `passengerClass`.
 
 ```{r titanic-interaction, warning=FALSE, message=FALSE, fig.cap='Interação entre `sex` e `passengerClass` do *dataset* `mtcars`'}
-TitanicSurvival %>% 
+TitanicSurvival %>%
   mutate(survived = ifelse(survived == "yes", 1, 0),
-         sex = forcats::fct_rev(sex)) %>% 
-  group_by(sex, passengerClass) %>% 
-  summarise(survived = mean(survived)) %>% 
+         sex = forcats::fct_rev(sex)) %>%
+  group_by(sex, passengerClass) %>%
+  summarise(survived = mean(survived)) %>%
   ggplot(aes(x = sex, y = survived, color = passengerClass)) +
   geom_line(aes(group = passengerClass)) +
   geom_point() +

@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/0-Por_que_R.html
+citation_url: https://storopoli.io/Estatistica/0-Por_que_R.html
 slug: storopoli2021porqueR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -119,9 +119,9 @@ Com R, conseguimos nos aproveitar do paradigma de programação funcional e serm
 Primeiro o R, veja como o código é muito mais sucinto e simples de ler. O pipe `%>%` significa "pegue o resultado dessa operação e jogue como input da próxima". Aqui estamos usando o pacote `{dplyr}` do `{tidyverse}`.
 
 ```{r mtcars_r, eval=FALSE}
-mtcars %>% 
-  mutate_if(is.character, as.factor) %>% 
-  filter(hp > 100) %>% 
+mtcars %>%
+  mutate_if(is.character, as.factor) %>%
+  filter(hp > 100) %>%
   summarise_if(is.numeric, mean)
 ```
 

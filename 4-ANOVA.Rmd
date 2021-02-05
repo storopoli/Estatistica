@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/4-ANOVA.html
+citation_url: https://storopoli.io/Estatistica/4-ANOVA.html
 slug: storopoli2021anovaR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -101,7 +101,7 @@ leveneTest(len ~ dose, data = ToothGrowth)
 O $p$-valor de ambos testes para a homogeneidade de variâncias de `len` nos grupos de `supp` e `dose` são respectivamente `0.28` e `0.53`. Com isso falhamos em rejeitar a hipótese nula de que `len` possui variâncias homogêneas nos grupos tanto de `supp` quanto de `dose`. Ou seja, **pressuposto de homogeneidade de variâncias não violado**.
 
 ### ANOVA Unidirecional^[Termo inglês: *One-Way ANOVA*.]
-  
+
 A ANOVA mais simples é chamada de **ANOVA Unidirecional** que examina a **influência de uma variável independente categórica em uma variável contínua dependente**.
 
 O R possui uma função padrão para calcular ANOVAs `aov()` e sua funcionalidade é muito similar à outras funções que já vimos de teste de hipótese, sendo que é necessário fornecer dois argumentos:

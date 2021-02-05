@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/aux-Tamanho_Amostra.html
+citation_url: https://storopoli.io/Estatistica/aux-Tamanho_Amostra.html
 slug: storopoli2021tamanhoamostraR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -84,14 +84,14 @@ plot_cohen_d <- function(ES, show.legend = F) {
                           fill = "red", alpha = I(4 / 10),
                           show.legend = F) +
     # add vlines for group means
-    ggplot2::geom_vline(xintercept = 1, linetype="dotted") + 
-    ggplot2::geom_vline(xintercept = mean1, linetype="dotted") + 
+    ggplot2::geom_vline(xintercept = 1, linetype="dotted") +
+    ggplot2::geom_vline(xintercept = mean1, linetype="dotted") +
     # add plot title
     ggplot2::labs(title = paste0("Tamanho de Efeito (d de Cohen = ", ES, ")"),
                   x = NULL,
                   y = NULL) +
     # change colors and legend annotation
-    ggplot2::scale_color_manual("Grupo", 
+    ggplot2::scale_color_manual("Grupo",
                                 values = c("Grupo 2" = "black", "Grupo 1" = "red"))
   if (show.legend == FALSE) {
     plot <- plot + theme(legend.position = "none")
@@ -105,8 +105,8 @@ plot_cohen_d <- function(ES, show.legend = F) {
 library(purrr)
 library(ggplot2)
 library(patchwork)
-list(0.2, 0.5, 0.8) %>% 
-  map(~ plot_cohen_d(.x)) %>% 
+list(0.2, 0.5, 0.8) %>%
+  map(~ plot_cohen_d(.x)) %>%
   reduce(`+`) +
   plot_layout(nrow = 3, heights = 3)
 ```

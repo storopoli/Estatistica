@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/3-Teste_t.html
+citation_url: https://storopoli.io/Estatistica/3-Teste_t.html
 slug: storopoli2021testetR
 bibliography: bibliografia.bib
 csl: apa.csl

@@ -111,7 +111,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
   <meta name="citation_title" content="Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"/>
-  <meta name="citation_fulltext_html_url" content="https://storopoli.github.io/Estatistica/4-ANOVA.html"/>
+  <meta name="citation_fulltext_html_url" content="https://storopoli.io/Estatistica/4-ANOVA.html"/>
   <meta name="citation_fulltext_world_readable" content=""/>
   <meta name="citation_online_date" content="2021/01/11"/>
   <meta name="citation_publication_date" content="2021/01/11"/>
@@ -133,7 +133,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"]},{"type":"character","attributes":{},"value":["Como comparar as diferenças de uma variável para mais de dois grupos.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.github.io/Estatistica/4-ANOVA.html"]},{"type":"character","attributes":{},"value":["storopoli2021anovaR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica"]},{"type":"character","attributes":{},"value":["Como comparar as diferenças de uma variável para mais de dois grupos.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.io/Estatistica/4-ANOVA.html"]},{"type":"character","attributes":{},"value":["storopoli2021anovaR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -472,8 +472,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     top: 0;
   }
 
+  /* adjust viewport for navbar height */
+  /* helps vertically center bootstrap (non-distill) content */
+  .min-vh-100 {
+    min-height: calc(100vh - 100px) !important;
+  }
+
   </style>
 
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -581,19 +588,21 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
             var results = fuse.search(query, searchOptions);
             callback(results
               .map(function(result) { return result.item; })
-              .filter(function(item) { return !!item.description; })
             );
           },
           templates: {
             suggestion: function(suggestion) {
+              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+                : '';
               var html = `
                 <div class="search-item">
                   <h3>${suggestion.title}</h3>
                   <div class="search-item-description">
-                    ${suggestion.description}
+                    ${suggestion.description || ''}
                   </div>
                   <div class="search-item-preview">
-                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
+                    ${img}
                   </div>
                 </div>
               `;
@@ -616,6 +625,10 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   </script>
 
   <style type="text/css">
+
+  .nav-search {
+    font-size: x-small;
+  }
 
   /* Algolioa Autocomplete */
 
@@ -691,6 +704,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+    font-size: 1rem;
     margin-block-start: 0;
     margin-block-end: 5px;
   }
@@ -918,6 +932,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -1072,6 +1091,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1739,7 +1769,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1854,6 +1884,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -2194,7 +2238,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 
   d-article div.sourceCode code,
   d-article pre code {
-  	font-family: var(--mono-font), var(--mono-default);
+    font-family: var(--mono-font), var(--mono-default);
   }
 
 
@@ -2219,76 +2263,78 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 
   /*-- BODY --*/
-  /* only text inside of <p> tags */
-  d-article > p {
+  d-article > p,  /* only text inside of <p> tags */
+  d-article > ul, /* lists */
+  d-article > ol {
     color: var(--body-color, rgba(0, 0, 0, 0.8));
     font-size: var(--body-size, 1.06rem);
   }
 
+
   /*-- CODE --*/
   d-article div.sourceCode code,
   d-article pre code {
-  	font-size: var(--code-size, 14px);
+    font-size: var(--code-size, 14px);
   }
 
   /*-- ASIDE --*/
   d-article aside {
-  	font-size: var(--aside-size, 12px);
-  	color: var(--aside-color, rgba(0, 0, 0, 0.6));
+    font-size: var(--aside-size, 12px);
+    color: var(--aside-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- FIGURE CAPTIONS --*/
   figure .caption,
   figure figcaption,
   .figure .caption {
-  	font-size: var(--fig-cap-size, 13px);
-  	color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
+    font-size: var(--fig-cap-size, 13px);
+    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
   }
 
   /*-- METADATA --*/
   d-byline h3 {
-  	font-size: var(--heading-size, 0.6rem);
-  	color: var(--heading-color, rgba(0, 0, 0, 0.5));
+    font-size: var(--heading-size, 0.6rem);
+    color: var(--heading-color, rgba(0, 0, 0, 0.5));
   }
 
   d-byline {
-  	font-size: var(--body-size, 0.8rem);
-  	color: var(--body-color, rgba(0, 0, 0, 0.8));
+    font-size: var(--body-size, 0.8rem);
+    color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   d-byline a,
   d-article d-byline a {
-  	color: var(--body-color, rgba(0, 0, 0, 0.8));
+    color: var(--body-color, rgba(0, 0, 0, 0.8));
   }
 
   /*-- TABLE OF CONTENTS --*/
   .d-contents nav h3 {
-  	font-size: var(--heading-size, 18px);
+    font-size: var(--heading-size, 18px);
   }
 
   .d-contents nav a {
-  	font-size: var(--contents-size, 13px);
+    font-size: var(--contents-size, 13px);
   }
 
   /*-- APPENDIX --*/
   d-appendix h3 {
     font-size: var(--heading-size, 15px);
-  	color: var(--heading-color, rgba(0, 0, 0, 0.65));
+    color: var(--heading-color, rgba(0, 0, 0, 0.65));
   }
 
   d-appendix {
     font-size: var(--text-size, 0.8em);
-  	color: var(--text-color, rgba(0, 0, 0, 0.5));
+    color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   d-appendix d-footnote-list a.footnote-backlink {
-  	color: var(--text-color, rgba(0, 0, 0, 0.5));
+    color: var(--text-color, rgba(0, 0, 0, 0.5));
   }
 
   /*-- WEBSITE HEADER + FOOTER --*/
   .distill-site-header .title {
-  	font-size: var(--title-size, 18px);
-  	font-family: var(--navbar-font), var(--heading-default);
+    font-size: var(--title-size, 18px);
+    font-family: var(--navbar-font), var(--heading-default);
   }
 
   .distill-site-header a,
@@ -2296,35 +2342,44 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     font-family: var(--navbar-font), var(--heading-default);
   }
 
-  .distill-site-header a:hover {
-  	color: var(--hover-color, white);
+  .nav-dropdown .nav-dropbtn {
+    color: var(--text-color, rgba(255, 255, 255, 0.8));
+    font-size: var(--text-size, 15px);
+  }
+
+  .distill-site-header a:hover,
+  .nav-dropdown:hover .nav-dropbtn {
+    color: var(--hover-color, white);
   }
 
   .distill-site-header {
-  	font-size: var(--text-size, 15px);
-  	color: var(--text-color, rgba(255, 255, 255, 0.8));
-  	background-color: var(--bkgd-color, #0F2E3D);
+    font-size: var(--text-size, 15px);
+    color: var(--text-color, rgba(255, 255, 255, 0.8));
+    background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer {
-  	font-size: var(--text-size, 15px);
-  	color: var(--text-color, rgba(255, 255, 255, 0.8));
-  	background-color: var(--bkgd-color, #0F2E3D);
+    font-size: var(--text-size, 15px);
+    color: var(--text-color, rgba(255, 255, 255, 0.8));
+    background-color: var(--bkgd-color, #0F2E3D);
   }
 
   .distill-site-footer a:hover {
-  	color: var(--hover-color, white);
+    color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
-  <script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-BDZ8MJ5HY1"></script>
+  <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -2379,6 +2434,7 @@ Conteúdos Auxiliares
 <a href="aux-Anscombe.html">Quarteto de Anscombe</a>
 <a href="aux-Dados_Faltantes.html">Dados Faltantes</a>
 <a href="aux-Tamanho_Amostra.html">Tamanho de Amostra e Tamanho de Efeito</a>
+<a href="aux-Likert.html">Likert e Escalas Ordinais</a>
 <a href="aux-Tabelas_para_Publicacao.html">Tabelas para Publicação</a>
 </div>
 </div>
@@ -2468,7 +2524,7 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <p>Nós, sempre que carregamos um <em>dataset</em> no R, temos o costume de usar a biblioteca <code>{skimr}</code> <span class="citation" data-cites="skimr">(<a href="#ref-skimr" role="doc-biblioref">Waring et al., 2020</a>)</span> para produzir um sumário dos dados.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"ToothGrowth"</span><span class='op'>)</span>
 <span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>dose</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>dose</span><span class='op'>)</span>
 <span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>)</span>
@@ -2583,7 +2639,7 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <p>Além disso é interessante computar uma tabela de frequência com a função padrão do R <code>table()</code> das duas variáveis independentes <code>supp</code> e <code>dose</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>supp</span>, <span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>dose</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/table.html'>table</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>supp</span>, <span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>dose</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>    
@@ -2602,7 +2658,7 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <p>O pressuposto da normalidade, já coberto na <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Shapiro-Wilk usando a função <code>shapiro.test()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>len</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span><span class='op'>$</span><span class='va'>len</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2615,7 +2671,7 @@ W = 1, p-value = 0.1</code></pre>
 <p>Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Levene usando a função <code>leveneTest()</code> da biblioteca <code>{car}</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2624,7 +2680,7 @@ W = 1, p-value = 0.1</code></pre>
 group  1    1.21   0.28
       58               </code></pre>
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
@@ -2646,7 +2702,7 @@ group  2    0.65   0.53
 <p>A saída da função <code>aov()</code> é um objeto <code>aov</code> que pode ser passado para uma função <code>summary()</code> eu nos trás os resultados da ANOVA.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>fit1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit1</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2659,7 +2715,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>Podemos ver que a diferença do comprimento dos dentes <code>len</code> conforme o método de dosagem <code>supp</code> (suco de laranja vs ácido ascórbico) não é estatisticamente significante (<span class="math inline">\(p&gt;0.06\)</span>). Ao comparar o nível de significância do teste (<span class="math inline">\(p=0.06\)</span>) com o limiar estabelecido (<span class="math inline">\(p&lt;0.05\)</span>) <strong>não conseguimos rejeitar a hipótese nula</strong> de que não há diferença no comprimento dos dentes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>fit2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2680,7 +2736,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>Primeiro vamos executar uma ANOVA bidirecional com apenas efeitos principais. Usamos a mesma função <code>aov()</code> do R que gerará o mesmo objeto <code>aov</code>, porém agora precisamos incluir uma segunda variável independente. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal positivo de adição <code>+</code> indicando que as duas variáveis devem ser usadas como efeitos principais na análise:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>fit3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span> <span class='op'>+</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span> <span class='op'>+</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit3</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2696,7 +2752,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>Para executarmos uma ANOVA bidirecional com efeitos de interações. Usamos novamente função <code>aov()</code> do R que gerará o mesmo objeto <code>aov</code>, porém agora precisamos incluir uma segunda variável independente e especificar a interação. Fazemos isso incluindo na fórmula a segunda variável junto com a primeira e um sinal de multiplicação<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> <code>*</code> indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>fit4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span> <span class='op'>*</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/aov.html'>aov</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span> <span class='op'>*</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit4</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2723,7 +2779,7 @@ Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o lei
 <p>Aqui vamos fazer apenas o exemplo com <code>supp</code> usando o <em>dataset</em> <code>ToothGrowth</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/kruskal.test.html'>kruskal.test</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/kruskal.test.html'>kruskal.test</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>supp</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>
@@ -2751,7 +2807,7 @@ Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a 
 <p>O teste de Tukey pode ser encontrado na função padrão que vem com o R <code>tukeyHSD()</code> e aceita como argumento um objeto <code>aov</code> resultante de uma ANOVA:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/stats/TukeyHSD.html'>TukeyHSD</a></span><span class='op'>(</span><span class='va'>fit3</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/TukeyHSD.html'>TukeyHSD</a></span><span class='op'>(</span><span class='va'>fit3</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2771,7 +2827,7 @@ Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a 
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://andrisignorell.github.io/DescTools/'>DescTools</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://andrisignorell.github.io/DescTools/reference/DunnTest.html'>DunnTest</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2795,7 +2851,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html'>ggboxplot</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span>, x <span class='op'>=</span> <span class='st'>"dose"</span>, y <span class='op'>=</span> <span class='st'>"len"</span>,
                 color <span class='op'>=</span> <span class='st'>"supp"</span>, palette <span class='op'>=</span> <span class='st'>"lancet"</span>,
                 add <span class='op'>=</span> <span class='st'>"jitter"</span>, shape <span class='op'>=</span> <span class='st'>"dose"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2811,7 +2867,7 @@ Figure 2: Diagrama de Caixa usando o <code>{ggpubr}</code> – ANOVA
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rpkgs.datanovia.com/ggpubr/'>ggpubr</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rpkgs.datanovia.com/ggpubr/reference/ggboxplot.html'>ggboxplot</a></span><span class='op'>(</span><span class='va'>ToothGrowth</span>, x <span class='op'>=</span> <span class='st'>"dose"</span>, y <span class='op'>=</span> <span class='st'>"len"</span>,
                 color <span class='op'>=</span> <span class='st'>"supp"</span>, palette <span class='op'>=</span> <span class='st'>"lancet"</span>,
                 add <span class='op'>=</span> <span class='st'>"jitter"</span>, shape <span class='op'>=</span> <span class='st'>"dose"</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2828,12 +2884,12 @@ Figure 3: Diagrama de Caixa usando o <code>{ggpubr}</code> – ANOVA Não-Param�
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Running under: macOS  11.2
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -2847,40 +2903,41 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] DescTools_0.99.39  skimr_2.1.2        ggpubr_0.4.0      
+ [1] DescTools_0.99.40  skimr_2.1.2        ggpubr_0.4.0      
  [4] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
- [7] dplyr_1.0.2        ggplot2_3.3.3      DiagrammeR_1.0.6.1
+ [7] dplyr_1.0.4        ggplot2_3.3.3      DiagrammeR_1.0.6.1
 [10] readxl_1.3.1      
 
 loaded via a namespace (and not attached):
- [1] lubridate_1.7.9.2  RColorBrewer_1.1-2 rprojroot_2.0.2   
- [4] ggsci_2.9          repr_1.1.0         tools_4.0.3       
- [7] backports_1.2.1    utf8_1.1.4         R6_2.5.0          
-[10] colorspace_2.0-0   withr_2.3.0        tidyselect_1.1.0  
-[13] Exact_2.1          downlit_0.2.1      curl_4.3          
-[16] compiler_4.0.3     cli_2.2.0          expm_0.999-5      
-[19] xml2_1.3.2         labeling_0.4.2     bookdown_0.21     
-[22] scales_1.1.1       mvtnorm_1.1-1      stringr_1.4.0     
-[25] digest_0.6.27      foreign_0.8-81     rmarkdown_2.6     
-[28] rio_0.5.16         base64enc_0.1-3    pkgconfig_2.0.3   
-[31] htmltools_0.5.0    highr_0.8          htmlwidgets_1.5.3 
-[34] rlang_0.4.10       rstudioapi_0.13    visNetwork_2.0.9  
-[37] farver_2.0.3       generics_0.1.0     jsonlite_1.7.2    
-[40] zip_2.1.1          distill_1.1        magrittr_2.0.1    
-[43] Matrix_1.3-2       Rcpp_1.0.5         munsell_0.5.0     
-[46] fansi_0.4.1        abind_1.4-5        reticulate_1.18   
-[49] lifecycle_0.2.0    stringi_1.5.3      yaml_2.2.1        
-[52] rootSolve_1.8.2.1  MASS_7.3-53        grid_4.0.3        
-[55] parallel_4.0.3     forcats_0.5.0      crayon_1.3.4      
-[58] lmom_2.8           lattice_0.20-41    haven_2.3.1       
-[61] hms_0.5.3          knitr_1.30         pillar_1.4.7      
-[64] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
-[67] glue_1.4.2         evaluate_0.14      data.table_1.13.6 
-[70] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
-[73] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
-[76] xfun_0.20          openxlsx_4.2.3     broom_0.7.3       
-[79] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
-[82] tibble_3.0.4       ellipsis_0.3.1    </code></pre>
+ [1] lubridate_1.7.9.2  naniar_0.6.0.9000  RColorBrewer_1.1-2
+ [4] rprojroot_2.0.2    ggsci_2.9          repr_1.1.3        
+ [7] tools_4.0.3        backports_1.2.1    utf8_1.1.4        
+[10] R6_2.5.0           DBI_1.1.1          colorspace_2.0-0  
+[13] withr_2.4.1        Exact_2.1          tidyselect_1.1.0  
+[16] downlit_0.2.1      curl_4.3           compiler_4.0.3    
+[19] cli_2.3.0          expm_0.999-6       xml2_1.3.2        
+[22] labeling_0.4.2     bookdown_0.21      scales_1.1.1      
+[25] mvtnorm_1.1-1      stringr_1.4.0      digest_0.6.27     
+[28] foreign_0.8-81     rmarkdown_2.6      rio_0.5.16        
+[31] base64enc_0.1-3    pkgconfig_2.0.3    htmltools_0.5.1.1 
+[34] highr_0.8          htmlwidgets_1.5.3  rlang_0.4.10      
+[37] rstudioapi_0.13    visNetwork_2.0.9   farver_2.0.3      
+[40] generics_0.1.0     jsonlite_1.7.2     zip_2.1.1         
+[43] distill_1.2        magrittr_2.0.1     Matrix_1.3-2      
+[46] Rcpp_1.0.6         munsell_0.5.0      fansi_0.4.2       
+[49] abind_1.4-5        reticulate_1.18    lifecycle_0.2.0   
+[52] visdat_0.5.3       stringi_1.5.3      yaml_2.2.1        
+[55] rootSolve_1.8.2.1  MASS_7.3-53        grid_4.0.3        
+[58] parallel_4.0.3     forcats_0.5.1      crayon_1.4.0      
+[61] lmom_2.8           lattice_0.20-41    haven_2.3.1       
+[64] hms_1.0.0          knitr_1.31         pillar_1.4.7      
+[67] boot_1.3-26        gld_2.6.2          ggsignif_0.6.0    
+[70] glue_1.4.2         evaluate_0.14      data.table_1.13.6 
+[73] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
+[76] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
+[79] xfun_0.20          openxlsx_4.2.3     broom_0.7.4       
+[82] e1071_1.7-4        rstatix_0.6.0      class_7.3-18      
+[85] tibble_3.0.6       ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
@@ -2976,12 +3033,12 @@ Zimmerman, D. W. (1998). Invalidation of parametric and nonparametric statistica
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source code is available at <a href="https://github.com/storopoli/Estatistica">https://github.com/storopoli/Estatistica</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 <h3 id="citation">Citation</h3>
 <p>For attribution, please cite this work as</p>
-<pre class="citation-appendix short">Storopoli &amp; Vils (2021, Jan. 11). Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica. Retrieved from https://storopoli.github.io/Estatistica/4-ANOVA.html</pre>
+<pre class="citation-appendix short">Storopoli &amp; Vils (2021, Jan. 11). Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica. Retrieved from https://storopoli.io/Estatistica/4-ANOVA.html</pre>
 <p>BibTeX citation</p>
 <pre class="citation-appendix long">@misc{storopoli2021anovaR,
   author = {Storopoli, Jose and Vils, Leonardo},
   title = {Estatística com R: Teste de Médias -- ANOVA Paramétrica e Não-Paramétrica},
-  url = {https://storopoli.github.io/Estatistica/4-ANOVA.html},
+  url = {https://storopoli.io/Estatistica/4-ANOVA.html},
   year = {2021}
 }</pre>
 </div>

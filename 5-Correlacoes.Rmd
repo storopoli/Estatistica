@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/5-Correlacoes.html
+citation_url: https://storopoli.io/Estatistica/5-Correlacoes.html
 slug: storopoli2021correlacoesR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -43,15 +43,15 @@ Desvio padrão é uma métrica descritiva de uma variável que indica a magnitud
 
 ```{r plot-distnorms, fig.cap='Distribuições Normais com diferentes Desvios Padrões'}
 library(ggplot2)
-ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   mapply(function(mean, sd, col) {
     stat_function(fun = dnorm,
                   args = list(mean = mean,
                               sd = sd),
                   aes(col = col), size = 3)
-  }, 
-  mean = rep(0, 3), 
-  sd = c(1, .5, 2), 
+  },
+  mean = rep(0, 3),
+  sd = c(1, .5, 2),
   col = c('1', '0.5', '2')) +
   scale_colour_brewer("Desvio\nPadrão", palette = "Set1",
                       guide = guide_legend(ncol = 1,
@@ -102,20 +102,20 @@ anscombe <- anscombe %>%
    names_pattern = "(.)(.)")
 
 p_a <- anscombe %>%
-  dplyr::filter(conjunto == 1) %>% 
+  dplyr::filter(conjunto == 1) %>%
   ggplot(aes(x, y)) +
   geom_point() +
   geom_smooth(method = "lm", se = F, color = "Red") +
-  scale_x_continuous(limits = c(4, 14), breaks = 4:14) + 
+  scale_x_continuous(limits = c(4, 14), breaks = 4:14) +
   scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
   ggtitle("Relação Linear")
 
 p_b <- anscombe %>%
-  dplyr::filter(conjunto == 2) %>% 
+  dplyr::filter(conjunto == 2) %>%
   ggplot(aes(x, y)) +
   geom_point() +
   geom_smooth(method = "lm", se = F, color = "Red") +
-  scale_x_continuous(limits = c(4, 14), breaks = 4:14) + 
+  scale_x_continuous(limits = c(4, 14), breaks = 4:14) +
   scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
   ggtitle("Relação Não-Linear")
 
@@ -161,7 +161,7 @@ library(mnormt)
 
 medias <- c(0,10)
 covariancias <- matrix(c(1, 0.6, 0.6, 1), 2, 2)
-                       
+
 mv_normal <- as.data.frame(rmnorm(50, medias, covariancias))
 mv_student <- as.data.frame(rmt(50, medias, covariancias, df = 1))
 ```
@@ -281,7 +281,7 @@ p4 + p5 + plot_layout(nrow = 1, widths = 1)
 Para iniciar a exemplificação do paradoxo de Simpson, mostraremos os dados agregados da associação entre o comprimento do bico `bill_length_mm` e a altura do bico `bill_depth_mm` dos pinguins, ambos mensurados em milímetros e independente de espécie. Na figura \@ref(fig:fig-agg-penguins) é possível ver um diagrama de dispersão do comprimento e altura dos bicos dos pinguins, independente de espécie, e com uma linha de tendência em azul. A correlação, por esse gráfico de dispersão, mostra uma associação negativa entre comprimento e altura do bico. E, agora, perguntamos: isto faz sentido? Vocês acreditam que essa associação é realmente negativa: quanto maior o comprimento do bico menor a altura do bico?
 
 ```{r fig-agg-penguins, warning=FALSE, message=FALSE, fig.cap='Diagrama de dispersão agregado do comprimento e altura dos bicos dos pinguins', out.width='100%'}
-penguins %>% 
+penguins %>%
   ggplot(aes(bill_length_mm, bill_depth_mm)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, size = 2)  +
@@ -293,7 +293,7 @@ penguins %>%
 Veja o que acontece quando dividimos os dados por subgrupos (no caso espécies). Na figura \@ref(fig:fig-group-penguins) é possível ver um diagrama de dispersão do comprimento e altura dos bicos dos pinguins, subdividos em espécie por cor, e com uma linha de tendência na cor de cada espécie. A correlação, por esse gráfico de dispersão, mostra uma associação positiva entre comprimento e altura do bico quando consideramos espécie.
 
 ```{r fig-group-penguins, warning=FALSE, message=FALSE, fig.cap='Diagrama de dispersão subdividido em espécies do comprimento e altura dos bicos dos pinguins'}
-penguins %>% 
+penguins %>%
   ggplot(aes(bill_length_mm, bill_depth_mm, color = species)) +
   geom_point() +
   geom_smooth(aes(group = species), method = "lm", se = FALSE, size = 2)  +

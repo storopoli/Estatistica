@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/aux-Anscombe.html
+citation_url: https://storopoli.io/Estatistica/aux-Anscombe.html
 slug: storopoli2021anscombeR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -66,7 +66,7 @@ Aqui na figura \@ref(fig:plot-anscombe) vocês podem observar a diferença entre
 
 ```{r plot-anscombe, message=FALSE, warning=FALSE, fig.cap='O quarteto de Anscombe'}
 library(ggplot2)
-anscombe %>% 
+anscombe %>%
   ggplot(aes(x, y, group = conjunto)) +
   geom_point() +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
@@ -90,7 +90,7 @@ tbl_summary(anscombe,
 	digits = all_continuous() ~ 2) %>%
   bold_labels() %>%
   italicize_levels() %>%
-  as_gt() %>% 
+  as_gt() %>%
   tab_header(title="Estatísticas Descritivas do Quarteto de Anscombe",
              subtitle = "Agrupadas por Conjunto")
 ```
@@ -101,11 +101,11 @@ Além disso, a correlação é a mesma (`r cor(anscombe$x, anscombe$y)`) nos qua
 library(dplyr)
 library(purrr)
 tibble(conjunto = as.factor(1:4),
-       correlação = unique(anscombe$conjunto) %>% 
+       correlação = unique(anscombe$conjunto) %>%
   map_dbl(~ cor(subset(anscombe, conjunto == .x, select = x),
-                subset(anscombe, conjunto == .x, select = y)))) %>% 
-  gt() %>% 
-  tab_header(title="Correlações do Quarteto de Anscombe") %>% 
+                subset(anscombe, conjunto == .x, select = y)))) %>%
+  gt() %>%
+  tab_header(title="Correlações do Quarteto de Anscombe") %>%
   tab_source_note(md("*Observação: Correlação calculada conforme a correlação de Pearson*"))
 ```
 
@@ -116,18 +116,18 @@ O mais interessante é que **se formos aplicar uma regressão linear teremos os 
 ```{r anscombe-lm}
 library(broom)
 map_dfr(1:4,
-        ~ tidy(lm(y ~ x, subset(anscombe, conjunto == .x)), conf.int = TRUE)) %>% 
-  filter(term == "x") %>% 
-  mutate(Conjunto = unique(anscombe$conjunto)) %>% 
+        ~ tidy(lm(y ~ x, subset(anscombe, conjunto == .x)), conf.int = TRUE)) %>%
+  filter(term == "x") %>%
+  mutate(Conjunto = unique(anscombe$conjunto)) %>%
   inner_join(map_dfr(unique(anscombe$conjunto),
                      ~ glance(lm(y ~ x, subset(anscombe, conjunto == .x)),
-                              conf.int = TRUE)) %>% 
+                              conf.int = TRUE)) %>%
                mutate(Conjunto = unique(anscombe$conjunto)),
-             by = "Conjunto") %>% 
-  relocate(Conjunto) %>% 
+             by = "Conjunto") %>%
+  relocate(Conjunto) %>%
   select(Conjunto, estimate, std.error, p.value.x,
-         conf.low, conf.high, r.squared, adj.r.squared) %>% 
-  gt() %>% 
+         conf.low, conf.high, r.squared, adj.r.squared) %>%
+  gt() %>%
   tab_header("Modelo de Regressão Linear do Quarteto de Anscombe",
              md("Fórmula: `y ~ x`"))
 ```
@@ -136,7 +136,7 @@ Uma maneira de diferenciar os quatro conjuntos de Anscombe numa regressão linea
 
 ```{r anscombe-resid, warning=FALSE, message=FALSE, fig.cap='Resíduos dos Modelos de Regressão Linear Quarteto de Anscombe'}
 library(patchwork)
-map(1:4, ~ lm(y ~ x, subset(anscombe, conjunto == .x))) %>% 
+map(1:4, ~ lm(y ~ x, subset(anscombe, conjunto == .x))) %>%
   map2(1:4,
      ~ ggplot(augment(.x), aes(x = .fitted, y = .resid)) +
        geom_point() +
@@ -145,7 +145,7 @@ map(1:4, ~ lm(y ~ x, subset(anscombe, conjunto == .x))) %>%
          x = "Valor de x",
          y = "Resíduos",
          title = paste("Conjunto", as.character(.y))
-       )) %>% 
+       )) %>%
   reduce(`+`) +
   plot_layout(ncol = 2)
 ```

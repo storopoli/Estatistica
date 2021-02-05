@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/2-p-valores.html
+citation_url: https://storopoli.io/Estatistica/2-p-valores.html
 slug: storopoli2021pvalores
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -58,7 +58,7 @@ grViz("
           label = '  Inferência  ',
           tailport = 'w',
           headport = 'w']
-} 
+}
 ")
 ```
 
@@ -78,7 +78,7 @@ A chave para compreesão da Estatística inferencial se baseia em entender os te
 
 [^14]: em especial as técnicas clássicas/frequentistas de Estatística inferencial.
 
-1. **Calculamos uma estatística da amostra**. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de $\delta$ (letra gregra delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras... 
+1. **Calculamos uma estatística da amostra**. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de $\delta$ (letra gregra delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras...
 2. **Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo**. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estívessemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, ...) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de **Hipótese Nula** e é representada com o seguinte símbolo $H_0$. A estatística $\delta$ no mundo da $H_0$ não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de $\delta$ no mundo da $H_0$. Vamos chamar esse valor de $\delta_0$
 3. **Calculamos a probabidalide de obtermos algo como $\delta$ no mundo da $H_0$**: chamamos isso de $p$-valor. O $p$-valor é a probabilidade de observarmos um $\delta$ no mínimo tão grande quanto o observado num mundo no qual não há o efeito $\delta$. Ou seja $\delta = 0$, e consequentemente $\delta = \delta_0$. Como sabemos do valor $\delta_0$ de antemão, basta compararmos o nosso $\delta$ com $\delta_0$ para gerar o $p$-valor. Por isso que muitos livros de Estatística possuem um vasto arsenal de tabelas. O leitor pode facilmente ver o seu $\delta$ e com alguns dados sobre a amostra, em especial o número da amostra, obter o $\delta_0$ e $p$-valor respectivos.
 4. **Decidimos se $\delta$ possui significância estatística**. Escolhemos um limiar de rejeição da $H_0$, muitas vezes chamado de $\alpha$ (letra gregra alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da $H_0$.
@@ -291,8 +291,8 @@ Variável dependente é aquela que estamos interessados na nossa análise. É a 
 ```{r dist-normal, message=FALSE, fig.cap='Distribuição Normal'}
 library(ggplot2)
 library(dplyr)
-tibble(x = c(-4, 4)) %>% 
-ggplot(aes(x)) + 
+tibble(x = c(-4, 4)) %>%
+ggplot(aes(x)) +
     stat_function(size = 3, col = "red", fun = dnorm) +
   labs(
     x = NULL,
@@ -315,8 +315,8 @@ Ambos os testes aceitam como input uma variável e dão como output um $p$-valor
 Abaixo, no R, vamos simular 1.000 observações de uma variável distribuída conforme uma distribuição Normal com média 0 e desvio padrão 1. Além disso, vamos simular também 100 observações de uma variável bem longe de ser distribuída como uma distribuição Normal. Vamos usar uma variável distribuída conforme uma distribuição Log-Normal. Primeiramente, vamos mostrar graficamente as duas distribuições. Como vocês podem na figura \@ref(fig:dists-norm-lnorm), a distribuição Normal tem a forma característica de sino e a distribuição Log-Normal tem uma assimetria para a direita com uma cauda mais alongada.
 
 ```{r dists-norm-lnorm, fig.cap='Distribuição Normal vs Distribuição Log-Normal'}
-tibble(x = c(-8, 8)) %>% 
-ggplot(aes(x)) + 
+tibble(x = c(-8, 8)) %>%
+ggplot(aes(x)) +
   stat_function(size = 3, col = "red", fun = dnorm) +
   stat_function(size = 3, col = "blue", fun = dlnorm) +
   labs(
@@ -375,23 +375,23 @@ Uma boa maneira de visualizar isso é usarmos distribuições Normais com difere
 
 ```{r dists-norm-homogeneidade, fig.cap='Homogeneidade e Heterogeneidade das Variâncias', layout='l-page'}
 library(patchwork)
-p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   mapply(function(mean, sd, col) {
     stat_function(fun = dnorm, args = list(mean = mean, sd = sd), size = 3, col = col)
-  }, 
+  },
   # enter means, standard deviations and colors here
-  mean = c(0, 1, -1), 
-  sd = c(1, 1, 1), 
+  mean = c(0, 1, -1),
+  sd = c(1, 1, 1),
   col = c('red', 'blue', 'green')
 )
 
-p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) + 
+p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   mapply(function(mean, sd, col) {
     stat_function(fun = dnorm, args = list(mean = mean, sd = sd), size = 3, col = col)
-  }, 
+  },
   # enter means, standard deviations and colors here
-  mean = c(0, 1, .5), 
-  sd = c(1, .5, 2),  
+  mean = c(0, 1, .5),
+  sd = c(1, .5, 2),
   col = c('red', 'blue', 'green')
 )
 
@@ -409,10 +409,10 @@ sims2 <- tibble(
   heterog = c(rnorm(n_sim/4, 0, 0.1), rnorm(n_sim/4, 1, 2))
 )
 
-p3 <- ggplot(sims2, aes(homog, fill = group)) + 
+p3 <- ggplot(sims2, aes(homog, fill = group)) +
   geom_density(alpha = 0.5, show.legend = F)
 
-p4 <- ggplot(sims2, aes(heterog, fill = group)) + 
+p4 <- ggplot(sims2, aes(heterog, fill = group)) +
   geom_density(alpha = 0.5, show.legend = F)
 
 p3 | p4

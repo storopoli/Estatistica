@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/aux-Likert.html
+citation_url: https://storopoli.io/Estatistica/aux-Likert.html
 slug: storopoli2021likertR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -54,7 +54,7 @@ knitr::include_graphics("images/likert_modelo_latente.png")
 
 ## Escala Likert
 
-Nas ciências sociais temos um predomínio de escalas ordinais como maneiras de mensuração de opinião. Dentre as diversas maneiras de mensurar opiniões, a escala Likert é a escala mais utilizada por pesquisadores e cientistas. A escala Likert foi criada em 1932 por Rensis Likert (figura \@ref(fig:fig-likert)) na sua tese de doutorado como uma forma de identificar a extensão das atitudes e sentimentos de uma pessoa em relação à assuntos internacionais. Após isso, a escala Likert se tornou o principal instrumento quando usamos  perguntas para a qual a resposta é indicada em uma escala ordenada discreta que varia de um ponto final qualitativo a outro ponto final qualitativo (por exemplo, discordo totalmente para concordar totalmente). 
+Nas ciências sociais temos um predomínio de escalas ordinais como maneiras de mensuração de opinião. Dentre as diversas maneiras de mensurar opiniões, a escala Likert é a escala mais utilizada por pesquisadores e cientistas. A escala Likert foi criada em 1932 por Rensis Likert (figura \@ref(fig:fig-likert)) na sua tese de doutorado como uma forma de identificar a extensão das atitudes e sentimentos de uma pessoa em relação à assuntos internacionais. Após isso, a escala Likert se tornou o principal instrumento quando usamos  perguntas para a qual a resposta é indicada em uma escala ordenada discreta que varia de um ponto final qualitativo a outro ponto final qualitativo (por exemplo, discordo totalmente para concordar totalmente).
 
 ```{r fig-likert, echo=FALSE, fig.cap='Rensis Likert. Figura de https://www.wikipedia.org', out.extra='class=external'}
 knitr::include_graphics("images/likert.jpg")
@@ -67,7 +67,7 @@ library(gt)
 tibble::tribble(
   ~"Discordo Fortemente", ~"Discordo", ~"Não Discordo nem Concordo", ~"Concordo", ~"Concordo Fortemente",
    -2L,                    -1L,          0L,                           1L,          2L
-  ) %>% 
+  ) %>%
   gt()
 ```
 
@@ -77,7 +77,7 @@ Já escalas Likert pares **não** permitem com que respondente escolha uma opç�
 tibble::tribble(
   ~"Discordo Fortemente", ~"Discordo", ~"Concordo", ~"Concordo Fortemente",
    -2L,                    -1L,          1L,          2L
-  ) %>% 
+  ) %>%
   gt()
 ```
 
@@ -105,7 +105,7 @@ library(likert)
 library(dplyr)
 library(skimr)
 data(pisaitems)
-pisa <- pisaitems %>% 
+pisa <- pisaitems %>%
   dplyr::select(starts_with("ST24"))
 skim(pisa)
 ```
@@ -121,9 +121,9 @@ plot(likert(pisa))
 Aqui vamos aplicar uma regressão linear para a variável `ST24Q02` que é a pergunta *Reading is one of my favorite hobbies.* (Ler é um dos meus passatempos favoritos). Como variável independente vamos usar o país do aluno `CNT` (Mexico, EUA ou Canadá). Aqui estamos convertendo a variável ordinal `ST24Q02` como numérica (contínua).
 
 ```{r lm}
-linear_reg <- pisaitems %>% 
-  dplyr::select(CNT, ST24Q02) %>% 
-  mutate(ST24Q02 = as.numeric(ST24Q02)) %>% 
+linear_reg <- pisaitems %>%
+  dplyr::select(CNT, ST24Q02) %>%
+  mutate(ST24Q02 = as.numeric(ST24Q02)) %>%
   lm(ST24Q02 ~ CNT, data = .)
 
 summary(linear_reg)
@@ -137,8 +137,8 @@ Para o segundo cenário vamos usar os mesmos dados do primeiro só que agora est
 
 ```{r polr}
 library(MASS)
-ordinal_reg <- pisaitems %>% 
-  dplyr::select(CNT, ST24Q02) %>% 
+ordinal_reg <- pisaitems %>%
+  dplyr::select(CNT, ST24Q02) %>%
   polr(ST24Q02 ~ CNT, data = ., Hess = TRUE, method = "probit")
 summary(ordinal_reg)
 ```

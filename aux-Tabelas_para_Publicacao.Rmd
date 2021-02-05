@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/aux_Tabelas_para_Publicacao.html
+citation_url: https://storopoli.io/Estatistica/aux_Tabelas_para_Publicacao.html
 slug: storopoli2021tabelaspublicR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -52,7 +52,7 @@ gtsummary::tbl_summary(
   type = all_continuous() ~ "continuous2",
   statistic = list(
     all_continuous() ~ c("{N_nonmiss}",
-                         "{median} ({p25}, {p75})", 
+                         "{median} ({p25}, {p75})",
                          "{min}, {max}"),
     all_categorical() ~ "{n} ({p}%)"),
   missing = "no",
@@ -62,8 +62,8 @@ gtsummary::tbl_summary(
   italicize_levels() %>%
   modify_header(list(label ~ "**Variáveis**",
                      stat_1 ~ "**Automático**, N = 18",
-                     stat_2 ~ "**Manual**, N = 14")) %>% 
-  modify_spanning_header(c("stat_1", "stat_2") ~ "**Automáticos vs Manuais**") %>% 
+                     stat_2 ~ "**Manual**, N = 14")) %>%
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Automáticos vs Manuais**") %>%
   add_n()
 ```
 
@@ -80,7 +80,7 @@ tbl_regression(
   modelo_linear,
   tidy_fun = tidy_standardize) %>%
 	bold_labels() %>%
-	add_glance_source_note(c(r.squared, adj.r.squared)) %>% 
+	add_glance_source_note(c(r.squared, adj.r.squared)) %>%
   modify_header(list(estimate ~ "**Beta Padronizados**"))
 ```
 
@@ -93,7 +93,7 @@ modelo_logistico <- glm(survived ~ age + sex,
 
 tbl_regression(
   modelo_logistico,
-  exponentiate = TRUE) %>% 
+  exponentiate = TRUE) %>%
   bold_labels() %>%
   bold_p()
 ```
@@ -111,7 +111,7 @@ modelo_interacao <- glm(survived ~ age + sex*passengerClass,
 tabelas_modelos <- list(modelo_simples, modelo_quali, modelo_interacao) %>%
   purrr::map(~ tbl_regression(
   .,
-  exponentiate = TRUE) %>% 
+  exponentiate = TRUE) %>%
   bold_labels() %>%
   bold_p())
 

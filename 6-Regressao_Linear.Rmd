@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.github.io/Estatistica/6-Regressao_Linear.html
+citation_url: https://storopoli.io/Estatistica/6-Regressao_Linear.html
 slug: storopoli2021regressaolinearR
 bibliography: bibliografia.bib
 csl: apa.csl
@@ -74,7 +74,7 @@ sim <- tibble(
   x = seq(from = 1, to = 300),
   y = rnorm(n = 300, mean = x + 2, sd = 25))
 
-p1 <- sim %>% 
+p1 <- sim %>%
   ggplot(aes(x = x, y = y)) +
   geom_point(color = "steelblue")
 
@@ -88,14 +88,14 @@ Vejam que regressão linear usando apenas uma variável dependente e uma variáv
 
 ### Interpretação Matemática
 
-**A interpretação matemática é vista como uma otimização: encontrar a melhor reta entre os pontos que minimiza o erro quadrático médio (*mean squared error* -- MSE)**. Ao escolhermos a melhor reta, devemos escolher a melhor reta que minimiza as distâncias entre os pontos, sendo que podemos errar para mais ou para menos. Para evitarmos que os erros se cancelem, precisamos eliminar o sinal negativo de alguns erros e convertê-los para valores positivos. Para isso, pegamos todas os erros (diferenças entre o valor previsto pela reta e o valor verdadeiro) e elevamos ao quadrado (assim todo número negativo se tornará positivo e todo positivo se manterá positivo)^[tecnicamente podemos também pegar o valor absoluto de cada erro. Isto se chama erro absoluto médio (*mean absolute error* -- MAE). Mas não possui as mesmas propriedades analíticas que o MSE e é computacionalmente menos estável.]. Portanto, a **regressão se torna a busca do menor valor de uma função erro (MSE)**^[Para os que tenham tido a oportunidade de estudar cálculo: estamos falando em achar o valor de `x` quando a derivada do MSE é zero ($\text{MSE}^{\prime} = 0$).]. 
+**A interpretação matemática é vista como uma otimização: encontrar a melhor reta entre os pontos que minimiza o erro quadrático médio (*mean squared error* -- MSE)**. Ao escolhermos a melhor reta, devemos escolher a melhor reta que minimiza as distâncias entre os pontos, sendo que podemos errar para mais ou para menos. Para evitarmos que os erros se cancelem, precisamos eliminar o sinal negativo de alguns erros e convertê-los para valores positivos. Para isso, pegamos todas os erros (diferenças entre o valor previsto pela reta e o valor verdadeiro) e elevamos ao quadrado (assim todo número negativo se tornará positivo e todo positivo se manterá positivo)^[tecnicamente podemos também pegar o valor absoluto de cada erro. Isto se chama erro absoluto médio (*mean absolute error* -- MAE). Mas não possui as mesmas propriedades analíticas que o MSE e é computacionalmente menos estável.]. Portanto, a **regressão se torna a busca do menor valor de uma função erro (MSE)**^[Para os que tenham tido a oportunidade de estudar cálculo: estamos falando em achar o valor de `x` quando a derivada do MSE é zero ($\text{MSE}^{\prime} = 0$).].
 
 ```{r regressao-mse, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='A melhor reta que minimiza a distância dos erros'}
 library(broom)
 
 lm_sim <- augment(lm(y ~ x, data = sim))
 
-p3 <- lm_sim %>% 
+p3 <- lm_sim %>%
   ggplot(aes(x = x, y = y)) +
   geom_point(color = "steelblue") +
   geom_smooth(method = "lm", se =  FALSE, color = "Red")
@@ -192,8 +192,8 @@ Além de variáveis independentes quantitativas, regressão linear também permi
 Vamos estender o nosso modelo simples adicionando a variável `am`. Note que vamos convertê-la para qualitativa (`factor`) usando a função padrão do R `as.factor()`, Isto é necessário para que o R interprete `am` como fator (nomenclatura do R para variáveis qualitativas).
 
 ```{r lm-quali}
-modelo_quali <- mtcars %>% 
-  mutate(am = as.factor(am)) %>% 
+modelo_quali <- mtcars %>%
+  mutate(am = as.factor(am)) %>%
   lm(mpg ~ hp + wt + am, data = .)
 summary(modelo_quali)
 ```
@@ -206,7 +206,7 @@ modelo_quali$xlevels
 
 ### Efeitos Principais e Efeitos de Interação
 
-Todos os modelos de regressão que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre ANOVA](4-ANOVA.html), podemos incluir **dois tipos de efeitos na regressão linear**: 
+Todos os modelos de regressão que mostramos até aqui usaram apenas efeitos principais. Mas **podemos também mostrar efeitos de interação (também chamados de efeitos de moderação) entre duas variáveis**. Similar ao exposto no [tutorial sobre ANOVA](4-ANOVA.html), podemos incluir **dois tipos de efeitos na regressão linear**:
 
 * **Efeitos principais**: efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente. Chamamos esses efeitos de **aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente.
 * **Efeitos de interações**: quando o efeito de uma (ou mais) variável(is) independente(s) em uma variável dependente é afetado pelo nível de outras variável(is) independente(s). Efeitos de interação **não são aditivos** pois podem ser quebrados em dois efeitos distintos e únicos que estão influenciando a variável dependente. **Há uma interação entre as variáveis independentes**.
@@ -214,10 +214,10 @@ Todos os modelos de regressão que mostramos até aqui usaram apenas efeitos pri
 Veja na figura \@ref(fig:mtcars-interaction) uma representação gráfica da interação entre `am` e `cyl`. Note que a interação é observada pela diferença de inclinações entre as linhas coloridas que representam os diferentes valores de `cyl`^[convertemos `cyl` em fator para que, no gráfico `cyl` seja representado como quantidades discretas ao invés de contínuas.].
 
 ```{r mtcars-interaction, warning=FALSE, message=FALSE, fig.cap='Interação entre `am` e `cyl` do *dataset* `mtcars`'}
-mtcars %>% 
-  mutate(across(c(am, cyl), as.factor)) %>% 
-  group_by(am, cyl) %>% 
-  summarise(mpg = mean(mpg)) %>% 
+mtcars %>%
+  mutate(across(c(am, cyl), as.factor)) %>%
+  group_by(am, cyl) %>%
+  summarise(mpg = mean(mpg)) %>%
   ggplot(aes(x = am, y = mpg, color = cyl)) +
   geom_line(aes(group = cyl)) +
   geom_point() +
@@ -238,7 +238,7 @@ A interpretação do coeficiente `cyl:am` é a seguinte: `cyl` (ou `am`) **moder
 Podemos também incluir efeitos não-lineares em modelos de regressão linear. Uma **relação não-linear é aquela que a representação entre as variáveis não pode ser representada de maneira fidedigna de maneira linear (com uma reta, mas sim com uma curva)**. Na ciência, há diversos fenômenos que não podem ser representados linearmente. Na figura @\ref(fig:mtcars-poly) é possível ver a relação entre `hp` e `mpg`: a linha vermelha mostra uma tendência linear e a linha azul uma tendência não-linear.
 
 ```{r mtcars-poly, warning=FALSE, message=FALSE, fig.cap='Relação Não-Linear entre `hp` e `mpg` do *dataset* `mtcars`'}
-mtcars %>% 
+mtcars %>%
   ggplot(aes(hp, mpg)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "Red") +
@@ -274,12 +274,12 @@ Caso queira mais opções de visualizações para modelos de regressão não dei
 
 Para visualização diagnóstica de modelos de regressão linear temos a opção `plot()` padrão do R para modelos `lm`. Mas essa visualização não é interessante pois usa o sistema padrão do R para visualizações ao invés do sistema `{ggplot2}` [@ggplot2] que permite maiores configurações e controle. Para visualizar diagnósticos de objetos `lm` usando o sistema `{ggplot2}` recomendamos a biblioteca `{ggfortify}` [@ggfortify].
 
-A a função `autoplot()` da biblioteca `{ggfortify}` mostra os resíduos em quatro gráficos diferentes: 
+A a função `autoplot()` da biblioteca `{ggfortify}` mostra os resíduos em quatro gráficos diferentes:
 
 1. **_Residuals vs Fitted_ (Resíduos vs Valores Previstos)**: utilizado para verificar os pressupostos de linearidade. Uma linha horizontal, sem padrões distintos é um indicativo de uma relação linear, o que indica que o pressuposto não foi violado.
 2. **_Normal Q-Q_ (Q-Q dos Resíduos)**: utilizado para verificar se os resíduos estão normalmente distribuídos. Se os pontos residuais seguirem a linha reta tracejada, indica que o pressuposto de independência dos resíduos não foi violado.
 3. **_Scale-Location_ (Resíduos "Studentizados" vs Valores Previstos)**: utilizado para verificar a homogeneidade da variância dos resíduos (homocedasticidade). Uma linha horizontal com pontos igualmente espalhados é uma boa indicação que o pressuposto não foi violado. Usa o formato "Studentizado" dos resíduos que é o quociente resultante da divisão de um resíduo por uma estimativa de seu desvio padrão. É uma forma de estatística $t$ de Student, com a estimativa de erro variando entre os pontos.
-4. **_Residuals vs Leverage_ (Resíduos vs Influências)**: Utilizado para identificar casos influentes, ou seja, valores extremos que podem influenciar os resultados da regressão quando incluídos ou excluídos da análise. 
+4. **_Residuals vs Leverage_ (Resíduos vs Influências)**: Utilizado para identificar casos influentes, ou seja, valores extremos que podem influenciar os resultados da regressão quando incluídos ou excluídos da análise.
 
 Veja um exemplo de visualização diagnóstica do `modelo_simples` na figura \@ref(fig:ggfortify). É um bom exemplo que demonstra diversas patologias (problemas) do modelo. Os resíduos (gráfico superior esquerdo) possui um padrão evidente, o gráfico Q-Q dos resíduos (gráfico superior direito) evidencia algumas observações com resíduos que ferem o pressuposto de independência dos resíduos, e por fim possuímos uma observação extremamente influente (gráfico inferior direito -- Maserati B) que talvez prejudique as inferências do modelo.
 
@@ -389,11 +389,11 @@ tibble::tribble(
                              "N: Teste de Kruskal-Wallis",           "kruskal.test(y ~ group)",   "lm(rank(y) ~ 1 + G2 + G3 +…+ GN)",
            "P: ANOVA Bidirecional com efeitos principais",                "aov(y ~ group + x)",     "lm(y ~ 1 + G2 + G3 +…+ GN + x)",
          "P: ANOVA Bidirecional com efeitos de interação",              "aov(y ~ group * sex)",         "lm(y ~ 1 + G2 + G3 +…+ GN + S2 + S3 +…+ SK + G2*S2 + G3*S3 + … + GN*SK)"
-) %>% 
-  gt() %>% 
-  tab_source_note("Fonte: adaptado de Lindelov (2019).") %>% 
+) %>%
+  gt() %>%
+  tab_source_note("Fonte: adaptado de Lindelov (2019).") %>%
   tab_footnote(footnote = md("**P**: paramétrico - **N**: não-paramétrico"),
-               locations = cells_column_labels(columns = vars("Nome do Teste"))) 
+               locations = cells_column_labels(columns = vars("Nome do Teste")))
 ```
 
 
@@ -419,7 +419,7 @@ sims <- tibble(
   x = 1:n_sims,
   y = c(rnorm(floor(4 * n_sims/5)), sample(c(-4:-3, 3:4),ceiling(n_sims/5), 1)),
   tipo = c(rep("normal", floor(4 * n_sims/5)), rep("extrema", ceiling(n_sims/5)))
-) %>% 
+) %>%
   sample_frac(1L)  ## Randomize!
 ```
 
