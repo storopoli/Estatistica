@@ -1,5 +1,6 @@
 install.packages("tidyverse")
 install.packages("here")
+install.packages("reticulate")
 install.packages("xlsx")
 install.packages("readxl")
 install.packages("patchwork")
