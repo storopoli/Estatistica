@@ -58,3 +58,4 @@ output:
     self_contained: false
 creative_commons: CC BY-SA
 repository_url: https://github.com/storopoli/Estatistica
+exclude: ["README.*", "datasets/"]
