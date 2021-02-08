@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -2401,7 +2402,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Regressão Logística","description":"Regressão para o caso de uma variável dependente binária.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000-03:00","citationText":"Storopoli & Vils, 2021"}
+{"title":"Regressão Logística","description":"Regressão para o caso de uma variável dependente binária.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2728,8 +2729,8 @@ Figure 4: Reta vs Curva Logística – Dados Desbalanceados
 <td style="text-align: left;">age</td>
 <td style="text-align: right;">263</td>
 <td style="text-align: right;">0.8</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">29.88</td>
+<td style="text-align: right;">14.41</td>
 <td style="text-align: right;">0.17</td>
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">28</td>
@@ -2759,14 +2760,14 @@ Call:
 glm(formula = survived ~ age + sex, family = binomial, data = TitanicSurvival)
 
 Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--1.725  -0.686  -0.660   0.755   1.874  
+    Min       1Q   Median       3Q      Max  
+-1.7247  -0.6859  -0.6603   0.7555   1.8737  
 
 Coefficients:
-            Estimate Std. Error z value             Pr(&gt;|z|)    
-(Intercept)  1.23541    0.19203    6.43        0.00000000012 ***
-age         -0.00425    0.00521   -0.82                 0.41    
-sexmale     -2.46069    0.15232  -16.16 &lt; 0.0000000000000002 ***
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  1.235414   0.192032   6.433 1.25e-10 ***
+age         -0.004254   0.005207  -0.817    0.414    
+sexmale     -2.460689   0.152315 -16.155  &lt; 2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
@@ -2775,7 +2776,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     Null deviance: 1414.6  on 1045  degrees of freedom
 Residual deviance: 1101.3  on 1043  degrees of freedom
   (263 observations deleted due to missingness)
-AIC: 1107
+AIC: 1107.3
 
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
@@ -2789,12 +2790,12 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </code></pre>
 </div>
 <pre><code>(Intercept)         age     sexmale 
-      3.440       0.996       0.085 </code></pre>
+ 3.43980286  0.99575479  0.08537609 </code></pre>
 </div>
 <p>A interpretação dessa saída de OR é a seguinte:</p>
 <ul>
-<li><code>age</code> – A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 0.42% (<span class="math inline">\(1 - \text{OR}_\text{age}\)</span>).</li>
-<li><code>sexmale</code> – A cada aumento de uma unidade de <code>sexmal</code> (ou seja <code>sexomale</code> é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 91.46% (<span class="math inline">\(1 - \text{OR}_\text{sexmale}\)</span>).</li>
+<li><code>age</code> – A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 0.424521% (<span class="math inline">\(1 - \text{OR}_\text{age}\)</span>).</li>
+<li><code>sexmale</code> – A cada aumento de uma unidade de <code>sexmal</code> (ou seja <code>sexomale</code> é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente <code>survived</code> igual a 1) em 91.4623909% (<span class="math inline">\(1 - \text{OR}_\text{sexmale}\)</span>).</li>
 </ul>
 <p>Para produzir intervalos de confiança precisamos usar a função <code>confint()</code> do pacote MASS <span class="citation" data-cites="MASS">(<a href="#ref-MASS" role="doc-biblioref">Venables &amp; Ripley, 2002</a>)</span>, uma vez que a função <code>confint()</code> base do R não dá suporte à OR. Como padrão, <code>MASS::confint()</code>, assim como <code>confint()</code> base do R, produz intervalos de confiança 95%.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2802,10 +2803,10 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>             2.5 %  97.5 %
-(Intercept)  0.865  1.6182
-age         -0.015  0.0059
-sexmale     -2.763 -2.1661</code></pre>
+<pre><code>                  2.5 %      97.5 %
+(Intercept)  0.86469239  1.61820670
+age         -0.01450821  0.00592225
+sexmale     -2.76348286 -2.16607599</code></pre>
 </div>
 <h3 id="variáveis-qualitativas">Variáveis Qualitativas</h3>
 <p>Além de variáveis independentes quantitativas, regressão logística, assim como a linear, também permite utilizarmos <strong>variáveis qualitativas (discretas)</strong> como variáveis independentes.</p>
@@ -2823,22 +2824,16 @@ glm(formula = survived ~ age + sex + passengerClass, family = binomial,
     data = TitanicSurvival)
 
 Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--2.640  -0.698  -0.434   0.669   2.396  
+    Min       1Q   Median       3Q      Max  
+-2.6399  -0.6979  -0.4336   0.6688   2.3964  
 
 Coefficients:
-                  Estimate Std. Error z value             Pr(&gt;|z|)
-(Intercept)        3.52207    0.32670   10.78 &lt; 0.0000000000000002
-age               -0.03439    0.00633   -5.43          0.000000056
-sexmale           -2.49784    0.16604  -15.04 &lt; 0.0000000000000002
-passengerClass2nd -1.28057    0.22554   -5.68          0.000000014
-passengerClass3rd -2.28966    0.22580  -10.14 &lt; 0.0000000000000002
-                     
-(Intercept)       ***
-age               ***
-sexmale           ***
-passengerClass2nd ***
-passengerClass3rd ***
+                   Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)        3.522074   0.326702  10.781  &lt; 2e-16 ***
+age               -0.034393   0.006331  -5.433 5.56e-08 ***
+sexmale           -2.497845   0.166037 -15.044  &lt; 2e-16 ***
+passengerClass2nd -1.280570   0.225538  -5.678 1.36e-08 ***
+passengerClass3rd -2.289661   0.225802 -10.140  &lt; 2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
@@ -2847,7 +2842,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     Null deviance: 1414.62  on 1045  degrees of freedom
 Residual deviance:  982.45  on 1041  degrees of freedom
   (263 observations deleted due to missingness)
-AIC: 992.5
+AIC: 992.45
 
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
@@ -2904,26 +2899,18 @@ glm(formula = survived ~ age + sex * passengerClass, family = binomial,
     data = TitanicSurvival)
 
 Deviance Residuals: 
-   Min      1Q  Median      3Q     Max  
--3.078  -0.660  -0.494   0.426   2.494  
+    Min       1Q   Median       3Q      Max  
+-3.0778  -0.6604  -0.4943   0.4263   2.4935  
 
 Coefficients:
-                          Estimate Std. Error z value
-(Intercept)                4.80435    0.54694    8.78
-age                       -0.03840    0.00674   -5.70
-sexmale                   -3.88639    0.49238   -7.89
-passengerClass2nd         -1.52987    0.56648   -2.70
-passengerClass3rd         -4.06497    0.51066   -7.96
-sexmale:passengerClass2nd -0.07040    0.63098   -0.11
-sexmale:passengerClass3rd  2.48881    0.54004    4.61
-                                      Pr(&gt;|z|)    
-(Intercept)               &lt; 0.0000000000000002 ***
-age                         0.0000000123304439 ***
-sexmale                     0.0000000000000029 ***
-passengerClass2nd                       0.0069 ** 
-passengerClass3rd           0.0000000000000017 ***
-sexmale:passengerClass2nd               0.9112    
-sexmale:passengerClass3rd   0.0000040548929135 ***
+                           Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)                4.804345   0.546937   8.784  &lt; 2e-16 ***
+age                       -0.038401   0.006743  -5.695 1.23e-08 ***
+sexmale                   -3.886389   0.492375  -7.893 2.95e-15 ***
+passengerClass2nd         -1.529875   0.566481  -2.701  0.00692 ** 
+passengerClass3rd         -4.064965   0.510661  -7.960 1.72e-15 ***
+sexmale:passengerClass2nd -0.070404   0.630978  -0.112  0.91116    
+sexmale:passengerClass3rd  2.488808   0.540042   4.609 4.05e-06 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
@@ -2932,7 +2919,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     Null deviance: 1414.62  on 1045  degrees of freedom
 Residual deviance:  931.99  on 1039  degrees of freedom
   (263 observations deleted due to missingness)
-AIC: 946
+AIC: 945.99
 
 Number of Fisher Scoring iterations: 5</code></pre>
 </div>
@@ -2970,7 +2957,7 @@ Figure 6: Gráfico de Floresta dos Coeficientes de uma Regressão Logística em 
     studentized Breusch-Pagan test
 
 data:  modelo_simples
-BP = 20, df = 2, p-value = 0.00005</code></pre>
+BP = 19.793, df = 2, p-value = 5.035e-05</code></pre>
 </div>
 <p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Breusch-Pagan para o <code>modelo_simples</code> é menor que 0.05, demonstrando fortes evidências em favor da não rejeição da hipótese nula de dependência dos resíduos.</p>
 <h4 id="teste-de-durbin-watson">Teste de Durbin-Watson</h4>
@@ -2984,7 +2971,7 @@ BP = 20, df = 2, p-value = 0.00005</code></pre>
     Durbin-Watson test
 
 data:  modelo_simples
-DW = 2, p-value = 0.000002
+DW = 1.7134, p-value = 1.678e-06
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
 <p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Durbin-Watson para o <code>modelo_simples</code> é menor que 0.05, indicando a rejeição da hipótese nula de não-correlação, violando o pressuposto da homogeneidade de variância dos resíduos.</p>
@@ -2997,8 +2984,8 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>age sex 
-  1   1 </code></pre>
+<pre><code>     age      sex 
+1.001022 1.001022 </code></pre>
 </div>
 <p>Note que os valores de VIFs para as variáveis independentes do <code>modelo_simples</code> estão todos dentro do limite aceitável (<span class="math inline">\(&lt;10\)</span>), demonstrando ausência de multicolinearidade e evidenciando que o pressuposto não foi violado.</p>
 <h2 id="pseudo-r2">Pseudo-<span class="math inline">\(R^2\)</span></h2>
@@ -3014,7 +3001,7 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </code></pre>
 </div>
 <pre><code>   McFadden McFaddenAdj 
-       0.22        0.22 </code></pre>
+  0.2214598   0.2172183 </code></pre>
 </div>
 <h2 id="técnicas-avançadas-de-modelos-lineares-generalizados.">Técnicas Avançadas de Modelos Lineares Generalizados.</h2>
 <p>Assim como no <a href="6-Regressao_Linear.html">tutorial de Regressão Linear</a>, nesta seção apenas apresentaremos alternativas avançadas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
@@ -3054,20 +3041,15 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.10
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods  
@@ -3084,43 +3066,42 @@ other attached packages:
 [22] readxl_1.3.1        
 
 loaded via a namespace (and not attached):
-  [1] backports_1.2.1    repr_1.1.3         splines_4.0.3     
-  [4] digest_0.6.27      htmltools_0.5.1.1  magick_2.6.0      
-  [7] fansi_0.4.2        checkmate_2.0.0    openxlsx_4.2.3    
- [10] modelr_0.1.8       colorspace_2.0-0   haven_2.3.1       
- [13] xfun_0.20          crayon_1.4.0       jsonlite_1.7.2    
- [16] Exact_2.1          lme4_1.1-26        glue_1.4.2        
- [19] gtable_0.3.0       emmeans_1.5.4      sjstats_0.18.1    
- [22] sjmisc_2.8.6       abind_1.4-5        scales_1.1.1      
- [25] mvtnorm_1.1-1      DBI_1.1.1          rstatix_0.6.0     
- [28] ggeffects_1.0.1    Rcpp_1.0.6         xtable_1.8-4      
- [31] performance_0.7.0  tmvnsim_1.0-2      reticulate_1.18   
- [34] foreign_0.8-81     htmlwidgets_1.5.3  RColorBrewer_1.1-2
- [37] ellipsis_0.3.1     pkgconfig_2.0.3    farver_2.0.3      
- [40] sass_0.3.1         utf8_1.1.4         tidyselect_1.1.0  
- [43] labeling_0.4.2     rlang_0.4.10       effectsize_0.4.3  
- [46] munsell_0.5.0      cellranger_1.1.0   tools_4.0.3       
- [49] visNetwork_2.0.9   cli_2.3.0          generics_0.1.0    
- [52] sjlabelled_1.1.7   evaluate_0.14      stringr_1.4.0     
- [55] yaml_2.2.1         knitr_1.31         zip_2.1.1         
- [58] purrr_0.3.4        rootSolve_1.8.2.1  nlme_3.1-151      
- [61] xml2_1.3.2         compiler_4.0.3     rstudioapi_0.13   
- [64] curl_4.3           e1071_1.7-4        ggsignif_0.6.0    
- [67] tibble_3.0.6       statmod_1.4.35     stringi_1.5.3     
- [70] highr_0.8          parameters_0.11.0  forcats_0.5.1     
- [73] lattice_0.20-41    Matrix_1.3-2       commonmark_1.7    
- [76] nloptr_1.2.2.2     ggsci_2.9          vctrs_0.3.6       
- [79] pillar_1.4.7       lifecycle_0.2.0    estimability_1.3  
- [82] data.table_1.13.6  insight_0.12.0     lmom_2.8          
- [85] R6_2.5.0           bookdown_0.21      gridExtra_2.3     
- [88] rio_0.5.16         gld_2.6.2          distill_1.2       
- [91] boot_1.3-25        MASS_7.3-53        assertthat_0.2.1  
- [94] rprojroot_2.0.2    withr_2.4.1        mgcv_1.8-33       
- [97] bayestestR_0.8.2   expm_0.999-6       parallel_4.0.3    
-[100] hms_1.0.0          grid_4.0.3         coda_0.19-4       
-[103] class_7.3-18       minqa_1.2.4        rmarkdown_2.6     
-[106] snakecase_0.11.0   downlit_0.2.1      lubridate_1.7.9.2 
-[109] base64enc_0.1-3   </code></pre>
+  [1] minqa_1.2.4        colorspace_2.0-0   ggsignif_0.6.0    
+  [4] ellipsis_0.3.1     class_7.3-17       rio_0.5.16        
+  [7] sjlabelled_1.1.7   rprojroot_2.0.2    estimability_1.3  
+ [10] parameters_0.11.0  base64enc_0.1-3    gld_2.6.2         
+ [13] rstudioapi_0.13    farver_2.0.3       fansi_0.4.2       
+ [16] mvtnorm_1.1-1      lubridate_1.7.9.2  xml2_1.3.2        
+ [19] splines_4.0.3      downlit_0.2.1      rootSolve_1.8.2.1 
+ [22] knitr_1.31         sjmisc_2.8.6       jsonlite_1.7.2    
+ [25] nloptr_1.2.2.2     ggeffects_1.0.1    effectsize_0.4.3  
+ [28] compiler_4.0.3     emmeans_1.5.4      sjstats_0.18.1    
+ [31] backports_1.2.1    assertthat_0.2.1   Matrix_1.2-18     
+ [34] cli_2.3.0          visNetwork_2.0.9   htmltools_0.5.1.1 
+ [37] tools_4.0.3        gtable_0.3.0       glue_1.4.2        
+ [40] lmom_2.8           Rcpp_1.0.6         cellranger_1.1.0  
+ [43] vctrs_0.3.6        nlme_3.1-149       insight_0.12.0    
+ [46] xfun_0.20          stringr_1.4.0      lme4_1.1-26       
+ [49] openxlsx_4.2.3     lifecycle_0.2.0    statmod_1.4.35    
+ [52] rstatix_0.6.0      MASS_7.3-53        scales_1.1.1      
+ [55] hms_1.0.0          expm_0.999-6       RColorBrewer_1.1-2
+ [58] yaml_2.2.1         curl_4.3           Exact_2.1         
+ [61] gridExtra_2.3      reticulate_1.18    sass_0.3.1        
+ [64] distill_1.2        stringi_1.5.3      highr_0.8         
+ [67] bayestestR_0.8.2   checkmate_2.0.0    e1071_1.7-4       
+ [70] boot_1.3-25        zip_2.1.1          repr_1.1.3        
+ [73] commonmark_1.7     rlang_0.4.10       pkgconfig_2.0.3   
+ [76] evaluate_0.14      lattice_0.20-41    purrr_0.3.4       
+ [79] htmlwidgets_1.5.3  labeling_0.4.2     tidyselect_1.1.0  
+ [82] ggsci_2.9          bookdown_0.21      R6_2.5.0          
+ [85] magick_2.6.0       generics_0.1.0     DBI_1.1.1         
+ [88] pillar_1.4.7       haven_2.3.1        foreign_0.8-80    
+ [91] withr_2.4.1        mgcv_1.8-33        abind_1.4-5       
+ [94] tibble_3.0.6       performance_0.7.0  modelr_0.1.8      
+ [97] crayon_1.4.0       utf8_1.1.4         tmvnsim_1.0-2     
+[100] rmarkdown_2.6      grid_4.0.3         data.table_1.13.6 
+[103] forcats_0.5.1      digest_0.6.27      xtable_1.8-4      
+[106] munsell_0.5.0     </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
@@ -3200,7 +3181,7 @@ Zeileis, A., &amp; Hothorn, T. (2002). Diagnostic checking in regression relatio
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>caso o leitor se interesse existe diversas outras transformações que dão origens a diferentes modelos lineares generalizados, veja <span class="citation" data-cites=""><a href="#ref-nelder1972generalized" role="doc-biblioref">Nelder &amp; Wedderburn</a> (<a href="#ref-nelder1972generalized" role="doc-biblioref">1972</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>caso o leitor se interesse existe diversas outras transformações que dão origens a diferentes modelos lineares generalizados, veja <span class="citation" data-cites="nelder1972generalized"><a href="#ref-nelder1972generalized" role="doc-biblioref">Nelder &amp; Wedderburn</a> (<a href="#ref-nelder1972generalized" role="doc-biblioref">1972</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>em sua escala bruta os coeficientes de uma regressão logística estão representados como o logaritmo da chance (<em>log odds</em>).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>matematicamente falando <em>interação</em> é uma <em>multiplicação</em> entre as duas variáveis independentes<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4" role="doc-endnote"><p>podem ser escolhidas dentre as técnicas: <code>"McFadden"</code>, <code>"McFaddenAdj"</code>, <code>"CoxSnell"</code>, <code>"Nagelkerke"</code>, <code>"AldrichNelson"</code>, <code>"VeallZimmermann"</code>, <code>"Efron"</code>, <code>"McKelveyZavoina"</code>, <code>"Tjur"</code>; ou todas <code>"all"</code>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

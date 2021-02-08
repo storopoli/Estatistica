@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -123,15 +124,19 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_reference" content="citation_title=Empirical power comparison of goodness of fit tests for normality in the presence of outliers;citation_publication_date=2013;citation_publisher=IOP Publishing;citation_volume=435;citation_author=Mayette Saculinggan;citation_author=Emily Amor Balase"/>
   <meta name="citation_reference" content="citation_title=Inference by eye: Reading the overlap of independent confidence intervals;citation_publication_date=2009;citation_publisher=Wiley Online Library;citation_volume=28;citation_author=Geoff Cumming"/>
   <meta name="citation_reference" content="citation_title=What Have We (Not) Learnt from Millions of Scientific Papers with &lt;i&gt;P&lt;/i&gt; Values?;citation_publication_date=2019;citation_volume=73;citation_doi=10.1080/00031305.2018.1447512;citation_issn=0003-1305;citation_author=John P. A. Ioannidis"/>
+  <meta name="citation_reference" content="citation_title=The fisher/pearson chi-squared controversy: A turning point for inductive inference;citation_publication_date=1983;citation_publisher=[Oxford University Press, The British Society for the Philosophy of Science];citation_volume=34;citation_issn=00070882, 14643537;citation_author=Davis Baird"/>
+  <meta name="citation_reference" content="citation_title=The epic story of maximum likelihood;citation_publication_date=2007;citation_publisher=Institute of Mathematical Statistics;citation_volume=22;citation_author=Stephen M Stigler;citation_author=The epic story of maximum likelihood"/>
   <meta name="citation_reference" content="citation_title=Statistical methods for research workers;citation_publication_date=1925;citation_publisher=Oliver; Boyd;citation_author=Ronald Aylmer Fisher"/>
   <meta name="citation_reference" content="citation_title=The extent and consequences of p-hacking in science;citation_publication_date=2015;citation_publisher=Public Library of Science;citation_volume=13;citation_author=Megan L Head;citation_author=Luke Holman;citation_author=Rob Lanfear;citation_author=Andrew T Kahn;citation_author=Michael D Jennions"/>
   <meta name="citation_reference" content="citation_title=An R companion to applied regression;citation_publication_date=2019;citation_publisher=Sage;citation_author=John Fox;citation_author=Sanford Weisberg"/>
   <meta name="citation_reference" content="citation_title=Probably overthinking it: There is still only one test;citation_publication_date=2016;citation_author=Allen Downey"/>
   <meta name="citation_reference" content="citation_title=The introductory statistics course: A ptolemaic curriculum?;citation_publication_date=2007;citation_volume=1;citation_author=George W Cobb"/>
   <meta name="citation_reference" content="citation_title=Statistical procedures and the justification of knowledge in psychological science;citation_publication_date=1989;citation_publisher=American Psychological Association (PsycARTICLES);citation_volume=44;citation_author=Ralph L Rosnow;citation_author=Robert Rosenthal"/>
+  <meta name="citation_reference" content="citation_title=Causality;citation_publication_date=2009;citation_publisher=Cambridge university press;citation_author=Judea Pearl"/>
   <meta name="citation_reference" content="citation_title=The fallacy of placing confidence in confidence intervals;citation_publication_date=2016;citation_publisher=Springer New York LLC;citation_volume=23;citation_doi=10.3758/s13423-015-0947-8;citation_issn=1069-9384;citation_author=Richard D. Morey;citation_author=Rink Hoekstra;citation_author=Jeffrey N. Rouder;citation_author=Michael D. Lee;citation_author=Eric-Jan Wagenmakers"/>
   <meta name="citation_reference" content="citation_title=Robust misinterpretation of confidence intervals;citation_publication_date=2014;citation_volume=21;citation_doi=10.3758/s13423-013-0572-3;citation_issn=1531-5320;citation_author=Rink Hoekstra;citation_author=Richard D Morey;citation_author=Jeffrey N Rouder;citation_author=Eric-Jan Wagenmakers"/>
   <meta name="citation_reference" content="citation_title=Outline of a theory of statistical estimation based on the classical theory of probability;citation_publication_date=1937;citation_publisher=The Royal Society London;citation_volume=236;citation_author=Jerzy Neyman"/>
+  <meta name="citation_reference" content="citation_title=On the problem of the most efficient tests of statistical hypotheses;citation_publication_date=1933;citation_publisher=The Royal Society London;citation_volume=231;citation_author=Jerzy Neyman;citation_author=Egon Sharpe Pearson"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
@@ -2401,7 +2406,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"p-Valores, Hipótese Nula e Pressupostos","description":"Porque $p$-valor, hipótese nula e pressupostos são importantes.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000-03:00","citationText":"Storopoli & Vils, 2021"}
+{"title":"p-Valores, Hipótese Nula e Pressupostos","description":"Porque $p$-valor, hipótese nula e pressupostos são importantes.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2518,8 +2523,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-9f9cfd97e4aa4cca5975" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9f9cfd97e4aa4cca5975">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-19d210a53a74167c4e65" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-19d210a53a74167c4e65">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2762,7 +2767,7 @@ Figure 6: Histograma das Simulações de Normalidade
     Shapiro-Wilk normality test
 
 data:  sims$normal
-W = 1, p-value = 0.5</code></pre>
+W = 0.99838, p-value = 0.4765</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>
 </code></pre>
@@ -2771,7 +2776,7 @@ W = 1, p-value = 0.5</code></pre>
     Shapiro-Wilk normality test
 
 data:  sims$log_normal
-W = 0.6, p-value &lt;0.0000000000000002</code></pre>
+W = 0.55782, p-value &lt; 2.2e-16</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
 <aside>
@@ -2788,7 +2793,7 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$normal
-D = 0.01, p-value = 1
+D = 0.014963, p-value = 0.9786
 alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span>,  <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span><span class='op'>)</span>
@@ -2798,7 +2803,7 @@ alternative hypothesis: two-sided</code></pre>
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$log_normal
-D = 0.2, p-value &lt;0.0000000000000002
+D = 0.23774, p-value &lt; 2.2e-16
 alternative hypothesis: two-sided</code></pre>
 </div>
 <h3 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h3>
@@ -2879,7 +2884,7 @@ Figure 8: Histograma das Simulações de Homogeneidade das Variâncias
     Bartlett test of homogeneity of variances
 
 data:  homog by group
-Bartlett&#39;s K-squared = 2, df = 1, p-value = 0.2</code></pre>
+Bartlett&#39;s K-squared = 2.0602, df = 1, p-value = 0.1512</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/bartlett.test.html'>bartlett.test</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
@@ -2888,8 +2893,7 @@ Bartlett&#39;s K-squared = 2, df = 1, p-value = 0.2</code></pre>
     Bartlett test of homogeneity of variances
 
 data:  heterog by group
-Bartlett&#39;s K-squared = 1162, df = 1, p-value
-&lt;0.0000000000000002</code></pre>
+Bartlett&#39;s K-squared = 1162.1, df = 1, p-value &lt; 2.2e-16</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste de Bartlett, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
 <aside>
@@ -2912,16 +2916,16 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
        Df F value Pr(&gt;F)
-group   1    1.74   0.19
+group   1  1.7412 0.1876
       498               </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
-       Df F value              Pr(&gt;F)    
-group   1     346 &lt;0.0000000000000002 ***
-      498                                
+       Df F value    Pr(&gt;F)    
+group   1  346.19 &lt; 2.2e-16 ***
+      498                      
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2953,20 +2957,15 @@ Há uma abordagem de Estatística inferencial que não se baseia em hipóteses n
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 20.10
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
-LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods  
@@ -2983,9 +2982,9 @@ loaded via a namespace (and not attached):
  [7] digest_0.6.27      utf8_1.1.4         R6_2.5.0          
 [10] cellranger_1.1.0   evaluate_0.14      highr_0.8         
 [13] pillar_1.4.7       rlang_0.4.10       curl_4.3          
-[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.3-2      
+[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.2-18     
 [19] reticulate_1.18    rmarkdown_2.6      labeling_0.4.2    
-[22] stringr_1.4.0      foreign_0.8-81     htmlwidgets_1.5.3 
+[22] stringr_1.4.0      foreign_0.8-80     htmlwidgets_1.5.3 
 [25] munsell_0.5.0      compiler_4.0.3     xfun_0.20         
 [28] pkgconfig_2.0.3    htmltools_0.5.1.1  downlit_0.2.1     
 [31] tidyselect_1.1.0   tibble_3.0.6       bookdown_0.21     
@@ -2998,8 +2997,8 @@ loaded via a namespace (and not attached):
 [52] vctrs_0.3.6        openxlsx_4.2.3     distill_1.2       
 [55] RColorBrewer_1.1-2 tools_4.0.3        forcats_0.5.1     
 [58] glue_1.4.2         purrr_0.3.4        hms_1.0.0         
-[61] abind_1.4-5        parallel_4.0.3     yaml_2.2.1        
-[64] colorspace_2.0-0   knitr_1.31         haven_2.3.1       </code></pre>
+[61] abind_1.4-5        yaml_2.2.1         colorspace_2.0-0  
+[64] knitr_1.31         haven_2.3.1       </code></pre>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
@@ -3061,14 +3060,14 @@ Stigler, S. M., &amp; others. (2007). The epic story of maximum likelihood. <em>
 <li id="fn4" role="doc-endnote"><p>Inclusive muitos renomados e citados em abundância em suas áreas.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p>Cuidado com essa palavra. Ela é precisa e somente deve ser usada em contextos estatísticos. Significância estatística quer dizer que os dados observados são mais extremos que um alpha prédefinido de que a hipótese nula é verdadeira.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6" role="doc-endnote"><p>Esse conselho é extremamente útil. Por diversas vezes temos alunos que nos procuram com uma pergunta mais ou menos assim: “Professor, o que é o teste de <em>Sobrenome que nunca ouvi falar na minha vida hífen outro sobrenome ainda mais estranho</em>?” Graças a Wikipedia e Google, nós simplesmente vamos atrás da <span class="math inline">\(H_0\)</span> desse teste (busca Google: “sobrenome1-sobrenome2 null hypothesis”) e com isso conseguimos responder ao aluno.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>A controvérsia da personalidade e vida de Ronald Fisher merece uma nota de rodapé. Suas contribuições, sem dúvida, foram cruciais para o avanço da ciência e da estatística. Seu intelecto era brilhante e seu talento já floresceu jovem: antes de completar 33 anos de idade ele tinha proposto o método de estimação por máxima verossimilhança (<em>maximum likelihood estimation</em>) <span class="citation" data-cites="">(<a href="#ref-stigler2007epic" role="doc-biblioref">Stigler &amp; others, 2007</a>)</span> e também criou o conceito de graus de liberdade (<em>degrees of freedom</em>) ao propor uma correção no teste de chi-quadrado de Pearson <span class="citation" data-cites="">(<a href="#ref-Baird1983" role="doc-biblioref">Baird, 1983</a>)</span>. Também inventou a Análise de Variância (ANOVA) e foi o primeiro a propor randomização como uma maneira de realizar experimentos, sendo considerado o “pai” dos ensaios clínicos randomizados. Nem tudo é florido na vida de Fisher, ele foi um eugenista e possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias. Além disso, era extremamente invariante, perseguindo, prejudicando e debochando qualquer crítico à suas teorias e publicações. O que vemos hoje no monopólio do paradigma Neyman-Pearson <span class="citation" data-cites="">(<a href="#ref-neyman1933" role="doc-biblioref">Neyman &amp; Pearson, 1933</a>)</span> com <span class="math inline">\(p\)</span>-valores e hipóteses nulas é resultado desse esforço Fisheriano em calar os críticos e deixar apenas sua voz ecoar.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>A controvérsia da personalidade e vida de Ronald Fisher merece uma nota de rodapé. Suas contribuições, sem dúvida, foram cruciais para o avanço da ciência e da estatística. Seu intelecto era brilhante e seu talento já floresceu jovem: antes de completar 33 anos de idade ele tinha proposto o método de estimação por máxima verossimilhança (<em>maximum likelihood estimation</em>) <span class="citation" data-cites="stigler2007epic">(<a href="#ref-stigler2007epic" role="doc-biblioref">Stigler &amp; others, 2007</a>)</span> e também criou o conceito de graus de liberdade (<em>degrees of freedom</em>) ao propor uma correção no teste de chi-quadrado de Pearson <span class="citation" data-cites="Baird1983">(<a href="#ref-Baird1983" role="doc-biblioref">Baird, 1983</a>)</span>. Também inventou a Análise de Variância (ANOVA) e foi o primeiro a propor randomização como uma maneira de realizar experimentos, sendo considerado o “pai” dos ensaios clínicos randomizados. Nem tudo é florido na vida de Fisher, ele foi um eugenista e possuía uma visão muito forte sobre etnia e raça preconizando a superioridade de certas etnias. Além disso, era extremamente invariante, perseguindo, prejudicando e debochando qualquer crítico à suas teorias e publicações. O que vemos hoje no monopólio do paradigma Neyman-Pearson <span class="citation" data-cites="neyman1933">(<a href="#ref-neyman1933" role="doc-biblioref">Neyman &amp; Pearson, 1933</a>)</span> com <span class="math inline">\(p\)</span>-valores e hipóteses nulas é resultado desse esforço Fisheriano em calar os críticos e deixar apenas sua voz ecoar.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8" role="doc-endnote"><p>inclusive muitos professores de estatística, veja a referência<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9" role="doc-endnote"><p>Original em ingles: <em>“An X% confidence interval for a parameter is an interval (a, b) generated by a procedure that in repeated sampling has an X% probability of containing the true value of the parameter, for all possible values of the parameter.”</em><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10" role="doc-endnote"><p>Original em inglês: <em>If the probability that a random interval contains the true value is X%, then the plausibility or probability that a particular observed interval contains the true value is also X%;or, alternatively, we can have X% confidence that the observed interval contains the true value</em>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11" role="doc-endnote"><p>Original em inglês: <em>The width of a confidence interval indicates the precision ofour knowledge about the parameter. Narrow confidence intervals correspond to precise knowledge, while wide confidence errors correspond to imprecise knowledge</em>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12" role="doc-endnote"><p>Original em inglês: <em>A confidence interval contains the likely values for the parameter. Values inside the confidence interval are more likely than those outside. This fallacy exists in several varieties, sometimes involving plausibility, credibility, or reasonableness of beliefs about the parameter</em>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13" role="doc-endnote"><p>O que é muito comum em 2020s com o advento de Big Data e facilidade de obtenção de dados.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14" role="doc-endnote"><p>Jerzy Neyman, fundador do paradigma NHST, e criador dos erros tipo I e tipo II defendia a ideia de que é melhor absolver um culpado (erro tipo II) do que culpar um inocente (erro tipo I) <span class="citation" data-cites="">(<a href="#ref-neyman1933" role="doc-biblioref">Neyman &amp; Pearson, 1933</a>)</span>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>Jerzy Neyman, fundador do paradigma NHST, e criador dos erros tipo I e tipo II defendia a ideia de que é melhor absolver um culpado (erro tipo II) do que culpar um inocente (erro tipo I) <span class="citation" data-cites="neyman1933">(<a href="#ref-neyman1933" role="doc-biblioref">Neyman &amp; Pearson, 1933</a>)</span>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15" role="doc-endnote"><p>Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16" role="doc-endnote"><p>Algumas vezes isso não é possível e precisamos recorrer a transformações dos dados, ou até mesmo uma recoleta de dados.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17" role="doc-endnote"><p>Alguns testes demandam no mínimo 20 observações para serem válidas. O número 20 possui relação com a derivação da distribuição Normal como uma distribuição binomial na qual o tamanho amostral é maior que 20.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -3076,7 +3075,7 @@ Stigler, S. M., &amp; others. (2007). The epic story of maximum likelihood. <em>
 <li id="fn19" role="doc-endnote"><p>Análises de séries temporais e análises de dados geoespaciais fazem parte de um projeto futuro nosso.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20" role="doc-endnote"><p>Homenagem a <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Carl Friedrich Gauss</a>, matemático Alemão que viveu entre 1777 e 1855.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn21" role="doc-endnote"><p>Poder estatístico é, para uma certa probabilidade de erro tipo I (<span class="math inline">\(\alpha\)</span>), 1 menos a probabilidade de erro tipo II (<span class="math inline">\(1 - \beta\)</span>). Veja mais no <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar de Tamanho da Amostra</a>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22" role="doc-endnote"><p>Caso o leitor se interesse pelo tema, sugerimos um livro de Judea Pearl ganhador do Prêmio Turing (Nobel da computação): <span class="citation" data-cites=""><a href="#ref-pearl2009causality" role="doc-biblioref">Pearl</a> (<a href="#ref-pearl2009causality" role="doc-biblioref">2009</a>)</span>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22" role="doc-endnote"><p>Caso o leitor se interesse pelo tema, sugerimos um livro de Judea Pearl ganhador do Prêmio Turing (Nobel da computação): <span class="citation" data-cites="pearl2009causality"><a href="#ref-pearl2009causality" role="doc-biblioref">Pearl</a> (<a href="#ref-pearl2009causality" role="doc-biblioref">2009</a>)</span>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
