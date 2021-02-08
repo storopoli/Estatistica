@@ -23,7 +23,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -128,7 +127,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Likert e Escalas Ordinais"]},{"type":"character","attributes":{},"value":["Como trabalhar com escalas Likert e dados ordinais.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.io/Estatistica/aux-Likert.html"]},{"type":"character","attributes":{},"value":["storopoli2021likertR"]},{"type":"character","attributes":{},"value":["bibliografia.bib"]},{"type":"character","attributes":{},"value":["apa.csl"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","citation_url","slug","bibliography","csl"]}},"value":[{"type":"character","attributes":{},"value":["Likert e Escalas Ordinais"]},{"type":"character","attributes":{},"value":["Como trabalhar com escalas Likert e dados ordinais.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Jose Storopoli"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0002-0559-5176"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url","orcid_id"]}},"value":[{"type":"character","attributes":{},"value":["Leonardo Vils"]},{"type":"character","attributes":{},"value":["https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en"]},{"type":"character","attributes":{},"value":["UNINOVE"]},{"type":"character","attributes":{},"value":["https://www.uninove.br"]},{"type":"character","attributes":{},"value":["0000-0003-3059-1967"]}]}]},{"type":"character","attributes":{},"value":["January 11, 2021"]},{"type":"character","attributes":{},"value":["https://storopoli.io/Estatistica/aux-Likert.html"]},{"type":"character","attributes":{},"value":["storopoli2021likertR"]},{"type":"character","attributes":{},"value":["bib/bibliografia.bib"]},{"type":"character","attributes":{},"value":["bib/apa.csl"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2390,7 +2389,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Likert e Escalas Ordinais","description":"Como trabalhar com escalas Likert e dados ordinais.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000+00:00","citationText":"Storopoli & Vils, 2021"}
+{"title":"Likert e Escalas Ordinais","description":"Como trabalhar com escalas Likert e dados ordinais.","authors":[{"author":"Jose Storopoli","authorURL":"https://scholar.google.com/citations?user=xGU7H1QAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0002-0559-5176"},{"author":"Leonardo Vils","authorURL":"https://scholar.google.com/citations?user=VO07L9EAAAAJ&hl=en","affiliation":"UNINOVE","affiliationURL":"https://www.uninove.br","orcidID":"0000-0003-3059-1967"}],"publishedDate":"2021-01-11T00:00:00.000-03:00","citationText":"Storopoli & Vils, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -3501,15 +3500,20 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
 </code></pre>
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
-Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.10
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods  
@@ -3529,45 +3533,44 @@ other attached packages:
 
 loaded via a namespace (and not attached):
   [1] backports_1.2.1     plyr_1.8.6          repr_1.1.3         
-  [4] splines_4.0.3       usethis_2.0.0       TH.data_1.0-10     
-  [7] digest_0.6.27       htmltools_0.5.1.1   magick_2.6.0       
- [10] fansi_0.4.2         checkmate_2.0.0     openxlsx_4.2.3     
- [13] modelr_0.1.8        sandwich_3.0-0      colorspace_2.0-0   
- [16] haven_2.3.1         xfun_0.20           crayon_1.4.0       
- [19] jsonlite_1.7.2      Exact_2.1           lme4_1.1-26        
- [22] survival_3.2-7      glue_1.4.2          gtable_0.3.0       
- [25] emmeans_1.5.4       sjstats_0.18.1      sjmisc_2.8.6       
- [28] abind_1.4-5         scales_1.1.1        mvtnorm_1.1-1      
- [31] DBI_1.1.1           rstatix_0.6.0       ggeffects_1.0.1    
- [34] Rcpp_1.0.6          performance_0.7.0   tmvnsim_1.0-2      
- [37] reticulate_1.18     foreign_0.8-81      htmlwidgets_1.5.3  
- [40] RColorBrewer_1.1-2  ellipsis_0.3.1      pkgconfig_2.0.3    
- [43] farver_2.0.3        sass_0.3.1          utf8_1.1.4         
- [46] reshape2_1.4.4      tidyselect_1.1.0    labeling_0.4.2     
- [49] rlang_0.4.10        effectsize_0.4.3    munsell_0.5.0      
- [52] cellranger_1.1.0    tools_4.0.3         visNetwork_2.0.9   
- [55] cli_2.3.0           generics_0.1.0      sjlabelled_1.1.7   
- [58] evaluate_0.14       stringr_1.4.0       yaml_2.2.1         
- [61] fs_1.5.0            knitr_1.31          zip_2.1.1          
- [64] visdat_0.5.3        rootSolve_1.8.2.1   nlme_3.1-152       
- [67] xml2_1.3.2          compiler_4.0.3      rstudioapi_0.13    
- [70] curl_4.3            e1071_1.7-4         ggsignif_0.6.0     
- [73] broom.helpers_1.1.0 tibble_3.0.6        statmod_1.4.35     
- [76] stringi_1.5.3       highr_0.8           parameters_0.11.0  
- [79] forcats_0.5.1       lattice_0.20-41     Matrix_1.3-2       
- [82] psych_2.0.12        commonmark_1.7      nloptr_1.2.2.2     
- [85] ggsci_2.9           vctrs_0.3.6         norm_1.0-9.5       
- [88] pillar_1.4.7        lifecycle_0.2.0     estimability_1.3   
- [91] data.table_1.13.6   insight_0.12.0      lmom_2.8           
- [94] R6_2.5.0            bookdown_0.21       gridExtra_2.3      
- [97] rio_0.5.16          gld_2.6.2           codetools_0.2-18   
-[100] distill_1.2         boot_1.3-26         assertthat_0.2.1   
-[103] rprojroot_2.0.2     withr_2.4.1         multcomp_1.4-15    
-[106] mgcv_1.8-33         bayestestR_0.8.2    expm_0.999-6       
-[109] parallel_4.0.3      hms_1.0.0           grid_4.0.3         
-[112] coda_0.19-4         class_7.3-18        minqa_1.2.4        
-[115] rmarkdown_2.6       snakecase_0.11.0    downlit_0.2.1      
-[118] lubridate_1.7.9.2   base64enc_0.1-3    </code></pre>
+  [4] splines_4.0.3       usethis_2.0.0       digest_0.6.27      
+  [7] htmltools_0.5.1.1   magick_2.6.0        fansi_0.4.2        
+ [10] checkmate_2.0.0     openxlsx_4.2.3      modelr_0.1.8       
+ [13] colorspace_2.0-0    haven_2.3.1         xfun_0.20          
+ [16] crayon_1.4.0        jsonlite_1.7.2      Exact_2.1          
+ [19] lme4_1.1-26         survival_3.2-7      glue_1.4.2         
+ [22] gtable_0.3.0        emmeans_1.5.4       sjstats_0.18.1     
+ [25] sjmisc_2.8.6        abind_1.4-5         scales_1.1.1       
+ [28] mvtnorm_1.1-1       DBI_1.1.1           rstatix_0.6.0      
+ [31] ggeffects_1.0.1     Rcpp_1.0.6          performance_0.7.0  
+ [34] tmvnsim_1.0-2       reticulate_1.18     foreign_0.8-81     
+ [37] htmlwidgets_1.5.3   RColorBrewer_1.1-2  ellipsis_0.3.1     
+ [40] pkgconfig_2.0.3     farver_2.0.3        sass_0.3.1         
+ [43] utf8_1.1.4          reshape2_1.4.4      tidyselect_1.1.0   
+ [46] labeling_0.4.2      rlang_0.4.10        effectsize_0.4.3   
+ [49] munsell_0.5.0       cellranger_1.1.0    tools_4.0.3        
+ [52] visNetwork_2.0.9    cli_2.3.0           generics_0.1.0     
+ [55] sjlabelled_1.1.7    evaluate_0.14       stringr_1.4.0      
+ [58] yaml_2.2.1          fs_1.5.0            knitr_1.31         
+ [61] zip_2.1.1           visdat_0.5.3        rootSolve_1.8.2.1  
+ [64] nlme_3.1-151        xml2_1.3.2          compiler_4.0.3     
+ [67] rstudioapi_0.13     curl_4.3            e1071_1.7-4        
+ [70] ggsignif_0.6.0      broom.helpers_1.1.0 tibble_3.0.6       
+ [73] statmod_1.4.35      stringi_1.5.3       highr_0.8          
+ [76] parameters_0.11.0   forcats_0.5.1       lattice_0.20-41    
+ [79] Matrix_1.3-2        psych_2.0.12        commonmark_1.7     
+ [82] nloptr_1.2.2.2      ggsci_2.9           vctrs_0.3.6        
+ [85] norm_1.0-9.5        pillar_1.4.7        lifecycle_0.2.0    
+ [88] estimability_1.3    data.table_1.13.6   insight_0.12.0     
+ [91] lmom_2.8            R6_2.5.0            bookdown_0.21      
+ [94] gridExtra_2.3       rio_0.5.16          gld_2.6.2          
+ [97] distill_1.2         boot_1.3-25         assertthat_0.2.1   
+[100] rprojroot_2.0.2     withr_2.4.1         mgcv_1.8-33        
+[103] bayestestR_0.8.2    expm_0.999-6        parallel_4.0.3     
+[106] hms_1.0.0           grid_4.0.3          coda_0.19-4        
+[109] class_7.3-18        minqa_1.2.4         rmarkdown_2.6      
+[112] snakecase_0.11.0    downlit_0.2.1       lubridate_1.7.9.2  
+[115] base64enc_0.1-3    </code></pre>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

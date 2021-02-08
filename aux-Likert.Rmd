@@ -16,8 +16,8 @@ author:
 date: January 11, 2021
 citation_url: https://storopoli.io/Estatistica/aux-Likert.html
 slug: storopoli2021likertR
-bibliography: bibliografia.bib
-csl: apa.csl
+bibliography: bib/bibliografia.bib
+csl: bib/apa.csl
 ---
 
 ```{r setup, include=FALSE}

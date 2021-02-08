@@ -16,6 +16,8 @@ author:
 date: January 11, 2021
 citation_url: https://storopoli.io/Estatistica/1-Comandos_Basicos.html
 slug: storopoli2021comandosbasicosR
+bibliography: bib/bibliografia.bib
+csl: bib/apa.csl
 ---
 
 ```{r setup, include=FALSE}

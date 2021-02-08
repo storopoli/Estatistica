@@ -2,7 +2,7 @@ name: "Estatistica"
 title: "Estatística com R"
 base_url: https://storopoli.io/Estatistica
 google_analytics: "G-BDZ8MJ5HY1"
-theme: "theme.css"
+theme: "css/theme.css"
 output_dir: "docs"
 alt_formats: true
 navbar:
@@ -58,3 +58,4 @@ output:
     self_contained: false
 creative_commons: CC BY-SA
 repository_url: https://github.com/storopoli/Estatistica
+exclude: ["README.*", "datasets/"]
