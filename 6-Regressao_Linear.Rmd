@@ -109,9 +109,9 @@ p3 + p4 + plot_layout(nrow = 1, widths = 1)
 
 ### Interpretação Estatística
 
-A regressão linear usando uma única variável independente contínua se torna exatamente uma correlação^[usando a técnica de Pearson.]. Agora quando empregamos mais de uma variável independente, a interpretação da regressão se torna: **"O efeito de `X` em `Y` mantendo `Z` fixo"**. Isto quer dizer que a regressão lienar **controla os efeitos das diferentes variáveis independentes ao calcular o efeito de uma certa variável independente**. Esta é o que chamamos de **interpretação estatística** da regressão linear.
+A regressão linear usando uma única variável independente contínua se torna exatamente uma correlação^[usando a técnica de Pearson.]. Agora quando empregamos mais de uma variável independente, a interpretação da regressão se torna: **"O efeito de `X` em `Y` mantendo `Z` fixo"**. Isto quer dizer que a regressão linear **controla os efeitos das diferentes variáveis independentes ao calcular o efeito de uma certa variável independente**. Esta é o que chamamos de **interpretação estatística** da regressão linear.
 
-Por exemplo, digamos que você esteja em busca dos fatores que acarretam ataque cardíaco. Você coleta dados de pessoas que quantifiquem as seguintes variáveis: sono, stress, tabagismo, sedentarismo, entre outros... A regressão te permite mensurar o efeito de qualquer uma dessas variáveis na prevalência de ataque cardíaco controlando para outros efeitos. Em outras palavras, é possível mensurar o efeito de stress em ataque cardíaco, mantendo fixo os efeitos de sono, tabagismo, psedentarismo, etc... Isso permite você isolar o efeito de uma variável sem deixar que outras variáveis a influenciem na mensuração da sua relação com a variável dependente (no nosso caso: ataque cardíaco).
+Por exemplo, digamos que você esteja em busca dos fatores que acarretam ataque cardíaco. Você coleta dados de pessoas que quantifiquem as seguintes variáveis: sono, stress, tabagismo, sedentarismo, entre outros... A regressão te permite mensurar o efeito de qualquer uma dessas variáveis na prevalência de ataque cardíaco controlando para outros efeitos. Em outras palavras, é possível mensurar o efeito de stress em ataque cardíaco, mantendo fixo os efeitos de sono, tabagismo, sedentarismo, etc... Isso permite você isolar o efeito de uma variável sem deixar que outras variáveis a influenciem na mensuração da sua relação com a variável dependente (no nosso caso: ataque cardíaco).
 
 ## História da Regressão
 
@@ -138,11 +138,11 @@ Para interpretar os resultados de uma regressão como uma quantidade estatístic
 
 ## Como aplicar uma Regressão Linear no R
 
-Para exemplificar as regressões nesse tutorial, usaremos o *dataset* já incluido no R `mtcars` [@henderson1981building]. `mtcars` é uma base de dados extraída da revista americana sobre carros *Motor Trend US* de 1974. Possui 32 observações de carros e 11 variáveis:
+Para exemplificar as regressões nesse tutorial, usaremos o *dataset* já incluído no R `mtcars` [@henderson1981building]. `mtcars` é uma base de dados extraída da revista americana sobre carros *Motor Trend US* de 1974. Possui 32 observações de carros e 11 variáveis:
 
 * `mpg`: Milhas por Galão (consumo)
 * `cyl`: Número de cilíndros
-* `disp`: Cilindada (em polegada cúbica)
+* `disp`: Cilindrada (em polegada cúbica)
 * `hp`: Cavalos de Potência (HP)
 * `drat`: Relação do eixo traseiro
 * `wt`:	Peso em (1,000 libras)
@@ -175,7 +175,7 @@ summary(modelo_simples)
 
 Na saída de `summary()` podemos ver que são produzidos os **coeficientes da regressão na coluna `Estimate`**, associados ao respectivos desvio padrão dos resíduos `Std. Error` e $p$-valores `Pr(>|t|)`. Importante destacar que a **hipótese nula dos coeficientes da regressão é de que "os coeficientes são nulos/zeros"**, então os $p$-valores devem ser interpretados como **a probabilidade de observamos valores de coeficientes tão extremos dado que a hipótese nula é verdadeira**. Para facilitar, o R informa com asteriscos quais variáveis possuem coeficientes estatisticamente significantes: `*` para $p < 0.05$, `**` para $p < 0.01$, e `***` para $p < 0.001$.
 
-Os coeficientes de objetos `lm` devem ser interpretados em **escala bruta** na qual **o acréscimo de 1 unidade da variável independente gera o aumento de `<coeficiente>` unidade(s) da variável dependente**. No nosso exemplo, a cada acréscimo de 1 `hp`, `mpg` reduz em `r modelo_simples$coefficients["hp"]`; e a cada acréscimo de 1 `wt`, `mpg` reduz em `r modelo_simples$coefficients["wt"]`. Além disso, a **regressão linear controla os efeitos de outras variáveis indepedente**. Então o impacto de `hp` em `mpg` no nosso exemplo controla o efeito de `wt`, matendo-o fixo ao calcular o coeficiente de `hp`.
+Os coeficientes de objetos `lm` devem ser interpretados em **escala bruta** na qual **o acréscimo de 1 unidade da variável independente gera o aumento de `<coeficiente>` unidade(s) da variável dependente**. No nosso exemplo, a cada acréscimo de 1 `hp`, `mpg` reduz em `r modelo_simples$coefficients["hp"]`; e a cada acréscimo de 1 `wt`, `mpg` reduz em `r modelo_simples$coefficients["wt"]`. Além disso, a **regressão linear controla os efeitos de outras variáveis independente**. Então o impacto de `hp` em `mpg` no nosso exemplo controla o efeito de `wt`, matendo-o fixo ao calcular o coeficiente de `hp`.
 
 O coeficiente `(Intercept)` é o que chamamos de constante (*intercept*) da regressão. **A constante representa o valor médio da variável dependente quando todas as variáveis independentes possuem valor nulo (zero)**. No nosso exemplo, as observações possuem em média `r modelo_simples$coefficients["(Intercept)"]` `mpg` quando tanto `hp` e `wt` são 0.
 
@@ -198,7 +198,7 @@ modelo_quali <- mtcars %>%
 summary(modelo_quali)
 ```
 
-Quando convertemos uma variável para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `am` possui 2 níveis: `0` e `1` (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão linear que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `am0`) como referência. Portanto a interpretação do coeficiente `am1` deve ser a seguinte: observações com `am = 1` possuem um acréscimo em média de `r modelo_quali$coefficients["am1"]` `mpg`. Note também que a variável `am` não possui significância estatística para a difença entre o nível de referência `am0` e o nível `am1` com $p = 0.14$. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `lm` acessando seu atributo `xlevels`.
+Quando convertemos uma variável para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `am` possui 2 níveis: `0` e `1` (apesar de serem números, na conversão o R usa uma ordem crescente para dígitos). Numa regressão linear que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `am0`) como referência. Portanto a interpretação do coeficiente `am1` deve ser a seguinte: observações com `am = 1` possuem um acréscimo em média de `r modelo_quali$coefficients["am1"]` `mpg`. Note também que a variável `am` não possui significância estatística para a diferença entre o nível de referência `am0` e o nível `am1` com $p = 0.14$. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `lm` acessando seu atributo `xlevels`.
 
 ```{r lm-quali-xleves}
 modelo_quali$xlevels
@@ -227,7 +227,7 @@ mtcars %>%
 Para incluirmos efeitos de interações entre duas variáveis independentes em regressões lineares, incluímos na fórmula entre as duas variáveis um sinal de multiplicação^[matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
 
 ```{r lm-interaction}
-modelo_interacao <- lm(mpg ~ hp + wt + cyl*am, data = mtcars)
+modelo_interacao <- lm(mpg ~ hp + wt + cyl * am, data = mtcars)
 summary(modelo_interacao)
 ```
 
@@ -367,7 +367,7 @@ confint(modelo_simples_padronizado)
 knitr::include_graphics("images/meme-regressao-scooby.jpg")
 ```
 
-Todos as técnicas estatísticas que vimos até agora (teste $t$, ANOVA e correlação) são casos especiais de regressão linear^[inclusive a função `aov()` de ANOVA por de baixo dos panos faz um chamado à função `lm()`. Ou seja é um *wrapper*, também chamado de açúcar sintático (*syntatic sugar*), da função `lm()`.]. Caso o leitor se interesse aconselhamos a leitura do capítulo 5 de @poldrack2018 e o excelente tutorial de @lindelov2019. Caso o leitor queira substituir todos os testes estatísticos pela função `lm()` veja a tabela abaixo:
+Todos as técnicas estatísticas que vimos até agora (teste $t$, ANOVA e correlação) são casos especiais de regressão linear^[inclusive a função `aov()` de ANOVA por de baixo dos panos faz um chamado à função `lm()`. Ou seja é um *wrapper*, também chamado de açúcar sintático (*syntactic sugar*), da função `lm()`.]. Caso o leitor se interesse aconselhamos a leitura do capítulo 5 de @poldrack2018 e o excelente tutorial de @lindelov2019. Caso o leitor queira substituir todos os testes estatísticos pela função `lm()` veja a tabela abaixo:
 
 <aside>
 Conforme o autor 2, regressão linear é pizza e "tudo acaba em pizza".
@@ -417,8 +417,8 @@ n_sims <- 50
 
 sims <- tibble(
   x = 1:n_sims,
-  y = c(rnorm(floor(4 * n_sims/5)), sample(c(-4:-3, 3:4),ceiling(n_sims/5), 1)),
-  tipo = c(rep("normal", floor(4 * n_sims/5)), rep("extrema", ceiling(n_sims/5)))
+  y = c(rnorm(floor(4 * n_sims / 5)), sample(c(-4:-3, 3:4), ceiling(n_sims / 5), 1)),
+  tipo = c(rep("normal", floor(4 * n_sims / 5)), rep("extrema", ceiling(n_sims / 5)))
 ) %>%
   sample_frac(1L)  ## Randomize!
 ```
@@ -443,7 +443,7 @@ sims %>%
   scale_fill_brewer("Tipo de Observação", palette = "Set1",
                     guide = guide_legend(ncol = 1, nrow = 2, byrow = TRUE)) +
   scale_colour_brewer("Tipo de Distribuição", palette = "Set3",
-                      guide = guide_legend(ncol = 1, nrow = 2, byrow = TRUE))+
+                      guide = guide_legend(ncol = 1, nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom") +
   ylim(c(0, 0.4))
 ```

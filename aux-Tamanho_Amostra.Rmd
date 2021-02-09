@@ -63,7 +63,7 @@ onde $\mu_1$ é a média de um grupo, $\mu_2$ média do outro grupo e $\sigma$ o
 Veja na figura \@ref(fig:cohen) uma demonstração dos tamanhos de efeito de $d$ de Cohen. Note que as medidas comparadas entre os grupos segue uma distribuição Normal (assim como o teste $t$ de Student -- paramétrico).
 
 ```{r cohen, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='$d$ de Cohen', fig.height=10}
-plot_cohen_d <- function(ES, show.legend = F) {
+plot_cohen_d <- function(ES, show.legend = FALSE) {
   require(ggplot2)
   require(dplyr)
   # get mean2 depending on value of ES from d = (u1 - u2)/sd
@@ -82,10 +82,10 @@ plot_cohen_d <- function(ES, show.legend = F) {
     # shade overlap
     ggplot2::geom_polygon(aes(x = x, y = y.poly),
                           fill = "red", alpha = I(4 / 10),
-                          show.legend = F) +
+                          show.legend = FALSE) +
     # add vlines for group means
-    ggplot2::geom_vline(xintercept = 1, linetype="dotted") +
-    ggplot2::geom_vline(xintercept = mean1, linetype="dotted") +
+    ggplot2::geom_vline(xintercept = 1, linetype = "dotted") +
+    ggplot2::geom_vline(xintercept = mean1, linetype = "dotted") +
     # add plot title
     ggplot2::labs(title = paste0("Tamanho de Efeito (d de Cohen = ", ES, ")"),
                   x = NULL,
@@ -142,7 +142,7 @@ ggplot(X, aes(y, z, group = correlação)) +
   geom_rug(sides = "b") +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
-  facet_wrap( ~ correlação, scales = "free", labeller = "label_both", ncol = 3) +
+  facet_wrap(~ correlação, scales = "free", labeller = "label_both", ncol = 3) +
   theme(legend.position = "none")
 ```
 

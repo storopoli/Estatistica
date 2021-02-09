@@ -52,7 +52,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   },
   mean = rep(0, 3),
   sd = c(1, .5, 2),
-  col = c('1', '0.5', '2')) +
+  col = c("1", "0.5", "2")) +
   scale_colour_brewer("Desvio\nPadrão", palette = "Set1",
                       guide = guide_legend(ncol = 1,
                                            nrow = 3,
@@ -81,7 +81,7 @@ ggplot(X, aes(y, z, group = correlação)) +
   geom_rug(sides = "b") +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
-  facet_wrap( ~ correlação, scales = "free", labeller = "label_both", ncol = 4) +
+  facet_wrap(~ correlação, scales = "free", labeller = "label_both", ncol = 4) +
   theme(legend.position = "none")
 ```
 
@@ -105,7 +105,7 @@ p_a <- anscombe %>%
   dplyr::filter(conjunto == 1) %>%
   ggplot(aes(x, y)) +
   geom_point() +
-  geom_smooth(method = "lm", se = F, color = "Red") +
+  geom_smooth(method = "lm", se = FALSE, color = "Red") +
   scale_x_continuous(limits = c(4, 14), breaks = 4:14) +
   scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
   ggtitle("Relação Linear")
@@ -114,7 +114,7 @@ p_b <- anscombe %>%
   dplyr::filter(conjunto == 2) %>%
   ggplot(aes(x, y)) +
   geom_point() +
-  geom_smooth(method = "lm", se = F, color = "Red") +
+  geom_smooth(method = "lm", se = FALSE, color = "Red") +
   scale_x_continuous(limits = c(4, 14), breaks = 4:14) +
   scale_y_continuous(limits = c(4, 11), breaks = 4:11) +
   ggtitle("Relação Não-Linear")
@@ -128,7 +128,7 @@ Até agora todas as correlações que mostramos são correlações de Pearson po
 
 1. **Correlação de Pearson**^[também chamado de $r$ de Pearson] [@pearson1895]: a correlação de Pearson é a correlação mais utilizada em análises estatísticas. Ela é uma técnica **paramétrica** e possui o **pressuposto de que ambas as variáveis são distribuídas conforme uma distribuição Normal**. Caso tenha dados que violem o pressuposto da normalidade, correlação de Pearson não é o tipo de correlação que você deva usar.
 2. **Correlação de Spearman**^[também chamado de $\rho$ (letra grega rho) de Spearman] [@spearman1904]: a correlação de Spearman é uma técnica **não-paramétrica**, sendo a **alternativa quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
-3. **Correlação de Kendall**^[também chamado de $\tau$ (letra gregra tau) de Kendall] [@kendall1938]: Assim, como a correlação de Spearman, a correlação de Kendall também é uma técnica **não-paramétrica**. Sendo também uma **alternativa viável quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
+3. **Correlação de Kendall**^[também chamado de $\tau$ (letra grega tau) de Kendall] [@kendall1938]: Assim, como a correlação de Spearman, a correlação de Kendall também é uma técnica **não-paramétrica**. Sendo também uma **alternativa viável quando os dados violam o pressuposto de normalidade**, pois não faz nenhuma suposição que os dados estejam distribuídos de acordo com uma distribuição específica.
 
 ```{r fig-pearson-spearman-kendall, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Kendall -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
 library(cowplot)
@@ -159,7 +159,7 @@ Antes de apresentar os dois métodos, vamos simular^[sim, adoramos simulações,
 ```{r sim-mv-dist}
 library(mnormt)
 
-medias <- c(0,10)
+medias <- c(0, 10)
 covariancias <- matrix(c(1, 0.6, 0.6, 1), 2, 2)
 
 mv_normal <- as.data.frame(rmnorm(50, medias, covariancias))

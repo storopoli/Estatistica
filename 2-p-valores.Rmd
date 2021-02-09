@@ -74,14 +74,14 @@ A Estatística inferencial têm suas origens no final do século XIX, especialme
 knitr::include_graphics("images/pearson.jpg")
 ```
 
-A chave para compreesão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos testes estatísticos[^14] segue o mesmo padrão universal [@downey2016]:
+A chave para compreensão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos testes estatísticos[^14] segue o mesmo padrão universal [@downey2016]:
 
 [^14]: em especial as técnicas clássicas/frequentistas de Estatística inferencial.
 
-1. **Calculamos uma estatística da amostra**. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de $\delta$ (letra gregra delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras...
-2. **Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo**. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estívessemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, ...) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de **Hipótese Nula** e é representada com o seguinte símbolo $H_0$. A estatística $\delta$ no mundo da $H_0$ não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de $\delta$ no mundo da $H_0$. Vamos chamar esse valor de $\delta_0$
+1. **Calculamos uma estatística da amostra**. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de $\delta$ (letra grega delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras...
+2. **Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo**. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estivéssemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, ...) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de **Hipótese Nula** e é representada com o seguinte símbolo $H_0$. A estatística $\delta$ no mundo da $H_0$ não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de $\delta$ no mundo da $H_0$. Vamos chamar esse valor de $\delta_0$
 3. **Calculamos a probabidalide de obtermos algo como $\delta$ no mundo da $H_0$**: chamamos isso de $p$-valor. O $p$-valor é a probabilidade de observarmos um $\delta$ no mínimo tão grande quanto o observado num mundo no qual não há o efeito $\delta$. Ou seja $\delta = 0$, e consequentemente $\delta = \delta_0$. Como sabemos do valor $\delta_0$ de antemão, basta compararmos o nosso $\delta$ com $\delta_0$ para gerar o $p$-valor. Por isso que muitos livros de Estatística possuem um vasto arsenal de tabelas. O leitor pode facilmente ver o seu $\delta$ e com alguns dados sobre a amostra, em especial o número da amostra, obter o $\delta_0$ e $p$-valor respectivos.
-4. **Decidimos se $\delta$ possui significância estatística**. Escolhemos um limiar de rejeição da $H_0$, muitas vezes chamado de $\alpha$ (letra gregra alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da $H_0$.
+4. **Decidimos se $\delta$ possui significância estatística**. Escolhemos um limiar de rejeição da $H_0$, muitas vezes chamado de $\alpha$ (letra grega alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da $H_0$.
 
 Este paradigma descrito nos quatro passos acima é chamado de *Null Hypothesis Significance Testing* -- NHST (tradução: teste de significância de hipótese nula) e é o que predomina em grande parte da ciência do passado e atual.
 
@@ -182,7 +182,7 @@ Mais uma vez vamos quebrar essa definição em em algumas partes para melhor com
 * "... gerado por um procedimento que em amostragem repetida...": aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população. Então, **intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população**.
 * "... tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro.": os intervalos de confiança sempre serão expressados **acompanhados de uma probabilidade** (algo entre 0.001% e 99.999%) que quantifica a certeza de encontrar o intervalo em uma replicações do teste estatístico para diversas amostras da MESMA população.
 
-Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do $p$-valor). Você então escreve no seu artigo que a "diferença entre grupos observada é de 10.5 - 23.5 (95% IC)". Isso quer dizer que **95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5**. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam espectativa de vida.
+Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do $p$-valor). Você então escreve no seu artigo que a "diferença entre grupos observada é de 10.5 - 23.5 (95% IC)". Isso quer dizer que **95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5**. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam expectativa de vida.
 
 #### Falácias
 
@@ -190,7 +190,7 @@ Em um artigo bem controverso, @Morey2016 mostram as três grandes falácias (qua
 
 1. **A falácia fundamental dos intervalos de confiança**: Um intervalo de confiança de X% para um parâmetro é um intervalo (a, b) gerado por um procedimento que na amostragem repetida tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro. A probabilidade de que um intervalo aleatório contém o valor verdadeiro é X%, então a plausibilidade ou probabilidade de que um determinado intervalo observado contém o valor verdadeiro também é X%; ou, alternativamente, podemos ter X% de confiança de que o intervalo observado contém o valor real^[Original em inglês: *If the probability that a random interval contains the true value is X%, then the plausibility or probability that a particular observed interval contains the true value is also X%;or, alternatively, we can have X% confidence that the observed interval contains the true value*.].
 
-2. **A falácia da precisão**: A largura de um intervalo de confiança indica a precisão de nosso conhecimento sobre o parâmetro. Intervalos de confiança estreitos correspondem a conhecimentos precisos, enquanto erros de confiança amplos correspondem a conhecimentos imprecisos^[Original em inglês: *The width of a confidence interval indicates the precision ofour knowledge about the parameter. Narrow confidence intervals correspond to precise knowledge, while wide confidence errors correspond to imprecise knowledge*.].
+2. **A falácia da precisão**: A largura de um intervalo de confiança indica a precisão de nosso conhecimento sobre o parâmetro. Intervalos de confiança estreitos correspondem a conhecimentos precisos, enquanto erros de confiança amplos correspondem a conhecimentos imprecisos^[Original em inglês: *The width of a confidence interval indicates the precision of our knowledge about the parameter. Narrow confidence intervals correspond to precise knowledge, while wide confidence errors correspond to imprecise knowledge*.].
 
 3. **A falácia da probabilidade**: Um intervalo de confiança contém os valores prováveis para o parâmetro. Os valores dentro do intervalo de confiança são mais prováveis do que os externos. Essa falácia existe em várias variedades, às vezes envolvendo plausibilidade, credibilidade ou razoabilidade de crenças sobre o parâmetro^[Original em inglês: *A confidence interval contains the likely values for the parameter. Values inside the confidence interval are more likely than those outside. This fallacy exists in several varieties, sometimes involving plausibility, credibility, or reasonableness of beliefs about the parameter*.].
 
@@ -266,7 +266,7 @@ knitr::include_graphics("images/assumptions.jpeg")
 Primeiramente, para quase toda a estatística inferencial, temos o pressuposto de **independência dos dados**. Isso é válido para teste $t$, ANOVA, regressões, entre outros... O pressuposto de independência dos dados quer dizer que o valor de uma observação não influencia ou afeta o valor de outras observações. Caso você encontre dados que violam esse pressuposto, é necessário de alguma maneira incorporar tal dependência na sua análise[^3]. Fontes comuns de não-independência são[^2]:
 
 [^1]: Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.
-[^3]: Isso geralmente requer o uso de técnicas especificamente criadas para dados que natualmente possuem um certo tipo de dependência.
+[^3]: Isso geralmente requer o uso de técnicas especificamente criadas para dados que naturalmente possuem um certo tipo de dependência.
 [^2]: Análises de séries temporais e análises de dados geoespaciais fazem parte de um projeto futuro nosso.
 
 * **Dependência Temporal**: O valor de uma observação é influenciado pela dimensão temporal. Muito comum em séries temporais, tais como dados financeiros e econômicos. Nesse caso, o ideal é tentar incluir a dimensão temporal na sua análise.
@@ -382,7 +382,7 @@ p1 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   # enter means, standard deviations and colors here
   mean = c(0, 1, -1),
   sd = c(1, 1, 1),
-  col = c('red', 'blue', 'green')
+  col = c("red", "blue", "green")
 )
 
 p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
@@ -392,7 +392,7 @@ p2 <- ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   # enter means, standard deviations and colors here
   mean = c(0, 1, .5),
   sd = c(1, .5, 2),
-  col = c('red', 'blue', 'green')
+  col = c("red", "blue", "green")
 )
 
 p1 | p2
@@ -404,16 +404,16 @@ Para mostrarmos ambos os testes, mais uma vez usararemos simulações. Aqui vamo
 
 ```{r simulacoes-homogeneidade, fig.cap='Histograma das Simulações de Homogeneidade das Variâncias', layout='l-page', message=FALSE, warning=FALSE}
 sims2 <- tibble(
-  group = c(rep("A", n_sim/4), rep("B", n_sim/4)),
-  homog = c(rnorm(n_sim/4, 0, 1), rnorm(n_sim/4, 1, 1)),
-  heterog = c(rnorm(n_sim/4, 0, 0.1), rnorm(n_sim/4, 1, 2))
+  group = c(rep("A", n_sim / 4), rep("B", n_sim / 4)),
+  homog = c(rnorm(n_sim / 4, 0, 1), rnorm(n_sim / 4, 1, 1)),
+  heterog = c(rnorm(n_sim / 4, 0, 0.1), rnorm(n_sim / 4, 1, 2))
 )
 
 p3 <- ggplot(sims2, aes(homog, fill = group)) +
-  geom_density(alpha = 0.5, show.legend = F)
+  geom_density(alpha = 0.5, show.legend = FALSE)
 
 p4 <- ggplot(sims2, aes(heterog, fill = group)) +
-  geom_density(alpha = 0.5, show.legend = F)
+  geom_density(alpha = 0.5, show.legend = FALSE)
 
 p3 | p4
 ```

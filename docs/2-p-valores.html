@@ -2523,8 +2523,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-19d210a53a74167c4e65" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-19d210a53a74167c4e65">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b2e7f3bcb8a555419116" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b2e7f3bcb8a555419116">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2541,12 +2541,12 @@ Figure 2: Karl Pearson. Figura de <a href="https://www.wikipedia.org" class="uri
 </p>
 </div>
 </div>
-<p>A chave para compreesão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos testes estatísticos<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> segue o mesmo padrão universal <span class="citation" data-cites="downey2016">(<a href="#ref-downey2016" role="doc-biblioref">Downey, 2016</a>)</span>:</p>
+<p>A chave para compreensão da Estatística inferencial se baseia em entender os testes de hipóteses, também chamado de testes estatísticos. Todos testes estatísticos<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> segue o mesmo padrão universal <span class="citation" data-cites="downey2016">(<a href="#ref-downey2016" role="doc-biblioref">Downey, 2016</a>)</span>:</p>
 <ol type="1">
-<li><strong>Calculamos uma estatística da amostra</strong>. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de <span class="math inline">\(\delta\)</span> (letra gregra delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras…</li>
-<li><strong>Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo</strong>. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estívessemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, …) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de <strong>Hipótese Nula</strong> e é representada com o seguinte símbolo <span class="math inline">\(H_0\)</span>. A estatística <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span> não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span>. Vamos chamar esse valor de <span class="math inline">\(\delta_0\)</span></li>
+<li><strong>Calculamos uma estatística da amostra</strong>. Aqui estatística (em letras minúsculas) significa uma medida dos dados. Para fins de exemplo vamos chamar essa medida de <span class="math inline">\(\delta\)</span> (letra grega delta). Essa é a medida que mais nos importamos: uma diferença de média, mediana ou proporções, entre outras…</li>
+<li><strong>Contrastamos essa estatística observada com uma estatística computada se o efeito fosse nulo</strong>. Em outras palavras, o que observamos é comparado com o resultado que esperaríamos caso estivéssemos vivendo em um mundo no qual essa medida (diferença de média, mediana ou proporções, …) fosse nula (zero). Geralmente esse universo paralelo no qual o efeito observado é zero ou nulo é chamado de <strong>Hipótese Nula</strong> e é representada com o seguinte símbolo <span class="math inline">\(H_0\)</span>. A estatística <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span> não é calculada, mas sim dada por um valor que fora matematicamente provado como o valor de <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span>. Vamos chamar esse valor de <span class="math inline">\(\delta_0\)</span></li>
 <li><strong>Calculamos a probabidalide de obtermos algo como <span class="math inline">\(\delta\)</span> no mundo da <span class="math inline">\(H_0\)</span></strong>: chamamos isso de <span class="math inline">\(p\)</span>-valor. O <span class="math inline">\(p\)</span>-valor é a probabilidade de observarmos um <span class="math inline">\(\delta\)</span> no mínimo tão grande quanto o observado num mundo no qual não há o efeito <span class="math inline">\(\delta\)</span>. Ou seja <span class="math inline">\(\delta = 0\)</span>, e consequentemente <span class="math inline">\(\delta = \delta_0\)</span>. Como sabemos do valor <span class="math inline">\(\delta_0\)</span> de antemão, basta compararmos o nosso <span class="math inline">\(\delta\)</span> com <span class="math inline">\(\delta_0\)</span> para gerar o <span class="math inline">\(p\)</span>-valor. Por isso que muitos livros de Estatística possuem um vasto arsenal de tabelas. O leitor pode facilmente ver o seu <span class="math inline">\(\delta\)</span> e com alguns dados sobre a amostra, em especial o número da amostra, obter o <span class="math inline">\(\delta_0\)</span> e <span class="math inline">\(p\)</span>-valor respectivos.</li>
-<li><strong>Decidimos se <span class="math inline">\(\delta\)</span> possui significância estatística</strong>. Escolhemos um limiar de rejeição da <span class="math inline">\(H_0\)</span>, muitas vezes chamado de <span class="math inline">\(\alpha\)</span> (letra gregra alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da <span class="math inline">\(H_0\)</span>.</li>
+<li><strong>Decidimos se <span class="math inline">\(\delta\)</span> possui significância estatística</strong>. Escolhemos um limiar de rejeição da <span class="math inline">\(H_0\)</span>, muitas vezes chamado de <span class="math inline">\(\alpha\)</span> (letra grega alpha). Esse limiar será o nosso critério de decisão se há evidências suficientes para rejeitarmos o mundo da <span class="math inline">\(H_0\)</span>.</li>
 </ol>
 <p>Este paradigma descrito nos quatro passos acima é chamado de <em>Null Hypothesis Significance Testing</em> – NHST (tradução: teste de significância de hipótese nula) e é o que predomina em grande parte da ciência do passado e atual.</p>
 <p>Uma segunda chave para a compreensão da Estatística inferencial possui razões históricas. As técnicas de Estatística inferencial clássicas são em grande parte um mecanismo técnico de aproximações numéricas baseadas na distribuição Normal e suas muitas engrenagens subsidiárias. Essa máquina já foi necessária, porque a alternativa conceitualmente mais simples baseada em permutações estava computacionalmente além de nosso alcance<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Antes dos computadores, os estatísticos não tinham escolha <span class="citation" data-cites="cobb2007introductory">(<a href="#ref-cobb2007introductory" role="doc-biblioref">Cobb, 2007</a>)</span>.</p>
@@ -2623,7 +2623,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 <li>“… gerado por um procedimento que em amostragem repetida…”: aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população. Então, <strong>intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população</strong>.</li>
 <li>“… tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro.”: os intervalos de confiança sempre serão expressados <strong>acompanhados de uma probabilidade</strong> (algo entre 0.001% e 99.999%) que quantifica a certeza de encontrar o intervalo em uma replicações do teste estatístico para diversas amostras da MESMA população.</li>
 </ul>
-<p>Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do <span class="math inline">\(p\)</span>-valor). Você então escreve no seu artigo que a “diferença entre grupos observada é de 10.5 - 23.5 (95% IC).” Isso quer dizer que <strong>95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5</strong>. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam espectativa de vida.</p>
+<p>Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do <span class="math inline">\(p\)</span>-valor). Você então escreve no seu artigo que a “diferença entre grupos observada é de 10.5 - 23.5 (95% IC).” Isso quer dizer que <strong>95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5</strong>. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam expectativa de vida.</p>
 <h4 id="falácias">Falácias</h4>
 <p>Em um artigo bem controverso, <span class="citation" data-cites="Morey2016"><a href="#ref-Morey2016" role="doc-biblioref">Morey, Hoekstra, Rouder, Lee, &amp; Wagenmakers</a> (<a href="#ref-Morey2016" role="doc-biblioref">2016</a>)</span> mostram as três grandes falácias (qualquer enunciado ou raciocínio falso que entretanto simula a veracidade) dos intervalos de confiança (a tradução é livre e feita por nós):</p>
 <ol type="1">
@@ -2767,7 +2767,7 @@ Figure 6: Histograma das Simulações de Normalidade
     Shapiro-Wilk normality test
 
 data:  sims$normal
-W = 0.99838, p-value = 0.4765</code></pre>
+W = 1, p-value = 0.5</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>
 </code></pre>
@@ -2776,7 +2776,7 @@ W = 0.99838, p-value = 0.4765</code></pre>
     Shapiro-Wilk normality test
 
 data:  sims$log_normal
-W = 0.55782, p-value &lt; 2.2e-16</code></pre>
+W = 0.6, p-value &lt;0.0000000000000002</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
 <aside>
@@ -2793,7 +2793,7 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$normal
-D = 0.014963, p-value = 0.9786
+D = 0.01, p-value = 1
 alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span>,  <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span><span class='op'>)</span>
@@ -2803,7 +2803,7 @@ alternative hypothesis: two-sided</code></pre>
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$log_normal
-D = 0.23774, p-value &lt; 2.2e-16
+D = 0.2, p-value &lt;0.0000000000000002
 alternative hypothesis: two-sided</code></pre>
 </div>
 <h3 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h3>
@@ -2819,7 +2819,7 @@ alternative hypothesis: two-sided</code></pre>
   <span class='co'># enter means, standard deviations and colors here</span>
   mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>,
   sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>,
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'red'</span>, <span class='st'>'blue'</span>, <span class='st'>'green'</span><span class='op'>)</span>
+  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span>, <span class='st'>"green"</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>4</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2829,7 +2829,7 @@ alternative hypothesis: two-sided</code></pre>
   <span class='co'># enter means, standard deviations and colors here</span>
   mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>.5</span><span class='op'>)</span>,
   sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>.5</span>, <span class='fl'>2</span><span class='op'>)</span>,
-  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'red'</span>, <span class='st'>'blue'</span>, <span class='st'>'green'</span><span class='op'>)</span>
+  col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span>, <span class='st'>"green"</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='va'>p1</span> <span class='op'>|</span> <span class='va'>p2</span>
@@ -2847,16 +2847,16 @@ Figure 7: Homogeneidade e Heterogeneidade das Variâncias
 <div class="layout-chunk" data-layout="l-page">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sims2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"B"</span>, <span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>,
-  homog <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
-  heterog <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0.1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span><span class='op'>/</span><span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
+  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"B"</span>, <span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>,
+  homog <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
+  heterog <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span>, <span class='fl'>0</span>, <span class='fl'>0.1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n_sim</span> <span class='op'>/</span> <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>)</span>
 
 <span class='va'>p3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sims2</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>homog</span>, fill <span class='op'>=</span> <span class='va'>group</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, show.legend <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, show.legend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='va'>p4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sims2</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>heterog</span>, fill <span class='op'>=</span> <span class='va'>group</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, show.legend <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_density.html'>geom_density</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, show.legend <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='va'>p3</span> <span class='op'>|</span> <span class='va'>p4</span>
 </code></pre>
@@ -2884,7 +2884,7 @@ Figure 8: Histograma das Simulações de Homogeneidade das Variâncias
     Bartlett test of homogeneity of variances
 
 data:  homog by group
-Bartlett&#39;s K-squared = 2.0602, df = 1, p-value = 0.1512</code></pre>
+Bartlett&#39;s K-squared = 2, df = 1, p-value = 0.2</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/bartlett.test.html'>bartlett.test</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
@@ -2893,7 +2893,8 @@ Bartlett&#39;s K-squared = 2.0602, df = 1, p-value = 0.1512</code></pre>
     Bartlett test of homogeneity of variances
 
 data:  heterog by group
-Bartlett&#39;s K-squared = 1162.1, df = 1, p-value &lt; 2.2e-16</code></pre>
+Bartlett&#39;s K-squared = 1162, df = 1, p-value
+&lt;0.0000000000000002</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste de Bartlett, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
 <aside>
@@ -2916,16 +2917,16 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
        Df F value Pr(&gt;F)
-group   1  1.7412 0.1876
+group   1    1.74   0.19
       498               </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
-       Df F value    Pr(&gt;F)    
-group   1  346.19 &lt; 2.2e-16 ***
-      498                      
+       Df F value              Pr(&gt;F)    
+group   1     346 &lt;0.0000000000000002 ***
+      498                                
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2958,7 +2959,7 @@ Há uma abordagem de Estatística inferencial que não se baseia em hipóteses n
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -2982,9 +2983,9 @@ loaded via a namespace (and not attached):
  [7] digest_0.6.27      utf8_1.1.4         R6_2.5.0          
 [10] cellranger_1.1.0   evaluate_0.14      highr_0.8         
 [13] pillar_1.4.7       rlang_0.4.10       curl_4.3          
-[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.2-18     
+[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.3-2      
 [19] reticulate_1.18    rmarkdown_2.6      labeling_0.4.2    
-[22] stringr_1.4.0      foreign_0.8-80     htmlwidgets_1.5.3 
+[22] stringr_1.4.0      foreign_0.8-81     htmlwidgets_1.5.3 
 [25] munsell_0.5.0      compiler_4.0.3     xfun_0.20         
 [28] pkgconfig_2.0.3    htmltools_0.5.1.1  downlit_0.2.1     
 [31] tidyselect_1.1.0   tibble_3.0.6       bookdown_0.21     
@@ -2997,8 +2998,8 @@ loaded via a namespace (and not attached):
 [52] vctrs_0.3.6        openxlsx_4.2.3     distill_1.2       
 [55] RColorBrewer_1.1-2 tools_4.0.3        forcats_0.5.1     
 [58] glue_1.4.2         purrr_0.3.4        hms_1.0.0         
-[61] abind_1.4-5        yaml_2.2.1         colorspace_2.0-0  
-[64] knitr_1.31         haven_2.3.1       </code></pre>
+[61] abind_1.4-5        parallel_4.0.3     yaml_2.2.1        
+[64] colorspace_2.0-0   knitr_1.31         haven_2.3.1       </code></pre>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
@@ -3064,14 +3065,14 @@ Stigler, S. M., &amp; others. (2007). The epic story of maximum likelihood. <em>
 <li id="fn8" role="doc-endnote"><p>inclusive muitos professores de estatística, veja a referência<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9" role="doc-endnote"><p>Original em ingles: <em>“An X% confidence interval for a parameter is an interval (a, b) generated by a procedure that in repeated sampling has an X% probability of containing the true value of the parameter, for all possible values of the parameter.”</em><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10" role="doc-endnote"><p>Original em inglês: <em>If the probability that a random interval contains the true value is X%, then the plausibility or probability that a particular observed interval contains the true value is also X%;or, alternatively, we can have X% confidence that the observed interval contains the true value</em>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>Original em inglês: <em>The width of a confidence interval indicates the precision ofour knowledge about the parameter. Narrow confidence intervals correspond to precise knowledge, while wide confidence errors correspond to imprecise knowledge</em>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Original em inglês: <em>The width of a confidence interval indicates the precision of our knowledge about the parameter. Narrow confidence intervals correspond to precise knowledge, while wide confidence errors correspond to imprecise knowledge</em>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12" role="doc-endnote"><p>Original em inglês: <em>A confidence interval contains the likely values for the parameter. Values inside the confidence interval are more likely than those outside. This fallacy exists in several varieties, sometimes involving plausibility, credibility, or reasonableness of beliefs about the parameter</em>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13" role="doc-endnote"><p>O que é muito comum em 2020s com o advento de Big Data e facilidade de obtenção de dados.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14" role="doc-endnote"><p>Jerzy Neyman, fundador do paradigma NHST, e criador dos erros tipo I e tipo II defendia a ideia de que é melhor absolver um culpado (erro tipo II) do que culpar um inocente (erro tipo I) <span class="citation" data-cites="neyman1933">(<a href="#ref-neyman1933" role="doc-biblioref">Neyman &amp; Pearson, 1933</a>)</span>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn15" role="doc-endnote"><p>Não estamos exagerando, quando você aprender o que são os pressupostos de cada técnica estatística vai começar a identificar que muitos artigos por aí não estão nem aí para pressupostos.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn16" role="doc-endnote"><p>Algumas vezes isso não é possível e precisamos recorrer a transformações dos dados, ou até mesmo uma recoleta de dados.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17" role="doc-endnote"><p>Alguns testes demandam no mínimo 20 observações para serem válidas. O número 20 possui relação com a derivação da distribuição Normal como uma distribuição binomial na qual o tamanho amostral é maior que 20.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18" role="doc-endnote"><p>Isso geralmente requer o uso de técnicas especificamente criadas para dados que natualmente possuem um certo tipo de dependência.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p>Isso geralmente requer o uso de técnicas especificamente criadas para dados que naturalmente possuem um certo tipo de dependência.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn19" role="doc-endnote"><p>Análises de séries temporais e análises de dados geoespaciais fazem parte de um projeto futuro nosso.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20" role="doc-endnote"><p>Homenagem a <a href="https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss">Carl Friedrich Gauss</a>, matemático Alemão que viveu entre 1777 e 1855.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn21" role="doc-endnote"><p>Poder estatístico é, para uma certa probabilidade de erro tipo I (<span class="math inline">\(\alpha\)</span>), 1 menos a probabilidade de erro tipo II (<span class="math inline">\(1 - \beta\)</span>). Veja mais no <a href="aux-Tamanho_Amostra.html">conteúdo auxiliar de Tamanho da Amostra</a>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

@@ -363,7 +363,7 @@ base_plot <- df %>%
 **Estatística**
 
 ```{r estatistica-plot}
-base_plot + geom_smooth(size = 2, alpha = 0.5, method = "lm", se = F)
+base_plot + geom_smooth(size = 2, alpha = 0.5, method = "lm", se = FALSE)
 ```
 ]
 
@@ -372,7 +372,7 @@ base_plot + geom_smooth(size = 2, alpha = 0.5, method = "lm", se = F)
 **Machine Learning**
 
 ```{r ml-plot}
-base_plot + geom_smooth(size = 2, color = "red", span = 0.3, se = F)
+base_plot + geom_smooth(size = 2, color = "red", span = 0.3, se = FALSE)
 ```
 ]
 
@@ -389,7 +389,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x, size = 3)) +
   # enter means, standard deviations and colors here
   mean = c(0, 1, .5),
   sd = c(1, .5, 2),
-  col = c('red', 'blue', 'green')
+  col = c("red", "blue", "green")
 ) +
   theme_bw() +
   theme(
@@ -413,7 +413,7 @@ ggplot(data.frame(x = c(-1, 6)), aes(x, size = 3)) +
   # enter means, standard deviations and colors here
   meanlog = c(0, 1, 1.5),
   sdlog = c(1, 1, 1),
-  col = c('red', 'blue', 'green')
+  col = c("red", "blue", "green")
 ) +
   theme_bw() +
   theme(
@@ -653,7 +653,7 @@ class: inverse, middle, center
 # Tamanho do Efeito
 
 ```{r effectsize}
-plot_effectsize <- function(ES, show.legend = F) {
+plot_effectsize <- function(ES, show.legend = FALSE) {
   require(ggplot2)
   require(dplyr)
   # get mean2 depending on value of ES from d = (u1 - u2)/sd
@@ -672,12 +672,12 @@ plot_effectsize <- function(ES, show.legend = F) {
     # shade overlap
     ggplot2::geom_polygon(aes(x = x, y = y.poly),
                           fill = "red", alpha = I(4 / 10),
-                          show.legend = F) +
+                          show.legend = FALSE) +
     # add vlines for group means
-    ggplot2::geom_vline(xintercept = 1, linetype="dotted") +
-    ggplot2::geom_vline(xintercept = mean1, linetype="dotted") +
+    ggplot2::geom_vline(xintercept = 1, linetype = "dotted") +
+    ggplot2::geom_vline(xintercept = mean1, linetype = "dotted") +
     # add plot title
-    ggplot2::labs(title = paste0("Tamanho de Efeito " , ES),
+    ggplot2::labs(title = paste0("Tamanho de Efeito ", ES),
                   x = NULL,
                   y = NULL) +
     # change colors and legend annotation

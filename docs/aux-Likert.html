@@ -2521,7 +2521,7 @@ Figure 3: Rensis Likert. Figura de <a href="https://www.wikipedia.org" class="ur
 </p>
 </div>
 </div>
-<p>As escalas Likert normalmente têm de 4 a 7 opções de resposta discretas. Um ponto importante é que <strong>escalas likert ímpares permitem com que o respondente escolha uma opção neutra</strong>, em outras palavras, o respondente pode escolhar ficar “em cima do muro.” Abaixo um exemplo de uma escala Likert ímpar, de “Discordo Fortemente” até “Concordo Fortemente.” Vejam que há a opção neutra (0) “Não Discordo nem Concordo.”</p>
+<p>As escalas Likert normalmente têm de 4 a 7 opções de resposta discretas. Um ponto importante é que <strong>escalas Likert ímpares permitem com que o respondente escolha uma opção neutra</strong>, em outras palavras, o respondente pode escolher ficar “em cima do muro.” Abaixo um exemplo de uma escala Likert ímpar, de “Discordo Fortemente” até “Concordo Fortemente.” Vejam que há a opção neutra (0) “Não Discordo nem Concordo.”</p>
 <div class="layout-chunk" data-layout="l-body">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -3441,21 +3441,21 @@ Call:
 lm(formula = ST24Q02 ~ CNT, data = .)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--1.4357 -0.4356 -0.2465  0.5644  1.8932 
+   Min     1Q Median     3Q    Max 
+-1.436 -0.436 -0.246  0.564  1.893 
 
 Coefficients:
-                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)       2.246538   0.006126  366.72   &lt;2e-16 ***
-CNTMexico         0.189115   0.007744   24.42   &lt;2e-16 ***
-CNTUnited States -0.139727   0.014200   -9.84   &lt;2e-16 ***
+                 Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)       2.24654    0.00613  366.72 &lt;0.0000000000000002 ***
+CNTMexico         0.18911    0.00774   24.42 &lt;0.0000000000000002 ***
+CNTUnited States -0.13973    0.01420   -9.84 &lt;0.0000000000000002 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.921 on 65553 degrees of freedom
+Residual standard error: 0.92 on 65553 degrees of freedom
   (1134 observations deleted due to missingness)
-Multiple R-squared:  0.01458,   Adjusted R-squared:  0.01455 
-F-statistic:   485 on 2 and 65553 DF,  p-value: &lt; 2.2e-16</code></pre>
+Multiple R-squared:  0.0146,    Adjusted R-squared:  0.0146 
+F-statistic:  485 on 2 and 65553 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </div>
 <p>Como ilustrado no <a href="6-Regressao_Linear.html">tutorial sobre regressão linear</a>, o resultado pode ser interpretado pela coluna do <span class="math inline">\(p\)</span>-valor (<code>Pr(&gt;|t|)</code>) e pela coluna do coeficiente estimado (<code>Estimate</code>). Vemos que, na amostra de 2009, alunos do México concordam muito mais com a frase que “Ler é um dos meus passatempos favoritos” do que alunos do Canadá (categoria basal de comparação). E alunos dos Estados Unidos discordam muito mais que alunos do Canadá.</p>
 <h3 id="segundo-cenário-regressão-ordinal">Segundo Cenário – Regressão Ordinal</h3>
@@ -3473,15 +3473,15 @@ F-statistic:   485 on 2 and 65553 DF,  p-value: &lt; 2.2e-16</code></pre>
 polr(formula = ST24Q02 ~ CNT, data = ., Hess = TRUE, method = &quot;probit&quot;)
 
 Coefficients:
-                   Value Std. Error t value
-CNTMexico         0.2184    0.00902  24.218
-CNTUnited States -0.1620    0.01662  -9.743
+                  Value Std. Error t value
+CNTMexico         0.218    0.00902   24.22
+CNTUnited States -0.162    0.01662   -9.74
 
 Intercepts:
-                           Value    Std. Error t value 
-Strongly disagree|Disagree  -0.7247   0.0079   -91.5349
-Disagree|Agree               0.2855   0.0077    37.0243
-Agree|Strongly agree         1.3262   0.0088   151.3259
+                           Value   Std. Error t value
+Strongly disagree|Disagree  -0.725   0.008    -91.535
+Disagree|Agree               0.286   0.008     37.024
+Agree|Strongly agree         1.326   0.009    151.326
 
 Residual Deviance: 170017.64 
 AIC: 170027.64 
@@ -3502,7 +3502,7 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -3529,43 +3529,45 @@ other attached packages:
 
 loaded via a namespace (and not attached):
   [1] backports_1.2.1     plyr_1.8.6          repr_1.1.3         
-  [4] splines_4.0.3       usethis_2.0.0       digest_0.6.27      
-  [7] htmltools_0.5.1.1   magick_2.6.0        fansi_0.4.2        
- [10] checkmate_2.0.0     openxlsx_4.2.3      modelr_0.1.8       
- [13] colorspace_2.0-0    haven_2.3.1         xfun_0.20          
- [16] crayon_1.4.0        jsonlite_1.7.2      Exact_2.1          
- [19] lme4_1.1-26         survival_3.2-7      glue_1.4.2         
- [22] gtable_0.3.0        emmeans_1.5.4       sjstats_0.18.1     
- [25] sjmisc_2.8.6        abind_1.4-5         scales_1.1.1       
- [28] mvtnorm_1.1-1       DBI_1.1.1           rstatix_0.6.0      
- [31] ggeffects_1.0.1     Rcpp_1.0.6          performance_0.7.0  
- [34] tmvnsim_1.0-2       reticulate_1.18     foreign_0.8-80     
- [37] htmlwidgets_1.5.3   RColorBrewer_1.1-2  ellipsis_0.3.1     
- [40] pkgconfig_2.0.3     farver_2.0.3        sass_0.3.1         
- [43] utf8_1.1.4          reshape2_1.4.4      tidyselect_1.1.0   
- [46] labeling_0.4.2      rlang_0.4.10        effectsize_0.4.3   
- [49] munsell_0.5.0       cellranger_1.1.0    tools_4.0.3        
- [52] visNetwork_2.0.9    cli_2.3.0           generics_0.1.0     
- [55] sjlabelled_1.1.7    evaluate_0.14       stringr_1.4.0      
- [58] yaml_2.2.1          fs_1.5.0            knitr_1.31         
- [61] zip_2.1.1           visdat_0.5.3        rootSolve_1.8.2.1  
- [64] nlme_3.1-149        xml2_1.3.2          compiler_4.0.3     
- [67] rstudioapi_0.13     curl_4.3            e1071_1.7-4        
- [70] ggsignif_0.6.0      tibble_3.0.6        statmod_1.4.35     
- [73] broom.helpers_1.1.0 stringi_1.5.3       highr_0.8          
- [76] parameters_0.11.0   forcats_0.5.1       lattice_0.20-41    
- [79] Matrix_1.2-18       psych_2.0.12        commonmark_1.7     
- [82] nloptr_1.2.2.2      ggsci_2.9           vctrs_0.3.6        
- [85] norm_1.0-9.5        pillar_1.4.7        lifecycle_0.2.0    
- [88] estimability_1.3    data.table_1.13.6   insight_0.12.0     
- [91] lmom_2.8            R6_2.5.0            bookdown_0.21      
- [94] gridExtra_2.3       rio_0.5.16          gld_2.6.2          
- [97] distill_1.2         boot_1.3-25         assertthat_0.2.1   
-[100] rprojroot_2.0.2     withr_2.4.1         parallel_4.0.3     
-[103] mgcv_1.8-33         bayestestR_0.8.2    expm_0.999-6       
-[106] hms_1.0.0           grid_4.0.3          class_7.3-17       
-[109] minqa_1.2.4         rmarkdown_2.6       downlit_0.2.1      
-[112] lubridate_1.7.9.2   base64enc_0.1-3    </code></pre>
+  [4] splines_4.0.3       usethis_2.0.0       TH.data_1.0-10     
+  [7] digest_0.6.27       htmltools_0.5.1.1   magick_2.6.0       
+ [10] fansi_0.4.2         checkmate_2.0.0     openxlsx_4.2.3     
+ [13] modelr_0.1.8        sandwich_3.0-0      colorspace_2.0-0   
+ [16] haven_2.3.1         xfun_0.20           crayon_1.4.0       
+ [19] jsonlite_1.7.2      Exact_2.1           lme4_1.1-26        
+ [22] survival_3.2-7      glue_1.4.2          gtable_0.3.0       
+ [25] emmeans_1.5.4       sjstats_0.18.1      sjmisc_2.8.6       
+ [28] abind_1.4-5         scales_1.1.1        mvtnorm_1.1-1      
+ [31] DBI_1.1.1           rstatix_0.6.0       ggeffects_1.0.1    
+ [34] Rcpp_1.0.6          performance_0.7.0   tmvnsim_1.0-2      
+ [37] reticulate_1.18     foreign_0.8-81      htmlwidgets_1.5.3  
+ [40] RColorBrewer_1.1-2  ellipsis_0.3.1      pkgconfig_2.0.3    
+ [43] farver_2.0.3        sass_0.3.1          utf8_1.1.4         
+ [46] reshape2_1.4.4      tidyselect_1.1.0    labeling_0.4.2     
+ [49] rlang_0.4.10        effectsize_0.4.3    munsell_0.5.0      
+ [52] cellranger_1.1.0    tools_4.0.3         visNetwork_2.0.9   
+ [55] cli_2.3.0           generics_0.1.0      sjlabelled_1.1.7   
+ [58] evaluate_0.14       stringr_1.4.0       yaml_2.2.1         
+ [61] fs_1.5.0            knitr_1.31          zip_2.1.1          
+ [64] visdat_0.5.3        rootSolve_1.8.2.1   nlme_3.1-152       
+ [67] xml2_1.3.2          compiler_4.0.3      rstudioapi_0.13    
+ [70] curl_4.3            e1071_1.7-4         ggsignif_0.6.0     
+ [73] broom.helpers_1.1.0 tibble_3.0.6        statmod_1.4.35     
+ [76] stringi_1.5.3       highr_0.8           parameters_0.11.0  
+ [79] forcats_0.5.1       lattice_0.20-41     Matrix_1.3-2       
+ [82] psych_2.0.12        commonmark_1.7      nloptr_1.2.2.2     
+ [85] ggsci_2.9           vctrs_0.3.6         norm_1.0-9.5       
+ [88] pillar_1.4.7        lifecycle_0.2.0     estimability_1.3   
+ [91] data.table_1.13.6   insight_0.12.0      lmom_2.8           
+ [94] R6_2.5.0            bookdown_0.21       gridExtra_2.3      
+ [97] rio_0.5.16          gld_2.6.2           codetools_0.2-18   
+[100] distill_1.2         boot_1.3-26         assertthat_0.2.1   
+[103] rprojroot_2.0.2     withr_2.4.1         multcomp_1.4-15    
+[106] mgcv_1.8-33         bayestestR_0.8.2    expm_0.999-6       
+[109] parallel_4.0.3      hms_1.0.0           grid_4.0.3         
+[112] coda_0.19-4         class_7.3-18        minqa_1.2.4        
+[115] rmarkdown_2.6       snakecase_0.11.0    downlit_0.2.1      
+[118] lubridate_1.7.9.2   base64enc_0.1-3    </code></pre>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

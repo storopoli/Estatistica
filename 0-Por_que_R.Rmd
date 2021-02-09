@@ -114,7 +114,7 @@ Com R, conseguimos nos aproveitar do paradigma de programação funcional e serm
 2. Filtrar somente as observações que tenham `hp` maior que 100
 3. Calcular a média somente para as variáveis númericas
 
-[^15]: Variáveis categóricas são conhecidas como *factors* no R e são maneiras eficientes de manipular e armazenar dados não-numéricos. Geralmente dados não-numéricos são dados textuais ou alguma chave de identificação unica (tipo um *id*).
+[^15]: Variáveis categóricas são conhecidas como *factors* no R e são maneiras eficientes de manipular e armazenar dados não-numéricos. Geralmente dados não-numéricos são dados textuais ou alguma chave de identificação única (tipo um *id*).
 
 Primeiro o R, veja como o código é muito mais sucinto e simples de ler. O pipe `%>%` significa "pegue o resultado dessa operação e jogue como input da próxima". Aqui estamos usando o pacote `{dplyr}` do `{tidyverse}`.
 
@@ -161,14 +161,14 @@ Todas esses bibliotecas rodam em C/C++ e por isso são bem rápidos e eficientes
 
 Atualmente o CRAN[^9] possui um total de `r format(nrow(available.packages()), big.mark = ",", small.mark=".")` bibliotecas[^10]. Todas *opensource* e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o `data.frame`. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.
 
-Além de bibliotecas para análises de dados e Rstatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo[^11]:
+Além de bibliotecas para análises de dados e Estatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo[^11]:
 
 * Estatística Bayesiana
 * Ensaios Clínicos
 * Finanças
 * Economia
 * Dados Geospaciais
-* Análise de Sobreviência
+* Análise de Sobrevivência
 * Séries Temporais
 * Genoma e Genética
 * Construção e Validação de Escalas

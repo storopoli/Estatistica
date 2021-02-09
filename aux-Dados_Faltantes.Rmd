@@ -108,14 +108,14 @@ O teste retornou um $p$-valor de `r mcar_test(df)$p.value`, e não conseguimos r
 #### Imputar a média
 
 ```{r mean-imputation}
-df$media <- Impute(df$valor, FUN = mean(df$valor, na.rm = T))
+df$media <- Impute(df$valor, FUN = mean(df$valor, na.rm = TRUE))
 ```
 
 
 #### Imputar a mediana
 
 ```{r median-imputation}
-df$mediana <- Impute(df$valor, FUN = median(df$valor, na.rm = T))
+df$mediana <- Impute(df$valor, FUN = median(df$valor, na.rm = TRUE))
 ```
 
 #### Imputar o último valor ocorrido -- LOCF

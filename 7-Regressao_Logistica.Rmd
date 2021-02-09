@@ -78,7 +78,7 @@ Para responder essa pergunta recorreremos mais uma vez à simulações. Vamos ge
 ```{r sim1, warning=FALSE, message=FALSE, fig.cap='Reta vs Curva Logística'}
 sim1 <- tibble(
   idade = 10:29,
-  comprado = c(rep(1, 10), rep(0,10))
+  comprado = c(rep(1, 10), rep(0, 10))
 )
 
 sim1 %>% ggplot(aes(idade, comprado)) +
@@ -86,8 +86,8 @@ sim1 %>% ggplot(aes(idade, comprado)) +
   geom_smooth(method = "lm", se =  FALSE, color = "Red") +
   geom_smooth(method = "glm",
               method.args = list(family = "binomial"),
-              se= FALSE, color = "Blue") +
-  scale_y_continuous(breaks = c(0,1))
+              se = FALSE, color = "Blue") +
+  scale_y_continuous(breaks = c(0, 1))
 ```
 
 Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicionar à nossa simulação mais 10 clientes com idades entre 60 e 69 que não comparam o produto `comprado = 0`. Nesse cenário, figura \@ref(fig:sim2), a desvantagem da regressão linear (cor vermelha) comparada com a regressão logística (cor azul) é ainda mais evidente.
@@ -95,7 +95,7 @@ Vamos para uma segunda simulação, agora com dados desbalanceados. Vamos adicio
 ```{r sim2, warning=FALSE, message=FALSE, fig.cap='Reta vs Curva Logística -- Dados Desbalanceados'}
 sim2 <- tibble(
   idade = c(10:29, 60:69),
-  comprado = c(rep(1, 10), rep(0,20))
+  comprado = c(rep(1, 10), rep(0, 20))
 )
 
 sim2 %>% ggplot(aes(idade, comprado)) +
@@ -104,7 +104,7 @@ sim2 %>% ggplot(aes(idade, comprado)) +
   geom_smooth(method = "glm",
               method.args = list(family = "binomial"),
               se= FALSE, color = "Blue") +
-  scale_y_continuous(breaks = c(0,1))
+  scale_y_continuous(breaks = c(0, 1))
 ```
 
 Acreditamos que com essas duas simulações o argumento a favor de regressão logística tenha sido aceito incondicionalmente.
@@ -165,8 +165,8 @@ exp(coef(modelo_simples))
 
 A interpretação dessa saída de OR é a seguinte:
 
-* `age` -- A cada aumento de uma unidade de idade, há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["age"]) * 100`% ($1 - \text{OR}_\text{age}$).
-* `sexmale` -- A cada aumento de uma unidade de `sexmal` (ou seja `sexomale` é igual 1, em outras palavras sexo masculino), há uma dimunição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["sexmale"]) * 100`% ($1 - \text{OR}_\text{sexmale}$).
+* `age` -- A cada aumento de uma unidade de idade, há uma diminuição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["age"]) * 100`% ($1 - \text{OR}_\text{age}$).
+* `sexmale` -- A cada aumento de uma unidade de `sexmal` (ou seja `sexomale` é igual 1, em outras palavras sexo masculino), há uma diminuição da chance de sobrevivência (variável dependente `survived` igual a 1) em `r (1 - exp(coef(modelo_simples))["sexmale"]) * 100`% ($1 - \text{OR}_\text{sexmale}$).
 
 Para produzir intervalos de confiança precisamos usar a função `confint()` do pacote MASS [@MASS], uma vez que a função `confint()` base do R não dá suporte à OR. Como padrão, `MASS::confint()`, assim como `confint()` base do R, produz intervalos de confiança 95%.
 
@@ -186,7 +186,7 @@ modelo_quali <- glm(survived ~ age + sex + passengerClass,
 summary(modelo_quali)
 ```
 
-Quando uma variável é convertida para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `passengerClass` possui 3 níveis: `1st`, `2nd` e `3rd` (apesar de serem números, na conversão o R usa uma ordem crescrente para digitos). Numa regressão logística que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `1st`) como referência. Portanto a interpretações de `passengerClass` devem se atentar que a referência é `passengerClass = 1st`. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `glm` acessando seu atributo `xlevels`.
+Quando uma variável é convertida para fator, o R rotula os diferentes níveis (*levels*) conforme ordem alfabética. Portanto, no nosso exemplo, `passengerClass` possui 3 níveis: `1st`, `2nd` e `3rd` (apesar de serem números, na conversão o R usa uma ordem crescente para dígitos). Numa regressão logística que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso `1st`) como referência. Portanto a interpretações de `passengerClass` devem se atentar que a referência é `passengerClass = 1st`. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto `glm` acessando seu atributo `xlevels`.
 
 ```{r glm-quali-xleves}
 modelo_quali$xlevels
@@ -216,7 +216,7 @@ TitanicSurvival %>%
 Para incluirmos efeitos de interações entre duas variáveis independentes em regressões logísticas, incluímos na fórmula entre as duas variáveis um sinal de multiplicação^[matematicamente falando *interação* é uma *multiplicação* entre as duas variáveis independentes] `*` indicando que as duas variáveis devem ser usadas como efeitos principais e também de interação na análise.
 
 ```{r glm-interaction}
-modelo_interacao <- glm(survived ~ age + sex*passengerClass,
+modelo_interacao <- glm(survived ~ age + sex * passengerClass,
                         data = TitanicSurvival, family = binomial)
 summary(modelo_interacao)
 ```

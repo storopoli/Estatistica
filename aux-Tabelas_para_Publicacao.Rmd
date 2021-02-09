@@ -79,8 +79,8 @@ modelo_linear <- lm(mpg ~ hp + wt, data = mtcars)
 tbl_regression(
   modelo_linear,
   tidy_fun = tidy_standardize) %>%
-	bold_labels() %>%
-	add_glance_source_note(c(r.squared, adj.r.squared)) %>%
+  bold_labels() %>%
+  add_glance_source_note(c(r.squared, adj.r.squared)) %>%
   modify_header(list(estimate ~ "**Beta Padronizados**"))
 ```
 
@@ -105,7 +105,7 @@ modelo_simples <- glm(survived ~ age + sex,
                       data = TitanicSurvival, family = binomial)
 modelo_quali <- glm(survived ~ age + sex + passengerClass,
                     data = TitanicSurvival, family = binomial)
-modelo_interacao <- glm(survived ~ age + sex*passengerClass,
+modelo_interacao <- glm(survived ~ age + sex * passengerClass,
                         data = TitanicSurvival, family = binomial)
 
 tabelas_modelos <- list(modelo_simples, modelo_quali, modelo_interacao) %>%

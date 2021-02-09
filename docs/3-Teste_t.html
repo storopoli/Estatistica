@@ -2542,19 +2542,19 @@ Lembre-se que uma vez violados esses pressupostos, os resultados do teste <span 
     Welch Two Sample t-test
 
 data:  measure by group
-t = -13.095, df = 37.88, p-value = 1.226e-15
+t = -13, df = 38, p-value = 0.000000000000001
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -5.086532 -3.724278
+ -5.1 -3.7
 sample estimates:
 mean in group A mean in group B 
-      0.2039198       4.6093247 </code></pre>
+            0.2             4.6 </code></pre>
 </div>
 <aside>
 Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
 </aside>
 <h3 id="teste-t-para-duas-amostras-pareadas">Teste <span class="math inline">\(t\)</span> para duas Amostras Pareadas</h3>
-<p>Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função <code>t.test()</code> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste <span class="math inline">\(t\)</span> seja pareado.</p>
+<p>Em algumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função <code>t.test()</code> tem o argumento <code>paired</code> que quando definido como <code>TRUE</code> faz com que o teste <span class="math inline">\(t\)</span> seja pareado.</p>
 <p>A mesma simulação do teste <span class="math inline">\(t\)</span> para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2568,13 +2568,13 @@ Notem que a saída da função <code>t.test()</code> possui um intervalo de conf
     Paired t-test
 
 data:  amostra_1$measure and amostra_2$measure
-t = -14.839, df = 19, p-value = 6.656e-12
+t = -15, df = 19, p-value = 0.000000000007
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -5.810596 -4.374036
+ -5.8 -4.4
 sample estimates:
 mean of the differences 
-              -5.092316 </code></pre>
+                   -5.1 </code></pre>
 </div>
 <aside>
 Notem que a saída da função <code>t.test()</code> possui um intervalo de confiança 95% (padrão, mas pode ser mudado)
@@ -2598,13 +2598,13 @@ Notem que a saída da função <code>t.test()</code> possui um intervalo de conf
     Wilcoxon rank sum exact test
 
 data:  measure by group
-W = 0, p-value = 1.451e-11
+W = 0, p-value = 0.00000000001
 alternative hypothesis: true location shift is not equal to 0
 95 percent confidence interval:
- -197.1586 -106.6526
+ -197 -107
 sample estimates:
 difference in location 
-             -127.4953 </code></pre>
+                  -127 </code></pre>
 </div>
 <aside>
 Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
@@ -2624,13 +2624,13 @@ Notem que a função <code>wilcox.test()</code> não calcula intervalos de confi
     Wilcoxon signed rank exact test
 
 data:  amostra_3$measure and amostra_4$measure
-V = 0, p-value = 1.907e-06
+V = 0, p-value = 0.000002
 alternative hypothesis: true location shift is not equal to 0
 95 percent confidence interval:
- -214.98044  -98.24208
+ -215  -98
 sample estimates:
 (pseudo)median 
-     -144.3723 </code></pre>
+          -144 </code></pre>
 </div>
 <aside>
 Notem que a função <code>wilcox.test()</code> não calcula intervalos de confiança. Para isso é necessário adicionar o argumento <code>conf.int = TRUE</code> que resulta em intervalos de confiança 95% (padrão, mas pode ser mudado)
@@ -2680,7 +2680,7 @@ Figure 3: Diagrama de Caixa usando o <code>{ggpubr}</code> – Amostras Pareadas
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -2705,9 +2705,9 @@ loaded via a namespace (and not attached):
 [10] R6_2.5.0           cellranger_1.1.0   backports_1.2.1   
 [13] evaluate_0.14      highr_0.8          pillar_1.4.7      
 [16] rlang_0.4.10       curl_4.3           rstudioapi_0.13   
-[19] data.table_1.13.6  Matrix_1.2-18      reticulate_1.18   
+[19] data.table_1.13.6  Matrix_1.3-2       reticulate_1.18   
 [22] rmarkdown_2.6      labeling_0.4.2     stringr_1.4.0     
-[25] foreign_0.8-80     htmlwidgets_1.5.3  munsell_0.5.0     
+[25] foreign_0.8-81     htmlwidgets_1.5.3  munsell_0.5.0     
 [28] broom_0.7.4        compiler_4.0.3     xfun_0.20         
 [31] pkgconfig_2.0.3    htmltools_0.5.1.1  downlit_0.2.1     
 [34] tidyselect_1.1.0   tibble_3.0.6       bookdown_0.21     
@@ -2721,8 +2721,8 @@ loaded via a namespace (and not attached):
 [58] distill_1.2        ggsci_2.9          RColorBrewer_1.1-2
 [61] tools_4.0.3        forcats_0.5.1      glue_1.4.2        
 [64] purrr_0.3.4        hms_1.0.0          abind_1.4-5       
-[67] yaml_2.2.1         colorspace_2.0-0   rstatix_0.6.0     
-[70] knitr_1.31         haven_2.3.1       </code></pre>
+[67] parallel_4.0.3     yaml_2.2.1         colorspace_2.0-0  
+[70] rstatix_0.6.0      knitr_1.31         haven_2.3.1       </code></pre>
 </div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">

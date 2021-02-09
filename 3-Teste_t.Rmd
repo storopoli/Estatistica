@@ -86,7 +86,7 @@ Notem que a saída da função `t.test()` possui um intervalo de confiança 95% 
 
 ### Teste $t$ para duas Amostras Pareadas
 
-Em agumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função `t.test()` tem o argumento `paired` que quando definido como `TRUE` faz com que o teste $t$ seja pareado.
+Em algumas situações temos amostras pareadas, como por exemplo quando fazemos uma mensuração antes e depois de algum acontecimento ou intervenção. Para isso a função `t.test()` tem o argumento `paired` que quando definido como `TRUE` faz com que o teste $t$ seja pareado.
 
 A mesma simulação do teste $t$ para amostras pareadas, mas agora não usamos a fórmula e passamos como argumento as mensurações das duas amostras pareadas:
 

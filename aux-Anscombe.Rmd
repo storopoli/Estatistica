@@ -44,7 +44,7 @@ O R possui como padrão o *dataset* `anscombe` que pode ser carregado pela funç
 library(gt)
 data("anscombe")
 gt(anscombe, rownames_to_stub = TRUE) %>%
-  tab_header(title="Quarteto de Anscombe")
+  tab_header(title = "Quarteto de Anscombe")
 ```
 
 ```{r tidy anscombe, include=FALSE}
@@ -70,7 +70,7 @@ anscombe %>%
   ggplot(aes(x, y, group = conjunto)) +
   geom_point() +
   geom_smooth(method = "lm", color = "Red", se = FALSE) +
-  facet_wrap( ~ conjunto, labeller = "label_both", ncol = 2) +
+  facet_wrap(~ conjunto, labeller = "label_both", ncol = 2) +
   theme(legend.position = "none")
 ```
 
@@ -87,11 +87,11 @@ tbl_summary(anscombe,
             statistic = list(
               all_continuous() ~ c("{mean}",
                                    "{sd}")),
-	digits = all_continuous() ~ 2) %>%
+  digits = all_continuous() ~ 2) %>%
   bold_labels() %>%
   italicize_levels() %>%
   as_gt() %>%
-  tab_header(title="Estatísticas Descritivas do Quarteto de Anscombe",
+  tab_header(title = "Estatísticas Descritivas do Quarteto de Anscombe",
              subtitle = "Agrupadas por Conjunto")
 ```
 
@@ -105,7 +105,7 @@ tibble(conjunto = as.factor(1:4),
   map_dbl(~ cor(subset(anscombe, conjunto == .x, select = x),
                 subset(anscombe, conjunto == .x, select = y)))) %>%
   gt() %>%
-  tab_header(title="Correlações do Quarteto de Anscombe") %>%
+  tab_header(title = "Correlações do Quarteto de Anscombe") %>%
   tab_source_note(md("*Observação: Correlação calculada conforme a correlação de Pearson*"))
 ```
 

@@ -60,7 +60,7 @@ Nas ciências sociais temos um predomínio de escalas ordinais como maneiras de 
 knitr::include_graphics("images/likert.jpg")
 ```
 
-As escalas Likert normalmente têm de 4 a 7 opções de resposta discretas. Um ponto importante é que **escalas likert ímpares permitem com que o respondente escolha uma opção neutra**, em outras palavras, o respondente pode escolhar ficar "em cima do muro". Abaixo um exemplo de uma escala Likert ímpar, de "Discordo Fortemente" até "Concordo Fortemente". Vejam que há a opção neutra (0) "Não Discordo nem Concordo".
+As escalas Likert normalmente têm de 4 a 7 opções de resposta discretas. Um ponto importante é que **escalas Likert ímpares permitem com que o respondente escolha uma opção neutra**, em outras palavras, o respondente pode escolher ficar "em cima do muro". Abaixo um exemplo de uma escala Likert ímpar, de "Discordo Fortemente" até "Concordo Fortemente". Vejam que há a opção neutra (0) "Não Discordo nem Concordo".
 
 ```{r likert-impar, echo=FALSE}
 library(gt)

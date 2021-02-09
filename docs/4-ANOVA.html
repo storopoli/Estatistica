@@ -2507,7 +2507,7 @@ Conteúdos Auxiliares
 <blockquote>
 <p>a probabilidade máxima de que um procedimento consistindo de mais de uma comparação conclua incorretamente que pelo menos uma das diferenças observadas é significativamente diferente da hipótese nula.</p>
 </blockquote>
-<p>Para controlar a taxa de erro familiar, temos um conjunto de técnicas chamada <strong>análise de variância</strong>, conhecida como <em><strong>An</strong>alysis <strong>o</strong>f <strong>Va</strong>riance</em> (ANOVA). A ANOVA controla esses erros para que os falsos positivos (erros tipo I) permaneçam em 5% na comparação de média entre dois ou mais grupos. A ANOVA não irá dizer com precisão como que as médias dos grupos diferem, mas o seu resultado indica fortes evidências de que a diferença entre as médias dos grupos difere. <strong>Sua hipótese nula é que não há diferença entre as médias dos grupos</strong>. A ANOVA tradicional é uma <strong>técnica paramétrica</strong> (quando a variável dependente é distribuída conforme uma distribuição Normal), mas há também uma versão <strong>não-paramétrica</strong> (quando não temos pressupostos sobre de que distribuição probabilística a variável dependente é distribúida) chamada <strong>teste de Kruskal-Wallis</strong>.</p>
+<p>Para controlar a taxa de erro familiar, temos um conjunto de técnicas chamada <strong>análise de variância</strong>, conhecida como <em><strong>An</strong>alysis <strong>o</strong>f <strong>Va</strong>riance</em> (ANOVA). A ANOVA controla esses erros para que os falsos positivos (erros tipo I) permaneçam em 5% na comparação de média entre dois ou mais grupos. A ANOVA não irá dizer com precisão como que as médias dos grupos diferem, mas o seu resultado indica fortes evidências de que a diferença entre as médias dos grupos difere. <strong>Sua hipótese nula é que não há diferença entre as médias dos grupos</strong>. A ANOVA tradicional é uma <strong>técnica paramétrica</strong> (quando a variável dependente é distribuída conforme uma distribuição Normal), mas há também uma versão <strong>não-paramétrica</strong> (quando não temos pressupostos sobre de que distribuição probabilística a variável dependente é distribuída) chamada <strong>teste de Kruskal-Wallis</strong>.</p>
 <p>Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparação <em>post-hoc</em> usando um conjunto de técnicas comparativas de média entre grupos que controlam a taxa de erro familiar. A principal <strong>técnica paramétrica</strong> é o <strong>teste de Tukey</strong> e a principal técnica <strong>não-paramétrica</strong> é o <strong>teste de Dunn</strong>.</p>
 <h2 id="história-da-anova">História da ANOVA</h2>
 <p>A ANOVA foi primeira proposta por Ronald Fisher<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> em 1921 <span class="citation" data-cites="fisher1210probable">(<a href="#ref-fisher1210probable" role="doc-biblioref">R. Fisher, 1921</a>)</span> e foi incluída no seu livro de 1925 que popularizou as técnicas de Estatística inferencial <span class="citation" data-cites="fisher1925statistical">(<a href="#ref-fisher1925statistical" role="doc-biblioref">R. A. Fisher, 1925</a>)</span>. A estatística que a ANOVA calcula para testar sua hipótese nula é chamada de <strong>Estatística F</strong>, em homenagem à Fisher. Em 1919 Fisher foi trabalhar em um instituto de pesquisa agrícola chamado <em>Rothamsted Experimental Station</em> na Inglaterra, onde ficou até 1933. Foi nesse instituto que Fisher, ao ter acesso a uma vasta quantidade de dados sobre dados de safra agrícola acumulados desde 1842, desenvolveu e fez as primeiras aplicações de ANOVA.</p>
@@ -2624,13 +2624,13 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
 <td style="text-align: left;">len</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">18.81</td>
-<td style="text-align: right;">7.65</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">7.7</td>
 <td style="text-align: right;">4.2</td>
-<td style="text-align: right;">13.07</td>
-<td style="text-align: right;">19.25</td>
-<td style="text-align: right;">25.27</td>
-<td style="text-align: right;">33.9</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">34</td>
 <td style="text-align: left;">▅▃▅▇▂</td>
 </tr>
 </tbody>
@@ -2665,9 +2665,9 @@ Figure 1: Ronald Fisher. Figura de <a href="https://www.wikipedia.org" class="ur
     Shapiro-Wilk normality test
 
 data:  ToothGrowth$len
-W = 0.96743, p-value = 0.1091</code></pre>
+W = 1, p-value = 0.1</code></pre>
 </div>
-<p>O <span class="math inline">\(p\)</span>-valor do teste é 0.1091005 e com isso falhamos em rejeitar a hipótese nula de que <code>len</code> é distribuída conforma uma distribuição Normal. Ou seja, <strong>pressuposto de normalidade não violado</strong>.</p>
+<p>O <span class="math inline">\(p\)</span>-valor do teste é 0.11 e com isso falhamos em rejeitar a hipótese nula de que <code>len</code> é distribuída conforma uma distribuição Normal. Ou seja, <strong>pressuposto de normalidade não violado</strong>.</p>
 <p>Avançando para o pressuposto de homogeneidade de variâncias, também já coberto na <a href="2-p-valores.html">tutorial de <span class="math inline">\(p\)</span>-valores</a>, pode ser testado com o teste de Levene usando a função <code>leveneTest()</code> da biblioteca <code>{car}</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2677,7 +2677,7 @@ W = 0.96743, p-value = 0.1091</code></pre>
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
       Df F value Pr(&gt;F)
-group  1  1.2136 0.2752
+group  1    1.21   0.28
       58               </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>len</span> <span class='op'>~</span> <span class='va'>dose</span>, data <span class='op'>=</span> <span class='va'>ToothGrowth</span><span class='op'>)</span>
@@ -2685,7 +2685,7 @@ group  1  1.2136 0.2752
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
       Df F value Pr(&gt;F)
-group  2  0.6457 0.5281
+group  2    0.65   0.53
       57               </code></pre>
 </div>
 <p>O <span class="math inline">\(p\)</span>-valor de ambos testes para a homogeneidade de variâncias de <code>len</code> nos grupos de <code>supp</code> e <code>dose</code> são respectivamente <code>0.28</code> e <code>0.53</code>. Com isso falhamos em rejeitar a hipótese nula de que <code>len</code> possui variâncias homogêneas nos grupos tanto de <code>supp</code> quanto de <code>dose</code>. Ou seja, <strong>pressuposto de homogeneidade de variâncias não violado</strong>.</p>
@@ -2707,8 +2707,8 @@ group  2  0.6457 0.5281
 </code></pre>
 </div>
 <pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
-supp         1    205  205.35   3.668 0.0604 .
-Residuals   58   3247   55.98                 
+supp         1    205     205    3.67   0.06 .
+Residuals   58   3247      56                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2719,9 +2719,9 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-dose         2   2426    1213   67.42 9.53e-16 ***
-Residuals   57   1026      18                     
+<pre><code>            Df Sum Sq Mean Sq F value              Pr(&gt;F)    
+dose         2   2426    1213    67.4 0.00000000000000095 ***
+Residuals   57   1026      18                                
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2740,10 +2740,10 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit3</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-supp         1  205.4   205.4   14.02 0.000429 ***
-dose         2 2426.4  1213.2   82.81  &lt; 2e-16 ***
-Residuals   56  820.4    14.7                     
+<pre><code>            Df Sum Sq Mean Sq F value               Pr(&gt;F)    
+supp         1    205     205    14.0              0.00043 ***
+dose         2   2426    1213    82.8 &lt; 0.0000000000000002 ***
+Residuals   56    820      15                                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2756,11 +2756,11 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-supp         1  205.4   205.4  15.572 0.000231 ***
-dose         2 2426.4  1213.2  92.000  &lt; 2e-16 ***
-supp:dose    2  108.3    54.2   4.107 0.021860 *  
-Residuals   54  712.1    13.2                     
+<pre><code>            Df Sum Sq Mean Sq F value               Pr(&gt;F)    
+supp         1    205     205   15.57              0.00023 ***
+dose         2   2426    1213   92.00 &lt; 0.0000000000000002 ***
+supp:dose    2    108      54    4.11              0.02186 *  
+Residuals   54    712      13                                 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2786,7 +2786,7 @@ Não é recomendado empregar ANOVAS bidirecionais não-paramétricas. Caso o lei
     Kruskal-Wallis rank sum test
 
 data:  len by supp
-Kruskal-Wallis chi-squared = 3.4454, df = 1, p-value = 0.06343</code></pre>
+Kruskal-Wallis chi-squared = 3, df = 1, p-value = 0.06</code></pre>
 </div>
 <p>Como podem ver, o resultado é o mesmo que o da ANOVA paramétrica <code>aov()</code>.</p>
 <h2 id="anova-de-medidas-repetidas">ANOVA de Medidas Repetidas<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h2>
@@ -2834,10 +2834,10 @@ Não vamos abordar modelos mistos nos tutoriais. Caso esteja interessado veja a 
 <pre><code>
  Dunn&#39;s test of multiple comparisons using rank sums : holm  
 
-      mean.rank.diff    pval    
-1-0.5         19.625 0.00076 ***
-2-0.5         35.125   6e-10 ***
-2-1           15.500 0.00499 ** 
+      mean.rank.diff         pval    
+1-0.5             20      0.00076 ***
+2-0.5             35 0.0000000006 ***
+2-1               16      0.00499 ** 
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2889,7 +2889,7 @@ Figure 3: Diagrama de Caixa usando o <code>{ggpubr}</code> – ANOVA Não-Param�
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -2917,26 +2917,26 @@ loaded via a namespace (and not attached):
 [16] curl_4.3           compiler_4.0.3     cli_2.3.0         
 [19] expm_0.999-6       xml2_1.3.2         labeling_0.4.2    
 [22] bookdown_0.21      scales_1.1.1       mvtnorm_1.1-1     
-[25] stringr_1.4.0      digest_0.6.27      foreign_0.8-80    
+[25] stringr_1.4.0      digest_0.6.27      foreign_0.8-81    
 [28] rmarkdown_2.6      rio_0.5.16         base64enc_0.1-3   
 [31] pkgconfig_2.0.3    htmltools_0.5.1.1  highr_0.8         
 [34] htmlwidgets_1.5.3  rlang_0.4.10       rstudioapi_0.13   
 [37] visNetwork_2.0.9   farver_2.0.3       generics_0.1.0    
 [40] jsonlite_1.7.2     zip_2.1.1          distill_1.2       
-[43] magrittr_2.0.1     Matrix_1.2-18      Rcpp_1.0.6        
+[43] magrittr_2.0.1     Matrix_1.3-2       Rcpp_1.0.6        
 [46] munsell_0.5.0      fansi_0.4.2        abind_1.4-5       
 [49] reticulate_1.18    lifecycle_0.2.0    stringi_1.5.3     
 [52] yaml_2.2.1         rootSolve_1.8.2.1  MASS_7.3-53       
-[55] grid_4.0.3         forcats_0.5.1      crayon_1.4.0      
-[58] lmom_2.8           lattice_0.20-41    haven_2.3.1       
-[61] hms_1.0.0          knitr_1.31         pillar_1.4.7      
-[64] boot_1.3-25        gld_2.6.2          ggsignif_0.6.0    
-[67] glue_1.4.2         evaluate_0.14      data.table_1.13.6 
-[70] vctrs_0.3.6        cellranger_1.1.0   gtable_0.3.0      
-[73] purrr_0.3.4        tidyr_1.1.2        assertthat_0.2.1  
-[76] xfun_0.20          openxlsx_4.2.3     broom_0.7.4       
-[79] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
-[82] tibble_3.0.6       ellipsis_0.3.1    </code></pre>
+[55] grid_4.0.3         parallel_4.0.3     forcats_0.5.1     
+[58] crayon_1.4.0       lmom_2.8           lattice_0.20-41   
+[61] haven_2.3.1        hms_1.0.0          knitr_1.31        
+[64] pillar_1.4.7       boot_1.3-26        gld_2.6.2         
+[67] ggsignif_0.6.0     glue_1.4.2         evaluate_0.14     
+[70] data.table_1.13.6  vctrs_0.3.6        cellranger_1.1.0  
+[73] gtable_0.3.0       purrr_0.3.4        tidyr_1.1.2       
+[76] assertthat_0.2.1   xfun_0.20          openxlsx_4.2.3    
+[79] broom_0.7.4        e1071_1.7-4        rstatix_0.6.0     
+[82] class_7.3-18       tibble_3.0.6       ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
