@@ -2628,7 +2628,7 @@ Figure 4: Da esquerda para direita: Karl Pearson, Charles Spearman e Maurice Ken
     Shapiro-Wilk normality test
 
 data:  mv_normal$V1
-W = 1, p-value = 0.3</code></pre>
+W = 0.97314, p-value = 0.3092</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>mv_normal</span><span class='op'>$</span><span class='va'>V2</span><span class='op'>)</span>
 </code></pre>
@@ -2637,7 +2637,7 @@ W = 1, p-value = 0.3</code></pre>
     Shapiro-Wilk normality test
 
 data:  mv_normal$V2
-W = 1, p-value = 0.3</code></pre>
+W = 0.97163, p-value = 0.2693</code></pre>
 </div>
 <p>Como podem ver, ambos os testes para as distribuições multivariadas Normais geram <span class="math inline">\(p\)</span>-valores acima de 0.05 o que faz com que falhemos em rejeitar a hipótese nula de que “os dados são distribuídos conforme uma distribuição Normal.”</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2649,7 +2649,7 @@ W = 1, p-value = 0.3</code></pre>
     Shapiro-Wilk normality test
 
 data:  mv_student$V1
-W = 0.7, p-value = 0.00000002</code></pre>
+W = 0.7176, p-value = 1.737e-08</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>mv_student</span><span class='op'>$</span><span class='va'>V2</span><span class='op'>)</span>
 </code></pre>
@@ -2658,7 +2658,7 @@ W = 0.7, p-value = 0.00000002</code></pre>
     Shapiro-Wilk normality test
 
 data:  mv_student$V2
-W = 0.5, p-value = 0.000000000005</code></pre>
+W = 0.4848, p-value = 5.307e-12</code></pre>
 </div>
 <p>Como podem ver, ambos os testes para as distribuições multivariadas <span class="math inline">\(t\)</span> de Student geram <span class="math inline">\(p\)</span>-valores abaixo de 0.05 o que faz com que a hipótese nula de que “os dados são distribuídos conforme uma distribuição Normal” é rejeitada.</p>
 <h3 id="calculando-a-medida-de-correlação-entre-duas-variáveis">Calculando a medida de correlação entre duas variáveis</h3>
@@ -2674,7 +2674,7 @@ W = 0.5, p-value = 0.000000000005</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>mv_normal</span><span class='op'>$</span><span class='va'>V1</span>, <span class='va'>mv_normal</span><span class='op'>$</span><span class='va'>V2</span>, method <span class='op'>=</span> <span class='st'>"pearson"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.62</code></pre>
+<pre><code>[1] 0.6156231</code></pre>
 </div>
 <h4 id="segundo-cenário-distribuições-não-normais-técnica-não-paramétrica-de-correlação-de-spearman">Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Spearman:</h4>
 <div class="layout-chunk" data-layout="l-body">
@@ -2682,7 +2682,7 @@ W = 0.5, p-value = 0.000000000005</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>mv_student</span><span class='op'>$</span><span class='va'>V1</span>, <span class='va'>mv_student</span><span class='op'>$</span><span class='va'>V2</span>, method <span class='op'>=</span> <span class='st'>"spearman"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.68</code></pre>
+<pre><code>[1] 0.6829772</code></pre>
 </div>
 <h4 id="segundo-cenário-distribuições-não-normais-técnica-não-paramétrica-de-correlação-de-kendall">Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Kendall:</h4>
 <div class="layout-chunk" data-layout="l-body">
@@ -2690,7 +2690,7 @@ W = 0.5, p-value = 0.000000000005</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>mv_student</span><span class='op'>$</span><span class='va'>V1</span>, <span class='va'>mv_student</span><span class='op'>$</span><span class='va'>V2</span>, method <span class='op'>=</span> <span class='st'>"kendall"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 0.5</code></pre>
+<pre><code>[1] 0.5036735</code></pre>
 </div>
 <h3 id="realizando-um-teste-estatístico-de-hipótese-nula-sobre-a-correlação-de-duas-variáveis">Realizando um teste estatístico de hipótese nula sobre a correlação de duas variáveis</h3>
 <p>Além de computarmos o valor da correlação entre duas variáveis, é possível também realizar um teste estatístico de hipótese nula sobre a correlação de duas variáveis. <strong>A hipótese nula <span class="math inline">\(H_0\)</span> nesse caso é de que “as variáveis possuem correlação igual a zero”</strong>.</p>
@@ -2711,15 +2711,15 @@ W = 0.5, p-value = 0.000000000005</code></pre>
     Pearson&#39;s product-moment correlation
 
 data:  mv_normal$V1 and mv_normal$V2
-t = 5, df = 48, p-value = 0.000002
+t = 5.4124, df = 48, p-value = 1.954e-06
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.41 0.76
+ 0.4070214 0.7631922
 sample estimates:
- cor 
-0.62 </code></pre>
+      cor 
+0.6156231 </code></pre>
 </div>
-<p>Note que aqui temos um <span class="math inline">\(p\)</span>-valor significante e um tamanho de efeito entre 0.41 e 0.76.</p>
+<p>Note que aqui temos um <span class="math inline">\(p\)</span>-valor significante e um tamanho de efeito entre 0.4070214 e 0.7631922.</p>
 <h4 id="segundo-cenário-distribuições-não-normais-técnica-não-paramétrica-de-correlação-de-spearman-1">Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Spearman:</h4>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2730,11 +2730,11 @@ sample estimates:
     Spearman&#39;s rank correlation rho
 
 data:  mv_student$V1 and mv_student$V2
-S = 6602, p-value = 0.0000002
+S = 6602, p-value = 1.519e-07
 alternative hypothesis: true rho is not equal to 0
 sample estimates:
- rho 
-0.68 </code></pre>
+      rho 
+0.6829772 </code></pre>
 </div>
 <p>Aqui também temos um <span class="math inline">\(p\)</span>-valor significante.</p>
 <h4 id="segundo-cenário-distribuições-não-normais-técnica-não-paramétrica-de-correlação-de-kendall-1">Segundo cenário, distribuições não-Normais, técnica não-paramétrica de correlação de Kendall:</h4>
@@ -2747,11 +2747,11 @@ sample estimates:
     Kendall&#39;s rank correlation tau
 
 data:  mv_student$V1 and mv_student$V2
-z = 5, p-value = 0.0000002
+z = 5.1611, p-value = 2.455e-07
 alternative hypothesis: true tau is not equal to 0
 sample estimates:
-tau 
-0.5 </code></pre>
+      tau 
+0.5036735 </code></pre>
 </div>
 <p>Aqui também temos um <span class="math inline">\(p\)</span>-valor significante.</p>
 <h2 id="paradoxo-de-simpson">Paradoxo de Simpson</h2>
@@ -2870,65 +2870,65 @@ tau
 <td style="text-align: left;">bill_length_mm</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">44</td>
+<td style="text-align: right;">43.99</td>
 <td style="text-align: right;">5.47</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">49</td>
-<td style="text-align: right;">60</td>
+<td style="text-align: right;">32.1</td>
+<td style="text-align: right;">39.5</td>
+<td style="text-align: right;">44.5</td>
+<td style="text-align: right;">48.6</td>
+<td style="text-align: right;">59.6</td>
 <td style="text-align: left;">▃▇▇▆▁</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">bill_depth_mm</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">17</td>
+<td style="text-align: right;">17.16</td>
 <td style="text-align: right;">1.97</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">22</td>
+<td style="text-align: right;">13.1</td>
+<td style="text-align: right;">15.6</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">21.5</td>
 <td style="text-align: left;">▅▆▇▇▂</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">flipper_length_mm</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">201</td>
+<td style="text-align: right;">200.97</td>
 <td style="text-align: right;">14.02</td>
-<td style="text-align: right;">172</td>
-<td style="text-align: right;">190</td>
-<td style="text-align: right;">197</td>
-<td style="text-align: right;">213</td>
-<td style="text-align: right;">231</td>
+<td style="text-align: right;">172.0</td>
+<td style="text-align: right;">190.0</td>
+<td style="text-align: right;">197.0</td>
+<td style="text-align: right;">213.0</td>
+<td style="text-align: right;">231.0</td>
 <td style="text-align: left;">▂▇▃▅▃</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">body_mass_g</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">4207</td>
+<td style="text-align: right;">4207.06</td>
 <td style="text-align: right;">805.22</td>
-<td style="text-align: right;">2700</td>
-<td style="text-align: right;">3550</td>
-<td style="text-align: right;">4050</td>
-<td style="text-align: right;">4775</td>
-<td style="text-align: right;">6300</td>
+<td style="text-align: right;">2700.0</td>
+<td style="text-align: right;">3550.0</td>
+<td style="text-align: right;">4050.0</td>
+<td style="text-align: right;">4775.0</td>
+<td style="text-align: right;">6300.0</td>
 <td style="text-align: left;">▃▇▅▃▂</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">year</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2008</td>
+<td style="text-align: right;">2008.04</td>
 <td style="text-align: right;">0.81</td>
-<td style="text-align: right;">2007</td>
-<td style="text-align: right;">2007</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: right;">2009</td>
-<td style="text-align: right;">2009</td>
+<td style="text-align: right;">2007.0</td>
+<td style="text-align: right;">2007.0</td>
+<td style="text-align: right;">2008.0</td>
+<td style="text-align: right;">2009.0</td>
+<td style="text-align: right;">2009.0</td>
 <td style="text-align: left;">▇▁▇▁▇</td>
 </tr>
 </tbody>
@@ -3003,7 +3003,7 @@ Figure 7: Diagrama de dispersão subdividido em espécies do comprimento e altur
 </div>
 <pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Big Sur 10.16
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -3024,7 +3024,7 @@ other attached packages:
 [13] ggplot2_3.3.3        DiagrammeR_1.0.6.1   readxl_1.3.1        
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-152       lubridate_1.7.9.2  RColorBrewer_1.1-2
+ [1] nlme_3.1-149       lubridate_1.7.9.2  RColorBrewer_1.1-2
  [4] rprojroot_2.0.2    ggsci_2.9          repr_1.1.3        
  [7] tools_4.0.3        backports_1.2.1    utf8_1.1.4        
 [10] R6_2.5.0           mgcv_1.8-33        DBI_1.1.1         
@@ -3033,26 +3033,26 @@ loaded via a namespace (and not attached):
 [19] compiler_4.0.3     cli_2.3.0          expm_0.999-6      
 [22] xml2_1.3.2         labeling_0.4.2     bookdown_0.21     
 [25] scales_1.1.1       mvtnorm_1.1-1      stringr_1.4.0     
-[28] digest_0.6.27      foreign_0.8-81     rmarkdown_2.6     
+[28] digest_0.6.27      foreign_0.8-80     rmarkdown_2.6     
 [31] rio_0.5.16         base64enc_0.1-3    pkgconfig_2.0.3   
 [34] htmltools_0.5.1.1  highr_0.8          htmlwidgets_1.5.3 
 [37] rlang_0.4.10       rstudioapi_0.13    visNetwork_2.0.9  
 [40] farver_2.0.3       generics_0.1.0     jsonlite_1.7.2    
-[43] zip_2.1.1          distill_1.2        Matrix_1.3-2      
+[43] zip_2.1.1          distill_1.2        Matrix_1.2-18     
 [46] Rcpp_1.0.6         munsell_0.5.0      fansi_0.4.2       
 [49] abind_1.4-5        reticulate_1.18    lifecycle_0.2.0   
 [52] stringi_1.5.3      yaml_2.2.1         rootSolve_1.8.2.1 
-[55] MASS_7.3-53        grid_4.0.3         parallel_4.0.3    
-[58] forcats_0.5.1      crayon_1.4.0       lmom_2.8          
-[61] lattice_0.20-41    splines_4.0.3      haven_2.3.1       
-[64] hms_1.0.0          tmvnsim_1.0-2      magick_2.6.0      
-[67] knitr_1.31         pillar_1.4.7       boot_1.3-26       
-[70] gld_2.6.2          ggsignif_0.6.0     glue_1.4.2        
-[73] evaluate_0.14      data.table_1.13.6  vctrs_0.3.6       
-[76] cellranger_1.1.0   gtable_0.3.0       purrr_0.3.4       
-[79] assertthat_0.2.1   xfun_0.20          openxlsx_4.2.3    
-[82] broom_0.7.4        e1071_1.7-4        rstatix_0.6.0     
-[85] class_7.3-18       tibble_3.0.6       ellipsis_0.3.1    </code></pre>
+[55] MASS_7.3-53        grid_4.0.3         forcats_0.5.1     
+[58] crayon_1.4.1       lmom_2.8           lattice_0.20-41   
+[61] splines_4.0.3      haven_2.3.1        hms_1.0.0         
+[64] tmvnsim_1.0-2      magick_2.6.0       knitr_1.31        
+[67] pillar_1.4.7       boot_1.3-25        gld_2.6.2         
+[70] ggsignif_0.6.0     glue_1.4.2         evaluate_0.14     
+[73] data.table_1.13.6  vctrs_0.3.6        cellranger_1.1.0  
+[76] gtable_0.3.0       purrr_0.3.4        assertthat_0.2.1  
+[79] xfun_0.20          openxlsx_4.2.3     broom_0.7.4       
+[82] e1071_1.7-4        rstatix_0.6.0      class_7.3-17      
+[85] tibble_3.0.6       ellipsis_0.3.1    </code></pre>
 </div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
