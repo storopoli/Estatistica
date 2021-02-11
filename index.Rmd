@@ -61,11 +61,11 @@ Mais nomenclaturas chiques: **Conteúdos extracurriculares facultativos na forma
 
 ## O que esta disciplina **não** é
 
-Não será coberto conteúdos sobre leitura, manipulação e exportação de dados com R. Para isso recomendo fortemente o livro **R para Data Science** que pode ser encontrado gratuitamente [aqui](https://r4ds.had.co.nz) e possui uma [versão impressa em português](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243)[^1].
+Não será coberto conteúdos sobre leitura, manipulação e exportação de dados com R. Para isso recomendamos fortemente o livro **R para Data Science** (Figura \@ref(fig:data-science-book)) que pode ser encontrado gratuitamente [aqui](https://r4ds.had.co.nz) e possui uma [versão impressa em português](https://www.amazon.com.br/Para-Data-Science-Hadley-Wickham/dp/8550803243)[^1].
 
 
-```{r data-science-book, echo=FALSE, fig.retina=4, fig.align='center', fig.cap='R for Data Science'}
-knitr::include_graphics("images/R_for_data_science.jpg", dpi = 300)
+```{r data-science-book, echo=FALSE, fig.align='center', fig.cap='R for Data Science'}
+knitr::include_graphics("images/R_for_data_science.jpg")
 ```
 
 ## **RStudio** na Núvem Gratuito
