@@ -5,8 +5,11 @@ on:
     branches:
       - main
       - master
+  pull_request:
   workflow_dispatch:
 jobs:
+
+  # 1st job
   render_site:
     runs-on: macos-latest
     steps:
@@ -32,6 +35,16 @@ jobs:
           Rscript -e 'rmarkdown::clean_site(preview = FALSE)'
           Rscript -e 'rmarkdown::render_site()'
 
+  # 2nd job
+  push_changes:
+    runs-on: macos-latest
+    needs: [render_site]
+    if:
+      contains('
+        refs/heads/master
+        refs/heads/main
+      ', github.ref)
+    steps:
       - name: Commit files
         run: |
           git config --local core.autocrlf false
@@ -41,6 +54,7 @@ jobs:
           git pull origin ${{ github.head_ref }} --autostash --rebase -X ours
           git commit --allow-empty -am "AUTO-GH ACTION: ${{ github.workflow }}"
           NO_PAGER=1 git --no-pager diff HEAD^
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
