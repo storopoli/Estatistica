@@ -79,6 +79,9 @@ xaringanExtra::use_tachyons()
 
 # xaringanExtra webcam press key "W"
 xaringanExtra::use_webcam()
+
+# xaringanExtra Broadcast inside presenter notes key "P"
+xaringanExtra::use_broadcast()
 ```
 
 # Por quê estou aqui?
