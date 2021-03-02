@@ -82,6 +82,9 @@ xaringanExtra::use_webcam()
 
 # xaringanExtra Broadcast inside presenter notes key "P"
 xaringanExtra::use_broadcast()
+
+# xaringanExtra Search press Control + F or click the 🔍 icon.
+xaringanExtra::use_search(show_icon = TRUE)
 ```
 
 # Por quê estou aqui?
@@ -128,8 +131,8 @@ class: Large
 --
 
 * **_Opensource_**
-  * `r icon::icon_style(icon::fontawesome("frown"), scale = 2)` SPSS, Stata ou Excel `r icon::icon_style(icon::fontawesome("creative-commons-nc"), scale = 2)`
-  * `r icon::icon_style(icon::fontawesome("smile"), scale = 2)` JASP, Jamovi, R `r icon::icon_style(icon::fontawesome("rocket"), scale = 2)`
+  * `r icons::icon_style(icons::fontawesome("frown"), scale = 2)` SPSS, Stata ou Excel `r icons::icon_style(icons::fontawesome("creative-commons-nc"), scale = 2)`
+  * `r icons::icon_style(icons::fontawesome("smile"), scale = 2)` JASP, Jamovi, R `r icons::icon_style(icons::fontawesome("rocket"), scale = 2)`
 
 ---
 # Open Science
@@ -448,7 +451,7 @@ class: inverse, middle, center
 
 # Estatística Descritiva
 
-`r icon::icon_style(icon::fontawesome("chart-pie"), scale = 5)`
+`r icons::icon_style(icons::fontawesome("chart-pie"), scale = 5)`
 
 ---
 # Estatística Descritiva
@@ -523,7 +526,7 @@ class: inverse, middle, center
 
 # Estatística Inferencial
 
-`r icon::icon_style(icon::fontawesome("chart-line"), scale = 5)`
+`r icons::icon_style(icons::fontawesome("chart-line"), scale = 5)`
 
 ---
 # Estatística Inferencial
@@ -619,7 +622,7 @@ Uma hipótese padrão de que uma quantidade a ser medida é **zero** (nula). Nor
 class: inverse, middle, center
 # $p$-valor
 
-`r icon::icon_style(icon::fontawesome("exclamation-triangle"), scale = 5)`
+`r icons::icon_style(icons::fontawesome("exclamation-triangle"), scale = 5)`
 
 ## $p$-valores são de difícil entendimento, $p<0.05$.
 
