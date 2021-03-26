@@ -212,6 +212,13 @@ Se sua teoria discordar da realidade, sua teoria está errada. Não importa o qu
 ---
 # Teoria vs Realidade
 
+```{r teoria-vs-realidade, out.width='100%'}
+knitr::include_graphics("images/teoria-vs-realidade.jpg")
+```
+
+---
+# Teoria vs Realidade
+
 .pull-left[
 Objetos pesados caem mais rápido que objetos leves.
 
@@ -596,6 +603,19 @@ Forma de <u>inferência estatística</u> que usa dados de uma <u>amostra</u> par
 .washed-blue.bg-blue.b--navy.ba.bw2.br3.shadow-5.ph4.mt5[
 Uma hipótese padrão de que uma quantidade a ser medida é **zero** (nula). Normalmente, a quantidade a ser medida é a **diferença entre duas situações**, ou que um **efeito é inexistente** (nulo).
 ]
+
+---
+class:center, middle
+
+```{r stats-philosophy, out.width='80%'}
+knitr::include_graphics("images/stats-philosophy.png")
+```
+
+???
+
+* Hospital Mata
+* Bombeiro faz Fogo
+* Brancos são mais inteligentes
 
 ---
 # Quando é que as coisas dão errado?
