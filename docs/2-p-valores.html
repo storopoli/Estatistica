@@ -137,6 +137,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_reference" content="citation_title=Robust misinterpretation of confidence intervals;citation_publication_date=2014;citation_volume=21;citation_doi=10.3758/s13423-013-0572-3;citation_issn=1531-5320;citation_author=Rink Hoekstra;citation_author=Richard D Morey;citation_author=Jeffrey N Rouder;citation_author=Eric-Jan Wagenmakers"/>
   <meta name="citation_reference" content="citation_title=Outline of a theory of statistical estimation based on the classical theory of probability;citation_publication_date=1937;citation_publisher=The Royal Society London;citation_volume=236;citation_author=Jerzy Neyman"/>
   <meta name="citation_reference" content="citation_title=On the problem of the most efficient tests of statistical hypotheses;citation_publication_date=1933;citation_publisher=The Royal Society London;citation_volume=231;citation_author=Jerzy Neyman;citation_author=Egon Sharpe Pearson"/>
+  <meta name="citation_reference" content="citation_title=The ASA’s Statement on p-Values: Context, Process, and Purpose;citation_publication_date=2016;citation_publisher=American Statistical Association;citation_volume=70;citation_doi=10.1080/00031305.2016.1154108;citation_issn=15372731;citation_author=Ronald L. Wasserstein;citation_author=Nicole A. Lazar"/>
+  <meta name="citation_reference" content="citation_title=Moving to a World Beyond “p &lt; 0.05”;citation_publication_date=2019;citation_publisher=American Statistical Association;citation_volume=73;citation_doi=10.1080/00031305.2019.1583913;citation_issn=15372731;citation_author=Ronald L. Wasserstein;citation_author=Allen L. Schirm;citation_author=Nicole A. Lazar"/>
+  <meta name="citation_reference" content="citation_title=Redefine statistical significance;citation_publication_date=2018;citation_publisher=Nature Publishing Group;citation_volume=2;citation_doi=10.1038/s41562-017-0189-z;citation_issn=2397-3374;citation_author=Daniel J. Benjamin;citation_author=James O. Berger;citation_author=Magnus Johannesson;citation_author=Brian A. Nosek;citation_author=E.-J. Wagenmakers;citation_author=Richard Berk;citation_author=Kenneth A. Bollen;citation_author=Björn Brembs;citation_author=Lawrence Brown;citation_author=Colin Camerer;citation_author=David Cesarini;citation_author=Christopher D. Chambers;citation_author=Merlise Clyde;citation_author=Thomas D. Cook;citation_author=Paul De Boeck;citation_author=Zoltan Dienes;citation_author=Anna Dreber;citation_author=Kenny Easwaran;citation_author=Charles Efferson;citation_author=Ernst Fehr;citation_author=Fiona Fidler;citation_author=Andy P. Field;citation_author=Malcolm Forster;citation_author=Edward I. George;citation_author=Richard Gonzalez;citation_author=Steven Goodman;citation_author=Edwin Green;citation_author=Donald P. Green;citation_author=Anthony G. Greenwald;citation_author=Jarrod D. Hadfield;citation_author=Larry V. Hedges;citation_author=Leonhard Held;citation_author=Teck Hua Ho;citation_author=Herbert Hoijtink;citation_author=Daniel J. Hruschka;citation_author=Kosuke Imai;citation_author=Guido Imbens;citation_author=John P. A. Ioannidis;citation_author=Minjeong Jeon;citation_author=James Holland Jones;citation_author=Michael Kirchler;citation_author=David Laibson;citation_author=John List;citation_author=Roderick Little;citation_author=Arthur Lupia;citation_author=Edouard Machery;citation_author=Scott E. Maxwell;citation_author=Michael McCarthy;citation_author=Don A. Moore;citation_author=Stephen L. Morgan;citation_author=Marcus Munaf’o;citation_author=Shinichi Nakagawa;citation_author=Brendan Nyhan;citation_author=Timothy H. Parker;citation_author=Luis Pericchi;citation_author=Marco Perugini;citation_author=Jeff Rouder;citation_author=Judith Rousseau;citation_author=Victoria Savalei;citation_author=Felix D. Schönbrodt;citation_author=Thomas Sellke;citation_author=Betsy Sinclair;citation_author=Dustin Tingley;citation_author=Trisha Van Zandt;citation_author=Simine Vazire;citation_author=Duncan J. Watts;citation_author=Christopher Winship;citation_author=Robert L. Wolpert;citation_author=Yu Xie;citation_author=Cristobal Young;citation_author=Jonathan Zinman;citation_author=Valen E. Johnson"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
@@ -2375,7 +2378,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
   <script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
   <script src="site_libs/viz-1.8.2/viz.js"></script>
   <link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
@@ -2510,6 +2513,7 @@ Conteúdos Auxiliares
 </ul></li>
 <li><a href="#correlação-versus-causalidade">Correlação versus Causalidade</a></li>
 <li><a href="#comentários-finais">Comentários Finais</a></li>
+<li><a href="#o-começo-do-fim-da-estatística-frequentista">O começo do fim da Estatística Frequentista</a></li>
 <li><a href="#ambiente">Ambiente</a></li>
 </ul>
 </nav>
@@ -2523,8 +2527,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-88cbb8356d3d1fe7f16b" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-88cbb8356d3d1fe7f16b">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8d24162191f66eba378b" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d24162191f66eba378b">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2767,7 +2771,7 @@ Figure 6: Histograma das Simulações de Normalidade
     Shapiro-Wilk normality test
 
 data:  sims$normal
-W = 0.99838, p-value = 0.4765</code></pre>
+W = 1, p-value = 0.5</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/shapiro.test.html'>shapiro.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>
 </code></pre>
@@ -2776,7 +2780,7 @@ W = 0.99838, p-value = 0.4765</code></pre>
     Shapiro-Wilk normality test
 
 data:  sims$log_normal
-W = 0.55782, p-value &lt; 2.2e-16</code></pre>
+W = 0.6, p-value &lt;0.0000000000000002</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não segue uma distribuição Normal.</p>
 <aside>
@@ -2793,7 +2797,7 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$normal
-D = 0.014963, p-value = 0.9786
+D = 0.01, p-value = 1
 alternative hypothesis: two-sided</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/ks.test.html'>ks.test</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span>,  <span class='st'>"pnorm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>sims</span><span class='op'>$</span><span class='va'>log_normal</span><span class='op'>)</span><span class='op'>)</span>
@@ -2803,7 +2807,7 @@ alternative hypothesis: two-sided</code></pre>
     One-sample Kolmogorov-Smirnov test
 
 data:  sims$log_normal
-D = 0.23774, p-value &lt; 2.2e-16
+D = 0.2, p-value &lt;0.0000000000000002
 alternative hypothesis: two-sided</code></pre>
 </div>
 <h3 id="homogeneidade-das-variâncias">Homogeneidade das Variâncias</h3>
@@ -2884,7 +2888,7 @@ Figure 8: Histograma das Simulações de Homogeneidade das Variâncias
     Bartlett test of homogeneity of variances
 
 data:  homog by group
-Bartlett&#39;s K-squared = 2.0602, df = 1, p-value = 0.1512</code></pre>
+Bartlett&#39;s K-squared = 2, df = 1, p-value = 0.2</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/bartlett.test.html'>bartlett.test</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
@@ -2893,7 +2897,8 @@ Bartlett&#39;s K-squared = 2.0602, df = 1, p-value = 0.1512</code></pre>
     Bartlett test of homogeneity of variances
 
 data:  heterog by group
-Bartlett&#39;s K-squared = 1162.1, df = 1, p-value &lt; 2.2e-16</code></pre>
+Bartlett&#39;s K-squared = 1162, df = 1, p-value
+&lt;0.0000000000000002</code></pre>
 </div>
 <p>Sobre o <span class="math inline">\(p\)</span>-valor que aparece como resultado do teste de Bartlett, <span class="math inline">\(p &lt; 0.05\)</span> (<span class="math inline">\(p\)</span> menor que 0.05) significa fortes evidências de que a variável testada não possui homogeneidade de variâncias para os grupos especificados.</p>
 <aside>
@@ -2916,16 +2921,16 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
        Df F value Pr(&gt;F)
-group   1  1.7412 0.1876
+group   1    1.74   0.19
       498               </code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/car/man/leveneTest.html'>leveneTest</a></span><span class='op'>(</span><span class='va'>heterog</span> <span class='op'>~</span> <span class='va'>group</span>, data <span class='op'>=</span> <span class='va'>sims2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Levene&#39;s Test for Homogeneity of Variance (center = median)
-       Df F value    Pr(&gt;F)    
-group   1  346.19 &lt; 2.2e-16 ***
-      498                      
+       Df F value              Pr(&gt;F)    
+group   1     346 &lt;0.0000000000000002 ***
+      498                                
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
@@ -2944,21 +2949,24 @@ Em outras palavras, rejeita-se a hipótese nula <span class="math inline">\(H_0\
 </div>
 <h2 id="comentários-finais">Comentários Finais</h2>
 <p>Sim, <span class="math inline">\(p\)</span>-valores, intervalos de confiança, hipóteses nulas são conceitos complexos e muitos pesquisadores e cientistas não possuem a compreensão mínima necessária para a prática de Estatística inferencial. Acreditamos que a ciência (e a sociedade como um todo) se beneficiará de um maior número de cidadãos e pesquisadores que consigam avaliar, quantificar e qualificar evidências científicas. O paradigma da evidência científica atual (e, acreditamos que perdurará assim por bastante tempo) é o NHST e, apesar de termos algumas alternativas – como a Estatística Bayesiana – NHST irá predominar em boa parte da ciência pelas próximas décadas. Por isso, caro leitor, saiba que com “grandes poderes, vêm grandes responsabilidades.” Não deixe alguém torturar dados em práticas anti-éticas de <em><span class="math inline">\(p\)</span>-hacking</em> ou fundamentarem seus argumentos em compreensões incorretas de <span class="math inline">\(p\)</span>-valor e <span class="math inline">\(H_0\)</span>.</p>
-<aside>
-Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e <span class="math inline">\(p\)</span>-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma <a href="https://storopoli.github.io/Estatistica-Bayesiana/">disciplina <em>opensource</em> de Estatística Bayesiana com R</a>.
-</aside>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="images/great-power.jpg" width="70%" style="display: block; margin: auto;" /></p>
 </div>
+<h2 id="o-começo-do-fim-da-estatística-frequentista">O começo do fim da Estatística Frequentista</h2>
+<p>Caro leitor, saiba que você está em um momento da história no qual a Estatística está passando por grandes mudanças. Acreditamos que a estatística frequentista, em especial a maneira que qualificamos evidências e hipóteses com <span class="math inline">\(p\)</span>-valores se transformará de maneira “significante.” Há cinco anos atrás, a <em>American Statistical Association</em> (ASA, maior organização profissional de estatística do mundo) publicou uma declaração sobre <span class="math inline">\(p\)</span>-valores <span class="citation" data-cites="Wasserstein2016">(<a href="#ref-Wasserstein2016" role="doc-biblioref">Wasserstein &amp; Lazar, 2016</a>)</span>. A declaração diz exatamente o que falamos aqui. Os conceitos principais do teste de significância de hipótese nula e, em particular <span class="math inline">\(p\)</span>-valores não conseguem prover o que os pesquisadores requerem deles. Apesar do que dizem muitos livros de estatística, materiais de ensinos e artigos publicados, <span class="math inline">\(p\)</span>-valores abaixo de 0,05 não “provam” a realidade de nada. Nem, chegando a esse ponto, os <span class="math inline">\(p\)</span>-valores acima de 0,05 refutam alguma coisa. A declaração da ASA tem mais de 3.600 citações provocando impacto relevante. Como um exemplo, um simpósio internacional foi promovido em 2017 que originou uma edição especial de acesso aberto da <em>The American Statistician</em> dedicada à maneiras práticas de abandonarmos <span class="math inline">\(p &lt; 0.05\)</span> <span class="citation" data-cites="wassersteinMovingWorld052019">(<a href="#ref-wassersteinMovingWorld052019" role="doc-biblioref">Wasserstein, Schirm, &amp; Lazar, 2019</a>)</span>.</p>
+<p>Logo na sequência vieram mais tentativas e reivindicações. Em setembro de 2017, a <em>Nature Human Behaviour</em> publicou um editorial propondo que o nível de significância do <span class="math inline">\(p\)</span>-valor seja reduzido de <span class="math inline">\(0.05\)</span> para <span class="math inline">\(0.005\)</span> <span class="citation" data-cites="benjaminRedefineStatisticalSignificance2018">(<a href="#ref-benjaminRedefineStatisticalSignificance2018" role="doc-biblioref">Benjamin et al., 2018</a>)</span>. Diversos autores, inclusive muitos estatísticos altamente influentes e importantes argumentaram que esse simples passo ajudaria a combater o problema da crise de replicabilidade da ciência, que muitos acreditam ser a principal consequência do uso abusivo de <span class="math inline">\(p\)</span>-valores <span class="citation" data-cites="Ioannidis2019">(<a href="#ref-Ioannidis2019" role="doc-biblioref">Ioannidis, 2019</a>)</span>. Além disso, muitos foram um passo além e sugerem que a ciência descarte de uma vez por todas <span class="math inline">\(p\)</span>-valores <span class="citation" data-cites="ItTimeTalk2019 lakensJustifyYourAlpha2018">(<a href="#ref-ItTimeTalk2019" role="doc-biblioref"><span>“It’s time to talk about ditching statistical significance,”</span> 2019</a>; <a href="#ref-lakensJustifyYourAlpha2018" role="doc-biblioref">Lakens et al., 2018</a>)</span>. Muitos sugerem (nós inclusive) que a principal ferramenta de inferência seja a estatística Bayesiana <span class="citation" data-cites="amrheinScientistsRiseStatistical2019 Goodman1180 vandeschootBayesianStatisticsModelling2021">(<a href="#ref-amrheinScientistsRiseStatistical2019" role="doc-biblioref">Amrhein, Greenland, &amp; McShane, 2019</a>; <a href="#ref-Goodman1180" role="doc-biblioref">Goodman, 2016</a>; <a href="#ref-vandeschootBayesianStatisticsModelling2021" role="doc-biblioref">van de Schoot et al., 2021</a>)</span></p>
+<aside>
+Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e <span class="math inline">\(p\)</span>-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma <a href="https://storopoli.io/Estatistica-Bayesiana/">disciplina <em>opensource</em> de Estatística Bayesiana com R e Stan</a>.
+</aside>
 <h2 id="ambiente">Ambiente</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>R version 4.0.3 (2020-10-10)
+<pre><code>R version 4.0.4 (2021-02-15)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+Running under: macOS Big Sur 10.16
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -2973,37 +2981,42 @@ attached base packages:
 
 other attached packages:
 [1] car_3.0-10         carData_3.0-4      patchwork_1.1.1   
-[4] dplyr_1.0.4        ggplot2_3.3.3      DiagrammeR_1.0.6.1
-[7] readxl_1.3.1      
+[4] dplyr_1.0.5        ggplot2_3.3.3      DiagrammeR_1.0.6.1
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.6         lubridate_1.7.9.2  lattice_0.20-41   
- [4] visNetwork_2.0.9   assertthat_0.2.1   rprojroot_2.0.2   
- [7] digest_0.6.27      utf8_1.1.4         R6_2.5.0          
-[10] cellranger_1.1.0   evaluate_0.14      highr_0.8         
-[13] pillar_1.4.7       rlang_0.4.10       curl_4.3          
-[16] rstudioapi_0.13    data.table_1.13.6  Matrix_1.2-18     
-[19] reticulate_1.18    rmarkdown_2.6      labeling_0.4.2    
-[22] stringr_1.4.0      foreign_0.8-80     htmlwidgets_1.5.3 
-[25] munsell_0.5.0      compiler_4.0.3     xfun_0.21         
-[28] pkgconfig_2.0.3    htmltools_0.5.1.1  downlit_0.2.1     
-[31] tidyselect_1.1.0   tibble_3.0.6       bookdown_0.21     
-[34] rio_0.5.16         fansi_0.4.2        crayon_1.4.1      
-[37] withr_2.4.1        grid_4.0.3         jsonlite_1.7.2    
-[40] gtable_0.3.0       lifecycle_0.2.0    DBI_1.1.1         
-[43] magrittr_2.0.1     scales_1.1.1       zip_2.1.1         
-[46] cli_2.3.0          stringi_1.5.3      farver_2.0.3      
-[49] xml2_1.3.2         ellipsis_0.3.1     generics_0.1.0    
-[52] vctrs_0.3.6        openxlsx_4.2.3     distill_1.2       
-[55] RColorBrewer_1.1-2 tools_4.0.3        forcats_0.5.1     
-[58] glue_1.4.2         purrr_0.3.4        hms_1.0.0         
-[61] abind_1.4-5        yaml_2.2.1         colorspace_2.0-0  
-[64] knitr_1.31         haven_2.3.1       </code></pre>
+ [1] Rcpp_1.0.6         visNetwork_2.0.9   assertthat_0.2.1  
+ [4] digest_0.6.27      utf8_1.2.1         cellranger_1.1.0  
+ [7] R6_2.5.0           evaluate_0.14      highr_0.8         
+[10] pillar_1.5.1       rlang_0.4.10       readxl_1.3.1      
+[13] curl_4.3           rstudioapi_0.13    data.table_1.14.0 
+[16] jquerylib_0.1.3    rmarkdown_2.7      textshaping_0.3.3 
+[19] labeling_0.4.2     stringr_1.4.0      foreign_0.8-81    
+[22] htmlwidgets_1.5.3  munsell_0.5.0      compiler_4.0.4    
+[25] xfun_0.22          pkgconfig_2.0.3    systemfonts_1.0.1 
+[28] htmltools_0.5.1.1  downlit_0.2.1      tidyselect_1.1.0  
+[31] tibble_3.1.0       rio_0.5.26         fansi_0.4.2       
+[34] crayon_1.4.1       withr_2.4.1        grid_4.0.4        
+[37] jsonlite_1.7.2     gtable_0.3.0       lifecycle_1.0.0   
+[40] DBI_1.1.1          magrittr_2.0.1     scales_1.1.1      
+[43] zip_2.1.1          stringi_1.5.3      farver_2.1.0      
+[46] bslib_0.2.4        ellipsis_0.3.1     ragg_1.1.2        
+[49] generics_0.1.0     vctrs_0.3.6        openxlsx_4.2.3    
+[52] distill_1.2        RColorBrewer_1.1-2 tools_4.0.4       
+[55] forcats_0.5.1      glue_1.4.2         purrr_0.3.4       
+[58] hms_1.0.0          abind_1.4-5        parallel_4.0.4    
+[61] yaml_2.2.1         colorspace_2.0-0   knitr_1.31        
+[64] haven_2.3.1        sass_0.3.1        </code></pre>
 </div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-amrheinScientistsRiseStatistical2019" class="csl-entry" role="doc-biblioentry">
+Amrhein, V., Greenland, S., &amp; McShane, B. (2019). Scientists rise up against statistical significance. <em>Nature</em>, <em>567</em>(7748), 305–307. <a href="https://doi.org/10.1038/d41586-019-00857-9">https://doi.org/10.1038/d41586-019-00857-9</a>
+</div>
 <div id="ref-Baird1983" class="csl-entry" role="doc-biblioentry">
 Baird, D. (1983). The fisher/pearson chi-squared controversy: A turning point for inductive inference. <em>The British Journal for the Philosophy of Science</em>, <em>34</em>(2), 105–118. Retrieved from <a href="http://www.jstor.org/stable/687444">http://www.jstor.org/stable/687444</a>
+</div>
+<div id="ref-benjaminRedefineStatisticalSignificance2018" class="csl-entry" role="doc-biblioentry">
+Benjamin, D. J., Berger, J. O., Johannesson, M., Nosek, B. A., Wagenmakers, E.-J., Berk, R., … Johnson, V. E. (2018). Redefine statistical significance. <em>Nature Human Behaviour</em>, <em>2</em>(1), 6–10. <a href="https://doi.org/10.1038/s41562-017-0189-z">https://doi.org/10.1038/s41562-017-0189-z</a>
 </div>
 <div id="ref-cobb2007introductory" class="csl-entry" role="doc-biblioentry">
 Cobb, G. W. (2007). The introductory statistics course: A ptolemaic curriculum? <em>Technology Innovations in Statistics Education</em>, <em>1</em>(1).
@@ -3020,6 +3033,9 @@ Fisher, R. A. (1925). <em>Statistical methods for research workers</em>. Oliver;
 <div id="ref-car" class="csl-entry" role="doc-biblioentry">
 Fox, J., &amp; Weisberg, S. (2019). <em>An <span>R</span> companion to applied regression</em> (Third). Retrieved from <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a>
 </div>
+<div id="ref-Goodman1180" class="csl-entry" role="doc-biblioentry">
+Goodman, S. N. (2016). Aligning statistical and scientific reasoning. <em>Science</em>, <em>352</em>(6290), 1180–1181. <a href="https://doi.org/10.1126/science.aaf5406">https://doi.org/10.1126/science.aaf5406</a>
+</div>
 <div id="ref-head2015extent" class="csl-entry" role="doc-biblioentry">
 Head, M. L., Holman, L., Lanfear, R., Kahn, A. T., &amp; Jennions, M. D. (2015). The extent and consequences of p-hacking in science. <em>PLoS Biol</em>, <em>13</em>(3), e1002106.
 </div>
@@ -3028,6 +3044,12 @@ Hoekstra, R., Morey, R. D., Rouder, J. N., &amp; Wagenmakers, E.-J. (2014). <spa
 </div>
 <div id="ref-Ioannidis2019" class="csl-entry" role="doc-biblioentry">
 Ioannidis, J. P. A. (2019). <span class="nocase">What Have We (Not) Learnt from Millions of Scientific Papers with <span>&lt;</span>i<span>&gt;</span>P<span>&lt;</span>/i<span>&gt;</span> Values?</span> <em>The American Statistician</em>, <em>73</em>(sup1), 20–25. <a href="https://doi.org/10.1080/00031305.2018.1447512">https://doi.org/10.1080/00031305.2018.1447512</a>
+</div>
+<div id="ref-ItTimeTalk2019" class="csl-entry" role="doc-biblioentry">
+It’s time to talk about ditching statistical significance. (2019). <em>Nature</em>, <em>567</em>(7748, 7748), 283–283. <a href="https://doi.org/10.1038/d41586-019-00874-8">https://doi.org/10.1038/d41586-019-00874-8</a>
+</div>
+<div id="ref-lakensJustifyYourAlpha2018" class="csl-entry" role="doc-biblioentry">
+Lakens, D., Adolfi, F. G., Albers, C. J., Anvari, F., Apps, M. A. J., Argamon, S. E., … Zwaan, R. A. (2018). Justify your alpha. <em>Nature Human Behaviour</em>, <em>2</em>(3), 168–171. <a href="https://doi.org/10.1038/s41562-018-0311-x">https://doi.org/10.1038/s41562-018-0311-x</a>
 </div>
 <div id="ref-Morey2016" class="csl-entry" role="doc-biblioentry">
 Morey, R. D., Hoekstra, R., Rouder, J. N., Lee, M. D., &amp; Wagenmakers, E.-J. (2016). <span class="nocase">The fallacy of placing confidence in confidence intervals</span>. <em>Psychonomic Bulletin <span>&amp;</span> Review</em>, <em>23</em>(1), 103–123. <a href="https://doi.org/10.3758/s13423-015-0947-8">https://doi.org/10.3758/s13423-015-0947-8</a>
@@ -3049,6 +3071,15 @@ Saculinggan, M., &amp; Balase, E. A. (2013). Empirical power comparison of goodn
 </div>
 <div id="ref-stigler2007epic" class="csl-entry" role="doc-biblioentry">
 Stigler, S. M., &amp; others. (2007). The epic story of maximum likelihood. <em>Statistical Science</em>, <em>22</em>(4), 598–620.
+</div>
+<div id="ref-vandeschootBayesianStatisticsModelling2021" class="csl-entry" role="doc-biblioentry">
+van de Schoot, R., Depaoli, S., King, R., Kramer, B., Märtens, K., Tadesse, M. G., … Yau, C. (2021). Bayesian statistics and modelling. <em>Nature Reviews Methods Primers</em>, <em>1</em>(1, 1), 1–26. <a href="https://doi.org/10.1038/s43586-020-00001-2">https://doi.org/10.1038/s43586-020-00001-2</a>
+</div>
+<div id="ref-Wasserstein2016" class="csl-entry" role="doc-biblioentry">
+Wasserstein, R. L., &amp; Lazar, N. A. (2016). The <span>ASA</span>’s <span>Statement</span> on p-<span>Values</span>: <span>Context</span>, <span>Process</span>, and <span>Purpose</span>. <em>American Statistician</em>, <em>70</em>(2), 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>
+</div>
+<div id="ref-wassersteinMovingWorld052019" class="csl-entry" role="doc-biblioentry">
+Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to a <span>World Beyond</span> <span>“p <span><span class="math inline">\(&lt;\)</span></span> 0.05.”</span> <em>American Statistician</em>, <em>73</em>, 1–19. <a href="https://doi.org/10.1080/00031305.2019.1583913">https://doi.org/10.1080/00031305.2019.1583913</a>
 </div>
 </div>
 <section class="footnotes" role="doc-endnotes">
