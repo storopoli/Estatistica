@@ -777,6 +777,23 @@ Regressão Linear é uma técnica para estimar coeficientes de associação $\be
 ]
 
 ---
+class: inverse, center, middle
+
+```{r complex-jargon}
+p5 <- ggdraw() + draw_image("images/complex-jargon.png")
+p6 <- ggdraw() + draw_image("images/einstein-explain.jpg", scale = 0.8)
+
+plot_grid(p5, p6,
+          nrow = 2,
+          label_colour = "red4") +
+  theme(plot.background = element_rect(fill = "#29427A", color = "#29427A"), )
+```
+
+.footnote[
+Oppenheimer, D. M. (2006). Consequences of erudite vernacular utilized irrespective of necessity: Problems with using long words needlessly. Applied Cognitive Psychology, 20(2), 139–156. https://doi.org/10.1002/acp.1178
+]
+
+---
 ### O que são modelos e por quê precisamos deles?
 
 ```{r graph-model, out.width='100%', fig.align='top'}
