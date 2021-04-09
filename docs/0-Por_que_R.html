@@ -2361,7 +2361,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2526,16 +2526,15 @@ Aqui usamos Estatística quando nos referimos a disciplina e estatística quando
 Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com diversas camadas. E <em>Machine Learning</em> à modelos estatísticos que o intuito é poder preditivo.
 </aside>
 <h2 id="r-vs-julia">R vs Julia</h2>
-<p>Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Julia. Julia é uma linguagem nova oriunda do MIT que está sendo muito usada para computação científica. O quê muda com Julia?</p>
+<p>Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Julia. <a href="https://www.julialang.org">Julia</a> é uma linguagem nova oriunda do MIT que está sendo muito usada para computação científica. O quê muda com Julia?</p>
 <ul>
 <li>Julia é rápida. E quando eu digo rápida, eu quero dizer bem rápida. Julia trabalha em cima do LLVM(<strong>L</strong>ow <strong>L</strong>evel <strong>V</strong>irtual <strong>M</strong>achine) que é um compilador universal e usa uma abordagem JIT (Just-in-Time) de compilação de código que faz com que seja às vezes 100x mais rápida que R ou Python para algumas operações<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</li>
 <li>Julia permite usarmos caracteres unicode como variáveis no código. Isso quer dizer que eu consigo escrever em Julia algo como <code>µ = 0</code> e em Python/R seria escrito <code>mu = 0</code>. Para matemáticos e cientistas isso permite com o que o código fique mais inteligível.</li>
-<li>Julia ainda é muito nova e não há bibliotecas para todas as coisas que conseguimos fazer com Python e R.</li>
-<li>Julia, assim como Python, possui <em>list comprehension</em> (compreensão de listas).</li>
+<li>Julia, assim como Python, possui <em>list comprehension</em> (compreensão de listas). Algo que nós sentimos muita falta em R.</li>
 </ul>
 <p>Julia é uma linguagem que estamos olhando de maneira promissora. Ela é rápida, já é adotada pela comunidade científica, possui um paradigma funcional e permite uma melhor inteligibilidade do código ao permitir o uso de caracteres unicode e símbolos matemáticos<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
 <p>A principal lacuna que a linguagem Julia tenta solucionar é o paradigma das duas linguagens. Esse paradigma é como os desenvolvedores de algoritmos e softwares de análise desenvolvem suas funcionalidades. Primeiro o código é escrito em uma linguagem de fácil entendeimento e rápida prototipagem como R ou Python. Então, o código do protótipo é testado com um problema pequeno ou com uma fração dos dados que serão utilizados pela solução final. Somente após averiguar que o protótipo funciona da maneira correta, é que os desenvolvedores partem para uma linguagem mais robusta e rápida, mas de implementação demorada como C++ ou Fortran. Julia serve para eliminar esse paradigma e ser a linguagem usada tanto para prototipagem quando para implementação.</p>
-<p>Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será o real potencial da linguagem Julia. O nosso conselho é usar R para suas análises estatísticas e considerar Julia se precisar de algo mais incomum que necessite de computação intensa que não tenha ainda uma implementação rápida em R ou Python (usando C/C++ ou Fortran).</p>
+<p>O primeiro autor em especial acredita que Julia é o futuro e fez um conjunto de tutoriais de estatística Bayesiana usando Julia e <a href="https://turing.ml/"><code>Turing.jl</code></a>. O conteúdo está todo em inglês e pode ser acessado aqui: <a href="https://storopoli.io/Bayesian-Julia" class="uri">https://storopoli.io/Bayesian-Julia</a>. No primeiro tutorial, chamado de <a href="https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/"><em>Why Julia?</em></a> ele explica os benefícios de Julia e porque acredita que Júlia é o futuro. O primeiro autor já sofreu bastante para deixar seu código de R mais rápido com C++. Inclusive fez um conjunto de tutorias de como integrar C++ e R usando <code>Rcpp</code> que pode ser acessado aqui: <a href="https://storopoli.io/Rcpp" class="uri">https://storopoli.io/Rcpp</a>. A partir de agora ele quase sempre escolhe uma implementação em Julia do que usar C++ com o <code>Rcpp</code>.</p>
 <h2 id="vantagens-de-r">Vantagens de R</h2>
 <p>Com essas diferenças e semelhanças com Python e Julia, é hora de retornarmos aquelas cinco características que mostramos.</p>
 <h3 id="produtivo-análiseshora">Produtivo (Análises/hora)</h3>
@@ -2582,7 +2581,7 @@ Quando falamos <em>Deep Learning</em> estamos no referindo à Redes Neurais com 
 </ul>
 <p>Todas esses bibliotecas rodam em C/C++ e por isso são bem rápidos e eficientes. Além disso, vale a pena mecionar todo o universo <code>{tidymodels}</code> que é um ecossistema para modelagem e <em>machine learning</em> com R.</p>
 <h3 id="eficaz-conseguir-usar-a-ferramenta-correta-dentre-um-rol-de-inúmeras">Eficaz (Conseguir usar a ferramenta correta dentre um rol de inúmeras)</h3>
-<p>Atualmente o CRAN<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> possui um total de 17,084 bibliotecas<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Todas <em>opensource</em> e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o <code>data.frame</code>. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.</p>
+<p>Atualmente o CRAN<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> possui um total de 17,398 bibliotecas<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Todas <em>opensource</em> e gratuitas. Quase toda grande inovação em Estatística em diversos campos são publicadas como bibliotecas de R. A incorporação de novas ferramentas ao rol do estatístico no ecossistema do R é muito mais simples e fácil por conta da interoperabilidade proporcionada pelo objeto universal básico de R que é o <code>data.frame</code>. Tal funcionalidade é incorporada na linguagem em si, qualquer versão de R (desde os primórdios da década de 90) já tinha esse objeto para representar dados tabulares.</p>
 <p>Além de bibliotecas para análises de dados e Estatística de maneira geral. Temos ecossistemas e bibliotecas para campos distintos como por exemplo<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>:</p>
 <ul>
 <li>Estatística Bayesiana</li>
@@ -2644,7 +2643,7 @@ Ritchie, S. (2020). <em>Science fictions: Exposing fraud, bias, negligence and h
 <li id="fn8" role="doc-endnote"><p>Variáveis categóricas são conhecidas como <em>factors</em> no R e são maneiras eficientes de manipular e armazenar dados não-numéricos. Geralmente dados não-numéricos são dados textuais ou alguma chave de identificação única (tipo um <em>id</em>).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9" role="doc-endnote"><p>Aqui você já viu alguns em ação: <code>mutate()</code>, <code>filter()</code> e <code>summarise()</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10" role="doc-endnote"><p>CRAN – Comprehensive R Archive Network, repositório global de bibliotecas de R.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>Dados de 11/02/21.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Dados de 09/04/21.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn12" role="doc-endnote"><p>Para ver uma lista curada pelo CRAN de bibliotecas por assunto vá em <a href="https://cran.r-project.org/web/views/">CRAN Task Views</a>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13" role="doc-endnote"><p>Da qual, nós somos oriundos.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn14" role="doc-endnote"><p>Este documento é um exemplo. Usamos a biblioteca <code>{distill}</code> que é focada para escrita científica e técnica.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

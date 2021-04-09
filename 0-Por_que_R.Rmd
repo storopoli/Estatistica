@@ -85,12 +85,11 @@ Quando falamos *Deep Learning* estamos no referindo à Redes Neurais com diversa
 
 ## R vs Julia
 
-Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Julia. Julia é uma linguagem nova oriunda do MIT que está sendo muito usada para computação científica. O quê muda com Julia?
+Com as grandes diferenças entre Python e R apresentadas, precisamos falar de Julia. [Julia](https://www.julialang.org) é uma linguagem nova oriunda do MIT que está sendo muito usada para computação científica. O quê muda com Julia?
 
 * Julia é rápida. E quando eu digo rápida, eu quero dizer bem rápida. Julia trabalha em cima do LLVM(**L**ow **L**evel **V**irtual **M**achine) que é um compilador universal e usa uma abordagem JIT (Just-in-Time) de compilação de código que faz com que seja às vezes 100x mais rápida que R ou Python para algumas operações[^7].
 * Julia permite usarmos caracteres unicode como variáveis no código. Isso quer dizer que eu consigo escrever em Julia algo como `µ = 0` e em Python/R seria escrito `mu = 0`. Para matemáticos e cientistas isso permite com o que o código fique mais inteligível.
-* Julia ainda é muito nova e não há bibliotecas para todas as coisas que conseguimos fazer com Python e R.
-* Julia, assim como Python, possui *list comprehension* (compreensão de listas).
+* Julia, assim como Python, possui *list comprehension* (compreensão de listas). Algo que nós sentimos muita falta em R.
 
 [^7]: Quando Python e R usam C/C++ ou Fortran essa vantagem cai bastante ou é inexistente.
 
@@ -98,7 +97,7 @@ Julia é uma linguagem que estamos olhando de maneira promissora. Ela é rápida
 
 A principal lacuna que a linguagem Julia tenta solucionar é o paradigma das duas linguagens. Esse paradigma é como os desenvolvedores de algoritmos e softwares de análise desenvolvem suas funcionalidades. Primeiro o código é escrito em uma linguagem de fácil entendeimento e rápida prototipagem como R ou Python. Então, o código do protótipo é testado com um problema pequeno ou com uma fração dos dados que serão utilizados pela solução final. Somente após averiguar que o protótipo funciona da maneira correta, é que os desenvolvedores partem para uma linguagem mais robusta e rápida, mas de implementação demorada como C++ ou Fortran. Julia serve para eliminar esse paradigma e ser a linguagem usada tanto para prototipagem quando para implementação.
 
-Acreditamos que ainda é necessário no mínimo 5 anos para sabermos qual será o real potencial da linguagem Julia. O nosso conselho é usar R para suas análises estatísticas e considerar Julia se precisar de algo mais incomum que necessite de computação intensa que não tenha ainda uma implementação rápida em R ou Python (usando C/C++ ou Fortran).
+O primeiro autor em especial acredita que Julia é o futuro e fez um conjunto de tutoriais de estatística Bayesiana usando Julia e [`Turing.jl`](https://turing.ml/). O conteúdo está todo em inglês e pode ser acessado aqui: https://storopoli.io/Bayesian-Julia. No primeiro tutorial, chamado de [*Why Julia?*](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/) ele explica os benefícios de Julia e porque acredita que Júlia é o futuro. O primeiro autor já sofreu bastante para deixar seu código de R mais rápido com C++. Inclusive fez um conjunto de tutorias de como integrar C++ e R usando `Rcpp` que pode ser acessado aqui: https://storopoli.io/Rcpp. A partir de agora ele quase sempre escolhe uma implementação em Julia do que usar C++ com o `Rcpp`.
 
 [^17]: Para o leitor isso não pode fazer diferença. Mas quando você, por exemplo, quer pegar um algoritmo descrito matematicamente em um artigo e implementá-lo diretamente em código, esses caracteres matemáticos são muito bem-vindos. Palavras de quem já escreveu um algoritmo de Amostragem Monte Carlo usando correntes Markov na mão (não por falta de opção, mas por busca de sinestesia para melhor aprendizagem).
 
