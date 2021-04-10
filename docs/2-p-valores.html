@@ -2527,8 +2527,8 @@ Conteúdos Auxiliares
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure" style="text-align: center"><span id="fig:graph-estatistica-inferencial"></span>
-<div id="htmlwidget-8d24162191f66eba378b" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8d24162191f66eba378b">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5e66edb3443f65ef0135" style="width:100%;height:355.968px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5e66edb3443f65ef0135">{"x":{"diagram":"\n digraph estatistica_inferencial {\n  forcelabels = true;\n  graph [overlap = false,\n         fontsize = 12,\n         rankdir = TD]\n  node [shape = oval,\n        fontname = Helvetica]\n  A [label = \"Processo de\nGeração de Dados\"]\n  B [label = \"Dados\nObservados\"]\n  A -> B [dir = forward,\n          xlabel = \"  Probabilidade  \",\n          tailport = \"e\",\n          headport = \"e\"]\n  B -> A [dir = backward,\n          label = \"  Inferência  \",\n          tailport = \"w\",\n          headport = \"w\"]\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Estatística Inferencial
 </p>
@@ -2624,7 +2624,7 @@ O primeiro autor tentou explicar essa diferença para uma senhora que o viu toss
 <p>Mais uma vez vamos quebrar essa definição em em algumas partes para melhor compreensão:</p>
 <ul>
 <li>“… intervalo (a,b) …”: intervalo de confiança sempre serão <strong>expressados como um intervalo</strong> <span class="math inline">\(a\)</span> - <span class="math inline">\(b\)</span>, onde <span class="math inline">\(a\)</span> é menor que <span class="math inline">\(b\)</span> (<span class="math inline">\(a &lt; b\)</span>).</li>
-<li>“… gerado por um procedimento que em amostragem repetida…”: aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população. Então, <strong>intervalos de confiança expressam a frequência de longo-prazo que vocês esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população</strong>.</li>
+<li>“… gerado por um procedimento que em amostragem repetida…”: aqui estamos falando de população. E o que você geralmente tem nas suas mãos quando está fazendo uma análise estatística é uma amostra. Uma população é um conjunto de pessoas, itens ou eventos sobre os quais você quer fazer inferências. Uma amostra é um é um subconjunto de pessoas, itens ou eventos de uma população maior que você coleta e analisa para fazer inferências. Geralmente o tamanho da amostra é bem menor que o tamanho da população. Então, <strong>intervalos de confiança expressam a frequência de longo-prazo que você esperaria obter de um tamanho de efeito caso replicasse o teste estatístico para diversas amostras da MESMA população</strong>.</li>
 <li>“… tem uma probabilidade de X% de conter o valor verdadeiro do parâmetro, para todos os valores possíveis do parâmetro.”: os intervalos de confiança sempre serão expressados <strong>acompanhados de uma probabilidade</strong> (algo entre 0.001% e 99.999%) que quantifica a certeza de encontrar o intervalo em uma replicações do teste estatístico para diversas amostras da MESMA população.</li>
 </ul>
 <p>Por exemplo: digamos que você executou uma análise estatística para comparar eficácia de uma política pública em dois grupos e você obteve a diferença entre a média desses grupos. Você pode expressar essa diferença como um intervalo de confiança. Geralmente escolhemos a confiança de 95% (sim, está relacionado com o 0.05 do <span class="math inline">\(p\)</span>-valor). Você então escreve no seu artigo que a “diferença entre grupos observada é de 10.5 - 23.5 (95% IC).” Isso quer dizer que <strong>95 estudos de 100, que usem o mesmo tamanho de amostra e população-alvo, aplicando o mesmo teste estatístico, esperarão encontrar um resultado de diferenças de média entre grupos entre 10.5 e 23.5</strong>. Aqui as unidades são arbitrárias, mas para continuar o exemplo vamos supor que sejam expectativa de vida.</p>
@@ -2964,7 +2964,7 @@ Há uma abordagem de Estatística inferencial que não se baseia em hipóteses n
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>R version 4.0.4 (2021-02-15)
+<pre><code>R version 4.0.5 (2021-03-31)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Big Sur 10.16
 
@@ -2991,19 +2991,19 @@ loaded via a namespace (and not attached):
 [13] curl_4.3           rstudioapi_0.13    data.table_1.14.0 
 [16] jquerylib_0.1.3    rmarkdown_2.7      textshaping_0.3.3 
 [19] labeling_0.4.2     stringr_1.4.0      foreign_0.8-81    
-[22] htmlwidgets_1.5.3  munsell_0.5.0      compiler_4.0.4    
+[22] htmlwidgets_1.5.3  munsell_0.5.0      compiler_4.0.5    
 [25] xfun_0.22          pkgconfig_2.0.3    systemfonts_1.0.1 
 [28] htmltools_0.5.1.1  downlit_0.2.1      tidyselect_1.1.0  
 [31] tibble_3.1.0       rio_0.5.26         fansi_0.4.2       
-[34] crayon_1.4.1       withr_2.4.1        grid_4.0.4        
+[34] crayon_1.4.1       withr_2.4.1        grid_4.0.5        
 [37] jsonlite_1.7.2     gtable_0.3.0       lifecycle_1.0.0   
 [40] DBI_1.1.1          magrittr_2.0.1     scales_1.1.1      
 [43] zip_2.1.1          stringi_1.5.3      farver_2.1.0      
 [46] bslib_0.2.4        ellipsis_0.3.1     ragg_1.1.2        
-[49] generics_0.1.0     vctrs_0.3.6        openxlsx_4.2.3    
-[52] distill_1.2        RColorBrewer_1.1-2 tools_4.0.4       
+[49] generics_0.1.0     vctrs_0.3.7        openxlsx_4.2.3    
+[52] distill_1.2        RColorBrewer_1.1-2 tools_4.0.5       
 [55] forcats_0.5.1      glue_1.4.2         purrr_0.3.4       
-[58] hms_1.0.0          abind_1.4-5        parallel_4.0.4    
+[58] hms_1.0.0          abind_1.4-5        parallel_4.0.5    
 [61] yaml_2.2.1         colorspace_2.0-0   knitr_1.31        
 [64] haven_2.3.1        sass_0.3.1        </code></pre>
 </div>
