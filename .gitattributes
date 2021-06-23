@@ -8,7 +8,7 @@
 *.xml linguist-vendored
 *.js linguist-vendored
 *.css linguist-vendored
-*.html linguist-vendored
+*.html linguist-documentation
 
 # Serialisation
 *.json  text
