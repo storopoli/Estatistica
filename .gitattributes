@@ -8,14 +8,14 @@
 *.xml linguist-vendored
 *.js linguist-vendored
 *.css linguist-vendored
+*.html linguist-vendored
 
 # Serialisation
 *.json  text
 *.toml  text
-*.xml   text
 *.yaml  text
 *.yml   text
-*.html  text
+
 
 # Data files
 *.csv   text
