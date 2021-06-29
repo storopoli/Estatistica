@@ -130,6 +130,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   <meta name="citation_reference" content="citation_title=Regularization paths for cox’s proportional hazards model via coordinate descent;citation_publication_date=2011;citation_volume=39;citation_author=Noah Simon;citation_author=Jerome Friedman;citation_author=Trevor Hastie;citation_author=Rob Tibshirani"/>
   <meta name="citation_reference" content="citation_title=On the stability of inverse problems;citation_publication_date=1943;citation_volume=39;citation_author=Andrey Nikolayevich Tikhonov"/>
   <meta name="citation_reference" content="citation_title=Kinship and correlation;citation_publication_date=1890;citation_publisher=JSTOR;citation_volume=150;citation_author=Francis Galton"/>
+  <meta name="citation_reference" content="citation_title=Typical laws of heredity;citation_publication_date=1877;citation_publisher=Royal Institution of Great Britain;citation_author=Francis Galton"/>
   <meta name="citation_reference" content="citation_title=On the theory of correlation;citation_publication_date=1897;citation_publisher=JSTOR;citation_volume=60;citation_author=G Udny Yule"/>
   <meta name="citation_reference" content="citation_title=The law of ancestral heredity;citation_publication_date=1903;citation_publisher=Oxford University Press;citation_volume=2;citation_author=Karl Pearson"/>
   <meta name="citation_reference" content="citation_title=Generalized additive models;citation_publication_date=1986;citation_publisher=Institute of Mathematical Statistics;citation_volume=1;citation_author=Trevor Hastie;citation_author=Robert Tibshirani;citation_author=Generalized additive models"/>
@@ -2380,7 +2381,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2576,7 +2577,7 @@ Figure 3: A melhor reta que minimiza a distância dos erros
 <p>A regressão linear usando uma única variável independente contínua se torna exatamente uma correlação<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>. Agora quando empregamos mais de uma variável independente, a interpretação da regressão se torna: <strong>“O efeito de <code>X</code> em <code>Y</code> mantendo <code>Z</code> fixo”</strong>. Isto quer dizer que a regressão linear <strong>controla os efeitos das diferentes variáveis independentes ao calcular o efeito de uma certa variável independente</strong>. Esta é o que chamamos de <strong>interpretação estatística</strong> da regressão linear.</p>
 <p>Por exemplo, digamos que você esteja em busca dos fatores que acarretam ataque cardíaco. Você coleta dados de pessoas que quantifiquem as seguintes variáveis: sono, stress, tabagismo, sedentarismo, entre outros… A regressão te permite mensurar o efeito de qualquer uma dessas variáveis na prevalência de ataque cardíaco controlando para outros efeitos. Em outras palavras, é possível mensurar o efeito de stress em ataque cardíaco, mantendo fixo os efeitos de sono, tabagismo, sedentarismo, etc… Isso permite você isolar o efeito de uma variável sem deixar que outras variáveis a influenciem na mensuração da sua relação com a variável dependente (no nosso caso: ataque cardíaco).</p>
 <h2 id="história-da-regressão">História da Regressão</h2>
-<p>O termo “regressão” foi cunhado por Francis Galton no século XIX para descrever um fenômeno biológico. O fenômeno era que as alturas dos descendentes de ancestrais altos tendem a regredir para uma média normal (um fenômeno também conhecido como regressão em direção à média) <span class="citation" data-cites="galton1890kinship">(<a href="#ref-galton1890kinship" role="doc-biblioref">Galton, 1890</a>)</span>. Para Galton, a regressão tinha apenas este significado biológico [@ galton1877typical], mas seu trabalho foi posteriormente estendido por Udny Yule <span class="citation" data-cites="yule1897theory">(<a href="#ref-yule1897theory" role="doc-biblioref">Yule, 1897</a>)</span> e Karl Pearson <span class="citation" data-cites="pearson1903law">(<a href="#ref-pearson1903law" role="doc-biblioref">Pearson, 1903</a>)</span> para um contexto estatístico mais geral.</p>
+<p>O termo “regressão” foi cunhado por Francis Galton no século XIX para descrever um fenômeno biológico. O fenômeno era que as alturas dos descendentes de ancestrais altos tendem a regredir para uma média normal (um fenômeno também conhecido como regressão em direção à média) <span class="citation" data-cites="galton1890kinship">(<a href="#ref-galton1890kinship" role="doc-biblioref">Galton, 1890</a>)</span>. Para Galton, a regressão tinha apenas este significado biológico <span class="citation" data-cites="galton1877typical">(<a href="#ref-galton1877typical" role="doc-biblioref">Galton, 1877</a>)</span>, mas seu trabalho foi posteriormente estendido por Udny Yule <span class="citation" data-cites="yule1897theory">(<a href="#ref-yule1897theory" role="doc-biblioref">Yule, 1897</a>)</span> e Karl Pearson <span class="citation" data-cites="pearson1903law">(<a href="#ref-pearson1903law" role="doc-biblioref">Pearson, 1903</a>)</span> para um contexto estatístico mais geral.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="figure"><span id="fig:fig-galton-pearson-yule"></span>
 <img src="6-Regressao_Linear_files/figure-html5/fig-galton-pearson-yule-1.png" alt="Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule -- Figuras de https://www.wikipedia.org" width="20%" class=external />
@@ -2611,7 +2612,7 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr'>skimr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/skimr/'>skimr</a></span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 <span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
 </code></pre>
@@ -2677,11 +2678,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">20.09</td>
 <td style="text-align: right;">6.03</td>
-<td style="text-align: right;">10.40</td>
-<td style="text-align: right;">15.43</td>
-<td style="text-align: right;">19.20</td>
-<td style="text-align: right;">22.80</td>
-<td style="text-align: right;">33.90</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">15.4</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">33.9</td>
 <td style="text-align: left;">▃▇▅▁▂</td>
 </tr>
 <tr class="even">
@@ -2690,11 +2691,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">6.19</td>
 <td style="text-align: right;">1.79</td>
-<td style="text-align: right;">4.00</td>
-<td style="text-align: right;">4.00</td>
-<td style="text-align: right;">6.00</td>
-<td style="text-align: right;">8.00</td>
-<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">8.0</td>
 <td style="text-align: left;">▆▁▃▁▇</td>
 </tr>
 <tr class="odd">
@@ -2703,11 +2704,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">230.72</td>
 <td style="text-align: right;">123.94</td>
-<td style="text-align: right;">71.10</td>
-<td style="text-align: right;">120.83</td>
-<td style="text-align: right;">196.30</td>
-<td style="text-align: right;">326.00</td>
-<td style="text-align: right;">472.00</td>
+<td style="text-align: right;">71.1</td>
+<td style="text-align: right;">120.8</td>
+<td style="text-align: right;">196.3</td>
+<td style="text-align: right;">326.0</td>
+<td style="text-align: right;">472.0</td>
 <td style="text-align: left;">▇▃▃▃▂</td>
 </tr>
 <tr class="even">
@@ -2716,11 +2717,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">146.69</td>
 <td style="text-align: right;">68.56</td>
-<td style="text-align: right;">52.00</td>
-<td style="text-align: right;">96.50</td>
-<td style="text-align: right;">123.00</td>
-<td style="text-align: right;">180.00</td>
-<td style="text-align: right;">335.00</td>
+<td style="text-align: right;">52.0</td>
+<td style="text-align: right;">96.5</td>
+<td style="text-align: right;">123.0</td>
+<td style="text-align: right;">180.0</td>
+<td style="text-align: right;">335.0</td>
 <td style="text-align: left;">▇▇▆▃▁</td>
 </tr>
 <tr class="odd">
@@ -2729,11 +2730,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3.60</td>
 <td style="text-align: right;">0.53</td>
-<td style="text-align: right;">2.76</td>
-<td style="text-align: right;">3.08</td>
-<td style="text-align: right;">3.70</td>
-<td style="text-align: right;">3.92</td>
-<td style="text-align: right;">4.93</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">4.9</td>
 <td style="text-align: left;">▇▃▇▅▁</td>
 </tr>
 <tr class="even">
@@ -2742,11 +2743,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3.22</td>
 <td style="text-align: right;">0.98</td>
-<td style="text-align: right;">1.51</td>
-<td style="text-align: right;">2.58</td>
-<td style="text-align: right;">3.33</td>
-<td style="text-align: right;">3.61</td>
-<td style="text-align: right;">5.42</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">5.4</td>
 <td style="text-align: left;">▃▃▇▁▂</td>
 </tr>
 <tr class="odd">
@@ -2755,11 +2756,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">17.85</td>
 <td style="text-align: right;">1.79</td>
-<td style="text-align: right;">14.50</td>
-<td style="text-align: right;">16.89</td>
-<td style="text-align: right;">17.71</td>
-<td style="text-align: right;">18.90</td>
-<td style="text-align: right;">22.90</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: right;">17.7</td>
+<td style="text-align: right;">18.9</td>
+<td style="text-align: right;">22.9</td>
 <td style="text-align: left;">▃▇▇▂▁</td>
 </tr>
 <tr class="even">
@@ -2768,11 +2769,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.44</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="odd">
@@ -2781,11 +2782,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">0.41</td>
 <td style="text-align: right;">0.50</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
 <td style="text-align: left;">▇▁▁▁▆</td>
 </tr>
 <tr class="even">
@@ -2794,11 +2795,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">3.69</td>
 <td style="text-align: right;">0.74</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">3.00</td>
-<td style="text-align: right;">4.00</td>
-<td style="text-align: right;">4.00</td>
-<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">5.0</td>
 <td style="text-align: left;">▇▁▆▁▂</td>
 </tr>
 <tr class="odd">
@@ -2807,11 +2808,11 @@ Figure 4: Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule –
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">2.81</td>
 <td style="text-align: right;">1.62</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">2.00</td>
-<td style="text-align: right;">2.00</td>
-<td style="text-align: right;">4.00</td>
-<td style="text-align: right;">8.00</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">8.0</td>
 <td style="text-align: left;">▇▂▅▁▁</td>
 </tr>
 </tbody>
@@ -2838,31 +2839,31 @@ Residuals:
 -3.941 -1.600 -0.182  1.050  5.854 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
-hp          -0.03177    0.00903  -3.519  0.00145 ** 
-wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept) 37.22727    1.59879   23.28 &lt; 0.0000000000000002 ***
+hp          -0.03177    0.00903   -3.52               0.0015 ** 
+wt          -3.87783    0.63273   -6.13            0.0000011 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.593 on 29 degrees of freedom
-Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
-F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+Residual standard error: 2.6 on 29 degrees of freedom
+Multiple R-squared:  0.827, Adjusted R-squared:  0.815 
+F-statistic: 69.2 on 2 and 29 DF,  p-value: 0.00000000000911</code></pre>
 </div>
 <h3 id="interpretação-dos-coeficientes">Interpretação dos Coeficientes</h3>
 <p>Na saída de <code>summary()</code> podemos ver que são produzidos os <strong>coeficientes da regressão na coluna <code>Estimate</code></strong>, associados ao respectivos desvio padrão dos resíduos <code>Std. Error</code> e <span class="math inline">\(p\)</span>-valores <code>Pr(&gt;|t|)</code>. Importante destacar que a <strong>hipótese nula dos coeficientes da regressão é de que “os coeficientes são nulos/zeros”</strong>, então os <span class="math inline">\(p\)</span>-valores devem ser interpretados como <strong>a probabilidade de observamos valores de coeficientes tão extremos dado que a hipótese nula é verdadeira</strong>. Para facilitar, o R informa com asteriscos quais variáveis possuem coeficientes estatisticamente significantes: <code>*</code> para <span class="math inline">\(p &lt; 0.05\)</span>, <code>**</code> para <span class="math inline">\(p &lt; 0.01\)</span>, e <code>***</code> para <span class="math inline">\(p &lt; 0.001\)</span>.</p>
-<p>Os coeficientes de objetos <code>lm</code> devem ser interpretados em <strong>escala bruta</strong> na qual <strong>o acréscimo de 1 unidade da variável independente gera o aumento de <code>&lt;coeficiente&gt;</code> unidade(s) da variável dependente</strong>. No nosso exemplo, a cada acréscimo de 1 <code>hp</code>, <code>mpg</code> reduz em -0.0317729; e a cada acréscimo de 1 <code>wt</code>, <code>mpg</code> reduz em -3.8778307. Além disso, a <strong>regressão linear controla os efeitos de outras variáveis independente</strong>. Então o impacto de <code>hp</code> em <code>mpg</code> no nosso exemplo controla o efeito de <code>wt</code>, matendo-o fixo ao calcular o coeficiente de <code>hp</code>.</p>
-<p>O coeficiente <code>(Intercept)</code> é o que chamamos de constante (<em>intercept</em>) da regressão. <strong>A constante representa o valor médio da variável dependente quando todas as variáveis independentes possuem valor nulo (zero)</strong>. No nosso exemplo, as observações possuem em média 37.2272701 <code>mpg</code> quando tanto <code>hp</code> e <code>wt</code> são 0.</p>
+<p>Os coeficientes de objetos <code>lm</code> devem ser interpretados em <strong>escala bruta</strong> na qual <strong>o acréscimo de 1 unidade da variável independente gera o aumento de <code>&lt;coeficiente&gt;</code> unidade(s) da variável dependente</strong>. No nosso exemplo, a cada acréscimo de 1 <code>hp</code>, <code>mpg</code> reduz em -0.03; e a cada acréscimo de 1 <code>wt</code>, <code>mpg</code> reduz em -3.88. Além disso, a <strong>regressão linear controla os efeitos de outras variáveis independente</strong>. Então o impacto de <code>hp</code> em <code>mpg</code> no nosso exemplo controla o efeito de <code>wt</code>, matendo-o fixo ao calcular o coeficiente de <code>hp</code>.</p>
+<p>O coeficiente <code>(Intercept)</code> é o que chamamos de constante (<em>intercept</em>) da regressão. <strong>A constante representa o valor médio da variável dependente quando todas as variáveis independentes possuem valor nulo (zero)</strong>. No nosso exemplo, as observações possuem em média 37.23 <code>mpg</code> quando tanto <code>hp</code> e <code>wt</code> são 0.</p>
 <p>Note que podemos produzir <strong>intervalos de confiança usando a função padrão do R <code>confint()</code> inserindo como argumento um objeto <code>lm</code></strong>. <code>confint()</code> como padrão produz intervalos de confiança 95%.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>                  2.5 %      97.5 %
-(Intercept) 33.95738245 40.49715778
-hp          -0.05024078 -0.01330512
-wt          -5.17191604 -2.58374544</code></pre>
+<pre><code>            2.5 % 97.5 %
+(Intercept) 33.96 40.497
+hp          -0.05 -0.013
+wt          -5.17 -2.584</code></pre>
 </div>
 <h3 id="variáveis-qualitativas">Variáveis Qualitativas</h3>
 <p>Além de variáveis independentes quantitativas, regressão linear também permite utilizarmos <strong>variáveis qualitativas (discretas)</strong> como variáveis independentes.</p>
@@ -2870,7 +2871,7 @@ wt          -5.17191604 -2.58374544</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_quali</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>am <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>am</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>am <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>am</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>hp</span> <span class='op'>+</span> <span class='va'>wt</span> <span class='op'>+</span> <span class='va'>am</span>, data <span class='op'>=</span> <span class='va'>.</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 </code></pre>
@@ -2880,23 +2881,23 @@ Call:
 lm(formula = mpg ~ hp + wt + am, data = .)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.4221 -1.7924 -0.3788  1.2249  5.5317 
+   Min     1Q Median     3Q    Max 
+-3.422 -1.792 -0.379  1.225  5.532 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 34.002875   2.642659  12.867 2.82e-13 ***
-hp          -0.037479   0.009605  -3.902 0.000546 ***
-wt          -2.878575   0.904971  -3.181 0.003574 ** 
-am1          2.083710   1.376420   1.514 0.141268    
+            Estimate Std. Error t value         Pr(&gt;|t|)    
+(Intercept) 34.00288    2.64266   12.87 0.00000000000028 ***
+hp          -0.03748    0.00961   -3.90          0.00055 ***
+wt          -2.87858    0.90497   -3.18          0.00357 ** 
+am1          2.08371    1.37642    1.51          0.14127    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.538 on 28 degrees of freedom
-Multiple R-squared:  0.8399,    Adjusted R-squared:  0.8227 
-F-statistic: 48.96 on 3 and 28 DF,  p-value: 2.908e-11</code></pre>
+Residual standard error: 2.5 on 28 degrees of freedom
+Multiple R-squared:  0.84,  Adjusted R-squared:  0.823 
+F-statistic:   49 on 3 and 28 DF,  p-value: 0.0000000000291</code></pre>
 </div>
-<p>Quando convertemos uma variável para fator, o R rotula os diferentes níveis (<em>levels</em>) conforme ordem alfabética. Portanto, no nosso exemplo, <code>am</code> possui 2 níveis: <code>0</code> e <code>1</code> (apesar de serem números, na conversão o R usa uma ordem crescente para dígitos). Numa regressão linear que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso <code>am0</code>) como referência. Portanto a interpretação do coeficiente <code>am1</code> deve ser a seguinte: observações com <code>am = 1</code> possuem um acréscimo em média de 2.0837101 <code>mpg</code>. Note também que a variável <code>am</code> não possui significância estatística para a diferença entre o nível de referência <code>am0</code> e o nível <code>am1</code> com <span class="math inline">\(p = 0.14\)</span>. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto <code>lm</code> acessando seu atributo <code>xlevels</code>.</p>
+<p>Quando convertemos uma variável para fator, o R rotula os diferentes níveis (<em>levels</em>) conforme ordem alfabética. Portanto, no nosso exemplo, <code>am</code> possui 2 níveis: <code>0</code> e <code>1</code> (apesar de serem números, na conversão o R usa uma ordem crescente para dígitos). Numa regressão linear que possua variáveis qualitativas codificadas como fatores, o R usará o primeiro nível do fator (no nosso caso <code>am0</code>) como referência. Portanto a interpretação do coeficiente <code>am1</code> deve ser a seguinte: observações com <code>am = 1</code> possuem um acréscimo em média de 2.08 <code>mpg</code>. Note também que a variável <code>am</code> não possui significância estatística para a diferença entre o nível de referência <code>am0</code> e o nível <code>am1</code> com <span class="math inline">\(p = 0.14\)</span>. É possível verificar os diferentes níveis das variáveis qualitativas de um objeto <code>lm</code> acessando seu atributo <code>xlevels</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>modelo_quali</span><span class='op'>$</span><span class='va'>xlevels</span>
@@ -2915,13 +2916,13 @@ F-statistic: 48.96 on 3 and 28 DF,  p-value: 2.908e-11</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>mpg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>am</span>, y <span class='op'>=</span> <span class='va'>mpg</span>, color <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_brewer.html'>scale_colour_brewer</a></span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set1"</span><span class='op'>)</span>
+  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span>, <span class='va'>as.factor</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>mpg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>am</span>, y <span class='op'>=</span> <span class='va'>mpg</span>, color <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>cyl</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_colour_brewer</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Set1"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:mtcars-interaction"></span>
@@ -2943,23 +2944,23 @@ Call:
 lm(formula = mpg ~ hp + wt + cyl * am, data = mtcars)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--4.0803 -1.4815 -0.7691  1.3676  5.2401 
+   Min     1Q Median     3Q    Max 
+-4.080 -1.481 -0.769  1.368  5.240 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 34.65302    3.24278  10.686 5.23e-11 ***
-hp          -0.01641    0.01480  -1.109  0.27760    
-wt          -2.72198    0.90900  -2.994  0.00596 ** 
-cyl         -0.66455    0.57644  -1.153  0.25946    
-am           6.32643    3.80414   1.663  0.10831    
-cyl:am      -0.89996    0.65523  -1.373  0.18133    
+            Estimate Std. Error t value       Pr(&gt;|t|)    
+(Intercept)  34.6530     3.2428   10.69 0.000000000052 ***
+hp           -0.0164     0.0148   -1.11          0.278    
+wt           -2.7220     0.9090   -2.99          0.006 ** 
+cyl          -0.6646     0.5764   -1.15          0.259    
+am            6.3264     3.8041    1.66          0.108    
+cyl:am       -0.9000     0.6552   -1.37          0.181    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.469 on 26 degrees of freedom
-Multiple R-squared:  0.8592,    Adjusted R-squared:  0.8322 
-F-statistic: 31.74 on 5 and 26 DF,  p-value: 2.791e-10</code></pre>
+Residual standard error: 2.5 on 26 degrees of freedom
+Multiple R-squared:  0.859, Adjusted R-squared:  0.832 
+F-statistic: 31.7 on 5 and 26 DF,  p-value: 0.000000000279</code></pre>
 </div>
 <p>A interpretação do coeficiente <code>cyl:am</code> é a seguinte: <code>cyl</code> (ou <code>am</code>) <strong>modera positivamente</strong> a relação entre <code>am</code> (ou <code>cyl</code>) e <code>mpg</code>. Note que o <span class="math inline">\(p\)</span>-valor de <code>cyl:am</code> não possui significância estatística (<span class="math inline">\(p = 0.181\)</span>).</p>
 <h3 id="efeitos-não-lineares">Efeitos Não-Lineares</h3>
@@ -2967,10 +2968,10 @@ F-statistic: 31.74 on 5 and 26 DF,  p-value: 2.791e-10</code></pre>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>2</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span><span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Red"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>2</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"Blue"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:mtcars-poly"></span>
@@ -2992,21 +2993,21 @@ Call:
 lm(formula = mpg ~ poly(hp, 2) + wt, data = mtcars)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.0589 -1.2603 -0.5089  0.7028  4.9805 
+   Min     1Q Median     3Q    Max 
+-3.059 -1.260 -0.509  0.703  4.980 
 
 Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   29.8389     2.2093  13.506 8.72e-14 ***
-poly(hp, 2)1 -15.1717     3.3984  -4.464  0.00012 ***
-poly(hp, 2)2   6.8997     2.7628   2.497  0.01867 *  
-wt            -3.0300     0.6741  -4.495  0.00011 ***
+             Estimate Std. Error t value          Pr(&gt;|t|)    
+(Intercept)    29.839      2.209   13.51 0.000000000000087 ***
+poly(hp, 2)1  -15.172      3.398   -4.46           0.00012 ***
+poly(hp, 2)2    6.900      2.763    2.50           0.01867 *  
+wt             -3.030      0.674   -4.50           0.00011 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.387 on 28 degrees of freedom
-Multiple R-squared:  0.8583,    Adjusted R-squared:  0.8432 
-F-statistic: 56.55 on 3 and 28 DF,  p-value: 5.292e-12</code></pre>
+Residual standard error: 2.4 on 28 degrees of freedom
+Multiple R-squared:  0.858, Adjusted R-squared:  0.843 
+F-statistic: 56.6 on 3 and 28 DF,  p-value: 0.00000000000529</code></pre>
 </div>
 <p>Veja que ambos os coeficientes <code>poly(hp, 2)1</code> (que deve ser interpretado como <span class="math inline">\(\text{hp}^1\)</span>) e <code>poly(hp, 2)2</code> (que deve ser interpretado como <span class="math inline">\(\text{hp}^2\)</span>) possuem significância estatística (<span class="math inline">\(p &lt; 0.05\)</span>).</p>
 <h3 id="visualização-de-regressão-linear">Visualização de Regressão Linear</h3>
@@ -3016,7 +3017,7 @@ F-statistic: 56.55 on 3 and 28 DF,  p-value: 5.292e-12</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>
 <span class='va'>forest_raw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span><span class='op'>)</span>
 <span class='va'>forest_std</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>modelo_quali</span>, type <span class='op'>=</span> <span class='st'>"std"</span><span class='op'>)</span>
-<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'><a href='https://patchwork.data-imaginist.com/reference/plot_layout.html'>plot_layout</a></span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>forest_raw</span> <span class='op'>+</span> <span class='va'>forest_std</span> <span class='op'>+</span> <span class='fu'>plot_layout</span><span class='op'>(</span>nrow <span class='op'>=</span> <span class='fl'>1</span>, widths <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:sjPlot"></span>
@@ -3042,7 +3043,7 @@ Figure 7: Gráfico de Floresta dos Coeficientes de uma Regressão Linear
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/sinhrks/ggfortify'>ggfortify</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
+<span class='fu'>autoplot</span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:ggfortify"></span>
@@ -3066,7 +3067,7 @@ Figure 8: Diagnósticos de Regressão Linear
     studentized Breusch-Pagan test
 
 data:  modelo_simples
-BP = 0.88072, df = 2, p-value = 0.6438</code></pre>
+BP = 0.9, df = 2, p-value = 0.6</code></pre>
 </div>
 <p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Breusch-Pagan para o <code>modelo_simples</code> é 0.6, demonstrando fortes evidências em favor da não-rejeição da hipótese nula de dependência dos resíduos.</p>
 <h5 id="teste-de-durbin-watson">Teste de Durbin-Watson</h5>
@@ -3080,7 +3081,7 @@ BP = 0.88072, df = 2, p-value = 0.6438</code></pre>
     Durbin-Watson test
 
 data:  modelo_simples
-DW = 1.3624, p-value = 0.02061
+DW = 1, p-value = 0.02
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
 <p>Note que o <span class="math inline">\(p\)</span>-valor do Teste de Durbin-Watson para o <code>modelo_simples</code> é menor que 0.05, indicando a rejeição da hipótese nula de não-correlação entre os resíduos, violando o pressuposto da homogeneidade de variância dos resíduos.</p>
@@ -3093,8 +3094,8 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 <span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>modelo_simples</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>      hp       wt 
-1.766625 1.766625 </code></pre>
+<pre><code> hp  wt 
+1.8 1.8 </code></pre>
 </div>
 <p>Note que os valores de VIFs para as variáveis independentes do <code>modelo_simples</code> estão todos dentro do limite aceitável (<span class="math inline">\(&lt;10\)</span>), demonstrando ausência de multicolinearidade e evidenciando que o pressuposto não foi violado.</p>
 <h2 id="r2-e-r2-ajustado"><span class="math inline">\(R^2\)</span> e <span class="math inline">\(R^2\)</span> ajustado</h2>
@@ -3115,18 +3116,18 @@ Residuals:
 -3.941 -1.600 -0.182  1.050  5.854 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
-hp          -0.03177    0.00903  -3.519  0.00145 ** 
-wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept) 37.22727    1.59879   23.28 &lt; 0.0000000000000002 ***
+hp          -0.03177    0.00903   -3.52               0.0015 ** 
+wt          -3.87783    0.63273   -6.13            0.0000011 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.593 on 29 degrees of freedom
-Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
-F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+Residual standard error: 2.6 on 29 degrees of freedom
+Multiple R-squared:  0.827, Adjusted R-squared:  0.815 
+F-statistic: 69.2 on 2 and 29 DF,  p-value: 0.00000000000911</code></pre>
 </div>
-<p>Veja que o <code>modelo_simples</code> possui como <span class="math inline">\(R^2\)</span> um valor de 0.8267855: isto quer dizer que o <code>modelo_simples</code> possui um poder preditivo de 83% da variância de <code>mpg</code>. Além disso seu <span class="math inline">\(R^2\)</span> ajustado é que pode ser útil na hora de comparar diferentes modelos que usem o mesmo conjunto de dados <code>mtcars</code> e a mesma variável dependente <code>mpg</code>.</p>
+<p>Veja que o <code>modelo_simples</code> possui como <span class="math inline">\(R^2\)</span> um valor de 0.83: isto quer dizer que o <code>modelo_simples</code> possui um poder preditivo de 83% da variância de <code>mpg</code>. Além disso seu <span class="math inline">\(R^2\)</span> ajustado é que pode ser útil na hora de comparar diferentes modelos que usem o mesmo conjunto de dados <code>mtcars</code> e a mesma variável dependente <code>mpg</code>.</p>
 <h2 id="coeficientes-brutos-versus-padronizados">Coeficientes Brutos versus Padronizados</h2>
 <p>Além de coeficientes brutos, podemos também obter coeficientes padronizados por desvios padrões de regressão linear usando a biblioteca <code>{lm.beta}</code> <span class="citation" data-cites="lmbeta">(<a href="#ref-lmbeta" role="doc-biblioref">Behrendt, 2014</a>)</span>. Tal interpretação é vantajosa quando temos variáveis na regressão que possuem medidas diversas e que a comparação não seria tão simples. Os coeficientes padronizados são disponibilizados na coluna <code>Standardized</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3145,18 +3146,22 @@ Residuals:
 -3.941 -1.600 -0.182  1.050  5.854 
 
 Coefficients:
-            Estimate Standardized Std. Error t value Pr(&gt;|t|)    
-(Intercept) 37.22727      0.00000    1.59879  23.285  &lt; 2e-16 ***
-hp          -0.03177     -0.36145    0.00903  -3.519  0.00145 ** 
-wt          -3.87783     -0.62955    0.63273  -6.129 1.12e-06 ***
+            Estimate Standardized Std. Error t value
+(Intercept) 37.22727      0.00000    1.59879   23.28
+hp          -0.03177     -0.36145    0.00903   -3.52
+wt          -3.87783     -0.62955    0.63273   -6.13
+                        Pr(&gt;|t|)    
+(Intercept) &lt; 0.0000000000000002 ***
+hp                        0.0015 ** 
+wt                     0.0000011 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.593 on 29 degrees of freedom
-Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
-F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+Residual standard error: 2.6 on 29 degrees of freedom
+Multiple R-squared:  0.827, Adjusted R-squared:  0.815 
+F-statistic: 69.2 on 2 and 29 DF,  p-value: 0.00000000000911</code></pre>
 </div>
-<p>A interpretação de coeficientes padronizados é quase a mesma que coeficientes padrões, apenas mudando a escala de comparação, que deve ser interpretada em <strong>escala padronizada em desvios padrões</strong>: <strong>o acréscimo de 1 unidade de desvio padrão variável independente gera o aumento de <code>&lt;coeficiente&gt;</code> unidade(s) de desvio padrão(ões) da variável dependente</strong>. No nosso exemplo, a cada acréscimo de 1 desvio padrão de <code>hp</code>, <code>mpg</code> reduz em -0.3614507 desvio padrão; e a cada acréscimo de 1 desvio padrão <code>wt</code>, <code>mpg</code> reduz em -0.6295545 desvio padrão.</p>
+<p>A interpretação de coeficientes padronizados é quase a mesma que coeficientes padrões, apenas mudando a escala de comparação, que deve ser interpretada em <strong>escala padronizada em desvios padrões</strong>: <strong>o acréscimo de 1 unidade de desvio padrão variável independente gera o aumento de <code>&lt;coeficiente&gt;</code> unidade(s) de desvio padrão(ões) da variável dependente</strong>. No nosso exemplo, a cada acréscimo de 1 desvio padrão de <code>hp</code>, <code>mpg</code> reduz em -0.36 desvio padrão; e a cada acréscimo de 1 desvio padrão <code>wt</code>, <code>mpg</code> reduz em -0.63 desvio padrão.</p>
 <p>Note que a constante <code>(Intercept)</code> não deve ser usada em escalas padronizada por desvio padrão, por isso que a saída de objetos <code>lm.beta</code> possui valor 0 para a constante <code>(Intercept)</code>.</p>
 <p>Para gerar intervalos de confiança podemos usar a função <code>confint()</code> para objetos <code>lm.beta</code> da mesma maneira que usamos para objetos <code>lm</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3164,10 +3169,10 @@ F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>modelo_simples_padronizado</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>                 2.5 %     97.5 %
-(Intercept) -3.2698877  3.2698877
-hp          -0.3799185 -0.3429828
-wt          -1.9236398  0.6645308</code></pre>
+<pre><code>            2.5 % 97.5 %
+(Intercept) -3.27   3.27
+hp          -0.38  -0.34
+wt          -1.92   0.66</code></pre>
 </div>
 <h2 id="conexões-com-o-teste-t-anova-e-correlações">Conexões com o Teste <span class="math inline">\(t\)</span>, ANOVA e Correlações</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -3178,6 +3183,7 @@ wt          -1.9236398  0.6645308</code></pre>
 Conforme o autor 2, regressão linear é pizza e “tudo acaba em pizza.”
 </aside>
 <div class="layout-chunk" data-layout="l-body">
+<div id="ikksjwbyft" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -3511,10 +3517,11 @@ Conforme o autor 2, regressão linear é pizza e “tudo acaba em pizza.”
 
 #ikksjwbyft .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="ikksjwbyft" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -3524,66 +3531,42 @@ Conforme o autor 2, regressão linear é pizza e “tudo acaba em pizza.”
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">P: teste t para Amostras Independentes</td>
-      <td class="gt_row gt_left">t.test(y)</td>
-      <td class="gt_row gt_left">lm(y ~ 1)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">N: Teste de Wilcoxon</td>
-      <td class="gt_row gt_left">wilcox.test(y)</td>
-      <td class="gt_row gt_left">lm(signed_rank(y) ~ 1)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: Teste t para duas Amostras Pareadas</td>
-      <td class="gt_row gt_left">t.test(y1, y2, paired=TRUE)</td>
-      <td class="gt_row gt_left">lm(y2 - y1 ~ 1)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">N: Teste de Wilcoxon para duas Amostras Pareadaspairs</td>
-      <td class="gt_row gt_left">wilcox.test(y1, y2, paired=TRUE)</td>
-      <td class="gt_row gt_left">lm(signed_rank(y2 - y1) ~ 1)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: Correlação de Pearson</td>
-      <td class="gt_row gt_left">cor.test(x, y, method=’Pearson’)</td>
-      <td class="gt_row gt_left">lm(y ~ 1 + x)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">N: Correlação de Spearman</td>
-      <td class="gt_row gt_left">cor.test(x, y, method=’Spearman’)</td>
-      <td class="gt_row gt_left">lm(rank(y) ~ 1 + rank(x))</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: Teste t para Duas Amostras não-Pareadas</td>
-      <td class="gt_row gt_left">t.test(y1, y2, var.equal=TRUE)</td>
-      <td class="gt_row gt_left">lm(y ~ 1 + G2)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">N: Teste de Mann-Whitney</td>
-      <td class="gt_row gt_left">wilcox.test(y1, y2)</td>
-      <td class="gt_row gt_left">lm(signed_rank(y) ~ 1 + G2)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: ANOVA Unidirecional</td>
-      <td class="gt_row gt_left">aov(y ~ group)</td>
-      <td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">N: Teste de Kruskal-Wallis</td>
-      <td class="gt_row gt_left">kruskal.test(y ~ group)</td>
-      <td class="gt_row gt_left">lm(rank(y) ~ 1 + G2 + G3 +…+ GN)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: ANOVA Bidirecional com efeitos principais</td>
-      <td class="gt_row gt_left">aov(y ~ group + x)</td>
-      <td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN + x)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">P: ANOVA Bidirecional com efeitos de interação</td>
-      <td class="gt_row gt_left">aov(y ~ group * sex)</td>
-      <td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN + S2 + S3 +…+ SK + G2*S2 + G3*S3 + … + GN*SK)</td>
-    </tr>
+    <tr><td class="gt_row gt_left">P: teste t para Amostras Independentes</td>
+<td class="gt_row gt_left">t.test(y)</td>
+<td class="gt_row gt_left">lm(y ~ 1)</td></tr>
+    <tr><td class="gt_row gt_left">N: Teste de Wilcoxon</td>
+<td class="gt_row gt_left">wilcox.test(y)</td>
+<td class="gt_row gt_left">lm(signed_rank(y) ~ 1)</td></tr>
+    <tr><td class="gt_row gt_left">P: Teste t para duas Amostras Pareadas</td>
+<td class="gt_row gt_left">t.test(y1, y2, paired=TRUE)</td>
+<td class="gt_row gt_left">lm(y2 - y1 ~ 1)</td></tr>
+    <tr><td class="gt_row gt_left">N: Teste de Wilcoxon para duas Amostras Pareadaspairs</td>
+<td class="gt_row gt_left">wilcox.test(y1, y2, paired=TRUE)</td>
+<td class="gt_row gt_left">lm(signed_rank(y2 - y1) ~ 1)</td></tr>
+    <tr><td class="gt_row gt_left">P: Correlação de Pearson</td>
+<td class="gt_row gt_left">cor.test(x, y, method=’Pearson’)</td>
+<td class="gt_row gt_left">lm(y ~ 1 + x)</td></tr>
+    <tr><td class="gt_row gt_left">N: Correlação de Spearman</td>
+<td class="gt_row gt_left">cor.test(x, y, method=’Spearman’)</td>
+<td class="gt_row gt_left">lm(rank(y) ~ 1 + rank(x))</td></tr>
+    <tr><td class="gt_row gt_left">P: Teste t para Duas Amostras não-Pareadas</td>
+<td class="gt_row gt_left">t.test(y1, y2, var.equal=TRUE)</td>
+<td class="gt_row gt_left">lm(y ~ 1 + G2)</td></tr>
+    <tr><td class="gt_row gt_left">N: Teste de Mann-Whitney</td>
+<td class="gt_row gt_left">wilcox.test(y1, y2)</td>
+<td class="gt_row gt_left">lm(signed_rank(y) ~ 1 + G2)</td></tr>
+    <tr><td class="gt_row gt_left">P: ANOVA Unidirecional</td>
+<td class="gt_row gt_left">aov(y ~ group)</td>
+<td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN)</td></tr>
+    <tr><td class="gt_row gt_left">N: Teste de Kruskal-Wallis</td>
+<td class="gt_row gt_left">kruskal.test(y ~ group)</td>
+<td class="gt_row gt_left">lm(rank(y) ~ 1 + G2 + G3 +…+ GN)</td></tr>
+    <tr><td class="gt_row gt_left">P: ANOVA Bidirecional com efeitos principais</td>
+<td class="gt_row gt_left">aov(y ~ group + x)</td>
+<td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN + x)</td></tr>
+    <tr><td class="gt_row gt_left">P: ANOVA Bidirecional com efeitos de interação</td>
+<td class="gt_row gt_left">aov(y ~ group * sex)</td>
+<td class="gt_row gt_left">lm(y ~ 1 + G2 + G3 +…+ GN + S2 + S3 +…+ SK + G2*S2 + G3*S3 + … + GN*SK)</td></tr>
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
@@ -3604,7 +3587,8 @@ Conforme o autor 2, regressão linear é pizza e “tudo acaba em pizza.”
       </td>
     </tr>
   </tfoot>
-</table></div>
+</table>
+</div>
 </div>
 <h2 id="técnicas-avançadas-de-regressão-linear">Técnicas Avançadas de Regressão Linear</h2>
 <p>Nesta seção apenas apresentaremos alternativas avançadas, não é o foco desse conteúdo introdutório apresentar de maneira detalhada, mas sim de apontar o leitor na direção correta.</p>
@@ -3697,13 +3681,13 @@ O primeiro autor possui um tutorial de <a href="https://storopoli.github.io/Esta
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/sessionInfo.html'>sessionInfo</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>R version 4.0.3 (2020-10-10)
-Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.7
+<pre><code>R version 4.1.0 (2021-05-18)
+Platform: aarch64-apple-darwin20 (64-bit)
+Running under: macOS Big Sur 11.4
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/lib/libRlapack.dylib
 
 locale:
 [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -3713,52 +3697,45 @@ attached base packages:
 [7] base     
 
 other attached packages:
- [1] gt_0.2.2             lm.beta_1.5-1        lmtest_0.9-38       
- [4] zoo_1.8-8            ggfortify_0.4.11     sjPlot_2.8.7        
- [7] broom_0.7.4          palmerpenguins_0.1.0 magrittr_2.0.1      
-[10] mnormt_2.0.2         cowplot_1.1.1        tidyr_1.1.2         
-[13] DescTools_0.99.40    skimr_2.1.2          ggpubr_0.4.0        
-[16] car_3.0-10           carData_3.0-4        patchwork_1.1.1     
-[19] dplyr_1.0.4          ggplot2_3.3.3        DiagrammeR_1.0.6.1  
-[22] readxl_1.3.1        
+ [1] gt_0.3.0         lm.beta_1.5-1    car_3.0-11      
+ [4] carData_3.0-4    lmtest_0.9-38    zoo_1.8-9       
+ [7] ggfortify_0.4.11 sjPlot_2.8.8     skimr_2.1.3     
+[10] cowplot_1.1.1    broom_0.7.8      patchwork_1.1.1 
+[13] dplyr_1.0.7      ggplot2_3.3.5   
 
 loaded via a namespace (and not attached):
-  [1] minqa_1.2.4        colorspace_2.0-0   ggsignif_0.6.0    
-  [4] ellipsis_0.3.1     class_7.3-17       rio_0.5.16        
-  [7] sjlabelled_1.1.7   rprojroot_2.0.2    estimability_1.3  
- [10] parameters_0.11.0  base64enc_0.1-3    gld_2.6.2         
- [13] rstudioapi_0.13    farver_2.0.3       fansi_0.4.2       
- [16] mvtnorm_1.1-1      lubridate_1.7.9.2  xml2_1.3.2        
- [19] splines_4.0.3      downlit_0.2.1      rootSolve_1.8.2.1 
- [22] knitr_1.31         sjmisc_2.8.6       jsonlite_1.7.2    
- [25] nloptr_1.2.2.2     ggeffects_1.0.1    effectsize_0.4.3  
- [28] compiler_4.0.3     emmeans_1.5.4      sjstats_0.18.1    
- [31] backports_1.2.1    assertthat_0.2.1   Matrix_1.2-18     
- [34] cli_2.3.0          visNetwork_2.0.9   htmltools_0.5.1.1 
- [37] tools_4.0.3        gtable_0.3.0       glue_1.4.2        
- [40] lmom_2.8           Rcpp_1.0.6         cellranger_1.1.0  
- [43] vctrs_0.3.6        nlme_3.1-149       insight_0.12.0    
- [46] xfun_0.21          stringr_1.4.0      lme4_1.1-26       
- [49] openxlsx_4.2.3     lifecycle_0.2.0    statmod_1.4.35    
- [52] rstatix_0.6.0      MASS_7.3-53        scales_1.1.1      
- [55] hms_1.0.0          expm_0.999-6       RColorBrewer_1.1-2
- [58] yaml_2.2.1         curl_4.3           Exact_2.1         
- [61] gridExtra_2.3      reticulate_1.18    sass_0.3.1        
- [64] distill_1.2        stringi_1.5.3      highr_0.8         
- [67] bayestestR_0.8.2   checkmate_2.0.0    e1071_1.7-4       
- [70] boot_1.3-25        zip_2.1.1          repr_1.1.3        
- [73] commonmark_1.7     rlang_0.4.10       pkgconfig_2.0.3   
- [76] evaluate_0.14      lattice_0.20-41    purrr_0.3.4       
- [79] htmlwidgets_1.5.3  labeling_0.4.2     tidyselect_1.1.0  
- [82] ggsci_2.9          bookdown_0.21      R6_2.5.0          
- [85] magick_2.6.0       generics_0.1.0     DBI_1.1.1         
- [88] pillar_1.4.7       haven_2.3.1        foreign_0.8-80    
- [91] withr_2.4.1        mgcv_1.8-33        abind_1.4-5       
- [94] tibble_3.0.6       performance_0.7.0  modelr_0.1.8      
- [97] crayon_1.4.1       utf8_1.1.4         tmvnsim_1.0-2     
-[100] rmarkdown_2.6      grid_4.0.3         data.table_1.13.6 
-[103] forcats_0.5.1      digest_0.6.27      xtable_1.8-4      
-[106] munsell_0.5.0     </code></pre>
+ [1] nlme_3.1-152       insight_0.14.2     RColorBrewer_1.1-2
+ [4] repr_1.1.3         tools_4.1.0        backports_1.2.1   
+ [7] bslib_0.2.5.1      utf8_1.2.1         R6_2.5.0          
+[10] sjlabelled_1.1.8   DBI_1.1.1          mgcv_1.8-35       
+[13] colorspace_2.0-2   withr_2.4.2        tidyselect_1.1.1  
+[16] gridExtra_2.3      emmeans_1.6.1      downlit_0.2.1     
+[19] curl_4.3.2         compiler_4.1.0     performance_0.7.2 
+[22] textshaping_0.3.5  labeling_0.4.2     bayestestR_0.10.0 
+[25] sass_0.4.0         checkmate_2.0.0    scales_1.1.1      
+[28] mvtnorm_1.1-2      commonmark_1.7     systemfonts_1.0.2 
+[31] stringr_1.4.0      digest_0.6.27      foreign_0.8-81    
+[34] minqa_1.2.4        rmarkdown_2.9      rio_0.5.27        
+[37] base64enc_0.1-3    pkgconfig_2.0.3    htmltools_0.5.1.1 
+[40] lme4_1.1-27.1      highr_0.9          readxl_1.3.1      
+[43] rlang_0.4.11       jquerylib_0.1.4    farver_2.1.0      
+[46] generics_0.1.0     jsonlite_1.7.2     zip_2.2.0         
+[49] distill_1.2        magrittr_2.0.1     parameters_0.14.0 
+[52] Matrix_1.3-4       Rcpp_1.0.6         munsell_0.5.0     
+[55] fansi_0.5.0        abind_1.4-5        lifecycle_1.0.0   
+[58] stringi_1.6.2      yaml_2.2.1         snakecase_0.11.0  
+[61] MASS_7.3-54        grid_4.1.0         forcats_0.5.1     
+[64] sjmisc_2.8.7       crayon_1.4.1       lattice_0.20-44   
+[67] haven_2.4.1        ggeffects_1.1.0    splines_4.1.0     
+[70] hms_1.1.0          sjstats_0.18.1     magick_2.7.2      
+[73] knitr_1.33         pillar_1.6.1       boot_1.3-28       
+[76] estimability_1.3   effectsize_0.4.5   glue_1.4.2        
+[79] evaluate_0.14      data.table_1.14.0  modelr_0.1.8      
+[82] vctrs_0.3.8        nloptr_1.2.2.2     cellranger_1.1.0  
+[85] gtable_0.3.0       purrr_0.3.4        tidyr_1.1.3       
+[88] assertthat_0.2.1   openxlsx_4.2.4     xfun_0.24         
+[91] xtable_1.8-4       coda_0.19-4        ragg_1.1.3        
+[94] tibble_3.1.2       ellipsis_0.3.2    </code></pre>
 </div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
@@ -3785,6 +3762,9 @@ Efron, B., &amp; Hastie, T. (2016). <em>Computer age statistical inference</em> 
 </div>
 <div id="ref-car" class="csl-entry" role="doc-biblioentry">
 Fox, J., &amp; Weisberg, S. (2019). <em>An <span>R</span> companion to applied regression</em> (Third). Retrieved from <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a>
+</div>
+<div id="ref-galton1877typical" class="csl-entry" role="doc-biblioentry">
+Galton, F. (1877). <em>Typical laws of heredity</em>. Royal Institution of Great Britain.
 </div>
 <div id="ref-galton1890kinship" class="csl-entry" role="doc-biblioentry">
 Galton, F. (1890). Kinship and correlation. <em>The North American Review</em>, <em>150</em>(401), 419–431.
