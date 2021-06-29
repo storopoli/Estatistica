@@ -115,7 +115,7 @@ Por exemplo, digamos que você esteja em busca dos fatores que acarretam ataque 
 
 ## História da Regressão
 
-O termo "regressão" foi cunhado por Francis Galton no século XIX para descrever um fenômeno biológico. O fenômeno era que as alturas dos descendentes de ancestrais altos tendem a regredir para uma média normal (um fenômeno também conhecido como regressão em direção à média) [@galton1890kinship]. Para Galton, a regressão tinha apenas este significado biológico [@ galton1877typical], mas seu trabalho foi posteriormente estendido por Udny Yule [@yule1897theory] e Karl Pearson [@pearson1903law] para um contexto estatístico mais geral.
+O termo "regressão" foi cunhado por Francis Galton no século XIX para descrever um fenômeno biológico. O fenômeno era que as alturas dos descendentes de ancestrais altos tendem a regredir para uma média normal (um fenômeno também conhecido como regressão em direção à média) [@galton1890kinship]. Para Galton, a regressão tinha apenas este significado biológico [@galton1877typical], mas seu trabalho foi posteriormente estendido por Udny Yule [@yule1897theory] e Karl Pearson [@pearson1903law] para um contexto estatístico mais geral.
 
 ```{r fig-galton-pearson-yule, echo=FALSE, warning=FALSE, message=FALSE, fig.show='hold', out.width='20%', fig.align='default', fig.height=2, fig.asp=NULL, fig.cap='Da esquerda para direita: Francis Galton, Karl Pearson e Udny Yule -- Figuras de https://www.wikipedia.org', out.extra='class=external'}
 library(cowplot)
