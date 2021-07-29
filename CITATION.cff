@@ -1,0 +1,22 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Storopoli
+    given-names: Jose
+    orcid: "https://orcid.org/0000-0002-0559-5176"
+  -
+    family-names: Vils
+    given-names: Leonardo
+    orcid: "https://orcid.org/0000-0003-3059-1967"
+cff-version: "1.1.0"
+date-released: 2021-02-01
+identifiers: 
+  - 
+    type: url
+    value: "https://storopoli.io/Estatistica"
+license: "CC-BY-SA-4.0"
+message: "Se você usa esse software, por favor cite-o com esses metadados."
+repository-code: "https://github.com/storopoli/Estatistica"
+title: "Estatística com R"
+...
