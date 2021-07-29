@@ -15,3 +15,4 @@ license: "CC-BY-SA-4.0"
 message: "Se você usa esse software, por favor cite-o com esses metadados."
 repository-code: "https://github.com/storopoli/Estatistica"
 title: "Estatística com R"
+version: 1.0.0
