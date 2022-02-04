@@ -67,7 +67,8 @@ Acesse o site dos tutoriais em
     Linear](https://storopoli.io/Estatistica/6-Regressao_Linear.html)
 7.  [Regressão
     Logística](https://storopoli.io/Estatistica/7-Regressao_Logistica.html)
-    \#\#\# Conteúdos Auxiliares
+    
+### Conteúdos Auxiliares
 
 -   [Quarteto de
     Anscombe](https://storopoli.io/Estatistica/aux-Anscombe.html)
