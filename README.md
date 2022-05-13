@@ -8,11 +8,11 @@ Disciplina de Estatística da [UNINOVE](https://www.uninove.br)
 
 Disciplina do Mestrado e Doutorado da **UNINOVE**. O conteúdo todo
 consegue ser acessado num formato interativo
-[aqui](https://storopoli.io/Estatistica).
+[aqui](https://storopoli.github.io/Estatistica).
 
 ## Professor
 
--   [Prof. Dr. José Eduardo Storopoli](https://storopoli.io) -
+-   [Prof. Dr. José Eduardo Storopoli](https://storopoli.github.io) -
     [Currículo *Lattes*](http://lattes.cnpq.br/2281909649311607) -
     [ORCID](https://orcid.org/0000-0002-0559-5176) -
     <josees@uni9.pro.br>
@@ -45,41 +45,41 @@ R é uma linguagem criada por estatísticos para estatísticos. Possui um
 vasto ecossistema de bibliotecas e é amplamente usado na ciência e em
 especial nas ciências aplicadas. Fizemos toda uma argumentação de porque
 você deve usar R
-[aqui](https://storopoli.io/Estatistica/0-Por_que_R.html)
+[aqui](https://storopoli.github.io/Estatistica/0-Por_que_R.html)
 
 ## Aulas
 
 Acesse o site dos tutoriais em
-[storopoli.io/Estatistica](https://storopoli.io/Estatistica).
+[storopoli.github.io/Estatistica](https://storopoli.github.io/Estatistica).
 
 ### Conteúdos Principais
 
 1.  [Comandos Básicos de
-    R](https://storopoli.io/Estatistica/1-Comandos_Basicos.html)
+    R](https://storopoli.github.io/Estatistica/1-Comandos_Basicos.html)
 2.  [*p*-Valores, Hipóteses Nula e
-    Pressupostos](https://storopoli.io/Estatistica/2-p-valores.html)
+    Pressupostos](https://storopoli.github.io/Estatistica/2-p-valores.html)
 3.  [Teste de Hipóteses e Teste
-    *t*](https://storopoli.io/Estatistica/3-Teste_t.html)
+    *t*](https://storopoli.github.io/Estatistica/3-Teste_t.html)
 4.  [Análise de Variância
-    (ANOVA)](https://storopoli.io/Estatistica/4-ANOVA.html)
-5.  [Correlações](https://storopoli.io/Estatistica/5-Correlacoes.html)
+    (ANOVA)](https://storopoli.github.io/Estatistica/4-ANOVA.html)
+5.  [Correlações](https://storopoli.github.io/Estatistica/5-Correlacoes.html)
 6.  [Regressão
-    Linear](https://storopoli.io/Estatistica/6-Regressao_Linear.html)
+    Linear](https://storopoli.github.io/Estatistica/6-Regressao_Linear.html)
 7.  [Regressão
-    Logística](https://storopoli.io/Estatistica/7-Regressao_Logistica.html)
+    Logística](https://storopoli.github.io/Estatistica/7-Regressao_Logistica.html)
     
 ### Conteúdos Auxiliares
 
 -   [Quarteto de
-    Anscombe](https://storopoli.io/Estatistica/aux-Anscombe.html)
+    Anscombe](https://storopoli.github.io/Estatistica/aux-Anscombe.html)
 -   [Dados
-    Faltantes](https://storopoli.io/Estatistica/aux-Dados_Faltantes.html)
+    Faltantes](https://storopoli.github.io/Estatistica/aux-Dados_Faltantes.html)
 -   [Tamanho de Amostra e Tamanho de
-    Efeito](https://storopoli.io/Estatistica/aux-Tamanho_Amostra.html)
+    Efeito](https://storopoli.github.io/Estatistica/aux-Tamanho_Amostra.html)
 -   [Likert e Escalas
-    Ordinais](https://storopoli.io/Estatistica/aux-Likert.html)
+    Ordinais](https://storopoli.github.io/Estatistica/aux-Likert.html)
 -   [Tabelas para
-    Publicação](https://storopoli.io/Estatistica/aux-Tabelas_para_Publicacao.html)
+    Publicação](https://storopoli.github.io/Estatistica/aux-Tabelas_para_Publicacao.html)
 
 ## Referências
 
@@ -172,14 +172,14 @@ Acesse o site dos tutoriais em
 
 Para citar o conteúdo use:
 
-    Storopoli & Vils (2021). Estatística com R. Retrieved from https://storopoli.io/Estatistica
+    Storopoli & Vils (2021). Estatística com R. Retrieved from https://storopoli.github.io/Estatistica
 
 Ou em formato BibTeX para LaTeX:
 
     @misc{storopoli2021estatisticaR,
       author = {Storopoli, Jose and Vils, Leonardo},
       title = {Estatística com R},
-      url = {https://storopoli.io/Estatistica},
+      url = {https://storopoli.github.io/Estatistica},
       year = {2021}
     }
 

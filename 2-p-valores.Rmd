@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.io/Estatistica/2-p-valores.html
+citation_url: https://storopoli.github.io/Estatistica/2-p-valores.html
 slug: storopoli2021pvalores
 bibliography: bib/bibliografia.bib
 csl: bib/apa.csl
@@ -492,7 +492,7 @@ Caro leitor, saiba que você está em um momento da história no qual a Estatís
 Logo na sequência vieram mais tentativas e reivindicações. Em setembro de 2017, a *Nature Human Behaviour* publicou um editorial propondo que o nível de significância do $p$-valor seja reduzido de $0.05$ para $0.005$ [@benjaminRedefineStatisticalSignificance2018]. Diversos autores, inclusive muitos estatísticos altamente influentes e importantes argumentaram que esse simples passo ajudaria a combater o problema da crise de replicabilidade da ciência, que muitos acreditam ser a principal consequência do uso abusivo de $p$-valores [@Ioannidis2019]. Além disso, muitos foram um passo além e sugerem que a ciência descarte de uma vez por todas $p$-valores [@ItTimeTalk2019; @lakensJustifyYourAlpha2018]. Muitos sugerem (nós inclusive) que a principal ferramenta de inferência seja a estatística Bayesiana [@amrheinScientistsRiseStatistical2019; @Goodman1180; @vandeschootBayesianStatisticsModelling2021]
 
 <aside>
-Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e $p$-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma [disciplina *opensource* de Estatística Bayesiana com R e Stan](https://storopoli.io/Estatistica-Bayesiana/).
+Há uma abordagem de Estatística inferencial que não se baseia em hipóteses nulas e $p$-valores: a Estatística Bayesiana. Caso fiquem curiosos o primeiro autor possui uma [disciplina *opensource* de Estatística Bayesiana com R e Stan](https://storopoli.github.io/Estatistica-Bayesiana/).
 </aside>
 
 ## Ambiente

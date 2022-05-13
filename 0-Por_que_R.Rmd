@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.io/Estatistica/0-Por_que_R.html
+citation_url: https://storopoli.github.io/Estatistica/0-Por_que_R.html
 slug: storopoli2021porqueR
 bibliography: bib/bibliografia.bib
 csl: bib/apa.csl
@@ -97,7 +97,7 @@ Julia é uma linguagem que estamos olhando de maneira promissora. Ela é rápida
 
 A principal lacuna que a linguagem Julia tenta solucionar é o paradigma das duas linguagens. Esse paradigma é como os desenvolvedores de algoritmos e softwares de análise desenvolvem suas funcionalidades. Primeiro o código é escrito em uma linguagem de fácil entendeimento e rápida prototipagem como R ou Python. Então, o código do protótipo é testado com um problema pequeno ou com uma fração dos dados que serão utilizados pela solução final. Somente após averiguar que o protótipo funciona da maneira correta, é que os desenvolvedores partem para uma linguagem mais robusta e rápida, mas de implementação demorada como C++ ou Fortran. Julia serve para eliminar esse paradigma e ser a linguagem usada tanto para prototipagem quando para implementação.
 
-O primeiro autor em especial acredita que Julia é o futuro e fez um conjunto de tutoriais de estatística Bayesiana usando Julia e [`Turing.jl`](https://turing.ml/). O conteúdo está todo em inglês e pode ser acessado aqui: https://storopoli.io/Bayesian-Julia. No primeiro tutorial, chamado de [*Why Julia?*](https://storopoli.io/Bayesian-Julia/pages/1_why_Julia/) ele explica os benefícios de Julia e porque acredita que Júlia é o futuro. O primeiro autor já sofreu bastante para deixar seu código de R mais rápido com C++. Inclusive fez um conjunto de tutorias de como integrar C++ e R usando `Rcpp` que pode ser acessado aqui: https://storopoli.io/Rcpp. A partir de agora ele quase sempre escolhe uma implementação em Julia do que usar C++ com o `Rcpp`.
+O primeiro autor em especial acredita que Julia é o futuro e fez um conjunto de tutoriais de estatística Bayesiana usando Julia e [`Turing.jl`](https://turing.ml/). O conteúdo está todo em inglês e pode ser acessado aqui: https://storopoli.github.io/Bayesian-Julia. No primeiro tutorial, chamado de [*Why Julia?*](https://storopoli.github.io/Bayesian-Julia/pages/1_why_Julia/) ele explica os benefícios de Julia e porque acredita que Júlia é o futuro. O primeiro autor já sofreu bastante para deixar seu código de R mais rápido com C++. Inclusive fez um conjunto de tutorias de como integrar C++ e R usando `Rcpp` que pode ser acessado aqui: https://storopoli.github.io/Rcpp. A partir de agora ele quase sempre escolhe uma implementação em Julia do que usar C++ com o `Rcpp`.
 
 [^17]: Para o leitor isso não pode fazer diferença. Mas quando você, por exemplo, quer pegar um algoritmo descrito matematicamente em um artigo e implementá-lo diretamente em código, esses caracteres matemáticos são muito bem-vindos. Palavras de quem já escreveu um algoritmo de Amostragem Monte Carlo usando correntes Markov na mão (não por falta de opção, mas por busca de sinestesia para melhor aprendizagem).
 

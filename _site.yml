@@ -1,6 +1,6 @@
 name: "Estatistica"
 title: "Estatística com R"
-base_url: https://storopoli.io/Estatistica
+base_url: https://storopoli.github.io/Estatistica
 theme: "css/theme.css"
 output_dir: "docs"
 alt_formats: true

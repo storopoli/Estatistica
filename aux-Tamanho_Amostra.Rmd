@@ -14,7 +14,7 @@ author:
     affiliation_url: https://www.uninove.br
     orcid_id: 0000-0003-3059-1967
 date: January 11, 2021
-citation_url: https://storopoli.io/Estatistica/aux-Tamanho_Amostra.html
+citation_url: https://storopoli.github.io/Estatistica/aux-Tamanho_Amostra.html
 slug: storopoli2021tamanhoamostraR
 bibliography: bib/bibliografia.bib
 csl: bib/apa.csl
